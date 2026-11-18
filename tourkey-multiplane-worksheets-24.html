@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ABOARD THE TOURKEY · Multiplane Studio Call Sheets (24 Flooded TVA & Little River Stops)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111111;
+    --muted: #525252;
+    --soft: #f5f4ef;
+    --paper: #ffffff;
+    --desk: #e6e5df;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --serif: "Instrument Serif", Georgia, serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--desk); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+
+  /* ── SCREEN CHROME ── */
+  .chrome {
+    position: sticky; top: 0; z-index: 100;
+    background: #111; color: #f5f5f2; padding: 10px 18px; border-bottom: 2px solid #000;
+  }
+  .chrome-top {
+    max-width: 1320px; margin: 0 auto 8px;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .brand { font: 700 12px/1.3 var(--mono); letter-spacing: 0.05em; text-transform: uppercase; }
+  .brand span { color: #9c9c94; font-weight: 400; }
+  .btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn {
+    font: 600 11px/1 var(--mono); padding: 7px 12px;
+    border: 1px solid #444; background: #1d1d1d; color: #fff; cursor: pointer;
+  }
+  .btn:hover { border-color: #fff; }
+  .btn.primary { background: #fff; color: #000; border-color: #fff; }
+
+  .tabs {
+    max-width: 1320px; margin: 0 auto;
+    display: flex; gap: 4px; overflow-x: auto; padding-bottom: 3px;
+  }
+  .tab {
+    font: 600 10.5px/1.2 var(--mono); padding: 5px 9px;
+    background: #1a1a1a; color: #aaa; border: 1px solid #333; cursor: pointer; white-space: nowrap;
+  }
+  .tab:hover { color: #fff; border-color: #777; }
+  .tab.active { background: #f5f5f2; color: #111; border-color: #f5f5f2; }
+
+  .legend-bar {
+    max-width: 8.5in; margin: 14px auto 0; background: #fff; border: 1.5px solid #111;
+    padding: 11px 15px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; font-size: 11px; line-height: 1.38;
+  }
+  .legend-bar b { display: block; font: 700 9.5px var(--mono); text-transform: uppercase; margin-bottom: 2px; }
+
+  .deck { padding: 8px 12px 60px; }
+  .stop-pair.hidden { display: none; }
+
+  /* ── 8.5 x 11 SHEET ── */
+  .sheet {
+    width: 8.5in; height: 11in; margin: 14px auto;
+    background: var(--paper); color: var(--ink);
+    padding: 0.38in 0.46in 0.36in;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+    display: flex; flex-direction: column; justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .s-top {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 2px solid var(--ink); padding-bottom: 4px;
+  }
+  .s-kicker { font: 700 10px var(--mono); letter-spacing: 0.05em; text-transform: uppercase; }
+  .s-kicker span { font-weight: 400; color: var(--muted); margin-left: 5px; }
+  .badges { display: flex; gap: 6px; font: 700 9.5px var(--mono); }
+  .pill { border: 1.5px solid var(--ink); padding: 1.5px 6px; }
+  .pill.inv { background: var(--ink); color: #fff; }
+
+  /* Tour Stop Header Box */
+  .stop-box {
+    border: 2px solid var(--ink); background: var(--soft); padding: 7px 10px; margin-top: 5px;
+  }
+  .stop-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 2px; }
+  .stop-title { font: 400 24px/1.04 var(--serif); }
+  .stop-meta { font: 600 9px var(--mono); color: var(--muted); white-space: nowrap; }
+  .stop-desc { font-size: 11.4px; line-height: 1.34; color: #191919; margin-bottom: 4px; }
+  .stop-sparks {
+    font: 600 9.5px var(--mono); border-top: 1px solid #d2d1ca; padding-top: 3px; color: #333;
+  }
+  .stop-sparks b { color: #000; text-transform: uppercase; }
+
+  /* Desk Panels */
+  .desk-box {
+    border: 1.5px solid var(--ink); padding: 8px 11px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .desk-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid #dcdcdc; padding-bottom: 3px; margin-bottom: 4px;
+  }
+  .desk-title { font: 700 10.5px var(--mono); text-transform: uppercase; letter-spacing: 0.03em; }
+  .desk-title .tag { background: var(--ink); color: #fff; padding: 1px 5px; margin-right: 5px; }
+  .who-line { font: 500 10.5px var(--sans); white-space: nowrap; }
+  .who-line i { display: inline-block; width: 125px; border-bottom: 1px solid var(--ink); }
+
+  .explain { font-size: 10.8px; line-height: 1.32; color: #222; margin-bottom: 4px; }
+  .contrast {
+    background: #f5f4ef; border-left: 3px solid var(--ink);
+    padding: 3px 7px; font-size: 10px; line-height: 1.3; margin-bottom: 5px;
+  }
+  .contrast .no { color: #555; margin-right: 6px; }
+  .contrast .yes { font-weight: 600; color: #000; }
+
+  .q-lbl { font: 700 10px var(--sans); margin-top: 2px; }
+  .wline { border-bottom: 1px solid #222; height: 22px; width: 100%; }
+  .cam-row {
+    display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: baseline;
+    margin-top: 5px; font-size: 10.5px;
+  }
+  .cam-row b { font: 700 9.8px var(--mono); white-space: nowrap; }
+
+  /* 3 MULTIPLANE PLATES */
+  .planes-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin: 4px 0 5px;
+  }
+  .plane-cel {
+    border: 2px solid var(--ink); height: 2.08in; padding: 5px 6px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; background: #fff;
+  }
+  /* Peg holes at top of animation cel! */
+  .pegs {
+    display: flex; justify-content: center; align-items: center; gap: 18px;
+    padding-bottom: 3px; border-bottom: 1px dashed #ccc;
+  }
+  .peg-round { width: 7px; height: 7px; border: 1.2px solid var(--ink); border-radius: 50%; }
+  .peg-slot { width: 14px; height: 6px; border: 1.2px solid var(--ink); border-radius: 3px; }
+  .cel-hdr { font: 700 9px var(--mono); text-transform: uppercase; text-align: center; margin-top: 2px; }
+  .cel-speed { font: 600 8.5px var(--mono); color: var(--muted); text-align: center; }
+  .cel-hint { font: italic 9.5px/1.22 var(--sans); color: #767676; text-align: center; padding: 0 3px; }
+
+  .pass-bar {
+    margin-top: 5px; padding-top: 4px; border-top: 1px dashed #999;
+    display: flex; justify-content: space-between; align-items: center;
+    font: 700 9.5px var(--mono); text-transform: uppercase;
+  }
+  .pass-bar span { font: 400 9.8px var(--sans); text-transform: none; color: var(--muted); }
+
+  /* BACK PAGE: RIVER OPERATIONS + 3 KEYFRAMES + TWO-KEY LAUNCH */
+  .op-row {
+    border: 1.25px solid var(--ink); padding: 5px 9px; margin-bottom: 5px; background: #fff;
+  }
+  .op-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1px; }
+  .op-title { font: 700 10.5px var(--mono); }
+  .d-badge { border: 1.5px solid var(--ink); background: var(--soft); padding: 0.5px 5px; margin-right: 5px; font: 700 9.5px var(--mono); }
+  .air-pick { font: 600 9.5px var(--mono); }
+  .op-hint { font-size: 10px; color: var(--muted); }
+
+  /* 3-Keyframe Strip (K01 -> K02 -> K03) */
+  .kf-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin: 4px 0;
+  }
+  .kf-box {
+    border: 2px solid var(--ink); height: 1.68in; padding: 5px 7px;
+    display: flex; flex-direction: column; justify-content: space-between; background: #fff;
+  }
+  .kf-top { display: flex; justify-content: space-between; font: 700 9.5px var(--mono); border-bottom: 1px solid #ddd; padding-bottom: 2px; }
+  .kf-top span { font-weight: 400; color: var(--muted); font-size: 8.5px; }
+  .kf-cap { border-top: 1px solid #ccc; padding-top: 2px; font: 600 9px var(--mono); color: #444; }
+
+  /* Two-Person Submarine Launch Keys */
+  .twokey-box {
+    border: 2px solid var(--ink); background: var(--soft); padding: 7px 10px;
+    display: grid; grid-template-columns: 1.55in 1fr 1.55in; gap: 10px; align-items: stretch;
+  }
+  .key-station {
+    border: 1.5px solid var(--ink); background: #fff; padding: 6px 7px;
+    display: flex; flex-direction: column; justify-content: space-between; text-align: center;
+  }
+  .key-station b { font: 700 9px var(--mono); text-transform: uppercase; }
+  .keyhole {
+    width: 34px; height: 34px; border: 2px solid var(--ink); border-radius: 50%;
+    margin: 3px auto; display: flex; align-items: center; justify-content: center;
+    font: 700 13px var(--mono);
+  }
+  .key-checks { font: 600 8.5px/1.35 var(--mono); text-align: left; }
+  .key-sig { border-top: 1px solid var(--ink); font: 600 8.5px var(--mono); padding-top: 2px; margin-top: 3px; }
+
+  .center-launch { display: flex; flex-direction: column; justify-content: space-between; }
+  .roll-head {
+    display: flex; justify-content: space-between; align-items: center;
+    font: 700 10px var(--mono); border-bottom: 1px solid #bbb; padding-bottom: 4px;
+  }
+  .sq { display: inline-block; width: 24px; height: 19px; border: 1.5px solid var(--ink); background: #fff; vertical-align: middle; margin: 0 3px; }
+
+  .foot-tiny {
+    display: flex; justify-content: space-between; font: 700 9px var(--mono); color: var(--muted);
+  }
+
+  @media print {
+    @page { size: letter portrait; margin: 0; }
+    body { background: #fff; }
+    .chrome, .legend-bar { display: none !important; }
+    .deck { padding: 0; }
+    .stop-pair.hidden { display: none !important; }
+    .sheet { margin: 0; box-shadow: none; page-break-after: always; break-after: page; }
+  }
+</style>
+<style>
+/* Turkey Sub Hub Return Bar & Mobile Fit */
+.ts-return-bar {
+  background: #132b33;
+  color: #faf7f0;
+  font: 600 12px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  padding: 7px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+  z-index: 9999;
+}
+.ts-return-bar a {
+  color: #ffd466;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 0;
+}
+.ts-return-bar a:hover { text-decoration: underline; color: #fff; }
+.ts-return-meta { color: #b7cbcf; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media print { .ts-return-bar { display: none !important; } }
+
+@media screen and (max-width: 860px) {
+  html, body { overflow-x: hidden; }
+  .sheet {
+    width: calc(100vw - 20px) !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 10px auto !important;
+    padding: 16px 14px !important;
+  }
+  .tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+  .tab { flex: 0 0 auto; }
+}
+</style>
+</head>
+<body>
+<div class="ts-return-bar"><a href="./index.html">← Turkey Sub Hub</a><span class="ts-return-meta">Student Sheets · 24 Tourkey Multiplane Call Sheets</span></div>
+
+<div class="chrome">
+  <div class="chrome-top">
+    <div class="brand">ABOARD THE BRASS TOURKEY <span>// Multiplane Animation + Flooded TVA/Smokies + PEO Worksheets (24 Stops)</span></div>
+    <div class="btns">
+      <button class="btn" onclick="showTrio()">3-Stop Crew Sample (#01–#03)</button>
+      <button class="btn" onclick="showAll24()">Full 24-Stop Class Pack (48p)</button>
+      <button class="btn primary" onclick="window.print()">Print Active View (Duplex PDF)</button>
+    </div>
+  </div>
+  <div class="tabs" id="tabs"></div>
+</div>
+
+<div class="legend-bar">
+  <div><b>VESSEL · THE BRASS TOURKEY</b>Plump riveted turkey-shaped sub (tail rudder, periscope neck, skeleton-key beak, 24h air) touring drowned TVA &amp; Little River towns.</div>
+  <div><b>DESK 1 (P) · ACTION &amp; CAMERA</b>Writes verb chain (sees → prepares → acts) + why the camera moves. No static noun piles!</div>
+  <div><b>DESK 2 (E) · 3 MULTIPLANE CELS</b>Draws Plane 1 (Fast FG), Plane 2 (Silhouette Actors), Plane 4 (Slow Sunken BG) on separate pegged cels + Key Light!</div>
+  <div><b>DESK 3 (O) + TWO-KEY LAUNCH</b>Writes ○/△/✡ river consequences, draws K01→K02→K03 keyframes, &amp; turns spaced Pilot + Animator Launch Keys together!</div>
+</div>
+
+<div class="deck" id="deck"></div>
+
+<script>
+const STOPS = [
+  {
+    code: "#00", short: "#00 Open Dive",
+    title: "Open Tour Stop: Chart Your Own Sunken Landmark",
+    meta: "DEPTH: ___ FT · NGSS 4-ESS2 / 4-LS1 / 4-PS4",
+    desc: "Your brass Tourkey sub (periscope neck, skeleton-key beak, 24h air) glides over a flooded East Tennessee valley where rainbow trout now swim through drowned buildings. Invent what landmark looms ahead!",
+    sparks: "unlatches · compresses · lunges · scours · drifts · echoes · key-light · silhouette"
+  },
+  {
+    code: "#01", short: "#01 Tunnel to Nowhere",
+    title: "Stop 01 · The Submerged Highway & Stone Tunnel",
+    meta: "DEPTH: 35 FT · 4-ESS2-1 Sediment & Flow (Fontana / Road to Nowhere)",
+    desc: "Floodwaters swallowed the old mountain road! Brook trout dart between mossy guardrails into a dark WPA stone culvert (‘The Tunnel to Nowhere’), where a chained iron gate blocks the current.",
+    sparks: "darts · unlatches · rattles · funnels · scours gravel · headlamp beam · stone arch"
+  },
+  {
+    code: "#02", short: "#02 Sunken Post Office",
+    title: "Stop 02 · Old Loyston’s Submerged Post Office",
+    meta: "DEPTH: 65 FT · 4-PS4-3 Signals & Codes (Norris Basin)",
+    desc: "Over the drowned streets of Old Trouttown stands the stone Post Office, its brass P.O. boxes still locked underwater! A uniformed Postmaster Trout guards Box #44, where air bubbles leak from a sealed tin.",
+    sparks: "inserts skeleton-key · clicks · pops open · floats · guards · sorting slots · rising bubbles"
+  },
+  {
+    code: "#03", short: "#03 Thermocline Drop",
+    title: "Stop 03 · The Icy Thermocline Ledge",
+    meta: "DEPTH: 110 FT · 4-ESS2-2 Water Layers & 4-LS1-1 (Watauga Deep)",
+    desc: "At 110 feet, warm murky lake water suddenly meets crystal-clear, freezing mountain spring water! Giant trophy rainbow trout hover motionless like silver blimps along the shimmering temperature line.",
+    sparks: "shivers · sinks · hovers · fogs glass · glides · cold current · shimmering boundary"
+  },
+  {
+    code: "#04", short: "#04 Lost Sea Cavern",
+    title: "Stop 04 · The Underground Cavern Lake",
+    meta: "DEPTH: 140 FT · 4-LS1-2 Sight & Light (Sweetwater Lost Sea)",
+    desc: "Through a limestone sinkhole, the Tourkey enters a vast underground cavern lake lit only by dripping crystal stalactites. Blind cave crayfish and giant rainbow trout circle an abandoned electric tour boat!",
+    sparks: "drips · echoes · sweeps beam · circles · bumps hull · crystal ceiling · shadow"
+  },
+  {
+    code: "#05", short: "#05 Snail Darter Shoal",
+    title: "Stop 05 · The Tiny Fish That Stopped a Giant Dam",
+    meta: "DEPTH: 20 FT · 4-LS1-1 Habitat & Survival (Tellico Shoals)",
+    desc: "On a clean, swift gravel riffle, a three-inch Snail Darter perches on a pebble beside a sunken bulldozer sign. If silt buries this clean gravel bar, the tiny fish’s entire neighborhood vanishes!",
+    sparks: "fans tail · sweeps silt · balances · shields · tumbles pebbles · swift riffle · tiny fin"
+  },
+  {
+    code: "#06", short: "#06 Sunken Box Factory",
+    title: "Stop 06 · Tour of the Flooded Cardboard & Jar Plant",
+    meta: "DEPTH: 50 FT · 3-5-ETS1 Buoyancy & Air Pockets",
+    desc: "A bored Tour-Guide Trout in a clip-on tie leads minnows through a sunken bottling plant where 100 upside-down glass jars on a conveyor belt still trap pockets of dry 1948 air!",
+    sparks: "clanks · cranks belt · tips jar · gulps air · monotone tour · rising glass · conveyor"
+  },
+  {
+    code: "#07", short: "#07 Mussel Decoy",
+    title: "Stop 07 · The Mussel’s Fake-Minnow Trap",
+    meta: "DEPTH: 18 FT · 4-LS1-1 Biomimicry (Little River Shoals)",
+    desc: "Wedged in clean river gravel sits a giant Freshwater Mussel waving a fleshy ribbon painted just like a wriggling minnow—waiting for the Tourkey’s beak (or a hungry trout) to pinch it and burst out hitchhiking larvae!",
+    sparks: "wriggles · snaps shut · puffs cloud · lures · recoils · hinged shell · gravel"
+  },
+  {
+    code: "#08", short: "#08 Hellbender Slab",
+    title: "Stop 08 · The Wrinkled Hellbender’s Doorstep",
+    meta: "DEPTH: 15 FT · 4-LS1-1 Skin-Breathing Structures (Walland)",
+    desc: "Under a giant flat sandstone slab lives a two-foot Eastern Hellbender salamander swaying its ruffled skin folds to breathe oxygen from fast water—and a brass tour-tag is pinned right under its chin!",
+    sparks: "sways folds · squeezes · lifts slab · tickles · slips free · cold current · flat rock"
+  },
+  {
+    code: "#09", short: "#09 Chestnut Orchard",
+    title: "Stop 09 · The Ghost-Town Apple & Chestnut Orchard",
+    meta: "DEPTH: 85 FT · 4-ESS2-1 Decay, Silt & Roots (Hazel Creek)",
+    desc: "Skeletal white branches of a drowned mountain orchard reach upward through green water like antlers, snagging lost fishing lures, old lanterns, and the Tourkey’s fanned rudder tail!",
+    sparks: "snags · twists key · saws loose · shakes branches · showers silt · tangled lines"
+  },
+  {
+    code: "#10", short: "#10 Turbine Bell",
+    title: "Stop 10 · Base of the Giant Concrete Dam",
+    meta: "DEPTH: 185 FT · 4-PS3-2 Sound & Hydro Energy",
+    desc: "At the bottom of the towering TVA dam wall, a massive iron intake grate hums with electric vibration. When the Tourkey’s brass hull clangs, the deep sound wave shakes loose a decades-old lockbox!",
+    sparks: "hums · vibrates · pulls inward · rings · braces tail · iron grate · deep shadow"
+  },
+  {
+    code: "#11", short: "#11 Old Butler Grid",
+    title: "Stop 11 · The Streetlights of Old Butler",
+    meta: "DEPTH: 45 FT · 4-PS3-2 Circuits & Light Underwater",
+    desc: "During winter drawdown, the Tourkey cruises down a perfectly preserved sunken Main Street—crosswalks, fire hydrants, and rusted traffic lights where Trout Traffic Cops still ticket anybody who swims out of lane!",
+    sparks: "signals · blows whistle · flips switch · brakes · drifts sideways · crosswalk · hydrant"
+  },
+  {
+    code: "#12", short: "#12 Mystery Boathouse",
+    title: "Stop 12 · Captain Kip’s Underwater Tourist Trap",
+    meta: "DEPTH: 30 FT · 4-LS1-2 Fact vs. Fake Evidence",
+    desc: "Inside a crooked sunken boathouse (‘SEE THE REAL SKY-MONSTER — 1 DOLLAR!’), a fast-talking Catfish charges trout admission to stare at a rubber turkey decoy, an umbrella, and a pair of soggy blue jeans!",
+    sparks: "peeks · unmasks · gasps · rattles curtain · compares beak · ticket booth · spotlight"
+  },
+  {
+    code: "#13", short: "#13 Black-Tire Island",
+    title: "Stop 13 · The Overnight Sandbar & Tire Trial",
+    meta: "DEPTH: 12 FT · 4-ESS2-1 Flood Deposition & Avulsion",
+    desc: "Last night’s flood dumped a fresh gravel island mid-river! Two rival Trout choirs released a floating tractor tire upstream to see which side the main current chooses—and the tire is heading straight at your periscope!",
+    sparks: "splits current · bounces · spins · grounds hull · stakes flag · gravel bar · tire"
+  },
+  {
+    code: "#14", short: "#14 Mingus Millwheel",
+    title: "Stop 14 · The Sunken Iron Waterwheel",
+    meta: "DEPTH: 40 FT · 4-PS3-1 Motion & Mechanical Gears (Oconaluftee)",
+    desc: "An old mountain gristmill sits intact beneath the reservoir; when flood currents surge down the wooden flume, its giant iron gear-wheel slowly turns—opening a secret stone cellar door one click per turn!",
+    sparks: "engages key · cranks · meshes teeth · creaks open · rides bucket · wooden flume"
+  },
+  {
+    code: "#15", short: "#15 Beaver Spillway",
+    title: "Stop 15 · The Beaver’s Emergency Lock",
+    meta: "DEPTH: 10 FT · 4-ESS2-1 Biogeology & Canal Locks",
+    desc: "To lift the Tourkey over a shallow rocky ledge toward Walland, a pair of hardhat Beavers operate a woven willow-stick dam like a canal lock—raising and lowering the water three feet on command!",
+    sparks: "plugs mud · raises level · slaps tail · opens sluice · floats over · willow sticks"
+  },
+  {
+    code: "#16", short: "#16 Taxonomic Tree Key",
+    title: "Stop 16 · The Botanical Key in Room 4",
+    meta: "DEPTH: 28 FT · 4-LS1-1 Classification by Traits (Smokies Key)",
+    desc: "Ms. Rainey’s Trout class is using a waterproof ‘Key to the Creatures of the Smokies’ chart (Has feathers? → Has metal rivets? → Has skeleton-key nose?) to figure out what species the Tourkey actually is!",
+    sparks: "measures · checks chart · flips page · spreads tail-rudder · points chalk · chalkboard"
+  },
+  {
+    code: "#17", short: "#17 Wind-Up Clockwork",
+    title: "Stop 17 · The Swallowed Skeleton Key!",
+    meta: "DEPTH: 55 FT · Classic Cartoon Slapstick + 4-PS3-2",
+    desc: "Right as the Tourkey reaches to unlock the Sunken Bridge Gate, a gulping Largemouth Bass accidentally swallows the brass key off the arm—and starts ticking and glowing from inside its belly!",
+    sparks: "gulps · hiccups · chases · magnetizes · coughs up · glowing belly · padlock"
+  },
+  {
+    code: "#18", short: "#18 Cades Cove Loop",
+    title: "Stop 18 · Traffic Jam on the Underwater Loop",
+    meta: "DEPTH: 22 FT · 4-ESS3-2 Shared Corridors & Bottlenecks",
+    desc: "Just like Cades Cove on a Saturday, an entire parade of migrating trout, snapping turtles, and crawfish has stopped dead on the narrow underwater bridge loop because one giant Snapping Turtle won’t budge!",
+    sparks: "honks gobble · inches forward · tucks head · detours · lifts shell · one-way sign"
+  },
+  {
+    code: "#19", short: "#19 Chroma-Algae Curtain",
+    title: "Stop 19 · The Glowing Green Algae Curtain",
+    meta: "DEPTH: 16 FT · 4-LS1-1 Photosynthesis & Oxygen",
+    desc: "A thick curtain of sunlit neon-green algae hangs across the creek mouth, fizzing out millions of tiny oxygen pearls. Anything that swims behind the bright green sheet disappears into pure silhouette!",
+    sparks: "parts curtain · inhales bubbles · casts shadow · refills tank · shimmers · sunbeam"
+  },
+  {
+    code: "#20", short: "#20 Sunken Bell Tower",
+    title: "Stop 20 · The Steeple Above the Drawdown Line",
+    meta: "DEPTH: 25 FT · 4-PS4-3 Acoustic Waves Across Air/Water",
+    desc: "Only the pointed tin roof of the flooded valley church pokes into the autumn air, while its bronze bell hangs underwater! Ringing it sends one message to the fish below and a different sound to the valley above.",
+    sparks: "swings rope · tolls · ripples surface · answers · climbs steeple · waterline"
+  },
+  {
+    code: "#21", short: "#21 Scoured Diner Booth",
+    title: "Stop 21 · Drive-In Service at the Cutbank",
+    meta: "DEPTH: 32 FT · 4-ESS2-1 Fast Outside Meander Erosion",
+    desc: "Fast floodwater carved under the riverside Drive-In, dropping a chrome jukebox and two red vinyl booths upright onto a gravel ledge—where a Waitress Trout skates up to clip a tray onto your porthole!",
+    sparks: "hooks tray · spins coin · bubbles song · tilts ledge · catches menu · jukebox glow"
+  },
+  {
+    code: "#22", short: "#22 Ferry Cable",
+    title: "Stop 22 · Riding the Sunken Ferry Cable",
+    meta: "DEPTH: 48 FT · 4-PS3-1 Tension, Pulleys & Current",
+    desc: "Before the bridge was built, an old hand-pulled wooden ferry crossed the river on a steel cable. The rusted cable still stretches bank-to-bank through deep mud—if the Tourkey’s key-arm hooks on, the current itself pushes it across!",
+    sparks: "hooks cable · angles rudder · glides sideways · twangs wire · dodges snag · ferry hull"
+  },
+  {
+    code: "#23", short: "#23 Upside-Down Boat",
+    title: "Stop 23 · Air Pocket in the Capsized Canoe",
+    meta: "DEPTH: 19 FT · 3-5-ETS1 Diving Bell Physics (Scott’s Capsize)",
+    desc: "Wedged beneath willow roots sits a capsized aluminum canoe trapping a silver pocket of breathable air inside its upside-down hull—where two bullfrogs are guarding a dry waterproof map!",
+    sparks: "rises under · cracks hatch · trades · balances bubble · tips hull · silver ceiling"
+  },
+  {
+    code: "#24", short: "#24 Bridge Steps Supper",
+    title: "Stop 24 · Final Stop: The Stone Steps at Dusk",
+    meta: "DEPTH: 8 FT · First Supper Across the Waterline",
+    desc: "With 1 hour of air left, the Tourkey reaches the flooded stone steps of the Old Bridge! Half the table sits underwater for the Trout; the top step rises into November air—and one locked gate stands between them.",
+    sparks: "turns tour-key · breaches · opens hatch · gobbles · wiggles fins · twilight surface"
+  }
+];
+
+const tabsEl = document.getElementById("tabs");
+const deckEl = document.getElementById("deck");
+
+STOPS.forEach((s, idx) => {
+  const b = document.createElement("button");
+  b.className = "tab" + (idx === 1 ? " active" : "");
+  b.textContent = s.short;
+  b.onclick = () => pick(idx);
+  tabsEl.appendChild(b);
+
+  const pair = document.createElement("div");
+  pair.className = "stop-pair" + (idx === 1 ? "" : " hidden");
+  pair.innerHTML = buildFront(s) + buildBack(s);
+  deckEl.appendChild(pair);
+});
+
+function buildFront(s) {
+  return `
+  <section class="sheet">
+    <div>
+      <div class="s-top">
+        <div class="s-kicker">PAELEO MULTIPLANE STUDIO · ABOARD THE BRASS TOURKEY <span>FRONT · P → E</span></div>
+        <div class="badges">
+          <span class="pill inv">TOUR ${s.code}</span>
+          <span class="pill">AIR: 24H</span>
+        </div>
+      </div>
+
+      <div class="stop-box">
+        <div class="stop-head">
+          <h1 class="stop-title">${s.title}</h1>
+          <span class="stop-meta">${s.meta}</span>
+        </div>
+        <p class="stop-desc">${s.desc}</p>
+        <div class="stop-sparks"><b>Animator Verbs &amp; Props:</b> ${s.sparks}</div>
+      </div>
+    </div>
+
+    <!-- DESK 1: P = PROMPT (ACTION VERBS + CAMERA) -->
+    <div class="desk-box">
+      <div>
+        <div class="desk-head">
+          <div class="desk-title"><span class="tag">P</span> DESK 1 · TOUR DIRECTOR’S PROMPT (ACTION &amp; CAMERA · 5 MIN)</div>
+          <div class="who-line">Director: <i></i></div>
+        </div>
+        <p class="explain"><b>Think Like an Animator:</b> Don’t describe a frozen postcard! Write a chain of <b>decisions &amp; physical verbs</b> (<i>spots → prepares → acts</i>) using the Tourkey’s periscope, tail-rudder, or skeleton-key beak. <b>Do NOT draw yet!</b></p>
+        <div class="contrast">
+          <span class="no">✗ Frozen Still: “A cool brass turkey sub by a locked gate.”</span>
+          <span class="yes">✓ Action Beat: “Tourkey spots the rusted lock → backs up → reaches its skeleton-key beak to twist the latch.”</span>
+        </div>
+        <div class="q-lbl">Write 2–3 complete sentences: What does the Tourkey notice, decide, and physically try to do?</div>
+        <div class="wline"></div>
+        <div class="wline"></div>
+        <div class="cam-row">
+          <b>CAMERA MOVE (circle 1):  [ HOLD ]  [ PUSH CLOSER ]  [ TRACK SIDEWAYS ]</b>
+          <div class="wline" style="height:19px;font-size:10px;color:#555;">What new detail does moving the camera reveal? </div>
+        </div>
+      </div>
+      <div class="pass-bar">
+        <b>→ PASS LEFT TO DESK 2 (MULTIPLANE LAYOUT ARTIST)</b>
+        <span>Desk 1 waits until Two-Key Launch on the back!</span>
+      </div>
+    </div>
+
+    <!-- DESK 2: E = EKPHRASIS (3 MULTIPLANE PLATES + KEY LIGHT) -->
+    <div class="desk-box">
+      <div>
+        <div class="desk-head">
+          <div class="desk-title"><span class="tag">E</span> DESK 2 · MULTIPLANE PLATES &amp; EKPHRASIS (DEPTH LAYERS · 8 MIN)</div>
+          <div class="who-line">Layout Artist: <i></i></div>
+        </div>
+        <p class="explain"><b>Build Depth in Planes:</b> Don’t mash everything into one flat drawing! Read Desk 1’s Prompt and split the shot across <b>3 separate animation cels</b> (near layers move FAST, far layers move SLOW), then describe the light &amp; water.</p>
+
+        <div class="planes-grid">
+          <div class="plane-cel">
+            <div>
+              <div class="pegs"><span class="peg-slot"></span><span class="peg-round"></span><span class="peg-slot"></span></div>
+              <div class="cel-hdr">PLANE 1 · FOREGROUND</div>
+              <div class="cel-speed">MOVES FAST · CROSSES IN FRONT</div>
+            </div>
+            <div class="cel-hint">Draw close weeds, bridge post, mud, or bubbles right near the lens!</div>
+          </div>
+
+          <div class="plane-cel">
+            <div>
+              <div class="pegs"><span class="peg-slot"></span><span class="peg-round"></span><span class="peg-slot"></span></div>
+              <div class="cel-hdr">PLANE 2 · MAIN ACTORS</div>
+              <div class="cel-speed">CLEAR SILHOUETTE POSE (K01)</div>
+            </div>
+            <div class="cel-hint">Draw Tourkey Sub + River Creature clearly (keep beak/fins readable if filled black!)</div>
+          </div>
+
+          <div class="plane-cel">
+            <div>
+              <div class="pegs"><span class="peg-slot"></span><span class="peg-round"></span><span class="peg-slot"></span></div>
+              <div class="cel-hdr">PLANE 4 · DEEP BACKGROUND</div>
+              <div class="cel-speed">MOVES SLOW · FAR BEHIND</div>
+            </div>
+            <div class="cel-hint">Draw the sunken TVA building, cavern wall, dam, or distant riverbed!</div>
+          </div>
+        </div>
+
+        <div class="q-lbl">Ekphrasis &amp; Key Light (2 complete sentences: Where does the brightest light shine from, and what floats in the water between planes?):</div>
+        <div class="wline"></div>
+        <div class="wline"></div>
+      </div>
+      <div class="pass-bar">
+        <b>→ PASS LEFT TO DESK 3 (TURN OVER FOR KEYFRAMES &amp; RIVER PHYSICS!)</b>
+        <span>Scanner stacks Planes 1 + 2 + 4 into a moving multiplane camera shot!</span>
+      </div>
+    </div>
+  </section>`;
+}
+
+function buildBack(s) {
+  return `
+  <section class="sheet">
+    <div class="s-top">
+      <div class="s-kicker">PAELEO STUDIO · TOUR ${s.code} (${s.short}) <span>BACK · O → KEYFRAMES → 2-KEY LAUNCH</span></div>
+      <div class="badges"><span class="pill" style="white-space:nowrap;">DRAW DIFFERENCES, NOT STILLS</span></div>
+    </div>
+
+    <!-- DESK 3: O = RIVER OPERATIONS + KEYFRAME DIFFERENCES -->
+    <div class="desk-box" style="margin-top:4px;">
+      <div>
+        <div class="desk-head">
+          <div class="desk-title"><span class="tag">O</span> DESK 3 · RIVER OPERATIONS &amp; KEYFRAME ANIMATOR (8 MIN)</div>
+          <div class="who-line">Key Animator: <i></i></div>
+        </div>
+        <p class="explain"><b>Part A — The River Answers:</b> Read <b>P</b> and inspect the 3 Planes in <b>E</b>. Write <b>3 complete cause-and-effect sentences</b> (“When the Tourkey..., the current/creature..., so...”) for what physically happens when that key turns:</p>
+
+        <div class="op-row">
+          <div class="op-head">
+            <span class="op-title"><span class="d-badge">ROLL 1–2</span> ○ PROBABLE · Steady Current</span>
+            <span class="air-pick">Air:  -6h / -2h / +0h / +4h</span>
+          </div>
+          <div class="op-hint">Expected river physics: heavy silt, current drag, stuck rust, or cautious trout behavior.</div>
+          <div class="wline"></div>
+        </div>
+
+        <div class="op-row">
+          <div class="op-head">
+            <span class="op-title"><span class="d-badge">ROLL 3–4</span> △ PLAUSIBLE · Flood Pulse / Thermocline</span>
+            <span class="air-pick">Air:  -6h / -2h / +0h / +4h</span>
+          </div>
+          <div class="op-hint">Surprising yet real science: shifting sandbar, cold spring updraft, sound wave, or clever animal structure!</div>
+          <div class="wline"></div>
+        </div>
+
+        <div class="op-row">
+          <div class="op-head">
+            <span class="op-title"><span class="d-badge">ROLL 5–6</span> ✡ PREPOSTEROUS · Ghost-Town Tour Swerve!</span>
+            <span class="air-pick">Air:  -6h / -2h / +0h / +4h</span>
+          </div>
+          <div class="op-hint">Cartoon physics! Swallowed key, woken sunken machinery, channel jump, or UFO parade!</div>
+          <div class="wline"></div>
+        </div>
+
+        <div class="q-lbl" style="margin-top:4px;">Part B — Roll Die First (or pick your wildest!) &amp; Draw 3 Keyframes (Animation = Difference Between Drawings!):</div>
+        <div class="kf-strip">
+          <div class="kf-box">
+            <div class="kf-top"><b>K01 · ANTICIPATE</b><span>Crouch / wind-up</span></div>
+            <div class="cel-hint">Pose right BEFORE force fires</div>
+            <div class="kf-cap">Hold / Slow-out</div>
+          </div>
+          <div class="kf-box">
+            <div class="kf-top"><b>K02 · EXTREME!</b><span>Squash / stretch</span></div>
+            <div class="cel-hint">Biggest impact or surprise pose!</div>
+            <div class="kf-cap">Fastest spacing</div>
+          </div>
+          <div class="kf-box">
+            <div class="kf-top"><b>K03 · SETTLE</b><span>Follow-through</span></div>
+            <div class="cel-hint">NEW position after dust settles</div>
+            <div class="kf-cap">K03 must differ from K01!</div>
+          </div>
+        </div>
+      </div>
+      <div class="pass-bar">
+        <b>→ GATHER AROUND DESK 1 FOR TWO-KEY SUBMARINE LAUNCH!</b>
+        <span>On a real sub, NO single officer can turn both launch keys alone.</span>
+      </div>
+    </div>
+
+    <!-- TWO-KEY INTEGRITY LAUNCH -->
+    <div class="twokey-box">
+      <div class="key-station">
+        <b>LAUNCH KEY A · DIRECTOR</b>
+        <div class="keyhole"><svg width="16" height="20" viewBox="0 0 16 20"><circle cx="8" cy="6" r="4.5" fill="#111"/><path d="M6 9 L10 9 L11 18 L5 18 Z" fill="#111"/></svg></div>
+        <div class="key-checks">
+          [ ] Understandable on MUTE?<br>
+          [ ] Clear want &amp; weight?
+        </div>
+        <div class="key-sig">Turn Key (Sign): _________</div>
+      </div>
+
+      <div class="center-launch">
+        <div class="roll-head">
+          <span>ROLLED DIE: <span class="sq"></span></span>
+          <span>MODE: ○ / △ / ✡</span>
+          <span>AIR LEFT: <span class="sq"></span> h</span>
+        </div>
+        <div>
+          <div class="q-lbl">↻ NEXT TOUR-KEY PROMPT (1–2 complete sentences: How do we ride the river from K03 to the next stop, &amp; what mark stays here?):</div>
+          <div class="wline"></div>
+          <div class="wline"></div>
+        </div>
+      </div>
+
+      <div class="key-station">
+        <b>LAUNCH KEY B · ANIMATOR</b>
+        <div class="keyhole"><svg width="16" height="20" viewBox="0 0 16 20"><circle cx="8" cy="6" r="4.5" fill="#111"/><path d="M6 9 L10 9 L11 18 L5 18 Z" fill="#111"/></svg></div>
+        <div class="key-checks">
+          [ ] 3 Planes separate?<br>
+          [ ] K01 &amp; K03 silhouettes read?
+        </div>
+        <div class="key-sig">Turn Key (Sign): _________</div>
+      </div>
+    </div>
+
+    <div class="foot-tiny">
+      <span>PAELEO MULTIPLANE STUDIO · EAST TENNESSEE / SMOKIES / TROUT TOWN ARCHIVE</span>
+      <span>TOUR ${s.code} · TWO-KEY VERIFIED</span>
+    </div>
+  </section>`;
+}
+
+function pick(idx) {
+  document.querySelectorAll(".tab").forEach((t, i) => t.classList.toggle("active", i === idx));
+  document.querySelectorAll(".stop-pair").forEach((p, i) => p.classList.toggle("hidden", i !== idx));
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+function showTrio() {
+  document.querySelectorAll(".tab").forEach((t, i) => t.classList.toggle("active", i >= 1 && i <= 3));
+  document.querySelectorAll(".stop-pair").forEach((p, i) => p.classList.toggle("hidden", !(i >= 1 && i <= 3)));
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+function showAll24() {
+  document.querySelectorAll(".tab").forEach((t, i) => t.classList.toggle("active", i >= 1));
+  document.querySelectorAll(".stop-pair").forEach((p, i) => p.classList.toggle("hidden", i === 0));
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+if (location.search.includes("pack=24")) showAll24();
+if (location.search.includes("pack=trio")) showTrio();
+if (location.search.includes("pack=master")) pick(0);
+</script>
+</body>
+</html>

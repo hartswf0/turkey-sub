@@ -1,0 +1,1039 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TROUT TOWN · TURKEY SUB — 10 PAELEO/Oulipo Worksheet Versions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111111;
+    --muted: #555555;
+    --rule: #222222;
+    --hair: #bdbdbd;
+    --paper: #ffffff;
+    --desk: #f1f0ec;
+    --accent: #111111;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--desk);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── SCREEN CHROME (HIDDEN IN PRINT) ── */
+  .chrome {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #111;
+    color: #f5f5f3;
+    border-bottom: 2px solid #000;
+    padding: 10px 18px;
+  }
+  .chrome-top {
+    max-width: 1260px;
+    margin: 0 auto 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    font: 700 12px/1.2 var(--mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .brand span { color: #a3a39c; font-weight: 400; }
+  .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn {
+    font: 600 11px/1 var(--mono);
+    padding: 7px 12px;
+    border: 1px solid #444;
+    background: #1d1d1d;
+    color: #fff;
+    cursor: pointer;
+  }
+  .btn:hover { border-color: #fff; }
+  .btn.primary { background: #fff; color: #000; border-color: #fff; }
+
+  .tabs {
+    max-width: 1260px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+  .tab {
+    font: 600 11px/1.2 var(--mono);
+    padding: 6px 10px;
+    border: 1px solid #333;
+    background: #181818;
+    color: #aaa;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .tab:hover { color: #fff; border-color: #666; }
+  .tab.active { background: #f5f5f3; color: #111; border-color: #f5f5f3; }
+
+  /* ── BRIEFING CARD ABOVE SHEET ── */
+  .brief {
+    max-width: 8.5in;
+    margin: 18px auto 0;
+    background: #fff;
+    border: 1.5px solid #111;
+    padding: 14px 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+  .brief-head {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 6px;
+  }
+  .brief-head h2 { font: 700 14px var(--mono); text-transform: uppercase; }
+  .brief-head .lineage { font: 400 11px var(--mono); color: var(--muted); }
+  .brief-col b {
+    display: block;
+    font: 700 10px var(--mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+
+  /* ── PRINTABLE 8.5 x 11 SHEET ── */
+  .deck { padding: 14px 12px 60px; }
+  .version-block { margin-bottom: 36px; }
+  .version-block.hidden { display: none; }
+
+  .sheet {
+    width: 8.5in;
+    height: 11in;
+    margin: 14px auto;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 0.48in 0.55in 0.45in;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Sheet Typography & Primitives */
+  .s-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: 6px;
+    font-size: 11px;
+  }
+  .s-kicker { font: 700 10.5px var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
+  .s-kicker span { font-weight: 400; color: var(--muted); margin-left: 6px; }
+  .s-name { font: 500 11px var(--sans); }
+  .s-name .line { display: inline-block; width: 155px; border-bottom: 1px solid var(--ink); }
+  .air-pill {
+    font: 700 10.5px var(--mono);
+    border: 1.5px solid var(--ink);
+    padding: 1px 6px;
+    margin-left: 6px;
+  }
+
+  .s-hero { margin: 8px 0 6px; }
+  .s-title {
+    font: 400 34px/1.02 var(--serif);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .s-premise {
+    font-size: 12.5px;
+    color: #222;
+    line-height: 1.35;
+  }
+
+  .sec-label {
+    font: 700 11px var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sec-label span { font-weight: 400; color: var(--muted); text-transform: none; letter-spacing: 0; font-family: var(--sans); font-size: 11px; }
+
+  .choice-strip {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 5px 0 8px;
+  }
+  .chip {
+    border: 1.25px solid var(--ink);
+    padding: 4px 10px;
+    font: 600 11px var(--mono);
+    border-radius: 999px;
+  }
+  .chip.sq { border-radius: 3px; }
+
+  /* Porthole Open Center */
+  .porthole-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin: 6px 0;
+    flex: 1;
+    min-height: 2.8in;
+  }
+  .porthole {
+    width: 3.2in;
+    height: 3.2in;
+    border-radius: 50%;
+    border: 3px solid var(--ink);
+    outline: 1px solid var(--ink);
+    outline-offset: 6px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 34px;
+    flex-shrink: 0;
+  }
+  .porthole-prompt {
+    font: italic 11px/1.3 var(--sans);
+    color: #777;
+    text-align: center;
+    max-width: 1.85in;
+  }
+  .bolt {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 1.2px solid var(--ink);
+    border-radius: 50%;
+    background: #fff;
+    font: 700 8px/12px var(--mono);
+    text-align: center;
+  }
+  .b1 { top: 8px; left: 26%; }
+  .b2 { top: 46%; left: -12px; }
+  .b3 { bottom: 8px; left: 26%; }
+  .b4 { top: 8px; right: 26%; }
+  .b5 { top: 46%; right: -12px; }
+  .b6 { bottom: 8px; right: 26%; }
+
+  /* Split / Fold / Trio Frames */
+  .split-frame {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    flex: 1;
+    margin: 6px 0;
+  }
+  .trio-frame {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr 1fr;
+    gap: 0;
+    flex: 1;
+    margin: 6px 0;
+    border: 2px solid var(--ink);
+  }
+  .trio-col {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .trio-col.fold-mid {
+    border-left: 1.5px dashed var(--ink);
+    border-right: 1.5px dashed var(--ink);
+    background: #fafafa;
+  }
+  .draw-box {
+    border: 2px solid var(--ink);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 2.3in;
+  }
+  .draw-box .hint { font-size: 11px; color: #666; font-style: italic; }
+
+  /* Write Lines */
+  .field-group { display: flex; flex-direction: column; gap: 9px; margin: 6px 0; }
+  .field-row {
+    display: grid;
+    grid-template-columns: 155px 1fr;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 12px;
+  }
+  .field-row .lbl { font-weight: 700; font-size: 11.5px; }
+  .field-row .lbl small { display: block; font-weight: 400; color: var(--muted); font-size: 10px; }
+  .wline {
+    border-bottom: 1px solid var(--ink);
+    min-height: 22px;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 2px;
+    font-size: 12px;
+    color: #333;
+  }
+  .slot-box {
+    display: inline-block;
+    min-width: 120px;
+    border-bottom: 1.5px solid var(--ink);
+    text-align: center;
+    font: 600 10px var(--mono);
+    color: #666;
+    margin: 0 4px;
+  }
+
+  /* Pass Banner */
+  .pass-bar {
+    border-top: 1.5px solid var(--ink);
+    padding-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font: 700 10.5px var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .pass-bar span { font-weight: 400; color: var(--muted); text-transform: none; font-family: var(--sans); font-size: 11px; }
+
+  /* Back 6-Face Crew Grid */
+  .crew-panel {
+    border: 1.5px solid var(--ink);
+    padding: 11px 13px;
+    margin-bottom: 8px;
+  }
+  .crew-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 11.5px;
+  }
+  .crew-head b { font: 700 10.5px var(--mono); text-transform: uppercase; }
+  .crew-head span { white-space: nowrap; }
+  .face-row {
+    display: grid;
+    grid-template-columns: 162px 1fr 82px;
+    gap: 10px;
+    align-items: end;
+    padding: 11px 0 8px;
+    border-top: 1px solid #dcdcdc;
+    font-size: 11.5px;
+  }
+  .face-row.no-air { grid-template-columns: 162px 1fr; }
+  .face-row.blind { grid-template-columns: 44px 1fr 142px; }
+  .die-pip {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--ink);
+    font: 700 10.5px/15px var(--mono);
+    text-align: center;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  .face-tag { font: 700 11px var(--mono); }
+  .face-tag em { font: 400 10px var(--sans); color: var(--muted); display: block; margin-top: 2px; }
+  .air-box {
+    font: 600 10px var(--mono);
+    border: 1px solid var(--ink);
+    padding: 4px 6px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* Roll, Recovery & Assessment Box */
+  .resolve-box {
+    border: 2px solid var(--ink);
+    padding: 10px 12px;
+    background: #fcfcfb;
+  }
+  .roll-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 7px;
+    font: 700 11.5px var(--mono);
+  }
+  .die-Blank {
+    display: inline-block;
+    width: 28px;
+    height: 24px;
+    border: 1.5px solid var(--ink);
+    vertical-align: middle;
+    margin: 0 4px;
+    background: #fff;
+  }
+  .audit-bar {
+    border-top: 1.5px solid var(--ink);
+    padding-top: 7px;
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: 11.5px;
+  }
+  .audit-bar b { font: 700 10.5px var(--mono); text-transform: uppercase; }
+  .yn { font: 700 11px var(--mono); border: 1.25px solid var(--ink); padding: 2px 8px; }
+
+  /* 2x2 Matrix for V06 */
+  .matrix {
+    display: grid;
+    grid-template-columns: 110px 1fr 1fr;
+    border: 1.5px solid var(--ink);
+    margin: 6px 0;
+    font-size: 11px;
+  }
+  .matrix > div { border: 0.75px solid var(--ink); padding: 7px 8px; min-height: 62px; }
+  .matrix .m-hdr { background: #f3f3f1; font: 700 10px var(--mono); min-height: auto; text-transform: uppercase; }
+
+  @media print {
+    @page { size: letter portrait; margin: 0; }
+    body { background: #fff; }
+    .chrome, .brief { display: none !important; }
+    .deck { padding: 0; }
+    .version-block { margin: 0; }
+    .version-block.hidden { display: none !important; }
+    .sheet {
+      margin: 0;
+      box-shadow: none;
+      page-break-after: always;
+      break-after: page;
+    }
+  }
+</style>
+<style>
+/* Turkey Sub Hub Return Bar & Mobile Fit */
+.ts-return-bar {
+  background: #132b33;
+  color: #faf7f0;
+  font: 600 12px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  padding: 7px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+  z-index: 9999;
+}
+.ts-return-bar a {
+  color: #ffd466;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 0;
+}
+.ts-return-bar a:hover { text-decoration: underline; color: #fff; }
+.ts-return-meta { color: #b7cbcf; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media print { .ts-return-bar { display: none !important; } }
+
+@media screen and (max-width: 860px) {
+  html, body { overflow-x: hidden; }
+  .sheet {
+    width: calc(100vw - 20px) !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 10px auto !important;
+    padding: 16px 14px !important;
+  }
+  .tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+  .tab { flex: 0 0 auto; }
+}
+</style>
+</head>
+<body>
+<div class="ts-return-bar"><a href="./index.html">← Turkey Sub Hub</a><span class="ts-return-meta">Student Sheets · 10 Oulipo/SCION Classroom Sheets</span></div>
+
+<div class="chrome">
+  <div class="chrome-top">
+    <div class="brand">PAELEO · TROUT TOWN · TURKEY SUB <span>// 10 Exercise &amp; Printable Worksheet Versions (Front + Back)</span></div>
+    <div class="actions">
+      <button class="btn" onclick="showAll()">Show All 10</button>
+      <button class="btn primary" onclick="window.print()">Print Active View (PDF)</button>
+    </div>
+  </div>
+  <div class="tabs" id="tabs"></div>
+</div>
+
+<div class="deck" id="deck"></div>
+
+<script>
+const VERSIONS = [
+  {
+    id: "V01",
+    short: "V01 · One-Word Swerve",
+    title: "One day of air. One word to change it.",
+    lineage: "PAE-00 (The Threshold) + ALAMO Slot Substitution",
+    pitch: "Pilot A writes a 2-slot Action ('I use [TOOL] to [VERB]'). Crewmates B & C each write 3 outcomes (○ Probable, △ Plausible, ✡ Preposterous). Pilot rolls once, then rescues the sub in Take 2 by swapping ONLY ONE WORD.",
+    assess: "1) Blind sort of B/C rows into ○/△/✡ (0–6 modal score). 2) Partner & SCION film critic check: does swapping that 1 word visibly flip the outcome? [YES/NO]",
+    front: `
+      <div>
+        <div class="sec-label">1 · Circle One Place in Trout Town <span>Where did the sub come to rest?</span></div>
+        <div class="choice-strip">
+          <span class="chip">Room 4 School</span>
+          <span class="chip">PebbleMart</span>
+          <span class="chip">Riffle Kitchen</span>
+          <span class="chip">Old Bridge</span>
+          <span class="chip">Trout Court</span>
+        </div>
+      </div>
+      <div class="porthole-wrap">
+        <div class="porthole">
+          <span class="bolt b1">1</span><span class="bolt b2">2</span><span class="bolt b3">3</span>
+          <span class="bolt b4">4</span><span class="bolt b5">5</span><span class="bolt b6">6</span>
+          <div class="porthole-prompt">Draw the trout and what floats outside your porthole</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field-row">
+          <div class="lbl">2 · Who stares in?<small>Name the trout &amp; what they hold</small></div>
+          <div class="wline"></div>
+        </div>
+        <div class="field-row">
+          <div class="lbl">3 · My Sub Action<small>Fill both slots clearly</small></div>
+          <div class="wline" style="border:none;font-size:13px;">
+            “I use <span class="slot-box" style="min-width:145px;">(1 TOOL)</span> to <span class="slot-box" style="min-width:175px;">(1 VERB + OBJECT)</span>.”
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="lbl">4 · Air Risk<small>What could drain our 24h?</small></div>
+          <div class="wline"></div>
+        </div>
+      </div>
+    `,
+    passFront: ["→ PASS SHEET LEFT TO CREW B", "Pilot stops here until the roll."],
+    back: stdCrewBack({
+      take2Label: "TAKE 2 · ONE-WORD RECOVERY — Copy your Action, cross out ONE word, write a replacement:",
+      take2Line: "“I use _______________________ to ___________________________.”  →  New result: ___________________________",
+      auditQ: "PARTNER CHECK: Did Pilot change ONLY one word, and can you see why the ending flipped?"
+    })
+  },
+
+  {
+    id: "V02",
+    short: "V02 · Blind Judge",
+    title: "Six secret futures. Can you tell how wild?",
+    lineage: "Calvino (Cybernetics & Ghosts) — Post-hoc Modal Filtering",
+    pitch: "Crew B and Crew C each write 3 outcomes (one Probable, one Plausible, one Preposterous) IN SECRET SCRAMBLED ORDER without labeling them. Pilot A must judge and label all 6 before rolling.",
+    assess: "Exact calibration score (0–6): How many of Pilot A's ○/△/✡ guesses match Crew B & C's folded secret key? Measures shared intuition of probability vs. imagination.",
+    front: `
+      <div>
+        <div class="sec-label">1 · Where the Turkey Sub Landed <span>Circle one</span></div>
+        <div class="choice-strip">
+          <span class="chip">Birthday Dock</span>
+          <span class="chip">PebbleMart Aisle</span>
+          <span class="chip">School Chalkboard</span>
+          <span class="chip">Diner Stove</span>
+          <span class="chip">Bridge Arch</span>
+        </div>
+      </div>
+      <div class="porthole-wrap">
+        <div class="porthole">
+          <span class="bolt b1">1</span><span class="bolt b2">2</span><span class="bolt b3">3</span>
+          <span class="bolt b4">4</span><span class="bolt b5">5</span><span class="bolt b6">6</span>
+          <div class="porthole-prompt">Draw the moment right before you press the button</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field-row"><div class="lbl">2 · Goal on Surface<small>Why must the turkey get up?</small></div><div class="wline"></div></div>
+        <div class="field-row"><div class="lbl">3 · What I Try<small>One clear move from the sub</small></div><div class="wline"></div></div>
+      </div>
+    `,
+    passFront: ["→ PASS SHEET LEFT TO CREW B", "Crew B & C will scramble ○ Probable, △ Plausible, ✡ Preposterous!"],
+    back: `
+      <div class="crew-panel">
+        <div class="crew-head"><b>CREW B (4 MIN) — Write one ○ Probable, one △ Plausible, one ✡ Preposterous IN MIXED ORDER!</b> <span>Name: ___________</span></div>
+        <div class="face-row blind"><span class="face-tag"><span class="die-pip">1</span></span><div class="wline"></div><div class="air-box">Guess: ○  △  ✡</div></div>
+        <div class="face-row blind"><span class="face-tag"><span class="die-pip">2</span></span><div class="wline"></div><div class="air-box">Guess: ○  △  ✡</div></div>
+        <div class="face-row blind"><span class="face-tag"><span class="die-pip">3</span></span><div class="wline"></div><div class="air-box">Guess: ○  △  ✡</div></div>
+        <div style="font:600 9.5px var(--mono);color:#555;margin-top:6px;text-align:right;">Crew B tiny key (cover with thumb until judged): 1=___  2=___  3=___   [ → PASS TO CREW C ]</div>
+      </div>
+      <div class="crew-panel">
+        <div class="crew-head"><b>CREW C (4 MIN) — Write one ○ Probable, one △ Plausible, one ✡ Preposterous IN MIXED ORDER!</b> <span>Name: ___________</span></div>
+        <div class="face-row blind"><span class="face-tag"><span class="die-pip">4</span></span><div class="wline"></div><div class="air-box">Guess: ○  △  ✡</div></div>
+        <div class="face-row blind"><span class="face-tag"><span class="die-pip">5</span></span><div class="wline"></div><div class="air-box">Guess: ○  △  ✡</div></div>
+        <div class="face-row blind"><span class="face-tag"><span class="die-pip">6</span></span><div class="wline"></div><div class="air-box">Guess: ○  △  ✡</div></div>
+        <div style="font:600 9.5px var(--mono);color:#555;margin-top:4px;text-align:right;">Crew C tiny key (cover with thumb until judged): 4=___  5=___  6=___   [ → RETURN TO PILOT ]</div>
+      </div>
+      <div class="resolve-box">
+        <div class="roll-strip">
+          <span>1. JUDGE ALL 6 ABOVE FIRST!   Matches: <span class="die-Blank"></span> / 6</span>
+          <span>2. ROLL DIE: <span class="die-Blank"></span></span>
+        </div>
+        <div class="field-group">
+          <div class="field-row"><div class="lbl">Take 2 · Swerve<small>Change 1 thing at the roll</small></div><div class="wline"></div></div>
+        </div>
+        <div class="audit-bar"><b>CALIBRATION CHECK:</b> <span>Which pair of faces caused an argument between ○, △, and ✡? Circle numbers: 1 2 3 4 5 6</span></div>
+      </div>
+    `
+  },
+
+  {
+    id: "V03",
+    short: "V03 · Two Eyes, One Clue",
+    title: "The fish think our sub is a UFO.",
+    lineage: "Oubapo (One Image, Two Captions) + Captain Cook / Arrival",
+    pitch: "Pilot A draws ONE unlabelled sunken object floating outside the glass and writes what the amnesiac Turkey thinks it is (then folds the bottom flap). Crew B looks ONLY at the drawing and writes what Trout Town's UFO myth says it is!",
+    assess: "Visual Duck-Rabbit Check: Does the single drawing support two opposite, coherent species readings without adding new marks? [PASS / FAIL]",
+    front: `
+      <div>
+        <div class="sec-label">1 · Draw ONE Mysterious Object Outside the Glass <span>Do NOT write words inside the circle!</span></div>
+        <div class="choice-strip">
+          <span class="chip sq">Idea seeds (or invent): Feather Lure</span>
+          <span class="chip sq">Foil Pan</span>
+          <span class="chip sq">Wishbone</span>
+          <span class="chip sq">Baster</span>
+          <span class="chip sq">Rubber Boot</span>
+        </div>
+      </div>
+      <div class="porthole-wrap">
+        <div class="porthole">
+          <span class="bolt b1">1</span><span class="bolt b2">2</span><span class="bolt b3">3</span>
+          <span class="bolt b4">4</span><span class="bolt b5">5</span><span class="bolt b6">6</span>
+          <div class="porthole-prompt">Draw the object big &amp; clear. No labels!</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field-row">
+          <div class="lbl">2 · CREW B WRITES HERE<small>Looking ONLY at the drawing:</small></div>
+          <div class="wline">Trout Town’s UFO experts swear this object is: </div>
+        </div>
+        <div style="border-top:1.5px dashed #111;padding-top:8px;margin-top:4px;">
+          <div class="field-row">
+            <div class="lbl">3 · PILOT WRITES FIRST<small>(Fold this strip under before passing!)</small></div>
+            <div class="wline">Inside the sub, the Turkey thinks this object is: </div>
+          </div>
+        </div>
+      </div>
+    `,
+    passFront: ["→ FOLD LINE 3 UNDER, THEN PASS TO CREW B", "Crew B reads the drawing before unfolding!"],
+    back: stdCrewBack({
+      bPrompt: "CREW B — Unfold Line 3! Now write 3 outcomes when those two misunderstandings collide:",
+      cPrompt: "CREW C — Write 3 more outcomes when the Turkey reaches for the object:",
+      take2Label: "TAKE 2 · FIRST CONTACT SIGNAL — Without speaking English or Fish, what 1 gesture proves you aren't a monster?",
+      take2Line: "Gesture through the glass: ___________________________________  →  Trout response: _______________________",
+      auditQ: "CRITIC CHECK: Did one drawing genuinely read two different ways to Turkey vs. Trout?"
+    })
+  },
+
+  {
+    id: "V04",
+    short: "V04 · The Folded Porthole",
+    title: "Fold the creek. See what the silt hid.",
+    lineage: "Étienne Lécroart (Folded Dialogue) + Who Had the Key?",
+    pitch: "Front has 3 columns separated by two dashed fold lines. Pilot draws Left (Turkey) and Right (Trout) so they meet peacefully when folded. Crew B & C open the fold and put 6 hidden dangers/gifts inside the Center Silt column!",
+    assess: "Fold Continuity Test: Does the folded sheet form one continuous image/sentence (Take 1), and does unfolding reveal the cause that flips it (Take 2)? [PASS / FAIL]",
+    front: `
+      <div class="sec-label">1 · Fold Dotted Lines Together First! <span>Draw across the closed seam so Left meets Right.</span></div>
+      <div class="trio-frame">
+        <div class="trio-col">
+          <b>LEFT · INSIDE SUB (PILOT)</b>
+          <div class="hint" style="margin:auto 0;text-align:center;">Draw Turkey at porthole reaching right →</div>
+          <div style="font-size:11px;border-top:1px solid #ccc;padding-top:5px;">Turkey says: “Take this _______________</div>
+        </div>
+        <div class="trio-col fold-mid">
+          <b>CENTER · MURKY SILT (HIDDEN)</b>
+          <div class="hint" style="margin:auto 0;text-align:center;">Leave blank for Crew B! Crew B draws what secretly sits between them.</div>
+          <div style="font-size:11px;border-top:1px solid #ccc;padding-top:5px;">...stuck on _______________, so I’ll take...</div>
+        </div>
+        <div class="trio-col">
+          <b>RIGHT · TROUT TOWN (PILOT)</b>
+          <div class="hint" style="margin:auto 0;text-align:center;">← Draw Trout reaching left to meet it</div>
+          <div style="font-size:11px;border-top:1px solid #ccc;padding-top:5px;">..._______________ home in peace.”</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field-row"><div class="lbl">Folded Meaning (Take 1)<small>What it looks like folded shut</small></div><div class="wline"></div></div>
+      </div>
+    `,
+    passFront: ["→ UNFOLD FLAT AND PASS TO CREW B", "Crew B draws in the Center Silt column + fills 1–3 on back."],
+    back: stdCrewBack({
+      bPrompt: "CREW B — Draw the hidden silt object in the Front Center column, then write 3 unfolded results:",
+      cPrompt: "CREW C — Write 3 more results when the murky middle is revealed:",
+      take2Label: "UNFOLDED VERDICT — Roll 1–6. How does opening the fold change who we trust?",
+      take2Line: "When unfolded on Roll #___, we realize: ______________________________________________________________",
+      auditQ: "FOLD TEST: Do the lines & speech join cleanly both FOLDED and UNFOLDED?"
+    })
+  },
+
+  {
+    id: "V05",
+    short: "V05 · Order of Three Deeds",
+    title: "Same three buttons. Opposite endings.",
+    lineage: "Oucipo Montage Order + Boucle-là ! (Reversible Score)",
+    pitch: "Pilot A picks 3 Sub Buttons from 6 icons and orders them 1 → 2 → 3. Crew B writes ○/△/✡ for running them FORWARD (1→2→3). Crew C writes ○/△/✡ for running the EXACT SAME 3 buttons BACKWARD (3→2→1).",
+    assess: "Sequence Isolation Test: Holding the 3 actions fixed, can a viewer tell 1→2→3 apart from 3→2→1 by the Trout's reaction alone? [PASS / FAIL]",
+    front: `
+      <div>
+        <div class="sec-label">1 · Pick Exactly 3 Sub Controls <span>Write 1, 2, 3 in three boxes below</span></div>
+        <div class="choice-strip">
+          <span class="chip sq">[  ] HONK HORN</span>
+          <span class="chip sq">[  ] FLASH BEAM</span>
+          <span class="chip sq">[  ] VENT BUBBLE</span>
+          <span class="chip sq">[  ] DROP CORN</span>
+          <span class="chip sq">[  ] EXTEND CLAW</span>
+          <span class="chip sq">[  ] CRACK HATCH</span>
+        </div>
+      </div>
+      <div class="split-frame">
+        <div class="draw-box">
+          <b>FORWARD ORDER ( 1 → 2 → 3 )</b>
+          <div class="hint">Sketch what the Turkey hopes 1 → 2 → 3 says to the Trout:</div>
+          <div class="wline">1st: _______  2nd: _______  3rd: _______</div>
+        </div>
+        <div class="draw-box">
+          <b>REVERSE ORDER ( 3 → 2 → 1 )</b>
+          <div class="hint">Sketch how weird 3 → 2 → 1 looks from Trout Town’s side:</div>
+          <div class="wline">1st: _______  2nd: _______  3rd: _______</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field-row"><div class="lbl">Where &amp; Who<small>Which Trout watches this?</small></div><div class="wline"></div></div>
+      </div>
+    `,
+    passFront: ["→ PASS TO CREW B (Forward 1→2→3)", "Then Crew C runs Reverse (3→2→1)!"],
+    back: stdCrewBack({
+      bPrompt: "CREW B — Run Pilot’s 3 controls FORWARD (1 → 2 → 3). What do the Trout do?",
+      cPrompt: "CREW C — Run the EXACT SAME 3 controls BACKWARD (3 → 2 → 1). Now what happens?!",
+      take2Label: "COMPARE & CHOOSE — Roll 1–6, then compare Forward vs. Reverse:",
+      take2Line: "Why did swapping the order change Trout Town’s reaction? ______________________________________________",
+      auditQ: "ORDER CHECK: Were the exact same 3 controls kept in both halves (zero added props)?"
+    })
+  },
+
+  {
+    id: "V06",
+    short: "V06 · First Supper Dilemma",
+    title: "Guest at the table—or main course?",
+    lineage: "Game Theory (Prisoner's Dilemma / Stag Hunt) + First Supper",
+    pitch: "At sundown, air is down to 4 hours at the Riffle Bridge table. Pilot A secretly commits to OPEN HATCH or BOLT. Crew B (playing Trout Cook) secretly commits to SET A PLATE or DROP THE NET—and fills the payoff matrix!",
+    assess: "Game-Theoretic Coupling: Does outcome depend on BOTH choices intersecting, and does Take 2 invent a credible commitment signal? [PASS / FAIL]",
+    front: `
+      <div class="sec-label">1 · Sundown at the Underwater Table <span>Air left: 4 hours. Neither side speaks the other's language.</span></div>
+      <div class="porthole-wrap" style="min-height:2.3in;">
+        <div class="porthole" style="width:2.6in;height:2.6in;">
+          <span class="bolt b1">1</span><span class="bolt b2">2</span><span class="bolt b3">3</span>
+          <span class="bolt b4">4</span><span class="bolt b5">5</span><span class="bolt b6">6</span>
+          <div class="porthole-prompt">Draw the Sub facing the underwater Thanksgiving table</div>
+        </div>
+      </div>
+      <div class="matrix">
+        <div class="m-hdr">PAYOFF PREVIEW</div>
+        <div class="m-hdr">TROUT: SET A PLATE (Trust)</div>
+        <div class="m-hdr">TROUT: DROP THE NET (Fear)</div>
+        <div class="m-hdr">TURKEY:<br>OPEN HATCH</div>
+        <div><b>First Supper (++ / ++)</b><br>Share air pocket &amp; trade maps.</div>
+        <div><b>Trapped Bird (-- / +)</b><br>Sub impounded at Courthouse!</div>
+        <div class="m-hdr">TURKEY:<br>REV &amp; BOLT</div>
+        <div><b>Ruined Feast (+ / --)</b><br>Silt wrecks table; Trout never trust again.</div>
+        <div><b>Deadlock (-- / --)</b><br>Both panic; 0h air in the dark.</div>
+      </div>
+      <div class="field-row">
+        <div class="lbl">PILOT SECRET MOVE<small>(Fold corner over your X!)</small></div>
+        <div class="wline">[   ] I OPEN THE HATCH        [   ] I REV &amp; BOLT</div>
+      </div>
+    `,
+    passFront: ["→ COVER YOUR MOVE & PASS TO CREW B", "Crew B commits Trout Town's move before peeking!"],
+    back: stdCrewBack({
+      bPrompt: "CREW B — First circle Trout’s secret move: [ SET PLATE / DROP NET ]. Now reveal Pilot’s move & write 1–3:",
+      cPrompt: "CREW C — Add 3 wild clinamen complications at the supper table (4–6):",
+      take2Label: "TAKE 2 · CREDIBLE SIGNAL — What costly action BEFORE opening the hatch proves neither side will betray?",
+      take2Line: "Costly signal: ________________________________________  →  Why both sides trust it: ___________________",
+      auditQ: "STRATEGY CHECK: Is Pilot's signal genuinely costly (couldn't easily be faked by a trickster)?"
+    })
+  },
+
+  {
+    id: "V07",
+    short: "V07 · Three Windows, One Giant",
+    title: "Three portholes on the same mystery.",
+    lineage: "Six Blind Men & the Elephant + Perec (Life A User's Manual)",
+    pitch: "All 3 students in a group sit inside ONE long Turkey Sub—one at BOW (#1), one at BELLY (#2), one at STERN (#3). Something huge blocks the river outside. Each draws their 1/3 piece before taping all 3 sheets edge-to-edge!",
+    assess: "Cross-Sheet Continuity: When the 3 sheets are laid side-by-side, do the 3 partial clues reconcile into one coherent giant inhabitant/machine? [PASS / FAIL]",
+    front: `
+      <div>
+        <div class="sec-label">1 · Circle Your Station on the Shared Sub <span>Each teammate MUST pick a different station!</span></div>
+        <div class="choice-strip">
+          <span class="chip">STATION A · BOW (Front Nose — sees bright loops &amp; brass eyelets)</span>
+          <span class="chip">STATION B · BELLY (Middle — sees ridged rubber wall)</span>
+          <span class="chip">STATION C · STERN (Tail — sees hooked silver spur)</span>
+        </div>
+      </div>
+      <div class="porthole-wrap">
+        <div class="porthole">
+          <span class="bolt b1">1</span><span class="bolt b2">2</span><span class="bolt b3">3</span>
+          <span class="bolt b4">4</span><span class="bolt b5">5</span><span class="bolt b6">6</span>
+          <div class="porthole-prompt">Draw ONLY your 1/3 piece touching left &amp; right edges!</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field-row"><div class="lbl">2 · My Local Guess<small>From my window alone, it is a...</small></div><div class="wline"></div></div>
+        <div class="field-row"><div class="lbl">3 · My Station Order<small>What I do to my part of it</small></div><div class="wline"></div></div>
+      </div>
+    `,
+    passFront: ["→ PASS LEFT (Do NOT show all 3 side-by-side until the Roll!)", "Sub moves forward 1 window each pass."],
+    back: stdCrewBack({
+      bPrompt: "CREW B — The Sub glides forward! Now THEIR mystery part slides past YOUR window (1–3):",
+      cPrompt: "CREW C — It slides past the third window! Write 3 outcomes (4–6):",
+      take2Label: "JOIN ALL 3 SHEETS SIDE-BY-SIDE! Roll 1–6. What was the whole giant thing really?",
+      take2Line: "Combined truth across Bow + Belly + Stern: ____________________________________________________________",
+      auditQ: "CONTINUITY CHECK: Lay all 3 group sheets side-by-side—do all 3 parts fit one single explanation?"
+    })
+  },
+
+  {
+    id: "V08",
+    short: "V08 · Persistent Mark (GTA Creek)",
+    title: "Leave a mark the next sub has to live with.",
+    lineage: "LEGOS Worldtext Mutation + PAE-04 Trace & Memory",
+    pitch: "Trout Town NEVER resets. Pilot A inherits a town mark from the previous group, runs their sub, and leaves ONE permanent physical change + Trout Police Rumor that the NEXT pilot is legally bound to draw inside their scene!",
+    assess: "State Inheritance Audit: Did this sheet visibly honor the Incoming World Rule, and did it output a concrete, testable Outgoing World Rule? [PASS / FAIL]",
+    front: `
+      <div class="field-group" style="border:2px solid #111;padding:8px 10px;background:#f8f8f6;">
+        <div class="field-row">
+          <div class="lbl">INCOMING WORLD RULE<small>Copied from previous Sub's crash!</small></div>
+          <div class="wline">Already changed in town: </div>
+        </div>
+      </div>
+      <div class="porthole-wrap" style="min-height:2.55in;">
+        <div class="porthole" style="width:2.85in;height:2.85in;">
+          <span class="bolt b1">1</span><span class="bolt b2">2</span><span class="bolt b3">3</span>
+          <span class="bolt b4">4</span><span class="bolt b5">5</span><span class="bolt b6">6</span>
+          <div class="porthole-prompt">Draw your scene INCLUDING the Incoming World Rule!</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field-row"><div class="lbl">1 · Trout Alert Level<small>Circle stars when you arrive</small></div><div class="wline" style="border:none;">[ ★☆☆☆☆ Curious ]   [ ★★★☆☆ Roadblock ]   [ ★★★★★ Full UFO Panic ]</div></div>
+        <div class="field-row"><div class="lbl">2 · My Sub Stunt<small>How I try to slip through town</small></div><div class="wline"></div></div>
+      </div>
+    `,
+    passFront: ["→ PASS SHEET LEFT TO CREW B", "Crew B & C enforce the town's laws and physics!"],
+    back: stdCrewBack({
+      bPrompt: "CREW B — Given the Incoming Rule + Pilot’s Stunt, what happens on Main Street (1–3)?",
+      cPrompt: "CREW C — Escalate Trout Town’s response (4–6):",
+      take2Label: "OUTGOING WORLDTEXT RULE — Roll 1–6. Write the 1 permanent mark left behind for the NEXT Sub:",
+      take2Line: "Permanent change in Trout Town: _________________________ | Trout Police say: “The UFO _______________!”",
+      auditQ: "LEDGER CHECK: Is the Incoming Rule visible in the drawing, and is the Outgoing Rule specific enough to draw?"
+    })
+  },
+
+  {
+    id: "V09",
+    short: "V09 · Forbidden Words (Lipogram)",
+    title: "You hit your head and lost six words.",
+    lineage: "Oulipo Lipogram (Who Had the Key? p. 3 — 'Losing the name made you look at the object')",
+    pitch: "The Turkey bumped its head and forgot 6 obvious nouns: TURKEY, FISH, WATER, AIR, SUB, HOME. Neither Pilot nor Crewmates may use ANY of those 6 words anywhere on the sheet—every slip costs 4 hours from the tank!",
+    assess: "Objective Zero-Match Scan + Ekphrastic Vividness: 0 banned words used [PASS/FAIL] + can a blind reader still draw the exact scene from the text?",
+    front: `
+      <div style="border:2px solid #111;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;">
+        <b style="font:700 11px var(--mono);">BANNED WORDS (-4h EACH):</b>
+        <span style="font:700 12px var(--mono);letter-spacing:0.04em;">✗ TURKEY · ✗ FISH · ✗ WATER · ✗ AIR · ✗ SUB · ✗ HOME</span>
+      </div>
+      <div class="porthole-wrap" style="min-height:2.6in;">
+        <div class="porthole" style="width:2.85in;height:2.85in;">
+          <span class="bolt b1">1</span><span class="bolt b2">2</span><span class="bolt b3">3</span>
+          <span class="bolt b4">4</span><span class="bolt b5">5</span><span class="bolt b6">6</span>
+          <div class="porthole-prompt">Draw the scene that matches your invented words</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field-row"><div class="lbl">1 · Who &amp; Where<small>No banned words!</small></div><div class="wline"></div></div>
+        <div class="field-row"><div class="lbl">2 · What Leaks Out<small>Describe the 24h supply</small></div><div class="wline"></div></div>
+        <div class="field-row"><div class="lbl">3 · My Escape Plan<small>No banned words!</small></div><div class="wline"></div></div>
+      </div>
+    `,
+    passFront: ["→ PASS LEFT (Crew B & C MUST obey the 6-word ban too!)", "Circle any contraband word you catch!"],
+    back: stdCrewBack({
+      bPrompt: "CREW B — Write 3 outcomes WITHOUT using TURKEY, FISH, WATER, AIR, SUB, or HOME:",
+      cPrompt: "CREW C — Write 3 more outcomes obeying the exact same 6-word ban:",
+      take2Label: "RED-PEN AUDIT & ROLL — Count contraband words across the whole sheet, then roll 1–6:",
+      take2Line: "Best newly invented phrase on this sheet: “___________________________________________________________”",
+      auditQ: "LIPOGRAM AUDIT: Contraband count = [ ___ ] (0 = FULL PASS). Can a stranger still tell what happened?"
+    })
+  },
+
+  {
+    id: "V10",
+    short: "V10 · Backwards from 00:00",
+    title: "Start at the wreck. Rewind to the cause.",
+    lineage: "Outrapo / PAE-08 (The Universal Boxback — From the End to the First Step)",
+    pitch: "Instead of guessing 'what happens next,' Pilot A draws a bizarre FINAL FRAME at 00:00 ('The sub is parked in the choir loft and the Judge is holding a feather'). Crew B & C invent 6 ways (○/△/✡) the evening got there!",
+    assess: "Abductive Chain Check: When played forward from Frame 00:01 → Rolled Cause → Final Frame, does every detail in Pilot A's drawing get explained? [PASS / FAIL]",
+    front: `
+      <div>
+        <div class="sec-label">1 · Start at the End (Air = 00:00, Dust Settled) <span>Pick 2 strange clues to include in your Final Picture</span></div>
+        <div class="choice-strip">
+          <span class="chip sq">Upside-down Sub</span>
+          <span class="chip sq">Judge's Wig</span>
+          <span class="chip sq">Popped Piñata</span>
+          <span class="chip sq">Dry Plate</span>
+          <span class="chip sq">Tangled Bell Rope</span>
+        </div>
+      </div>
+      <div class="porthole-wrap">
+        <div class="porthole">
+          <span class="bolt b1">1</span><span class="bolt b2">2</span><span class="bolt b3">3</span>
+          <span class="bolt b4">4</span><span class="bolt b5">5</span><span class="bolt b6">6</span>
+          <div class="porthole-prompt">Draw the FINAL AFTERMATH scene (leave HOW it happened a mystery!)</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field-row"><div class="lbl">2 · Final Scene Facts<small>List 3 weird details visible above</small></div><div class="wline">1) ___________________  2) ___________________  3) ___________________</div></div>
+      </div>
+    `,
+    passFront: ["→ PASS TO CREW B (Forensic Investigators)", "Crew B & C reconstruct what happened 10 minutes earlier!"],
+    back: stdCrewBack({
+      bPrompt: "CREW B — Rewind 10 minutes! Write 3 ways (○, △, ✡) ALL THREE details ended up like that:",
+      cPrompt: "CREW C — Write 3 rival reconstructions (○, △, ✡) of how that aftermath happened:",
+      take2Label: "REWIND TO LAUNCH — Roll 1–6 to lock the true cause. Now write the FIRST shot that started it:",
+      take2Line: "Opening Shot (24 hours earlier): ____________________________________________________________________",
+      auditQ: "FORENSIC CHECK: Did the rolled cause account for ALL 3 weird details listed on the front?"
+    })
+  }
+];
+
+function stdCrewBack(opts = {}) {
+  const bP = opts.bPrompt || "CREW B (3 MIN) — How does Trout Town react to Pilot’s move?";
+  const cP = opts.cPrompt || "CREW C (3 MIN) — Three different ways the river answers back:";
+  return `
+    <div class="crew-panel">
+      <div class="crew-head"><b>${bP}</b> <span>Crew B: ______________</span></div>
+      <div class="face-row"><span class="face-tag"><span class="die-pip">1</span>○ PROBABLE<em>Expected / everyday</em></span><div class="wline"></div><div class="air-box">Air +/- ___h</div></div>
+      <div class="face-row"><span class="face-tag"><span class="die-pip">2</span>△ PLAUSIBLE<em>Fits Trout Town rules</em></span><div class="wline"></div><div class="air-box">Air +/- ___h</div></div>
+      <div class="face-row"><span class="face-tag"><span class="die-pip">3</span>✡ PREPOSTEROUS<em>Wild swerve!</em></span><div class="wline"></div><div class="air-box">Air +/- ___h</div></div>
+      <div style="font:700 9.5px var(--mono);text-align:right;margin-top:6px;">[ → PASS SHEET LEFT TO CREW C ]</div>
+    </div>
+
+    <div class="crew-panel">
+      <div class="crew-head"><b>${cP}</b> <span>Crew C: ______________</span></div>
+      <div class="face-row"><span class="face-tag"><span class="die-pip">4</span>○ PROBABLE<em>Expected / everyday</em></span><div class="wline"></div><div class="air-box">Air +/- ___h</div></div>
+      <div class="face-row"><span class="face-tag"><span class="die-pip">5</span>△ PLAUSIBLE<em>Fits Trout Town rules</em></span><div class="wline"></div><div class="air-box">Air +/- ___h</div></div>
+      <div class="face-row"><span class="face-tag"><span class="die-pip">6</span>✡ PREPOSTEROUS<em>Wild swerve!</em></span><div class="wline"></div><div class="air-box">Air +/- ___h</div></div>
+      <div style="font:700 9.5px var(--mono);text-align:right;margin-top:4px;">[ → RETURN TO ORIGINAL PILOT ]</div>
+    </div>
+
+    <div class="resolve-box">
+      <div class="roll-strip">
+        <span>TAKE 1 · ROLL ONE DIE:  I rolled <span class="die-Blank"></span></span>
+        <span>Air Remaining: <span class="die-Blank" style="width:42px;"></span> h</span>
+      </div>
+      <div style="font:700 10.5px var(--mono);margin-bottom:5px;">${opts.take2Label}</div>
+      <div style="font-size:12px;line-height:1.8;">${opts.take2Line}</div>
+      <div class="audit-bar">
+        <span><b>ASSESSMENT:</b> ${opts.auditQ}</span>
+        <span class="yn">PASS  /  RETRY</span>
+      </div>
+    </div>
+  `;
+}
+
+const tabsEl = document.getElementById("tabs");
+const deckEl = document.getElementById("deck");
+
+VERSIONS.forEach((v, idx) => {
+  const t = document.createElement("button");
+  t.className = "tab" + (idx === 0 ? " active" : "");
+  t.textContent = v.short;
+  t.onclick = () => selectVersion(idx);
+  tabsEl.appendChild(t);
+
+  const block = document.createElement("div");
+  block.className = "version-block" + (idx === 0 ? "" : " hidden");
+  block.id = "block-" + idx;
+  block.innerHTML = `
+    <div class="brief">
+      <div class="brief-head">
+        <h2>${v.short} — ${v.title}</h2>
+        <span class="lineage">${v.lineage}</span>
+      </div>
+      <div class="brief-col"><b>Exercise Flow (15–18 min · Groups of 3)</b>${v.pitch}</div>
+      <div class="brief-col"><b>What This Version Assesses</b>${v.assess}</div>
+    </div>
+
+    <!-- PAGE 1: FRONT -->
+    <section class="sheet">
+      <div>
+        <div class="s-top">
+          <div class="s-kicker">TROUT TOWN · TURKEY SUB <span>${v.id} · FRONT</span></div>
+          <div class="s-name">Pilot <span class="line"></span> <span class="air-pill">AIR 24H</span></div>
+        </div>
+        <div class="s-hero">
+          <h1 class="s-title">${v.title}</h1>
+          <p class="s-premise">A turkey in a homemade sub wakes underwater in Trout Town with 24 hours of air and no memory of why it came.</p>
+        </div>
+      </div>
+      ${v.front}
+      <div class="pass-bar">
+        <b>${v.passFront[0]}</b>
+        <span>${v.passFront[1]}</span>
+      </div>
+    </section>
+
+    <!-- PAGE 2: BACK -->
+    <section class="sheet">
+      <div class="s-top">
+        <div class="s-kicker">TROUT TOWN · TURKEY SUB <span>${v.id} · BACK (6 BOLTS &amp; ROLL)</span></div>
+        <div class="s-name">Pilot’s Sub <span class="air-pill">1 DIE · 6 CHANCES</span></div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;padding-top:8px;">
+        ${v.back}
+      </div>
+      <div class="pass-bar">
+        <b>COMPLETE · HAND IN</b>
+        <span>PAELEO Screening Room compiles Drawing + Roll + Take 2 into your Porthole Film.</span>
+      </div>
+    </section>
+  `;
+  deckEl.appendChild(block);
+});
+
+function selectVersion(idx) {
+  document.querySelectorAll(".tab").forEach((el, i) => el.classList.toggle("active", i === idx));
+  document.querySelectorAll(".version-block").forEach((el, i) => el.classList.toggle("hidden", i !== idx));
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+function showAll() {
+  document.querySelectorAll(".tab").forEach(el => el.classList.remove("active"));
+  document.querySelectorAll(".version-block").forEach(el => el.classList.remove("hidden"));
+}
+if (location.search.includes("all=1")) showAll();
+</script>
+</body>
+</html>
