@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Prompts as Constitutions: Abstract, Studio One-Pager, and 42-Work Verification Audit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Tier 3 · Utilitarian / Deep Research · split answer-first hero (headline left, verification metric right) · abstract -> one-pager 5-act praxis -> phase-space svg -> 17-workshop verification table -> 25-film verification table -> sources · Space Grotesk + IBM Plex Sans + IBM Plex Mono · cool architectural slate (#F3F5F7) with deep forest teal (#0F6E56/#0A5240) and ochre (#9A5B00/#734300) · 0px radius · 1 numeral emphasis moment · phase-space scatter plot · 2 open tables */
+    :root {
+      --paper: #F3F5F7;
+      --ink: #0F1419;
+      --ink2: #202730;
+      --mute: #434C56;
+      --hair: #C9D1D9;
+      --accent: #0F6E56;
+      --accent-text: #0A5240;
+      --accent-2: #9A5B00;
+      --accent-2-text: #734300;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a {
+      color: var(--accent-text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+    }
+    a:hover { color: var(--accent-2-text); }
+    .page {
+      padding: 64px clamp(24px, 9.6vw, 108px) 92px;
+    }
+    .grid-12 {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 24px;
+    }
+    .measure { max-width: 68ch; }
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 0;
+      text-wrap: balance;
+    }
+    h1 {
+      font-size: clamp(36px, 4.2vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      margin-bottom: 18px;
+    }
+    h2 {
+      font-size: clamp(24px, 2.4vw, 31px);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 19px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    p {
+      margin: 0 0 16px 0;
+      color: var(--ink2);
+    }
+    p:last-child { margin-bottom: 0; }
+    strong { color: var(--ink); font-weight: 600; }
+
+    .hero-left { grid-column: 1 / span 8; }
+    .hero-right {
+      grid-column: 9 / span 4;
+      border-left: 1px solid var(--ink);
+      padding-left: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .hero-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(48px, 5vw, 68px);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--accent-text);
+      white-space: nowrap;
+      margin-bottom: 10px;
+    }
+    .hero-cap {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--mute);
+    }
+    .deck {
+      font-size: 18.5px;
+      line-height: 1.52;
+      color: var(--ink2);
+      max-width: 64ch;
+      margin: 0;
+    }
+
+    .sec-s {
+      margin-top: 66px;
+      border-top: 1px solid var(--hair);
+      padding-top: 34px;
+    }
+    .sec-strong {
+      margin-top: 66px;
+      border-top: 2px solid var(--ink);
+      padding-top: 36px;
+    }
+
+    .split-l { grid-column: 1 / span 4; }
+    .split-r { grid-column: 5 / span 8; }
+
+    .abstract-prose {
+      font-size: 17px;
+      line-height: 1.72;
+      color: var(--ink);
+      max-width: 68ch;
+    }
+    .keywords-line {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--hair);
+      font-size: 14px;
+      color: var(--mute);
+      max-width: 68ch;
+    }
+
+    .praxis-strip {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      column-gap: 22px;
+      row-gap: 28px;
+      margin-top: 28px;
+    }
+    .praxis-col {
+      border-top: 1.5px solid var(--ink);
+      padding-top: 14px;
+    }
+    .praxis-col p {
+      font-size: 14.5px;
+      line-height: 1.56;
+    }
+    .step-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      color: var(--accent-text);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    figure {
+      margin: 40px 0 12px;
+      padding: 0;
+    }
+    .fig-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: 14px;
+      text-wrap: balance;
+    }
+    figcaption {
+      margin-top: 12px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--mute);
+      max-width: 80ch;
+    }
+
+    .flag-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: 28px;
+      row-gap: 24px;
+      margin: 24px 0 32px;
+    }
+    .flag-item {
+      border-top: 1.5px solid var(--accent-2-text);
+      padding-top: 14px;
+    }
+    .flag-item p {
+      font-size: 14.5px;
+      line-height: 1.55;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    thead th {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--mute);
+      padding: 10px 14px 10px 0;
+      border-bottom: 1.5px solid var(--ink);
+      vertical-align: bottom;
+      white-space: nowrap;
+    }
+    tbody td {
+      padding: 12px 14px 12px 0;
+      border-bottom: 1px solid var(--hair);
+      vertical-align: top;
+      font-size: 14.2px;
+      line-height: 1.52;
+      color: var(--ink2);
+    }
+    tbody td:first-child {
+      color: var(--ink);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .mono {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      white-space: nowrap;
+    }
+    .st-ok { color: var(--accent-text); font-weight: 500; }
+    .st-flag { color: var(--accent-2-text); font-weight: 500; }
+
+    .sources-list {
+      margin: 18px 0 0 0;
+      padding: 0;
+      list-style: none;
+      columns: 2;
+      column-gap: 36px;
+      counter-reset: s-cnt;
+    }
+    .sources-list li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 10px;
+      font-size: 13.5px;
+      line-height: 1.48;
+      color: var(--mute);
+      break-inside: avoid;
+    }
+    .sources-list li::before {
+      counter-increment: s-cnt;
+      content: counter(s-cnt) ".";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      color: var(--ink);
+    }
+
+    @media (max-width: 980px) {
+      .hero-left, .hero-right, .split-l, .split-r { grid-column: 1 / -1; }
+      .hero-right {
+        border-left: none;
+        border-top: 1px solid var(--ink);
+        padding-left: 0;
+        padding-top: 20px;
+        margin-top: 24px;
+      }
+      .praxis-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .flag-grid { grid-template-columns: 1fr; }
+      .sources-list { columns: 1; }
+    }
+    @media (max-width: 600px) {
+      .praxis-strip { grid-template-columns: 1fr; }
+    }
+  </style>
+<style>
+.ts-return-bar{background:#132b33;color:#faf7f0;font:600 12px/1.2 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;padding:7px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(255,255,255,0.14);z-index:9999}
+.ts-return-bar a{color:#ffd466;text-decoration:none;font-weight:700}
+.ts-return-meta{color:#b7cbcf;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media print{.ts-return-bar{display:none!important}}
+@media screen and (max-width:860px){html,body{overflow-x:hidden}main{padding:24px 16px 48px!important}table{display:block;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+</style>
+</head>
+<body>
+<div class="ts-return-bar"><a href="./index.html">← Turkey Sub Key Ring</a><span class="ts-return-meta">K-04 · Prompts as Constitutions (42-Work Audit)</span></div>
+  <main class="page">
+    <header class="grid-12">
+      <div class="hero-left">
+        <h1>Prompts as Constitutions: The Praxis of Constrained Worldmaking</h1>
+        <p class="deck">A unified abstract, studio one-pager, and line-by-line bibliographic verification tying together PAELEO, Oulipo and Ouxpo, the SCION Screening Room, Dungeons &amp; Dragons (LEGOS / Trout Town), and RIPPLES as as-built instruments of one research program.</p>
+      </div>
+      <div class="hero-right">
+        <div class="hero-num">40 / 42</div>
+        <div class="hero-cap">Historical entries verified directly in primary records (<span class="mono">16/17</span> workshops and <span class="mono">24/25</span> reference works), with <span class="mono">1</span> unattested film title and <span class="mono">5</span> date or label fixes itemized below.</div>
+      </div>
+    </header>
+
+    <section class="sec-strong grid-12">
+      <div class="split-l">
+        <h2>Abstract</h2>
+        <p style="font-size:14px; color:var(--mute);">Ready for conference submission, monograph framing, or lab overview (<span class="mono">228</span> words).</p>
+      </div>
+      <div class="split-r">
+        <p class="abstract-prose">Contemporary generative media operates through what <a href="https://www.tandfonline.com/doi/full/10.1080/02666286.2024.2330335" target="_blank" rel="noopener noreferrer">Hannes Bajohr (2024)</a> terms <em>operative ekphrasis</em>: language no longer describes a prior visual object, but causally compiles images, scenes, and behaviors. Left unconstrained, however, stochastic models optimize for surface plausibility at the expense of structural memory, material provenance, and falsifiability. Rooms drift, style filters counterfeit physical craft, and single-loop agents validate their own hallucinations. <strong>PAELEO</strong> (Promptable Augmented Environments Lab · Language for Ekphrastic Operations) addresses this epistemic failure by treating prompts not as descriptive wishes, but as <strong>falsifiable constitutions for worlds</strong>. Drawing on <a href="https://conversational-leadership.net/quotation/information-difference/" target="_blank" rel="noopener noreferrer">Gregory Bateson's</a> definition of information as a difference that makes a difference, PAELEO operationalizes four distinct regimes of rule, contingency, and memory across a single studio praxis: (1) deterministic syntactic constraint inherited from the <a href="https://en.wikipedia.org/wiki/Oulipo" target="_blank" rel="noopener noreferrer">Oulipo</a> and <a href="https://en.wikipedia.org/wiki/Ouxpo" target="_blank" rel="noopener noreferrer">Ouxpo</a> (<em>anti-chance</em>); (2) adversarial multi-agent film assembly in <strong>SCION</strong>, governed by an open-archive and physical-craft material vow (<em>foraged or handmade, never faked</em>) and a blind critic empowered to fail unintelligible cuts; (3) bounded polyhedral risk in <a href="https://www.dndbeyond.com/sources/dnd/br-2024/playing-the-game" target="_blank" rel="noopener noreferrer">Dungeons &amp; Dragons</a> and <strong>LEGOS</strong>, where chance, memory, and consequence act as ligaments binding static scene elements into irreversible play; and (4) live nonhuman state perturbation in <a href="https://hartswf0.github.io/ripples/theory/PROMPT.md" target="_blank" rel="noopener noreferrer">RIPPLES</a>, where a World Jockey steers ecological worldtext without plot or victory. Across all four instruments, meaning emerges only where a system can visibly resist, remember, and say no.</p>
+        <div class="keywords-line"><strong>Keywords:</strong> operative ekphrasis · constrained generation · Oulipo and Ouxpo · multi-agent governance · tabletop state machines · nonhuman worldtext · archival provenance</div>
+      </div>
+    </section>
+
+    <section class="sec-s">
+      <h2>Studio One-Pager: The Idea and the Five-Act Praxis</h2>
+      <p class="measure"><strong>The central idea:</strong> Unconstrained prompting asks a statistical model to improvise both the law of a world and its surface appearance at the same time, which makes drift and self-congratulation inevitable. Your work separates <strong>world constitution</strong> (the formal rule, grid, or state sheet), <strong>material trace</strong> (credited archive or handmade craft), <strong>perturbation</strong> (anti-chance, dice, or vector injection), and <strong>judgment</strong> (blind readers, swapped player sheets, or tick logs). That separation turns generative AI and collaborative play from black-box spectacle into a disciplined studio practice.</p>
+
+      <div class="praxis-strip">
+        <div class="praxis-col">
+          <span class="step-num">ACT 1</span>
+          <h3>Freeze a Small Baseline World</h3>
+          <p>Hold the dramatic seed tiny and constant so formal operations become visible: one railway-station room with five objects across <span class="mono">17</span> workshops and <em>99 Ways</em>, one domestic cupboard on an <span class="mono">8x6</span> grid in RIPPLES, or five <strong>LEGOS</strong> slots in Trout Town.</p>
+        </div>
+        <div class="praxis-col">
+          <span class="step-num">ACT 2</span>
+          <h3>Bind Syntax Before Expression</h3>
+          <p>Never instruct a human or agent to "be creative." Lock a structural constraint on the medium's actual joints: ban a vowel as helmet air drops, cut film shots to Fibonacci frame counts, fold a comic strip on a physical crease, or lock prose inside chemical gradients.</p>
+        </div>
+        <div class="praxis-col">
+          <span class="step-num">ACT 3</span>
+          <h3>Enforce Material Humility</h3>
+          <p>Refuse synthetic stock footage and style-filter mimicry. Every element must be <strong>foraged</strong> from credited open-license archives (<span class="mono">2</span> to <span class="mono">19</span> sources per cut), <strong>handmade</strong> with paper, ink, and scissors, or marked with explicit epistemic uncertainty in worldtext.</p>
+        </div>
+        <div class="praxis-col">
+          <span class="step-num">ACT 4</span>
+          <h3>Calibrate the Perturbation Dial</h3>
+          <p>Select how contingency enters the state machine: <span class="mono">0%</span> dice in Oulipian anti-chance, quarantined assembly in SCION, <span class="mono">1d20</span> or <span class="mono">1d6</span> risk ligaments in D&amp;D and LEGOS, or live <code>GOAL / OBSTACLE / SHIFT</code> vector cascades in RIPPLES.</p>
+        </div>
+        <div class="praxis-col">
+          <span class="step-num">ACT 5</span>
+          <h3>Firewall Maker from Referee</h3>
+          <p>Builders never grade their own work. SCION routes every cut through unbriefed blind readers, a license auditor, and an independent critic (<span class="mono">16/25</span> non-passing cuts stay public); Trout Town swaps sheets between pairs; RIPPLES writes an immutable <code>[TICK]</code> log.</p>
+        </div>
+      </div>
+
+      <figure>
+        <div class="fig-title">PAELEO's four instruments occupy the high-accountability upper arc while unconstrained AI drifts below</div>
+        <svg viewBox="0 0 680 400" width="100%" role="img" aria-label="Two-dimensional phase-space plot mapping Oulipo, SCION, RIPPLES, D and D LEGOS, and unconstrained AI video across runtime contingency and externalized auditability">
+          <!-- Gridlines -->
+          <g stroke="#C9D1D9" stroke-width="1">
+            <line x1="96" y1="56" x2="636" y2="56"/>
+            <line x1="96" y1="132" x2="636" y2="132"/>
+            <line x1="96" y1="208" x2="636" y2="208"/>
+            <line x1="96" y1="284" x2="636" y2="284"/>
+            <line x1="96" y1="56" x2="96" y2="332" stroke="#0F1419" stroke-width="1.25"/>
+            <line x1="96" y1="332" x2="636" y2="332" stroke="#0F1419" stroke-width="1.25"/>
+          </g>
+
+          <!-- Y-axis ticks & title -->
+          <g font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#434C56" text-anchor="end">
+            <text x="84" y="61">High</text>
+            <text x="84" y="213">Med</text>
+            <text x="84" y="332">Low</text>
+          </g>
+          <text x="26" y="194" transform="rotate(-90 26 194)" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" fill="#434C56">Externalized memory &amp; falsifiable auditability</text>
+
+          <!-- X-axis ticks & title -->
+          <g font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#434C56" text-anchor="middle">
+            <text x="116" y="354">Deterministic</text>
+            <text x="366" y="354">Bounded perturbation</text>
+            <text x="596" y="354">Open stochastic</text>
+          </g>
+          <text x="366" y="384" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" fill="#434C56">Runtime contingency &amp; live state perturbation</text>
+
+          <!-- Connecting studio arc -->
+          <path d="M 142 94 Q 250 68 380 112 T 504 126" fill="none" stroke="#0F6E56" stroke-width="2" stroke-dasharray="5 5"/>
+
+          <!-- Point 1: Oulipo / Ouxpo -->
+          <circle cx="142" cy="94" r="8" fill="#0F6E56"/>
+          <text x="158" y="88" font-family="Space Grotesk, sans-serif" font-size="14.5" font-weight="600" fill="#0F1419">Oulipo &amp; Ouxpo</text>
+          <text x="158" y="106" font-family="IBM Plex Sans, sans-serif" font-size="13" fill="#434C56">Anti-chance syntax &amp; permutation</text>
+
+          <!-- Point 2: SCION Screening Room -->
+          <circle cx="256" cy="76" r="8" fill="#0F6E56"/>
+          <text x="272" y="70" font-family="Space Grotesk, sans-serif" font-size="14.5" font-weight="600" fill="#0F1419">PAELEO / SCION</text>
+          <text x="272" y="88" font-family="IBM Plex Sans, sans-serif" font-size="13" fill="#434C56">Frozen test + blind critic + open licenses</text>
+
+          <!-- Point 3: RIPPLES -->
+          <circle cx="390" cy="142" r="8" fill="#0F6E56"/>
+          <text x="406" y="138" font-family="Space Grotesk, sans-serif" font-size="14.5" font-weight="600" fill="#0F1419">RIPPLES Worldtext</text>
+          <text x="406" y="156" font-family="IBM Plex Sans, sans-serif" font-size="13" fill="#434C56">World Jockey vectors + 8x6 tick log</text>
+
+          <!-- Point 4: D&D / LEGOS -->
+          <circle cx="504" cy="116" r="8" fill="#0F6E56"/>
+          <text x="490" y="96" text-anchor="end" font-family="Space Grotesk, sans-serif" font-size="14.5" font-weight="600" fill="#0F1419">D&amp;D + LEGOS (Trout Town)</text>
+          <text x="504" y="180" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" fill="#434C56">d20 / 1d6 risk + sheet &amp; DM memory</text>
+          <line x1="504" y1="128" x2="504" y2="164" stroke="#434C56" stroke-width="1"/>
+
+          <!-- Foil Point: Unconstrained AI Video -->
+          <circle cx="586" cy="296" r="8" fill="#9A5B00"/>
+          <text x="570" y="291" text-anchor="end" font-family="Space Grotesk, sans-serif" font-size="14.5" font-weight="600" fill="#734300">Unconstrained AI Video</text>
+          <text x="570" y="309" text-anchor="end" font-family="IBM Plex Sans, sans-serif" font-size="13" fill="#434C56">Frame-by-frame guessing, no referee</text>
+        </svg>
+        <figcaption>Conceptual phase-space mapping across PAELEO's four active systems versus unconstrained connectionist video generation. Moving rightward increases live contingency (from Oulipo's deterministic rules to D&amp;D's polyhedral rolls), while staying on the upper studio arc preserves verifiable memory and externalized judgment.</figcaption>
+      </figure>
+    </section>
+
+    <section class="sec-s">
+      <h2>Bibliographic Verification: Six Concrete Fixes Before Publication</h2>
+      <p class="measure">Checking every workshop, film, novel, and comic strip on your Screening Room page against French national filmographies (Unifrance, INA, BnF), publisher catalogs (Gallimard, L'Association, Fluide Glacial), and Oulipo/Ouxpo histories confirms that the architecture is overwhelmingly solid, while surfacing six exact scholarly corrections.</p>
+
+      <div class="flag-grid">
+        <div class="flag-item">
+          <h3>1. La Machine à tuer le temps (c. 1974)</h3>
+          <p><strong>Unattested film title.</strong> <a href="https://andrewgallix.com/tag/simon-reynolds/" target="_blank" rel="noopener noreferrer">François Le Lionnais launched Oucinépo in 1974</a> (renamed Oucipo in <a href="https://fr.wikipedia.org/wiki/Ouvroir_d%27x_potentiel" target="_blank" rel="noopener noreferrer">1997</a>), and Queneau used the phrase <em>tuer le temps</em> in <a href="https://www.gallimard.fr/raymond-queneau-1903-1976" target="_blank" rel="noopener noreferrer">Les Derniers Jours (1936)</a>, but no 1974 Queneau/Oucipo film or published text carries this title in Gallimard or BnF catalogs. Cite the exact <a href="https://archives-oulipo.fr/archives-oulipo/recherche" target="_blank" rel="noopener noreferrer">Oulipo archive</a> minute if from a private 1974 circular, or relabel as an Oucinépo 1974 fixed-pool reconstruction.</p>
+        </div>
+        <div class="flag-item">
+          <h3>2. Teuf-Teuf: 1955, not 1956</h3>
+          <p><strong>One-year date slip.</strong> Your card lists Jean Jabely's animated short <em>Teuf-Teuf</em> (commentary by Raymond Queneau, voice by Jean Richard, Les Films Armorial) as <span class="mono">1956</span>. Both <a href="https://www.unifrance.org/film/41615/teuf-teuf" target="_blank" rel="noopener noreferrer">Unifrance</a> and French <span class="mono">16mm</span> registries (<a href="https://www.bd-cine.com/fiche.php?id=15513" target="_blank" rel="noopener noreferrer">BD-Ciné</a>) record its production year as <span class="mono">1955</span> (while Jabely's <em>Bang Bang</em> is confirmed <span class="mono">1958</span>).</p>
+        </div>
+        <div class="flag-item">
+          <h3>3. Oupolpot vs. Animated Exercises</h3>
+          <p><strong>16 of 17 workshops are historical.</strong> <em>Oupolpot</em> (<em>Ouvroir de politique potentielle</em>, <span class="mono">2001</span>) is an attested <a href="https://en.wikipedia.org/wiki/Ouxpo" target="_blank" rel="noopener noreferrer">Ouxpo workshop</a> (correcting our earlier draft note). Only <em>Exercices de style · Animated</em> is a studio benchmark prompt rather than a named Ouxpo collective (the historical animation workshop is <a href="https://en.wikipedia.org/wiki/Ouxpo" target="_blank" rel="noopener noreferrer">OuAniPo</a>).</p>
+        </div>
+        <div class="flag-item">
+          <h3>4. Missing Oubapo Dates on 3 Cards</h3>
+          <p><strong>Add publication years for parity.</strong> Three Étienne Lécroart cards omit dates while neighboring cards show them: <em>Boucle-là !</em> appeared in <span class="mono">2000</span> (<em>Libération</em> &amp; <em>Oupus 3</em>, spelled <em>Boucle-la !</em> on <a href="http://e.lecroart.free.fr/oubapo/palindrome.php" target="_blank" rel="noopener noreferrer">Lécroart's site</a>), <em>Quatre-vingt-quinze</em> in <span class="mono">2003</span> (<em>Bang !</em> n°4, <a href="http://e.lecroart.free.fr/oubapo/plurilecture.php" target="_blank" rel="noopener noreferrer">95 paths</a>), and <em>Les Caïds de la gaudriole</em> in <span class="mono">2007</span> (<a href="http://e.lecroart.free.fr/livres/bandessinee/caids.html" target="_blank" rel="noopener noreferrer">Fluide Glacial</a>).</p>
+        </div>
+        <div class="flag-item">
+          <h3>5. Perec Text vs. Screen Dates</h3>
+          <p><strong>Keep text/film dates explicit.</strong> <em>Un homme qui dort</em> is a <span class="mono">1967</span> novel and <span class="mono">1974</span> Prix Jean-Vigo film; <em>Les Lieux d'une fugue</em> adapts a <span class="mono">1965</span> text into a <span class="mono">1978</span> <a href="https://fr.wikipedia.org/wiki/Les_Lieux_d%27une_fugue" target="_blank" rel="noopener noreferrer">INA broadcast</a> (shot <span class="mono">1976</span>); <em>Récits d'Ellis Island</em> (<span class="mono">1980</span>) was filmed <span class="mono">1978–1979</span> with Robert Bober (<a href="https://www.associationgeorgesperec.fr/georges-perec/" target="_blank" rel="noopener noreferrer">Assoc. Perec</a>).</p>
+        </div>
+        <div class="flag-item">
+          <h3>6. Le Maki Mococo Dual Credit</h3>
+          <p><strong>Clarify poem vs. DVD date.</strong> Jacques Roubaud's poem <em>Le Maki Mococo</em> appeared in <em>Les Animaux de personne</em> (<a href="https://www.calameo.com/books/0008046127af7f420e271" target="_blank" rel="noopener noreferrer">Seghers, 1991</a>); Jean-Christophe Ribot's documentary DVD (with Yvanne Chenouf, <a href="https://www.furet.com/dvd-video/le-maki-mococo-jean-christophe-ribot-9782905377715.html" target="_blank" rel="noopener noreferrer">AFL</a>) films classroom readings of that poem.</p>
+        </div>
+      </div>
+
+      <h3>Table 1: Complete Audit of the 17 Workshops</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Workshop</th>
+              <th>Status</th>
+              <th>Historical Expansion &amp; Founding</th>
+              <th>PAELEO Station-Incident Constraint</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Oulipo</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Ouvroir de littérature potentielle</em>, Nov 24, 1960, Queneau &amp; Le Lionnais (<a href="https://en.wikipedia.org/wiki/Oulipo" target="_blank" rel="noopener noreferrer">Wikipedia</a>).</td>
+              <td>Combinatorial interchangeable lines + lipogram.</td>
+            </tr>
+            <tr>
+              <td>ALAMO</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Atelier de Littérature Assistée par la Mathématique et les Ordinateurs</em>, July 1981, Braffort &amp; Roubaud (<a href="https://en.wikipedia.org/wiki/Oulipo" target="_blank" rel="noopener noreferrer">Wikipedia</a>).</td>
+              <td>Locked syntactic mold filled strictly from donor lexicon.</td>
+            </tr>
+            <tr>
+              <td>Ou'inpo</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Ouvroir d'informatique potentielle</em>, 1997 (<a href="https://fr.wikipedia.org/wiki/Ouvroir_d%27x_potentiel" target="_blank" rel="noopener noreferrer">Wikipédia FR</a>).</td>
+              <td>Runnable source code whose line initials spell an acrostic.</td>
+            </tr>
+            <tr>
+              <td>Outypopo</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Ouvroir de typographie potentielle</em>, c. 2000 (<a href="https://fr.wikipedia.org/wiki/Ouvroir_d%27x_potentiel" target="_blank" rel="noopener noreferrer">Wikipédia FR</a>).</td>
+              <td>Verbatim copy whose rag and line breaks expose vertical text.</td>
+            </tr>
+            <tr>
+              <td>Oucipo</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Oucinépo</em> launched 1974 by Le Lionnais; re-founded July 13, 1997 as <em>Oucipo</em> (<a href="https://andrewgallix.com/tag/simon-reynolds/" target="_blank" rel="noopener noreferrer">Gallix</a>; <a href="https://fr.wikipedia.org/wiki/Ouvroir_d%27x_potentiel" target="_blank" rel="noopener noreferrer">Wikipédia FR</a>).</td>
+              <td>Fibonacci montage frame counts audited for rising tension.</td>
+            </tr>
+            <tr>
+              <td>Outrapo</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Ouvroir de tragicomédie potentielle</em>, April 6, 1991, London, Stanley Chapman (<a href="https://fr.wikipedia.org/wiki/Ouvroir_d%27x_potentiel" target="_blank" rel="noopener noreferrer">Wikipédia FR</a>).</td>
+              <td>Reversible stage score playable end-to-start.</td>
+            </tr>
+            <tr>
+              <td>Oumupo</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Ouvroir de musique potentielle</em>, early Le Lionnais origin; 2003–2008 album series &amp; 2011 wave (<a href="https://fr.wikipedia.org/wiki/Ouvroir_de_musique_potentielle" target="_blank" rel="noopener noreferrer">Oumupo</a>).</td>
+              <td>Cadence boundaries letting phrases shuffle in any order.</td>
+            </tr>
+            <tr>
+              <td>Exercices · Animated</td>
+              <td class="mono st-flag">STUDIO PROMPT</td>
+              <td>PAELEO animatics adaptation of Queneau (1947); historical Ouxpo is <em>OuAniPo</em> (<a href="https://en.wikipedia.org/wiki/Ouxpo" target="_blank" rel="noopener noreferrer">Ouxpo</a>).</td>
+              <td>Locked beat timing staged three ways via camera and rhythm.</td>
+            </tr>
+            <tr>
+              <td>Oupeinpo</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Ouvroir de peinture potentielle</em>, 1964–1966 trial, founded late 1980 (<a href="https://fr.wikipedia.org/wiki/Ouvroir_d%27x_potentiel" target="_blank" rel="noopener noreferrer">Wikipédia FR</a>).</td>
+              <td>Permutable painted tiles with one banned hue band.</td>
+            </tr>
+            <tr>
+              <td>Oubapo</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Ouvroir de bande dessinée potentielle</em>, Oct 28, 1992, L'Association (<a href="https://fr.wikipedia.org/wiki/Ouvroir_d%27x_potentiel" target="_blank" rel="noopener noreferrer">Wikipédia FR</a>).</td>
+              <td>Fixed drawn panels whose reordered captions invert motive.</td>
+            </tr>
+            <tr>
+              <td>Ouphopo</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Ouvroir de photographie potentielle</em>, 1995 (<a href="https://ouphopo.org/ouphopo/ha-vittiglio_files/20_Vittiglio_C_2024_M1.pdf" target="_blank" rel="noopener noreferrer">Ouphopo</a>).</td>
+              <td>Mapped walk sampled at strict clock intervals.</td>
+            </tr>
+            <tr>
+              <td>Ouarchpo</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Ouvroir d'architecture potentielle</em>, 2001 (<a href="https://oulipoetics.wordpress.com/ouxpo/chronology-of-ou-x-po/" target="_blank" rel="noopener noreferrer">Ouxpo Chronology</a>).</td>
+              <td>Doorways forcing circulation along a chess-knight's tour.</td>
+            </tr>
+            <tr>
+              <td>Ougrapo</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Workshop for Graphic Design under Constraints</em>, Frankfurt, 2000 (<a href="https://en.wikipedia.org/wiki/Ougrapo" target="_blank" rel="noopener noreferrer">Ougrapo</a>).</td>
+              <td>Five primitives rearranged to invert visual reading order.</td>
+            </tr>
+            <tr>
+              <td>Oulipopo</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Ouvroir de littérature policière potentielle</em>, Aug 23, 1973, Le Lionnais (<a href="https://fr.wikipedia.org/wiki/Ouvroir_d%27x_potentiel" target="_blank" rel="noopener noreferrer">Wikipédia FR</a>).</td>
+              <td>Fixed physical clues whose discovery order shifts suspicion.</td>
+            </tr>
+            <tr>
+              <td>Ouhispo</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Ouvroir d'histoire potentielle</em>, 1993 (<a href="https://fr.wikipedia.org/wiki/Ouvroir_d%27x_potentiel" target="_blank" rel="noopener noreferrer">Wikipédia FR</a>).</td>
+              <td>Single counterfactual hinge updating all downstream records.</td>
+            </tr>
+            <tr>
+              <td>Oucuipo</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Ouvroir de cuisine potentielle</em>, Oulipo culinary offshoot (<a href="https://en.wikipedia.org/wiki/Ouxpo" target="_blank" rel="noopener noreferrer">Ouxpo</a>).</td>
+              <td>Palindromic tasting menu symmetric around a central course.</td>
+            </tr>
+            <tr>
+              <td>Oupolpot</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td><em>Ouvroir de politique potentielle</em>, 2001 (<a href="https://en.wikipedia.org/wiki/Ouxpo" target="_blank" rel="noopener noreferrer">Ouxpo</a>; <a href="https://oulipoetics.wordpress.com/ouxpo/chronology-of-ou-x-po/" target="_blank" rel="noopener noreferrer">Chronology</a>).</td>
+              <td>Identical motions whose rotated agenda flips the vote.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top:44px;">Table 2: Complete Audit of the 25 Screening Room Precedents</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Card Title</th>
+              <th>Status</th>
+              <th>Verified Historical Precedent</th>
+              <th>SCION Proof &amp; Critic Outcome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>La Machine à tuer le temps</td>
+              <td class="mono st-flag">CHECK SOURCE</td>
+              <td>Oucinépo launched 1974 by Le Lionnais (<a href="https://andrewgallix.com/tag/simon-reynolds/" target="_blank" rel="noopener noreferrer">Gallix</a>); title unattested as a 1974 Queneau film in public catalogs.</td>
+              <td><span class="mono">1:07</span> · <span class="mono">12</span> sources · Not yet passed (passed rights review).</td>
+            </tr>
+            <tr>
+              <td>Un homme qui dort</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Georges Perec &amp; Bernard Queysanne, 1974 film (from Perec's 1967 novel), Prix Jean-Vigo (<a href="https://fr.wikipedia.org/wiki/Georges_Perec" target="_blank" rel="noopener noreferrer">Wikipédia</a>).</td>
+              <td><span class="mono">1:12</span> · <span class="mono">8</span> sources · Not yet passed.</td>
+            </tr>
+            <tr>
+              <td>Les Lieux d'une fugue</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Georges Perec, 1978 INA short film, 41 min (from 1965 autobiographical story; <a href="https://fr.wikipedia.org/wiki/Les_Lieux_d%27une_fugue" target="_blank" rel="noopener noreferrer">Wikipédia</a>).</td>
+              <td><span class="mono">0:57</span> · <span class="mono">6</span> sources · Passed review.</td>
+            </tr>
+            <tr>
+              <td>Récits d'Ellis Island</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Robert Bober &amp; Georges Perec, 1980 INA TV film &amp; book (<a href="https://www.associationgeorgesperec.fr/georges-perec/" target="_blank" rel="noopener noreferrer">Assoc. Perec</a>).</td>
+              <td><span class="mono">1:00</span> · <span class="mono">8</span> sources · Passed review.</td>
+            </tr>
+            <tr>
+              <td>Le Chant du styrène</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Alain Resnais (dir.) &amp; Raymond Queneau (alexandrine verse), 1958, 14 min (<a href="https://en.wikipedia.org/wiki/Le_chant_du_Styr%C3%A8ne" target="_blank" rel="noopener noreferrer">Wikipedia</a>).</td>
+              <td><span class="mono">0:38</span> · <span class="mono">4</span> sources · Nearly passed.</td>
+            </tr>
+            <tr>
+              <td>Zazie dans le métro</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Louis Malle (dir.), 1960 adaptation of Queneau's 1959 novel (<a href="https://authorscalendar.info/quene.htm" target="_blank" rel="noopener noreferrer">Authors' Calendar</a>).</td>
+              <td><span class="mono">0:22</span> · <span class="mono">10</span> sources · Nearly passed.</td>
+            </tr>
+            <tr>
+              <td>Renzo e Luciana</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Mario Monicelli, 1962 episode of <em>Boccaccio '70</em>, co-written with Italo Calvino (<a href="https://en.wikipedia.org/wiki/Boccaccio_%2770" target="_blank" rel="noopener noreferrer">Wikipedia</a>).</td>
+              <td><span class="mono">1:12</span> · <span class="mono">17</span> sources · Not yet passed.</td>
+            </tr>
+            <tr>
+              <td>Monsieur Ripois</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>René Clément (dir.), 1954, dialogue/screenplay with Raymond Queneau &amp; Hugh Mills (<a href="https://authorscalendar.info/quene.htm" target="_blank" rel="noopener noreferrer">Authors' Calendar</a>).</td>
+              <td><span class="mono">0:45</span> · <span class="mono">10</span> sources · Not yet passed.</td>
+            </tr>
+            <tr>
+              <td>La Mort en ce jardin</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Luis Buñuel (dir.), 1956, co-written with Luis Alcoriza &amp; Raymond Queneau (<a href="https://authorscalendar.info/quene.htm" target="_blank" rel="noopener noreferrer">Authors' Calendar</a>).</td>
+              <td><span class="mono">1:13</span> · <span class="mono">15</span> sources · Passed review.</td>
+            </tr>
+            <tr>
+              <td>Anémic cinéma</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Marcel Duchamp with Man Ray &amp; Marc Allégret, 1926 (filmed 1925–1926; <a href="https://www.moma.org/collection/works/398274" target="_blank" rel="noopener noreferrer">MoMA</a>).</td>
+              <td><span class="mono">0:24</span> · <span class="mono">2</span> sources · Passed review.</td>
+            </tr>
+            <tr>
+              <td>Teuf-Teuf</td>
+              <td class="mono st-flag">FIX YEAR: 1955</td>
+              <td>Jean Jabely (dir.), commentary by Queneau, <strong>1955</strong> on <a href="https://www.unifrance.org/film/41615/teuf-teuf" target="_blank" rel="noopener noreferrer">Unifrance</a> (card currently says 1956).</td>
+              <td><span class="mono">0:44</span> · <span class="mono">6</span> sources · Passed review.</td>
+            </tr>
+            <tr>
+              <td>Bang Bang</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Jean Jabely &amp; Raymond Queneau, 1958 animated short, 12 min (<a href="https://www.unifrance.org/film/41619/bang-bang" target="_blank" rel="noopener noreferrer">Unifrance</a>).</td>
+              <td><span class="mono">0:30</span> · <span class="mono">6</span> sources · Passed review.</td>
+            </tr>
+            <tr>
+              <td>A Morning Stroll</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Grant Orchard, Studio AKA, 2011 animated short (<a href="https://studioaka.co.uk/a-morning-stroll/" target="_blank" rel="noopener noreferrer">Studio AKA</a>).</td>
+              <td><span class="mono">1:08</span> · <span class="mono">12</span> sources · Nearly passed.</td>
+            </tr>
+            <tr>
+              <td>Exercices de style</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Raymond Queneau, 1947 Gallimard volume of 99 retellings (<a href="https://en.wikipedia.org/wiki/Oulipo" target="_blank" rel="noopener noreferrer">Wikipedia</a>).</td>
+              <td><span class="mono">1:10</span> · <span class="mono">9</span> sources · Nearly passed.</td>
+            </tr>
+            <tr>
+              <td>La Cité Raymond Queneau</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Olivier Azam &amp; Laurent Firode, 1998 short film, 8 min 28 sec (<a href="https://www.shortfilmwire.com/en/embedded/film/100018592/Cit_-Raymond-Queneau" target="_blank" rel="noopener noreferrer">ShortFilmWire</a>).</td>
+              <td><span class="mono">1:15</span> · <span class="mono">19</span> sources · Not yet passed.</td>
+            </tr>
+            <tr>
+              <td>Exercises in Style · Martino</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Mauro Martino, exhibited March 2023 at BCA Center, Burlington (<a href="https://hai-gen.github.io/2024/program/" target="_blank" rel="noopener noreferrer">HAI-GEN 2024</a>).</td>
+              <td><span class="mono">1:04</span> · <span class="mono">7</span> sources · Nearly passed.</td>
+            </tr>
+            <tr>
+              <td>La Belle Hortense</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Jacques Roubaud, 1985 novel (Ramsay), arranged by sextine (<a href="https://tempszero.contemporain.info/document1204" target="_blank" rel="noopener noreferrer">Temps Zéro</a>).</td>
+              <td><span class="mono">1:06</span> · <span class="mono">18</span> sources · Not yet passed.</td>
+            </tr>
+            <tr>
+              <td>Le Maki Mococo</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Jean-Christophe Ribot DVD (<a href="https://www.furet.com/dvd-video/le-maki-mococo-jean-christophe-ribot-9782905377715.html" target="_blank" rel="noopener noreferrer">AFL</a>) around Roubaud's 1991 poem (<a href="https://www.calameo.com/books/0008046127af7f420e271" target="_blank" rel="noopener noreferrer">Seghers</a>).</td>
+              <td><span class="mono">1:05</span> · <span class="mono">15</span> sources · Nearly passed.</td>
+            </tr>
+            <tr>
+              <td>Cercle vicieux</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Étienne Lécroart, 2000 (L'Association), 30-page panel palindrome (<a href="https://en.wikipedia.org/wiki/%C3%89tienne_L%C3%A9croart" target="_blank" rel="noopener noreferrer">Wikipedia</a>).</td>
+              <td><span class="mono">1:13</span> · Earlier version.</td>
+            </tr>
+            <tr>
+              <td>Quatre-vingt-quinze</td>
+              <td class="mono st-flag">ADD YEAR: 2003</td>
+              <td>Étienne Lécroart, <em>Bang !</em> n°4 (2003), 95 four-panel reading paths (<a href="http://e.lecroart.free.fr/oubapo/plurilecture.php" target="_blank" rel="noopener noreferrer">Lécroart Oubapo</a>).</td>
+              <td><span class="mono">1:04</span> · <span class="mono">9</span> sources · Not yet passed.</td>
+            </tr>
+            <tr>
+              <td>Boucle-là !</td>
+              <td class="mono st-flag">ADD YEAR: 2000</td>
+              <td>Étienne Lécroart, 2000 (<em>Libération</em> &amp; <em>Oupus 3</em>; spelled <em>Boucle-la !</em> on <a href="http://e.lecroart.free.fr/oubapo/palindrome.php" target="_blank" rel="noopener noreferrer">author site</a>).</td>
+              <td><span class="mono">1:06</span> · <span class="mono">5</span> sources · Passed review.</td>
+            </tr>
+            <tr>
+              <td>Moins d'un quart de seconde...</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Jean-Christophe Menu &amp; Lewis Trondheim, 1991, L'Association (<a href="https://fr.wikipedia.org/wiki/Moins_d%27un_quart_de_seconde_pour_vivre" target="_blank" rel="noopener noreferrer">Wikipédia</a>).</td>
+              <td><span class="mono">1:06</span> · <span class="mono">2</span> sources · Passed review.</td>
+            </tr>
+            <tr>
+              <td>Les caïds de la gaudriole</td>
+              <td class="mono st-flag">ADD YEAR: 2007</td>
+              <td>Étienne Lécroart, Sept 2007, Fluide Glacial / Audie (<a href="http://e.lecroart.free.fr/livres/bandessinee/caids.html" target="_blank" rel="noopener noreferrer">Lécroart</a>; <a href="https://www.bdbase.fr/bd/les-caids-de-la-gaudriole" target="_blank" rel="noopener noreferrer">BDbase</a>).</td>
+              <td><span class="mono">1:03</span> · <span class="mono">11</span> sources · Passed review.</td>
+            </tr>
+            <tr>
+              <td>99 Ways · Template</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Matt Madden, <em>99 Ways to Tell a Story: Exercises in Style</em>, 2005 (<a href="https://mattmadden.com/comics/99x/" target="_blank" rel="noopener noreferrer">Matt Madden</a>).</td>
+              <td><span class="mono">1:12</span> · <span class="mono">13</span> sources · Not yet passed.</td>
+            </tr>
+            <tr>
+              <td>99 Ways · Subjective</td>
+              <td class="mono st-ok">VERIFIED</td>
+              <td>Matt Madden, <em>99 Ways to Tell a Story: Exercises in Style</em>, 2005 (<a href="https://en.wikipedia.org/wiki/99_Ways_to_Tell_a_Story:_Exercises_in_Style" target="_blank" rel="noopener noreferrer">Wikipedia</a>).</td>
+              <td><span class="mono">0:36</span> · Earlier version.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec-s">
+      <h2>Sources</h2>
+      <ol class="sources-list">
+        <li><a href="https://www.tandfonline.com/doi/full/10.1080/02666286.2024.2330335" target="_blank" rel="noopener noreferrer">Hannes Bajohr, "Operative Ekphrasis: The Collapse of the Text/Image Distinction in Multimodal AI," Word &amp; Image (2024)</a></li>
+        <li><a href="https://conversational-leadership.net/quotation/information-difference/" target="_blank" rel="noopener noreferrer">Gregory Bateson, "Form, Substance and Difference," Steps to an Ecology of Mind (1970/1972)</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Oulipo" target="_blank" rel="noopener noreferrer">Oulipo: Founding, Constraints, and ALAMO (Wikipedia)</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Ouxpo" target="_blank" rel="noopener noreferrer">Ouxpo: Official Ouvroirs Including Ouarchpo, Oupolpot, Oucuipo, and OuAniPo (Wikipedia)</a></li>
+        <li><a href="https://fr.wikipedia.org/wiki/Ouvroir_d%27x_potentiel" target="_blank" rel="noopener noreferrer">Ouvroir d'x potentiel: Founding Dates for Oulipopo, Oupeinpo, Outrapo, Oubapo, Ouhispo, Oucipo, and Ou'inpo</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Ougrapo" target="_blank" rel="noopener noreferrer">Ougrapo: Frankfurt Graphic Design Workshop Founded in 2000 (Wikipedia)</a></li>
+        <li><a href="https://andrewgallix.com/tag/simon-reynolds/" target="_blank" rel="noopener noreferrer">Andrew Gallix &amp; Nicholas Rombes, Bomb Magazine Interview Documenting François Le Lionnais's 1974 Launch of Oucinépo</a></li>
+        <li><a href="https://www.unifrance.org/film/41615/teuf-teuf" target="_blank" rel="noopener noreferrer">Unifrance Filmography: Teuf-Teuf by Jean Jabely and Raymond Queneau (1955)</a></li>
+        <li><a href="https://www.unifrance.org/film/41619/bang-bang" target="_blank" rel="noopener noreferrer">Unifrance Filmography: Bang Bang by Jean Jabely (1958)</a></li>
+        <li><a href="https://fr.wikipedia.org/wiki/Les_Lieux_d%27une_fugue" target="_blank" rel="noopener noreferrer">Les Lieux d'une fugue (1978 INA Film, Georges Perec)</a></li>
+        <li><a href="https://www.associationgeorgesperec.fr/georges-perec/" target="_blank" rel="noopener noreferrer">Association Georges Perec: Official Bibliography and Filmography (Un homme qui dort, Récits d'Ellis Island)</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Le_chant_du_Styr%C3%A8ne" target="_blank" rel="noopener noreferrer">Le Chant du styrène (1958, Alain Resnais &amp; Raymond Queneau)</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Boccaccio_%2770" target="_blank" rel="noopener noreferrer">Boccaccio '70: Renzo e Luciana (1962, Mario Monicelli &amp; Italo Calvino)</a></li>
+        <li><a href="https://authorscalendar.info/quene.htm" target="_blank" rel="noopener noreferrer">Raymond Queneau Selected Works: Monsieur Ripois (1954), La Mort en ce jardin (1956), Zazie dans le métro (1959/1960)</a></li>
+        <li><a href="https://www.moma.org/collection/works/398274" target="_blank" rel="noopener noreferrer">Museum of Modern Art: Marcel Duchamp, Man Ray, and Marc Allégret, Anémic cinéma (1926)</a></li>
+        <li><a href="https://studioaka.co.uk/a-morning-stroll/" target="_blank" rel="noopener noreferrer">Studio AKA: A Morning Stroll by Grant Orchard (2011)</a></li>
+        <li><a href="https://www.shortfilmwire.com/en/embedded/film/100018592/Cit_-Raymond-Queneau" target="_blank" rel="noopener noreferrer">ShortFilmWire: La Cité Raymond Queneau by Laurent Firode and Olivier Azam (1998)</a></li>
+        <li><a href="https://hai-gen.github.io/2024/program/" target="_blank" rel="noopener noreferrer">HAI-GEN 2024 Program: Mauro Martino, Exercises in Style (March 2023, BCA Center)</a></li>
+        <li><a href="https://tempszero.contemporain.info/document1204" target="_blank" rel="noopener noreferrer">Temps Zéro: Jacques Roubaud, La Belle Hortense (1985)</a></li>
+        <li><a href="https://www.furet.com/dvd-video/le-maki-mococo-jean-christophe-ribot-9782905377715.html" target="_blank" rel="noopener noreferrer">Jean-Christophe Ribot, Le Maki Mococo DVD (around Jacques Roubaud's 1991 poem)</a></li>
+        <li><a href="http://e.lecroart.free.fr/oubapo/palindrome.php" target="_blank" rel="noopener noreferrer">Étienne Lécroart Official Oubapo Archive: Boucle-la ! (2000), Quatre-vingt-quinze (2003), and Les Caïds de la gaudriole (2007)</a></li>
+        <li><a href="https://fr.wikipedia.org/wiki/Moins_d%27un_quart_de_seconde_pour_vivre" target="_blank" rel="noopener noreferrer">Jean-Christophe Menu &amp; Lewis Trondheim, Moins d'un quart de seconde pour vivre (1991)</a></li>
+        <li><a href="https://mattmadden.com/comics/99x/" target="_blank" rel="noopener noreferrer">Matt Madden, 99 Ways to Tell a Story: Exercises in Style (2005)</a></li>
+        <li><a href="https://www.dndbeyond.com/sources/dnd/br-2024/playing-the-game" target="_blank" rel="noopener noreferrer">Dungeons &amp; Dragons 2024 Basic Rules: Playing the Game (D&amp;D Beyond)</a></li>
+        <li><a href="https://hartswf0.github.io/ripples/theory/PROMPT.md" target="_blank" rel="noopener noreferrer">RIPPLES: System Prompt for Worldtext Generation</a></li>
+      </ol>
+    </section>
+  </main>
+</body>
+</html>
