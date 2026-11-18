@@ -1,2350 +1,1072 @@
 <!doctype html>
-<html lang="en" data-plate="paper">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Turkey Sub · Key Ring &amp; Classroom Packs</title>
-  <meta name="description" content="Sortable, color-coded key ring and bundled classroom packs for Trout Town · Turkey Sub and PAELEO: 30 distinct keys (K-01 to K-30) with bespoke SVG icons, Front/Back click-through light table, instant print, and 1-click pack ZIP downloads.">
-  <meta name="theme-color" id="themeColorMeta" content="#f8f5ee">
+  <title>Turkey Sub</title>
+  <meta name="description" content="Turkey Sub classroom sheets, films, guides, and interactive atlases.">
+  <meta name="theme-color" content="#faf8f3">
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-  <script>
-    (function () {
-      try {
-        var saved = localStorage.getItem('turkey_sub_plate');
-        if (saved === 'porthole' || saved === 'paper') {
-          document.documentElement.setAttribute('data-plate', saved);
-          var m = document.getElementById('themeColorMeta');
-          if (m) m.setAttribute('content', saved === 'porthole' ? '#0d191e' : '#f8f5ee');
-        }
-      } catch (e) {}
-    })();
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root,
-    html[data-plate="paper"] {
-      --bg: #f8f5ee;
-      --surface: #ffffff;
-      --surface-2: #f0ece1;
-      --ink: #14282f;
-      --ink-2: #2f464e;
-      --muted: #5c7178;
-      --line: #d5cebf;
-      --line-strong: #14282f;
-      --bar-bg: rgba(248, 245, 238, 0.95);
-      --shadow: 0 2px 10px rgba(20, 40, 47, 0.06);
+    :root {
+      --paper: #faf8f3;
+      --ink: #14181a;
+      --ink-2: #465055;
+      --mute: #737e84;
+      --rule: #e2ddd2;
+      --rule-dark: #14181a;
+      --hover: #f1ede3;
 
-      /* 5 Material Track Colors */
-      --t-film: #b56c06;
-      --t-film-bg: #fef2dc;
-      --t-app: #1c586e;
-      --t-app-bg: #e3eff4;
-      --t-kit: #2b6844;
-      --t-kit-bg: #e4f1e9;
-      --t-sheet: #a8421f;
-      --t-sheet-bg: #fceae3;
-      --t-essay: #4c437a;
-      --t-essay-bg: #eceaf8;
+      /* Clean 5-type color coding + 3-dice colors */
+      --c-sheet: #a84623;   /* Student Sheet · Rust (also 5–6 Preposterous) */
+      --c-kit:   #2e6b47;   /* Teacher Guide · Moss (also 3–4 Plausible) */
+      --c-film:  #c47d12;   /* Film · Amber */
+      --c-app:   #1f566e;   /* Interactive / Atlas · Teal (also 1–2 Probable) */
+      --c-essay: #514682;   /* Essay · Indigo */
 
-      /* Classroom 3-Color Outcome Key */
-      --g-prob: #1f566e;
-      --g-prob-bg: #e5eff3;
-      --g-plaus: #356949;
-      --g-plaus-bg: #e6efe8;
-      --g-prep: #a84623;
-      --g-prep-bg: #fbeade;
-
-      /* Verdict Accents */
-      --v-pick: #1f6e43;
-      --v-pick-bg: #e1f4e9;
-      --v-test: #9a5b00;
-      --v-test-bg: #fff1d6;
-
-      --serif: 'Fraunces', Georgia, serif;
-      --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-      color-scheme: light;
-    }
-
-    html[data-plate="porthole"] {
-      --bg: #0d191e;
-      --surface: #13242b;
-      --surface-2: #192f38;
-      --ink: #f3efe4;
-      --ink-2: #cfdcda;
-      --muted: #8fa9ae;
-      --line: #27424c;
-      --line-strong: #a7cbd3;
-      --bar-bg: rgba(13, 25, 30, 0.95);
-      --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-
-      --t-film: #f4b643;
-      --t-film-bg: rgba(244, 182, 67, 0.15);
-      --t-app: #6ac8e6;
-      --t-app-bg: rgba(106, 200, 230, 0.15);
-      --t-kit: #70d497;
-      --t-kit-bg: rgba(112, 212, 151, 0.15);
-      --t-sheet: #f58e6b;
-      --t-sheet-bg: rgba(245, 142, 107, 0.15);
-      --t-essay: #b8aff2;
-      --t-essay-bg: rgba(184, 175, 242, 0.16);
-
-      --g-prob: #6ac8e6;
-      --g-prob-bg: rgba(31, 86, 110, 0.42);
-      --g-plaus: #70d497;
-      --g-plaus-bg: rgba(53, 105, 73, 0.42);
-      --g-prep: #f58e6b;
-      --g-prep-bg: rgba(168, 70, 35, 0.4);
-
-      --v-pick: #6ee7a0;
-      --v-pick-bg: rgba(31, 110, 67, 0.38);
-      --v-test: #fbbf24;
-      --v-test-bg: rgba(154, 91, 0, 0.36);
-
-      color-scheme: dark;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; scroll-padding-top: 130px; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
       margin: 0;
-      padding-bottom: 90px;
-      background: var(--bg);
+      background: var(--paper);
       color: var(--ink);
       font-family: var(--sans);
-      font-size: 15px;
-      line-height: 1.48;
+      font-size: 16px;
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
-      overflow-x: clip;
     }
     a { color: inherit; }
-    button, input, select { font: inherit; color: inherit; }
-    button { cursor: pointer; }
-    :focus-visible { outline: 2px solid var(--t-film); outline-offset: 2px; }
+    button, input { font: inherit; color: inherit; }
+    button { cursor: pointer; background: none; border: 0; padding: 0; }
+    :focus-visible { outline: 2px solid var(--c-app); outline-offset: 3px; }
     [hidden] { display: none !important; }
 
-    .wrap {
-      width: min(1320px, 100%);
+    .shell {
+      max-width: 820px;
       margin: 0 auto;
-      padding-inline: clamp(14px, 3.2vw, 34px);
+      padding: clamp(20px, 4vw, 44px) clamp(16px, 4vw, 28px) 80px;
     }
 
-    /* ── COMPACT MASTHEAD ── */
-    .masthead {
-      border-bottom: 1px solid var(--line);
-      background: var(--surface);
+    /* ── HEADER ── */
+    .head {
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--rule-dark);
     }
-    .masthead-row {
+    .head-top {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       justify-content: space-between;
       gap: 12px;
-      padding-block: 11px;
       flex-wrap: wrap;
     }
-    .brand-cluster {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-    }
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      text-decoration: none;
+    h1 {
       font-family: var(--serif);
-      font-weight: 700;
-      font-size: clamp(19px, 2.2vw, 23px);
+      font-weight: 400;
+      font-size: clamp(30px, 5vw, 42px);
+      line-height: 1.05;
       letter-spacing: -0.02em;
+      margin: 0;
     }
-    .brand img { width: 30px; height: 30px; border-radius: 7px; }
-    .sub-stat {
-      font-family: var(--mono);
-      font-size: 11.5px;
-      color: var(--muted);
-      padding-left: 10px;
-      border-left: 1px solid var(--line);
-      white-space: nowrap;
-    }
-    .mast-actions {
+    .legend {
+      margin-top: 10px;
       display: flex;
-      align-items: center;
-      gap: 8px;
       flex-wrap: wrap;
+      gap: 6px 16px;
+      font-size: 13px;
+      color: var(--ink-2);
     }
-    .pill-btn {
+    .leg-item {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      min-height: 36px;
-      padding: 5px 11px;
-      border-radius: 7px;
-      border: 1px solid var(--line);
-      background: var(--surface-2);
-      font-size: 12.5px;
-      font-weight: 600;
+      cursor: pointer;
+      padding: 2px 0;
     }
-    .pill-btn[aria-expanded="true"] {
-      background: var(--ink);
-      color: var(--bg);
-      border-color: var(--ink);
+    .leg-item[aria-pressed="true"] {
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
-    .color-dots {
-      display: inline-flex;
-      gap: 3px;
-    }
-    .color-dots i {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
+    .swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
       display: inline-block;
     }
-    .plate-switch {
-      display: inline-flex;
-      border: 1px solid var(--line);
-      border-radius: 7px;
-      padding: 2px;
-      background: var(--surface-2);
-    }
-    .plate-opt {
-      border: 0;
-      background: transparent;
-      padding: 4px 9px;
-      border-radius: 5px;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--muted);
-      min-height: 30px;
-    }
-    .plate-opt.active {
-      background: var(--ink);
-      color: var(--bg);
-    }
 
-    /* ── COLLAPSIBLE 3-COLOR CLASSROOM GAUGE DRAWER ── */
-    .gauge-drawer {
-      border-bottom: 1px solid var(--line);
-      background: var(--surface-2);
-      padding-block: 16px;
-    }
-    .gauge-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .g-box {
-      padding: 12px 14px;
-      border-radius: 9px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-left: 5px solid var(--g-c);
-    }
-    .g-box b {
-      display: block;
-      font-family: var(--mono);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--g-c);
-      margin-bottom: 3px;
-    }
-    .g-box strong {
-      font-family: var(--serif);
-      font-size: 17px;
-      display: block;
-      margin-bottom: 4px;
-    }
-    .g-box p { margin: 0; font-size: 13px; color: var(--ink-2); }
-
-    /* ── STICKY OPERATIONAL CONTROL DECK ── */
-    .control-deck {
-      position: sticky;
-      top: 0;
-      z-index: 80;
-      background: var(--bar-bg);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1.5px solid var(--line);
-      padding-block: 10px;
-    }
-    .deck-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 8px;
-    }
-    .view-tabs {
-      display: inline-flex;
-      border: 1.5px solid var(--line-strong);
-      border-radius: 8px;
-      overflow: hidden;
-      background: var(--surface);
-    }
-    .view-tab {
-      border: 0;
-      background: transparent;
-      padding: 7px 13px;
-      min-height: 38px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-    .view-tab[aria-selected="true"] {
-      background: var(--ink);
-      color: var(--bg);
-    }
-    .sort-search {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex: 1 1 360px;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-    }
-    .sort-select {
-      min-height: 38px;
-      padding: 6px 10px;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      font-size: 13px;
-      font-weight: 600;
-    }
-    .search-wrap {
-      position: relative;
-      flex: 1 1 200px;
-      max-width: 320px;
-    }
-    .search-wrap input {
-      width: 100%;
-      min-height: 38px;
-      padding: 6px 30px 6px 11px;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      font-size: 16px; /* Prevents iOS Safari zoom */
-    }
-    .search-x {
-      position: absolute;
-      right: 5px;
-      top: 50%;
-      transform: translateY(-50%);
-      border: 0;
-      background: transparent;
-      font-size: 18px;
-      color: var(--muted);
-      padding: 2px 6px;
-    }
-
-    .filter-strip {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      padding-bottom: 2px;
-    }
-    .filter-strip::-webkit-scrollbar { display: none; }
-    .f-chip {
-      flex: 0 0 auto;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      min-height: 34px;
-      padding: 4px 11px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      font-size: 12.5px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-    .f-chip .dot { width: 9px; height: 9px; border-radius: 50%; }
-    .f-chip .n { font-family: var(--mono); font-size: 11px; opacity: 0.72; }
-    .f-chip[aria-pressed="true"] {
-      background: var(--ink);
-      color: var(--bg);
-      border-color: var(--ink);
-    }
-
-    /* ── ACTIVE ZIP PROGRESS BANNER (WORKING / FAULT STATE) ── */
-    .job-bar {
-      margin-top: 14px;
-      padding: 11px 14px;
-      border-radius: 9px;
-      border: 1.5px solid var(--t-app);
-      background: var(--t-app-bg);
+    /* ── QUIET CONTROLS ── */
+    .controls {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
       flex-wrap: wrap;
-      font-family: var(--mono);
-      font-size: 12.5px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--rule);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--paper);
     }
-    .job-bar.fault {
-      border-color: var(--t-sheet);
-      background: var(--t-sheet-bg);
-    }
-
-    /* ── PACK CONTAINERS (GROUPED VIEW) ── */
-    .pack-block {
-      margin-top: 22px;
-      background: var(--surface);
-      border: 1.5px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-    .pack-head {
-      padding: 15px 18px;
-      background: var(--surface-2);
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px 18px;
-      flex-wrap: wrap;
-    }
-    .pack-kicker {
+    .nav-modes {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 14px;
       flex-wrap: wrap;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 4px;
+      font-size: 14px;
     }
-    .pack-id {
-      padding: 2px 7px;
-      border-radius: 4px;
-      background: var(--ink);
-      color: var(--bg);
+    .mode-link {
+      color: var(--mute);
+      padding: 4px 0;
+      min-height: 34px;
+    }
+    .mode-link:hover { color: var(--ink); }
+    .mode-link.active {
+      color: var(--ink);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+      text-decoration-thickness: 2px;
+    }
+    .find-input {
+      border: 0;
+      border-bottom: 1px solid var(--rule);
+      background: transparent;
+      padding: 5px 2px;
+      font-size: 16px;
+      width: 190px;
+      color: var(--ink);
+    }
+    .find-input:focus {
+      outline: none;
+      border-bottom-color: var(--ink);
+    }
+
+    /* ── STATUS / PROGRESS LINE (ONLY VISIBLE WHEN ACTIVE) ── */
+    .status-line {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--rule-dark);
+      font-family: var(--mono);
+      font-size: 12.5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .text-btn {
+      font-family: var(--mono);
+      font-size: 12px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      padding: 4px 2px;
+    }
+
+    /* ── STARRED SUMMARY BAR (ONLY VISIBLE WHEN >= 1 STARRED) ── */
+    .star-bar {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 13.5px;
+    }
+    .star-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* ── PACK HEADINGS ── */
+    .pack-group {
+      margin-top: 30px;
+    }
+    .pack-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--rule-dark);
     }
     .pack-head h2 {
       font-family: var(--serif);
-      font-size: clamp(19px, 2.3vw, 24px);
-      margin: 0 0 3px;
-      letter-spacing: -0.02em;
-    }
-    .pack-head p {
+      font-weight: 400;
+      font-size: 20px;
       margin: 0;
+    }
+    .pack-sub {
+      font-size: 13px;
+      color: var(--mute);
+      margin: 4px 0 6px;
+    }
+
+    /* ── CLEAN HAIRLINE ROWS ── */
+    .item-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 24px 34px minmax(0, 1fr) auto 34px;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 6px 12px 12px;
+      border-bottom: 1px solid var(--rule);
+      border-left: 4px solid var(--row-c, var(--rule));
+      transition: background-color 0.1s ease;
+    }
+    .row:hover { background: var(--hover); }
+    .row[data-track="sheet"] { --row-c: var(--c-sheet); }
+    .row[data-track="kit"]   { --row-c: var(--c-kit); }
+    .row[data-track="film"]  { --row-c: var(--c-film); }
+    .row[data-track="app"]   { --row-c: var(--c-app); }
+    .row[data-track="essay"] { --row-c: var(--c-essay); }
+
+    .row-icon {
+      width: 22px;
+      height: 22px;
+      color: var(--row-c);
+      display: grid;
+      place-items: center;
+    }
+    .row-icon svg { width: 20px; height: 20px; }
+
+    .row-id {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .row-main {
+      min-width: 0;
+      text-align: left;
+      display: block;
+      width: 100%;
+    }
+    .row-title {
+      font-weight: 600;
+      font-size: 15.5px;
+      color: var(--ink);
+      display: block;
+    }
+    .row-desc {
       font-size: 13.5px;
       color: var(--ink-2);
-      max-width: 70ch;
-    }
-    .pack-btns {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .pack-zip-btn {
-      min-height: 40px;
-      padding: 7px 13px;
-      border-radius: 8px;
-      border: 1.5px solid var(--line-strong);
-      background: var(--surface);
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .pack-zip-btn:hover {
-      background: var(--ink);
-      color: var(--bg);
-    }
-
-    /* ── KEY RING GRID & KEY CARDS ── */
-    .key-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
-      gap: 14px;
-      padding: 16px;
-    }
-    .flat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .key-card {
-      background: var(--surface);
-      border: 1.5px solid var(--line);
-      border-left: 6px solid var(--k-accent, var(--ink));
-      border-radius: 11px;
-      display: flex;
-      flex-direction: column;
+      display: block;
+      white-space: nowrap;
       overflow: hidden;
-      transition: border-color 0.14s ease, opacity 0.14s ease;
-      min-width: 0;
-    }
-    .key-card[data-track="film"] { --k-accent: var(--t-film); --k-bg: var(--t-film-bg); }
-    .key-card[data-track="app"] { --k-accent: var(--t-app); --k-bg: var(--t-app-bg); }
-    .key-card[data-track="kit"] { --k-accent: var(--t-kit); --k-bg: var(--t-kit-bg); }
-    .key-card[data-track="sheet"] { --k-accent: var(--t-sheet); --k-bg: var(--t-sheet-bg); }
-    .key-card[data-track="essay"] { --k-accent: var(--t-essay); --k-bg: var(--t-essay-bg); }
-
-    .key-card[data-verdict="pick"] {
-      border-color: var(--v-pick);
-      box-shadow: 0 0 0 2px var(--v-pick);
-    }
-    .key-card[data-verdict="test"] {
-      border-color: var(--v-test);
-    }
-    .key-card[data-verdict="skip"] {
-      opacity: 0.48;
+      text-overflow: ellipsis;
     }
 
-    /* Key Identity Row (Unique SVG Key Fob + Callout ID + Timestamp) */
-    .key-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--line);
-      background: var(--k-bg);
-    }
-    .key-id-group {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      min-width: 0;
-    }
-    .key-fob {
-      width: 38px;
-      height: 38px;
-      border-radius: 8px;
-      background: var(--surface);
-      border: 1.5px solid var(--k-accent);
-      color: var(--k-accent);
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-    }
-    .key-fob svg { width: 24px; height: 24px; }
-    .callout-btn {
-      border: 1px solid var(--k-accent);
-      background: var(--surface);
-      color: var(--ink);
+    .row-meta {
       font-family: var(--mono);
-      font-size: 13px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 5px;
-      letter-spacing: 0.03em;
-    }
-    .callout-btn:hover {
-      background: var(--k-accent);
-      color: #fff;
-    }
-    .track-lbl {
-      font-family: var(--mono);
-      font-size: 10.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--k-accent);
+      font-size: 11.5px;
+      color: var(--mute);
+      text-align: right;
       white-space: nowrap;
     }
-    .key-meta-right {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--muted);
-      flex: 0 0 auto;
-    }
-    .finder-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      display: inline-block;
-      border: 1px solid rgba(0,0,0,0.2);
-    }
 
-    /* Key Preview Strip + Body */
-    .key-mid {
-      display: grid;
-      grid-template-columns: 112px minmax(0, 1fr);
-      gap: 12px;
-      padding: 12px;
-      align-items: start;
-      flex: 1;
-    }
-    .key-thumb-btn {
-      position: relative;
-      display: block;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      padding: 0;
-      border: 1px solid var(--line);
-      border-radius: 7px;
-      overflow: hidden;
-      background: var(--surface-2);
-    }
-    .key-thumb-btn img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
-    }
-    .key-thumb-fallback {
-      width: 100%;
-      height: 100%;
+    .star-btn {
+      width: 34px;
+      height: 34px;
       display: grid;
       place-items: center;
-      background: #12252d;
-      color: #ffd466;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 700;
-      text-align: center;
-      padding: 6px;
-    }
-    .page-badge {
-      position: absolute;
-      bottom: 4px;
-      right: 4px;
-      background: rgba(13, 25, 30, 0.86);
-      color: #fff;
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 700;
-      padding: 1px 5px;
+      font-size: 18px;
+      color: var(--mute);
       border-radius: 4px;
     }
+    .star-btn[aria-pressed="true"] {
+      color: var(--c-film);
+    }
 
-    .key-copy { min-width: 0; }
-    .key-handle {
-      font-family: var(--serif);
-      font-size: 17.5px;
-      line-height: 1.18;
-      margin: 0 0 4px;
+    /* ── SINGLE-ITEM READER VIEW (REPLACES LIST CLEANLY) ── */
+    .reader {
+      padding-top: 14px;
     }
-    .key-handle button {
-      border: 0;
-      background: none;
-      padding: 0;
-      text-align: left;
-      font: inherit;
-      text-decoration: none;
+    .reader-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--rule);
+      font-size: 14px;
     }
-    .key-handle button:hover { text-decoration: underline; }
-    .key-diff {
-      margin: 0 0 6px;
+    .step-cluster {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--mono);
       font-size: 13px;
-      line-height: 1.42;
-      color: var(--ink-2);
     }
-    .key-specs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      font-family: var(--mono);
-      font-size: 10.5px;
-      color: var(--muted);
+    .step-btn {
+      padding: 6px 2px;
+      min-height: 36px;
     }
-    .spec-pill {
-      padding: 2px 6px;
-      border-radius: 4px;
-      background: var(--surface-2);
-    }
-    .key-note-preview {
-      margin-top: 6px;
-      font-size: 12px;
-      padding: 4px 7px;
-      border-radius: 5px;
-      background: var(--v-test-bg);
-      color: var(--ink);
-      font-style: italic;
-    }
+    .step-btn:disabled { opacity: 0.3; cursor: default; }
 
-    /* Key Action Footer (Verdict + Inspect/Print/Download) */
-    .key-foot {
+    .reader-head {
+      padding: 18px 0 14px;
+      border-left: 5px solid var(--row-c, var(--ink));
+      padding-left: 14px;
+      margin-top: 16px;
+    }
+    .reader-kicker {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--mute);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-      padding: 8px 10px;
-      border-top: 1px solid var(--line);
-      background: var(--surface-2);
-      flex-wrap: wrap;
+      gap: 8px;
     }
-    .verdict-grp {
-      display: inline-flex;
-      gap: 4px;
+    .reader-kicker svg { width: 18px; height: 18px; color: var(--row-c); }
+    .reader-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(24px, 4vw, 32px);
+      line-height: 1.15;
+      margin: 6px 0;
     }
-    .v-btn {
-      min-height: 34px;
-      padding: 4px 8px;
-      border-radius: 6px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      font-family: var(--mono);
-      font-size: 11.5px;
-      font-weight: 600;
-    }
-    .v-btn[data-v="pick"][aria-pressed="true"] {
-      background: var(--v-pick);
-      border-color: var(--v-pick);
-      color: #fff;
-    }
-    html[data-plate="porthole"] .v-btn[data-v="pick"][aria-pressed="true"] { color: #06150c; }
-    .v-btn[data-v="test"][aria-pressed="true"] {
-      background: var(--v-test);
-      border-color: var(--v-test);
-      color: #fff;
-    }
-    html[data-plate="porthole"] .v-btn[data-v="test"][aria-pressed="true"] { color: #160d00; }
-    .v-btn[data-v="skip"][aria-pressed="true"] {
-      background: var(--ink);
-      border-color: var(--ink);
-      color: var(--bg);
+    .reader-desc {
+      margin: 0;
+      color: var(--ink-2);
+      font-size: 15px;
+      max-width: 64ch;
     }
 
-    .act-grp {
-      display: inline-flex;
-      gap: 5px;
+    .reader-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       flex-wrap: wrap;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
     }
-    .act-btn {
-      min-height: 34px;
-      padding: 5px 9px;
-      border-radius: 6px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      font-size: 12px;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 40px;
+      padding: 8px 15px;
+      border: 1px solid var(--rule-dark);
+      font-size: 14px;
       font-weight: 600;
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
+      background: transparent;
     }
-    .act-btn.primary {
-      background: var(--k-accent);
-      border-color: var(--k-accent);
-      color: #fff;
-    }
-    html[data-plate="porthole"] .act-btn.primary { color: #081317; }
-
-    /* ── CLICK-THROUGH LIGHT TABLE INSPECTOR (<dialog>) ── */
-    dialog.inspector {
-      width: min(96vw, 1080px);
-      max-height: 93dvh;
-      padding: 0;
-      border: 1.5px solid var(--line-strong);
-      border-radius: 14px;
-      background: var(--surface);
-      color: var(--ink);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
-    }
-    dialog.inspector::backdrop {
-      background: rgba(8, 15, 19, 0.76);
-    }
-    .insp-shell {
-      display: flex;
-      flex-direction: column;
-      max-height: 93dvh;
-    }
-    .insp-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 11px 15px;
-      border-bottom: 1px solid var(--line);
-      background: var(--surface-2);
-      flex-wrap: wrap;
-    }
-    .insp-nav {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .insp-pos {
-      font-family: var(--mono);
-      font-size: 11.5px;
-      color: var(--muted);
-      padding-inline: 4px;
-    }
-    .insp-body {
-      display: grid;
-      grid-template-columns: minmax(0, 1.55fr) minmax(270px, 0.85fr);
-      overflow-y: auto;
-      min-height: 0;
-      flex: 1;
-    }
-    .insp-stage {
-      background: var(--bg);
-      padding: 14px;
-      border-right: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-    }
-    .page-switcher {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .p-tab {
-      min-height: 34px;
-      padding: 4px 10px;
-      border-radius: 6px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      font-family: var(--mono);
-      font-size: 11.5px;
-      font-weight: 600;
-    }
-    .p-tab.active {
+    .btn.solid {
       background: var(--ink);
-      color: var(--bg);
-      border-color: var(--ink);
+      color: var(--paper);
     }
-    .insp-stage img {
-      max-width: 100%;
-      max-height: 68dvh;
-      width: auto;
+
+    .page-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 12px 0 8px;
+      font-family: var(--mono);
+      font-size: 12.5px;
+    }
+    .p-link { color: var(--mute); padding: 4px 2px; }
+    .p-link.active {
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .stage {
+      margin-top: 10px;
+    }
+    .stage img {
+      display: block;
+      width: 100%;
       height: auto;
-      border-radius: 6px;
-      border: 1px solid var(--line);
+      border: 1px solid var(--rule);
       background: #fff;
     }
-    .insp-stage video {
+    .stage video {
+      display: block;
       width: 100%;
-      max-height: 66dvh;
-      border-radius: 8px;
       background: #000;
     }
 
-    .insp-meta {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .insp-id-line {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .insp-title {
-      font-family: var(--serif);
-      font-size: 22px;
-      line-height: 1.18;
-      margin: 0;
-    }
-    .insp-file {
-      font-family: var(--mono);
-      font-size: 11.5px;
-      color: var(--muted);
-      word-break: break-all;
-    }
-    .insp-box {
-      padding: 11px 12px;
-      border-radius: 8px;
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-      font-size: 13.5px;
-    }
-    .insp-note {
-      width: 100%;
-      min-height: 40px;
-      padding: 8px 10px;
-      border-radius: 7px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      font-size: 16px;
-    }
-    .insp-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-    .insp-actions .act-btn {
-      justify-content: center;
-      min-height: 42px;
+    .dice-note {
+      margin-top: 40px;
+      padding-top: 14px;
+      border-top: 1px solid var(--rule);
       font-size: 13px;
-    }
-    .insp-variants {
+      color: var(--mute);
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    /* ── PERSISTENT BOTTOM CURATION TRAY (HIDDEN AT REST) ── */
-    .curation-tray {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 88;
-      background: var(--ink);
-      color: var(--bg);
-      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
-      box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.25);
-    }
-    .tray-inner {
-      width: min(1320px, 100%);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
       justify-content: space-between;
       gap: 10px;
       flex-wrap: wrap;
     }
-    .tray-counts {
-      font-family: var(--mono);
-      font-size: 12.5px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .tray-btns {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      flex-wrap: wrap;
-    }
-    .tray-btn {
-      min-height: 36px;
-      padding: 5px 11px;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.32);
-      background: transparent;
-      color: inherit;
-      font-family: var(--mono);
-      font-size: 11.5px;
-      font-weight: 600;
-    }
-    html[data-plate="porthole"] .tray-btn {
-      border-color: rgba(0, 0, 0, 0.35);
-    }
-    .tray-btn.hi {
-      background: var(--t-film);
-      border-color: var(--t-film);
-      color: #fff;
-    }
-    html[data-plate="porthole"] .tray-btn.hi { color: #120b00; }
 
-    .empty-msg {
-      margin: 28px 0;
-      padding: 28px;
-      text-align: center;
-      border: 1.5px dashed var(--line);
-      border-radius: 12px;
-      color: var(--muted);
-    }
-
-    @media (max-width: 820px) {
-      .gauge-grid { grid-template-columns: 1fr; }
-      .insp-body { grid-template-columns: 1fr; }
-      .insp-stage { border-right: 0; border-bottom: 1px solid var(--line); }
-    }
-    @media (max-width: 560px) {
-      .sub-stat { display: none; }
-      .key-mid { grid-template-columns: 92px minmax(0, 1fr); gap: 10px; padding: 10px; }
-      .sort-search { flex: 1 1 100%; justify-content: stretch; }
-      .sort-select, .search-wrap { flex: 1 1 100%; max-width: 100%; }
-      .key-grid { padding: 10px; gap: 10px; }
+    @media (max-width: 600px) {
+      .row {
+        grid-template-columns: 22px 30px minmax(0, 1fr) 34px;
+        padding: 11px 4px 11px 10px;
+      }
+      .row-meta { display: none; }
+      .row-desc { white-space: normal; }
+      .find-input { width: 100%; }
+      .controls { gap: 8px; }
     }
   </style>
 </head>
 <body>
-
-  <!-- MASTHEAD -->
-  <header class="masthead">
-    <div class="wrap masthead-row">
-      <div class="brand-cluster">
-        <a class="brand" href="#top">
-          <img src="./favicon.svg" alt="" width="30" height="30">
-          <span>Turkey Sub</span>
-        </a>
-        <span class="sub-stat">30 Keys (`K-01`–`K-30`) · 7 Classroom Packs</span>
+  <div class="shell">
+    <!-- HEADER -->
+    <header class="head">
+      <div class="head-top">
+        <h1><a href="#" id="homeTitle" style="text-decoration:none">Turkey Sub</a></h1>
+        <span style="font-family:var(--mono);font-size:12px;color:var(--mute)">30 items · K-01 to K-30</span>
       </div>
-      <div class="mast-actions">
-        <button type="button" class="pill-btn" id="gaugeToggle" aria-expanded="false" aria-controls="gaugeDrawer">
-          <span class="color-dots"><i style="background:var(--g-prob)"></i><i style="background:var(--g-plaus)"></i><i style="background:var(--g-prep)"></i></span>
-          <span>3-Color Key</span>
-        </button>
-        <div class="plate-switch" role="group" aria-label="Theme">
-          <button type="button" class="plate-opt active" data-plate-btn="paper">Paper</button>
-          <button type="button" class="plate-opt" data-plate-btn="porthole">Porthole</button>
-        </div>
+
+      <!-- 1-LINE CLICKABLE COLOR LEGEND -->
+      <div class="legend" role="toolbar" aria-label="Filter by color">
+        <button type="button" class="leg-item" data-type="all" aria-pressed="true">All</button>
+        <button type="button" class="leg-item" data-type="sheet" aria-pressed="false"><span class="swatch" style="background:var(--c-sheet)"></span>Student Sheet</button>
+        <button type="button" class="leg-item" data-type="kit" aria-pressed="false"><span class="swatch" style="background:var(--c-kit)"></span>Teacher Guide</button>
+        <button type="button" class="leg-item" data-type="film" aria-pressed="false"><span class="swatch" style="background:var(--c-film)"></span>Film</button>
+        <button type="button" class="leg-item" data-type="app" aria-pressed="false"><span class="swatch" style="background:var(--c-app)"></span>Interactive</button>
+        <button type="button" class="leg-item" data-type="essay" aria-pressed="false"><span class="swatch" style="background:var(--c-essay)"></span>Essay</button>
+      </div>
+    </header>
+
+    <!-- ACTIVE DOWNLOAD / PRINT TRACE (HIDDEN AT REST) -->
+    <div class="status-line" id="statusLine" hidden role="status" aria-live="polite">
+      <span id="statusText"></span>
+      <div style="display:flex;gap:12px">
+        <button type="button" class="text-btn" id="stopBtn" hidden>Stop</button>
+        <button type="button" class="text-btn" id="dismissBtn" hidden>Close</button>
       </div>
     </div>
-  </header>
 
-  <!-- ON-DEMAND 3-COLOR OUTCOME & CREW KEY -->
-  <section class="gauge-drawer" id="gaugeDrawer" hidden>
-    <div class="wrap">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-        <strong>Classroom 3-Color Outcome, PSI &amp; Crew Key</strong>
-        <span style="font-family:var(--mono);font-size:12px;color:var(--muted)">1 Trio · 1d6 Fair Die · 24h Air Clock</span>
+    <!-- LIST VIEW -->
+    <div id="listView">
+      <div class="controls">
+        <div class="nav-modes" role="tablist" aria-label="Order">
+          <button type="button" class="mode-link active" data-mode="packs">Packs (7)</button>
+          <button type="button" class="mode-link" data-mode="newest">Newest</button>
+          <button type="button" class="mode-link" data-mode="oldest">Oldest</button>
+          <button type="button" class="mode-link" data-mode="starred" id="starredTab" hidden>★ Starred</button>
+        </div>
+        <input type="search" class="find-input" id="findInput" placeholder="Find # or word…" aria-label="Search">
       </div>
-      <div class="gauge-grid">
-        <div class="g-box" style="--g-c:var(--g-prob)">
-          <b>Faces 1–2 · 14.7 PSI · Teal</b>
-          <strong>Probable (Expected)</strong>
-          <p>Same river rule (real mud, current, glare). Paired with <strong>Pilot</strong> (sets scene, rolls &amp; draws change).</p>
-        </div>
-        <div class="g-box" style="--g-c:var(--g-plaus)">
-          <b>Faces 3–4 · 40 PSI · Moss</b>
-          <strong>Plausible (Could happen)</strong>
-          <p>One extra clue or Trout Town civic law. Paired with <strong>Systems Scientist</strong> (odd faces 1, 3, 5).</p>
-        </div>
-        <div class="g-box" style="--g-c:var(--g-prep)">
-          <b>Faces 5–6 · 90 PSI · Terracotta</b>
-          <strong>Preposterous (One rule bends)</strong>
-          <p>Cartoon clinamen (light props gate, boot sneezes). Paired with <strong>Trout Witness</strong> (even faces 2, 4, 6).</p>
+
+      <!-- STARRED SUMMARY (ONLY WHEN >= 1 STARRED) -->
+      <div class="star-bar" id="starBar" hidden>
+        <span id="starCountText"></span>
+        <div class="star-actions">
+          <button type="button" class="text-btn" id="copyStarredBtn">Copy callouts</button>
+          <button type="button" class="text-btn" id="zipStarredBtn">Download .zip</button>
+          <button type="button" class="text-btn" id="undoStarBtn" hidden>Undo</button>
+          <button type="button" class="text-btn" id="clearStarBtn">Clear</button>
         </div>
       </div>
+
+      <div id="listContent"></div>
+
+      <p id="emptyState" hidden style="padding:32px 0;color:var(--mute)">
+        Nothing matches. <button type="button" class="text-btn" id="resetSearchBtn">Show all 30 items</button>
+      </p>
     </div>
-  </section>
 
-  <!-- STICKY OPERATIONAL CONTROL DECK -->
-  <div class="control-deck" id="top">
-    <div class="wrap">
-      <div class="deck-top">
-        <div class="view-tabs" role="tablist" aria-label="Organization mode">
-          <button type="button" class="view-tab" role="tab" id="tabPacks" aria-selected="true">7 Packs (With Videos)</button>
-          <button type="button" class="view-tab" role="tab" id="tabFlat" aria-selected="false">All 30 Keys (Sortable)</button>
-        </div>
-
-        <div class="sort-search">
-          <label for="sortSelect" style="position:absolute;left:-9999px">Sort order</label>
-          <select id="sortSelect" class="sort-select" aria-label="Sort keys">
-            <option value="newest">Sort: Newest Added (6:14 PM ↓)</option>
-            <option value="oldest">Sort: Oldest Added (3:06 PM ↑)</option>
-            <option value="time">Sort: Shortest Table Time</option>
-            <option value="code">Sort: Key Code (K-01 → K-30)</option>
-            <option value="tag">Sort: Finder Color Tag</option>
-          </select>
-          <div class="search-wrap">
-            <input type="search" id="searchBox" placeholder="Find K-02, bell, hydrostatic, 6:12…" aria-label="Search keys" autocomplete="off">
-            <button type="button" class="search-x" id="searchClear" aria-label="Clear search" hidden>&times;</button>
-          </div>
+    <!-- SINGLE-ITEM READER VIEW (OPENED WHEN CLICKING ANY ROW) -->
+    <section class="reader" id="readerView" hidden>
+      <div class="reader-nav">
+        <button type="button" class="text-btn" id="backToList" style="font-size:14px">← All items</button>
+        <div class="step-cluster">
+          <button type="button" class="step-btn" id="prevItem">← Prev</button>
+          <span id="itemPos" style="color:var(--mute)"></span>
+          <button type="button" class="step-btn" id="nextItem">Next →</button>
         </div>
       </div>
 
-      <div class="filter-strip" role="toolbar" aria-label="Filter keys">
-        <button type="button" class="f-chip" data-filter="all" aria-pressed="true">All <span class="n" data-cnt="all">30</span></button>
-        <button type="button" class="f-chip" data-filter="pick" aria-pressed="false">★ Picks <span class="n" data-cnt="pick">0</span></button>
-        <button type="button" class="f-chip" data-filter="test" aria-pressed="false">◐ Test <span class="n" data-cnt="test">0</span></button>
-        <button type="button" class="f-chip" data-filter="sheet" aria-pressed="false"><span class="dot" style="background:var(--t-sheet)"></span>Student Sheets <span class="n" data-cnt="sheet">10</span></button>
-        <button type="button" class="f-chip" data-filter="kit" aria-pressed="false"><span class="dot" style="background:var(--t-kit)"></span>Teacher Kits <span class="n" data-cnt="kit">8</span></button>
-        <button type="button" class="f-chip" data-filter="film" aria-pressed="false"><span class="dot" style="background:var(--t-film)"></span>Films <span class="n" data-cnt="film">5</span></button>
-        <button type="button" class="f-chip" data-filter="app" aria-pressed="false"><span class="dot" style="background:var(--t-app)"></span>Interactive &amp; Atlases <span class="n" data-cnt="app">3</span></button>
-        <button type="button" class="f-chip" data-filter="essay" aria-pressed="false"><span class="dot" style="background:var(--t-essay)"></span>Essays <span class="n" data-cnt="essay">4</span></button>
-        <button type="button" class="f-chip" data-filter="skip" aria-pressed="false" id="chipSkip" hidden>✕ Skipped <span class="n" data-cnt="skip">0</span></button>
+      <div class="reader-head" id="readerHead">
+        <div class="reader-kicker">
+          <span id="readerIcon"></span>
+          <strong id="readerCode"></strong>
+          <span>·</span>
+          <span id="readerMeta"></span>
+        </div>
+        <h2 class="reader-title" id="readerTitle"></h2>
+        <p class="reader-desc" id="readerDesc"></p>
       </div>
-    </div>
+
+      <div class="reader-actions" id="readerActions"></div>
+
+      <div class="page-bar" id="readerPages" hidden></div>
+
+      <div class="stage" id="readerStage"></div>
+    </section>
+
+    <footer class="dice-note">
+      <span>Trout Town · Turkey Sub</span>
+      <span>Dice color key: <b style="color:var(--c-app)">1–2 Probable</b> · <b style="color:var(--c-kit)">3–4 Plausible</b> · <b style="color:var(--c-sheet)">5–6 Preposterous</b></span>
+    </footer>
   </div>
 
-  <!-- MAIN WORKSPACE -->
-  <main class="wrap">
-    <!-- Active ZIP Packing / Print Status Bar (Only shown during WORKING / FAULT / COMPLETE) -->
-    <div class="job-bar" id="jobBar" hidden role="status" aria-live="polite">
-      <span id="jobText">Preparing pack…</span>
-      <div style="display:flex;gap:8px">
-        <button type="button" class="pill-btn" id="jobStopBtn" hidden>Stop</button>
-        <button type="button" class="pill-btn" id="jobDismissBtn" hidden>Dismiss</button>
-      </div>
-    </div>
-
-    <!-- VIEW 1: 7 RUNNABLE PACKS -->
-    <div id="packsContainer"></div>
-
-    <!-- VIEW 2: FLAT SORTABLE KEY RING -->
-    <div id="flatContainer" class="flat-grid" hidden></div>
-
-    <!-- EMPTY SEARCH / FILTER RECOVERY -->
-    <div class="empty-msg" id="emptyMsg" hidden>
-      <p><strong id="emptyReason">No keys match the active filter.</strong></p>
-      <button type="button" class="pill-btn" id="resetAllBtn">Restore all 30 keys</button>
-    </div>
-  </main>
-
-  <!-- CLICK-THROUGH LIGHT TABLE INSPECTOR -->
-  <dialog class="inspector" id="inspectorDialog" aria-label="Key Inspector">
-    <div class="insp-shell">
-      <div class="insp-top">
-        <div class="insp-nav">
-          <button type="button" class="pill-btn" id="inspPrev" title="Previous key (Left Arrow)">← Prev</button>
-          <span class="insp-pos" id="inspPos">1 / 30</span>
-          <button type="button" class="pill-btn" id="inspNext" title="Next key (Right Arrow)">Next →</button>
-        </div>
-        <div class="verdict-grp" id="inspVerdictGrp">
-          <button type="button" class="v-btn" data-insp-v="pick" aria-pressed="false" title="Shortcut: 1">★ Pick</button>
-          <button type="button" class="v-btn" data-insp-v="test" aria-pressed="false" title="Shortcut: 2">◐ Test</button>
-          <button type="button" class="v-btn" data-insp-v="skip" aria-pressed="false" title="Shortcut: 3">✕ Skip</button>
-        </div>
-        <button type="button" class="pill-btn" id="inspClose">Close ✕</button>
-      </div>
-
-      <div class="insp-body">
-        <div class="insp-stage" id="inspStage">
-          <div class="page-switcher" id="inspPageTabs" hidden></div>
-          <div id="inspMediaWrap" style="width:100%;display:grid;place-items:center"></div>
-        </div>
-
-        <div class="insp-meta">
-          <div class="insp-id-line">
-            <div class="key-fob" id="inspIcon"></div>
-            <div>
-              <button type="button" class="callout-btn" id="inspCopyId" title="Copy direct link"></button>
-              <div class="insp-file" id="inspTimePack" style="margin-top:3px"></div>
-            </div>
-          </div>
-
-          <div>
-            <h2 class="insp-title" id="inspTitle"></h2>
-            <div class="insp-file" id="inspFile" style="margin-top:4px"></div>
-          </div>
-
-          <div class="insp-box" id="inspDiff"></div>
-
-          <div>
-            <label for="inspNote" style="display:block;font-family:var(--mono);font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;color:var(--muted)">Callout Note (Saved Locally)</label>
-            <input type="text" id="inspNote" class="insp-note" placeholder="e.g., Best front page — use for Friday table…">
-          </div>
-
-          <div class="insp-actions" id="inspActions"></div>
-
-          <div id="inspVariantsWrap" hidden>
-            <div style="font-family:var(--mono);font-size:11px;font-weight:700;margin-bottom:6px;text-transform:uppercase;color:var(--muted)">Companion Formats &amp; Quick-Prints</div>
-            <div class="insp-variants" id="inspVariants"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- PERSISTENT CURATION & CALLOUT TRAY (SHOWN ONLY WHEN >=1 MARK EXISTS) -->
-  <aside class="curation-tray" id="curationTray" hidden aria-label="Selected keys tray">
-    <div class="tray-inner">
-      <div class="tray-counts" id="trayCounts"></div>
-      <div class="tray-btns">
-        <button type="button" class="tray-btn hi" id="trayShowPicks">Show ★ Picks</button>
-        <button type="button" class="tray-btn" id="trayZipPicks">⬇ ZIP ★ Picks</button>
-        <button type="button" class="tray-btn" id="trayCopyBrief">Copy Callout List</button>
-        <button type="button" class="tray-btn" id="trayUndo" hidden>Undo</button>
-        <button type="button" class="tray-btn" id="trayReset">Reset</button>
-      </div>
-    </div>
-  </aside>
-
-  <!-- HIDDEN PRINT IFRAME -->
-  <iframe id="printFrame" title="Print helper" style="position:fixed;width:0;height:0;border:0;visibility:hidden"></iframe>
+  <iframe id="printFrame" title="Print" style="position:fixed;width:0;height:0;border:0;visibility:hidden"></iframe>
 
   <script>
     (function () {
-      // ── 30 BESPOKE SILHOUETTE SVG KEY ICONS (Unique shape per key!) ──
+      // 30 simple, distinct monochrome SVG icons
       var ICONS = {
-        'K-01': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="13" height="8" rx="4"/><path d="M6 10V7h7v3"/><path d="M16 14h5M19 11l3 3-3 3"/></svg>',
-        'K-02': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="5.5" r="1" fill="currentColor"/><circle cx="17.5" cy="9" r="1" fill="currentColor"/><circle cx="17.5" cy="15" r="1" fill="currentColor"/><circle cx="12" cy="18.5" r="1" fill="currentColor"/><circle cx="6.5" cy="15" r="1" fill="currentColor"/><circle cx="6.5" cy="9" r="1" fill="currentColor"/></svg>',
-        'K-03': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="4" width="7" height="5"/><rect x="14" y="4" width="7" height="5"/><rect x="3" y="11" width="7" height="5"/><rect x="14" y="11" width="7" height="5"/><path d="M3 19h18"/></svg>',
-        'K-04': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14"/><path d="M5 7l-2 6h4l-2-6zM19 7l-2 6h4l-2-6z"/><path d="M8 21h8"/></svg>',
-        'K-05': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,3 21,19 3,19"/><path d="M12 9v5M12 16.5v.5"/></svg>',
-        'K-06': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="12" height="9" rx="1"/><rect x="6" y="8" width="12" height="9" rx="1"/><rect x="10" y="11" width="12" height="9" rx="1"/></svg>',
-        'K-07': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14v16"/><path d="M5 4v16"/><path d="M8 4v9M12 4v9M16 4v9"/><path d="M7 13h10"/></svg>',
-        'K-08': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4v12a3 3 0 0 0 6 0V8a3 3 0 0 1 6 0v12"/><circle cx="7" cy="4" r="2"/><circle cx="19" cy="20" r="2"/></svg>',
-        'K-09': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 13l4-4"/><path d="M9 3h6M12 3v2"/><path d="M7 16h10"/></svg>',
+        'K-01': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="13" height="8" rx="4"/><path d="M6 10V7h7v3M16 14h5M19 11l3 3-3 3"/></svg>',
+        'K-02': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="5.5" r="1" fill="currentColor"/><circle cx="12" cy="18.5" r="1" fill="currentColor"/></svg>',
+        'K-03': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="7" height="6"/><rect x="14" y="4" width="7" height="6"/><rect x="3" y="14" width="7" height="6"/><rect x="14" y="14" width="7" height="6"/></svg>',
+        'K-04': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M8 21h8"/><path d="M5 7l-2 5h4zM19 7l-2 5h4z"/></svg>',
+        'K-05': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,3 21,19 3,19"/><path d="M12 9v5"/></svg>',
+        'K-06': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="11" height="8"/><rect x="7" y="9" width="11" height="8"/><rect x="11" y="13" width="10" height="7"/></svg>',
+        'K-07': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 20V4h14v16M9 4v9M15 4v9M7 13h10"/></svg>',
+        'K-08': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4v12a3 3 0 0 0 6 0V8a3 3 0 0 1 6 0v12"/></svg>',
+        'K-09': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 13l4-4M9 3h6"/></svg>',
         'K-10': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="12" r="4"/><path d="M11 12h10M18 12v4M21 12v3"/></svg>',
-        'K-11': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8c4-2 6 2 10 0s6 2 8 0"/><circle cx="12" cy="14" r="4"/><path d="M3 19c4-2 6 2 10 0s6 2 8 0"/></svg>',
+        'K-11': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8c4-2 6 2 10 0s6 2 8 0"/><circle cx="12" cy="14" r="3.5"/></svg>',
         'K-12': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17a9 9 0 0 1 18 0Z"/><path d="M9 17l-2-7M15 17l2-7"/></svg>',
-        'K-13': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="9" width="20" height="9" rx="4.5"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/><line x1="9" y1="13.5" x2="9" y2="13.5" stroke-width="3" stroke-linecap="round"/><line x1="15" y1="13.5" x2="15" y2="13.5" stroke-width="3" stroke-linecap="round"/></svg>',
-        'K-14': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17h13a4 4 0 0 0 2-7"/><circle cx="10" cy="12" r="5"/><circle cx="10" cy="12" r="2"/><path d="M17 9l2-4M20 10l2-3"/></svg>',
+        'K-13': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="9" width="20" height="9" rx="4.5"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg>',
+        'K-14': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17h13a4 4 0 0 0 2-7"/><circle cx="10" cy="12" r="4.5"/></svg>',
         'K-15': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4a5 5 0 0 0-5 5v5l-2 3h14l-2-3V9a5 5 0 0 0-5-5Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>',
-        'K-16': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8H6l3-3M6 8l3 3"/><path d="M6 16h12l-3-3M18 16l-3 3"/></svg>',
-        'K-17': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="12" y1="5" x2="12" y2="19"/><circle cx="7" cy="11" r="2.5"/><path d="M15 9h4M15 13h4"/></svg>',
-        'K-18': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1"/><rect x="7" y="6" width="10" height="4" stroke-dasharray="2 2"/><rect x="7" y="13" width="10" height="4"/></svg>',
-        'K-19': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="8" width="20" height="9" rx="4.5"/><circle cx="7" cy="12.5" r="1.3"/><circle cx="12" cy="12.5" r="1.3"/><circle cx="17" cy="12.5" r="1.3"/></svg>',
-        'K-20': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="1"/><line x1="9" y1="4" x2="9" y2="20" stroke-dasharray="2 2"/><line x1="15" y1="4" x2="15" y2="20" stroke-dasharray="2 2"/></svg>',
-        'K-21': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14V6h5v3"/><rect x="4" y="14" width="16" height="6" rx="3"/><path d="M15 6l3-2M15 9l3 2"/></svg>',
-        'K-22': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="2"/></svg>',
-        'K-23': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v11a4 4 0 0 0 8 0v-2l-2 2"/><circle cx="12" cy="3" r="1.5"/><path d="M3 19h6"/></svg>',
-        'K-24': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="1"/><line x1="7" y1="6" x2="7" y2="18"/><line x1="12" y1="6" x2="12" y2="18"/><line x1="17" y1="6" x2="17" y2="18"/></svg>',
-        'K-25': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="12" rx="1"/><path d="M3 8l17-4-1-3L2 5Z"/><path d="M10 12l5 2.5-5 2.5Z"/></svg>',
+        'K-16': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8H6l3-3M6 16h12l-3 3"/></svg>',
+        'K-17': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="12" y1="5" x2="12" y2="19"/></svg>',
+        'K-18': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18"/><rect x="7" y="6" width="10" height="4" stroke-dasharray="2 2"/></svg>',
+        'K-19': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="8" width="20" height="9" rx="4.5"/><circle cx="7" cy="12.5" r="1"/><circle cx="12" cy="12.5" r="1"/><circle cx="17" cy="12.5" r="1"/></svg>',
+        'K-20': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16"/><line x1="9" y1="4" x2="9" y2="20" stroke-dasharray="2 2"/><line x1="15" y1="4" x2="15" y2="20" stroke-dasharray="2 2"/></svg>',
+        'K-21': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14V6h5"/><rect x="4" y="14" width="16" height="6" rx="3"/></svg>',
+        'K-22': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg>',
+        'K-23': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v10a4 4 0 0 0 8 0v-2"/><circle cx="12" cy="4" r="1.5"/></svg>',
+        'K-24': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10"/><line x1="7" y1="7" x2="7" y2="17"/><line x1="12" y1="7" x2="12" y2="17"/><line x1="17" y1="7" x2="17" y2="17"/></svg>',
+        'K-25': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="12"/><path d="M3 8l17-4"/><polygon points="10,11 15,14 10,17"/></svg>',
         'K-26': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,3 14.5,8.5 20.5,9 16,13 17.5,19 12,15.8 6.5,19 8,13 3.5,9 9.5,8.5"/></svg>',
-        'K-27': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="3"/><path d="M8 12h8l3-5M16 12l4 5"/></svg>',
-        'K-28': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 8l9 6 9-6"/><circle cx="12" cy="13.5" r="2" fill="currentColor"/></svg>',
-        'K-29': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="16" rx="1"/><path d="M8 21h12a1 1 0 0 0 1-1V7"/><path d="M8 8h8M8 12h6"/></svg>',
-        'K-30': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4z"/><path d="M12 5v14"/><circle cx="8" cy="12" r="2"/><path d="M10 12h6"/></svg>'
+        'K-27': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="3"/><path d="M8 12h8l4-5M16 12l4 5"/></svg>',
+        'K-28': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 8l9 6 9-6"/></svg>',
+        'K-29': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="16"/><path d="M8 8h8M8 12h6"/></svg>',
+        'K-30': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="5" width="16" height="14"/><line x1="12" y1="5" x2="12" y2="19"/></svg>'
       };
 
-      // ── 7 COHESIVE RUNNABLE CLASSROOM PACKS ──
       var PACKS = [
-        {
-          id: 'PACK-01',
-          name: 'Direct the Turkey Sub (Bread-Tin Crossing & AI Crew)',
-          meta: 'Newest · 6:14 PM · 30 min · Trio of 3 Directors',
-          desc: 'Newest end-to-end packet: kids draw a move through the port, roll 1d6, hand their chosen cell + fixed detail to an AI helper crew, and cut 3 approved beats together.'
-        },
-        {
-          id: 'PACK-02',
-          name: 'Hydrostatic Weirdness Dial v2 (Calibrated PSI + 10 Instruments)',
-          meta: '5:57–6:12 PM · 18 min · Trio (Port Trouble vs. Starboard Rescue)',
-          desc: 'Fixes blurry Probable/Plausible/Preposterous guesswork with a 2-axis Hydrostatic Dial (14.7 PSI Creek / 40 PSI Town Law / 90 PSI Cartoon) and zero-mean {-1,-3,-6,+1,+3,+6}h air math.'
-        },
-        {
-          id: 'PACK-03',
-          name: 'Multiplane Brass Tourkey Studio (3 Depth Plates + Gate Proof)',
-          meta: '5:54–5:59 PM · 25 min · 3 Desks (Director · Layout · Keyframes)',
-          desc: 'Pairs the 5-second Old Crossing gate proof video with the 3-page Multiplane Setup guide and 24 flooded East Tennessee / TVA multiplane call sheets.'
-        },
-        {
-          id: 'PACK-04',
-          name: 'Porthole Post Mail Exchange (Snail Mail + Loose Bell)',
-          meta: '5:36–5:40 PM · 20 min · 16 Pilots · Finder Red Tag ●',
-          desc: 'Complete audio-visual mail exchange: screen the 38s Snail Mail launch call, pass the 2-up spread twice left, roll once, and compare against the 21s Minnow Bend bell cartoon.'
-        },
-        {
-          id: 'PACK-05',
-          name: 'Old Crossing Tabletop Kit (10 Stations, 12 Deeds & Window Masks)',
-          meta: '5:00–5:47 PM · 15–30 min · Trio + Physical Toy Sub & Gate',
-          desc: 'Tactile tabletop system: 9-page Classroom Kit with 10 starting stations, cut-out opaque die masks, 12 river deeds, 30 porthole seeds, and the v1 Oulipo 10-sheet set.'
-        },
-        {
-          id: 'PACK-06',
-          name: 'Walland Bridge & Flood Pulse Suite (Two 60s Films + 24 Dispatches)',
-          meta: '3:13–5:50 PM · 20–45 min · Grade 4 NGSS & Continuity',
-          desc: 'Two 60-second Walland Bridge films paired with the 5-Shot Director’s Continuity Spread, 24 Flood Pulse P→E→O river dispatches, NGSS call sheet, and 32-student named roster.'
-        },
-        {
-          id: 'PACK-07',
-          name: 'Playable Sub Helm, Cutout Lineage & PAELEO Constitutions',
-          meta: '3:06–6:00 PM · Interactive App, Reference Atlas & Studio Theory',
-          desc: 'Playable Episode 8 Tourkey Sub helm, Heinz Edelmann Yellow Submarine / TROUTOWN cutout atlas, and the four foundational PAELEO Screening Room & constitution essays.'
-        }
+        { id: 'P1', title: '1. Bread-Tin Crossing & AI Crew', sub: '30 min · Crew of 3 draws a beat, rolls once, and directs an AI helper.' },
+        { id: 'P2', title: '2. Hydrostatic Dial (v2)', sub: '18 min · Calibrated 14.7 / 40 / 90 PSI porthole sheets + 10 protocols.' },
+        { id: 'P3', title: '3. Multiplane Brass Tourkey', sub: '25 min · 5s gate proof video + 3-plate setup + 24 flooded TVA stops.' },
+        { id: 'P4', title: '4. Porthole Post Mail Exchange', sub: '20 min · 38s Snail Mail call + 2-up postcard spread + 21s bell cartoon.' },
+        { id: 'P5', title: '5. Old Crossing Tabletop Kit', sub: '25 min · 10 starting stations, die-window masks, 12 deeds & 30 seeds.' },
+        { id: 'P6', title: '6. Walland Bridge & Flood Pulse', sub: '30 min · Two 60s films, 5-shot storyboard, 24 dispatches & class roster.' },
+        { id: 'P7', title: '7. Interactive Sub, Cutouts & Essays', sub: 'Playable Episode 8 cockpit, Yellow Submarine atlas & PAELEO essays.' }
       ];
 
-      // ── ALL 30 DISTINCT KEYS (Ordered Newest -> Oldest matching Finder!) ──
       var KEYS = [
-        {
-          id: 'K-01', pack: 'PACK-01', track: 'kit', added: '2026-11-18T18:14:28', timeLabel: '6:14 PM',
-          mins: 30, format: 'PDF · 6p', tag: '',
-          handle: 'The Bread-Tin Crossing (AI Director)',
-          title: 'Direct the Turkey Sub — Student Director Worksheet',
-          file: 'kits/Turkey_Sub_Student_Director_Worksheet.pdf',
-          thumb: 'thumbs/Turkey_Sub_Student_Director_Worksheet.jpg',
-          stem: 'Turkey_Sub_Student_Director_Worksheet', pages: 6,
-          diff: 'Newest 6-page packet: combines 3-player river dice turn (pages 1–4) with an explicit AI Crew job card (page 5) and 3-beat Episode Editor sheet (page 6).'
-        },
-        {
-          id: 'K-02', pack: 'PACK-02', track: 'sheet', added: '2026-11-18T18:12:37', timeLabel: '6:12 PM',
-          mins: 18, format: 'PDF · 2p Duplex', tag: '',
-          handle: 'Brass 6-Bolt Porthole Log (Cleanest 2p)',
-          title: 'Submarine Porthole Log · Six Bolts Around the Porthole',
-          file: 'sheets/tour_key_porthole_worksheet.pdf',
-          thumb: 'thumbs/tour_key_porthole_worksheet.jpg',
-          stem: 'tour_key_porthole_worksheet', pages: 2,
-          diff: 'Crispest general-purpose 2-page brass porthole sheet: big round drawing port on Front, die-pip bolts 1–6 + FANTROL 88.7 radio gossip on Back (no PSI math required).'
-        },
-        {
-          id: 'K-03', pack: 'PACK-01', track: 'kit', added: '2026-11-18T18:05:23', timeLabel: '6:05 PM',
-          mins: 15, format: 'PDF · 8p', tag: '',
-          handle: '19-Still Visual Frame Study',
-          title: 'Frame Atlas · Turkey Sub in Trout Town (19 Stills)',
-          file: 'kits/Trout_Town_Turkey_Sub_Frame_Study.pdf',
-          thumb: 'thumbs/Trout_Town_Turkey_Sub_Frame_Study.jpg',
-          stem: 'Trout_Town_Turkey_Sub_Frame_Study', pages: 8,
-          diff: 'Visual director’s lookbook: 19 reference frames (Paley, Gorillaz, Zeman, Méliès, Cartoon Saloon, TROUTOWN Eps 2–7) + bread-tin survey model & Snap/Steer/Mark pitch.'
-        },
-        {
-          id: 'K-04', pack: 'PACK-07', track: 'essay', added: '2026-11-18T18:00:59', timeLabel: '6:00 PM',
-          mins: 12, format: 'HTML · Audit', tag: '',
-          handle: 'Prompts as Constitutions (42-Work Audit)',
-          title: 'Prompts as Constitutions: Abstract, One-Pager & 42-Work Audit',
-          file: 'prompts-as-constitutions.html',
-          thumb: '', pages: 0,
-          diff: 'Slate-and-ochre research one-pager with 5-act praxis, phase-space SVG plot, 17-workshop table, and 25-film verification audit.'
-        },
-        {
-          id: 'K-05', pack: 'PACK-07', track: 'essay', added: '2026-11-18T18:00:38', timeLabel: '6:00 PM',
-          mins: 15, format: 'HTML · Thesis', tag: '',
-          handle: 'Constraint Makes Generation Falsifiable',
-          title: 'Constraint Makes Generation Falsifiable: Thesis & Architecture',
-          file: 'constraint-makes-generation-falsifiable.html',
-          thumb: '', pages: 0,
-          diff: 'Humanities & media-theory web essay laying out the falsifiability thesis, 4-engine matrix, and pairwise lineage splits for PAELEO.'
-        },
-        {
-          id: 'K-06', pack: 'PACK-03', track: 'kit', added: '2026-11-18T17:59:15', timeLabel: '5:59 PM',
-          mins: 20, format: 'PDF · 3p', tag: '',
-          handle: '3-Plate Multiplane Camera Setup',
-          title: 'From a Tour to a Shot · Multiplane Studio Setup',
-          file: 'kits/Turkey_Sub_Multiplane_Studio.pdf',
-          thumb: 'thumbs/Turkey_Sub_Multiplane_Studio.jpg',
-          stem: 'Turkey_Sub_Multiplane_Studio', pages: 3,
-          diff: 'Use right after rolling an outcome: shows how to slide Near (3 studs), Action (1 stud), and Far (hold still) paper plates under a fixed phone camera.'
-        },
-        {
-          id: 'K-07', pack: 'PACK-03', track: 'film', added: '2026-11-18T17:58:34', timeLabel: '5:58 PM',
-          mins: 1, format: 'MP4 · 0:05', tag: '',
-          handle: 'Old Crossing Gate Proof (5s Clip)',
-          title: 'Turkey Sub Gate Proof — Multiplane Parallax & Shadow Shot',
-          file: 'films/turkey-sub-gate-proof.mp4',
-          thumb: 'thumbs/turkey-sub-gate-proof.jpg', pages: 0,
-          diff: '5-second proof clip of Worked Example Roll 4: reeds slide in foreground, lamp casts teeth shadows on the culvert arch, and Finley drops the gate.'
-        },
-        {
-          id: 'K-08', pack: 'PACK-02', track: 'sheet', added: '2026-11-18T17:57:28', timeLabel: '5:57 PM',
-          mins: 20, format: 'PDF · 20p (V01–V10)', tag: '',
-          handle: '10 Scientific Protocols v2 (Hydrostatic)',
-          title: 'Turkey Sub · 10 Scientific Protocols v2 (Hydrostatic Dial)',
-          file: 'sheets/Turkey_Sub_10_Scientific_Protocols_v2.pdf',
-          thumb: 'thumbs/Turkey_Sub_10_Scientific_Protocols_v2.jpg',
-          stem: 'Turkey_Sub_10_Scientific_Protocols_v2', pages: 4,
-          diff: 'Upgraded color-coded v2 edition of V01–V10: every sheet uses Port Trouble (-1/-3/-6h) vs. Starboard Rescue (+1/+3/+6h) and a printed 0–30h Air Gauge.'
-        },
-        {
-          id: 'K-09', pack: 'PACK-02', track: 'kit', added: '2026-11-18T17:57:23', timeLabel: '5:57 PM',
-          mins: 18, format: 'PDF · 5p', tag: '',
-          handle: 'Hydrostatic Weirdness Gauge v2 + Master Log',
-          title: 'PAE-09 v2 · The Hydrostatic Weirdness Gauge & Master Log',
-          file: 'kits/PAE-09_Hydrostatic_Gauge_Guide_and_Log.pdf',
-          thumb: 'thumbs/PAE-09_Hydrostatic_Gauge_Guide_and_Log.jpg',
-          stem: 'PAE-09_Hydrostatic_Gauge_Guide_and_Log', pages: 5,
-          diff: 'Explains the 14.7 / 40 / 90 PSI epistemic dial, gives 3 worked 6-bolt examples (#01 Boot, #02 Baster, #13 Bell), includes the v2 blank Master Log + V01–V10 matrix.'
-        },
-        {
-          id: 'K-10', pack: 'PACK-03', track: 'sheet', added: '2026-11-18T17:54:04', timeLabel: '5:54 PM',
-          mins: 25, format: 'PDF · 48p + Web', tag: 'yellow',
-          handle: '24 Brass Tourkey Multiplane Stops',
-          title: 'Aboard the Brass Tourkey · 24 Multiplane Studio Call Sheets',
-          file: 'sheets/TOURKEY_Multiplane_ClassPack_24.pdf',
-          thumb: 'thumbs/TOURKEY_Multiplane_ClassPack_24.jpg',
-          stem: 'TOURKEY_Multiplane_ClassPack_24', pages: 4,
-          diff: '24 unique drowned TVA / Smokies stops (Tunnel to Nowhere, Old Loyston Post Office, Lost Sea, Hellbender…) with 3 depth cels + K01/K02/K03 keyframes + Two-Key Launch.',
-          variants: [
-            { label: 'Open Web Deck', url: 'tourkey-multiplane-worksheets-24.html' },
-            { label: '3-Student Trio PDF', url: 'sheets/TOURKEY_Multiplane_Trio_Sample.pdf' }
-          ]
-        },
-        {
-          id: 'K-11', pack: 'PACK-06', track: 'sheet', added: '2026-11-18T17:50:17', timeLabel: '5:50 PM',
-          mins: 20, format: 'PDF · 48p + Web', tag: 'red',
-          handle: '24 Flood-Pulse P→E→O Dispatches',
-          title: 'PAELEO Junior Studio · 24 Trout Town Flood Pulse Dispatches',
-          file: 'sheets/PAELEO_PEO_ClassPack_24_Dispatches.pdf',
-          thumb: 'thumbs/PAELEO_PEO_ClassPack_24_Dispatches.jpg',
-          stem: 'PAELEO_PEO_ClassPack_24_Dispatches', pages: 4,
-          diff: '24 pre-seeded Grade 4 NGSS river emergencies (Sandbar Island, Scoured Diner, Oxbow Loop…) structured as Seat 1 Prompt → Seat 2 Ekphrasis → Seat 3 River Operation.',
-          variants: [
-            { label: 'Open Web Deck', url: 'paeleo-peo-worksheets-24.html' },
-            { label: '3-Student Trio PDF', url: 'sheets/PAELEO_PEO_Trio_Sample.pdf' },
-            { label: 'Blank Master PDF', url: 'sheets/PAELEO_PEO_Master_Blank.pdf' }
-          ]
-        },
-        {
-          id: 'K-12', pack: 'PACK-05', track: 'kit', added: '2026-11-18T17:47:19', timeLabel: '5:47 PM',
-          mins: 25, format: 'PDF · 9p', tag: '',
-          handle: 'Old Crossing 10-Station Classroom Kit',
-          title: 'Turkey Sub · Complete Classroom Kit (Run One Turn + 10 Stations)',
-          file: 'kits/Turkey_Sub_Classroom_Kit.pdf',
-          thumb: 'thumbs/Turkey_Sub_Classroom_Kit.jpg',
-          stem: 'Turkey_Sub_Classroom_Kit', pages: 9,
-          diff: 'Core teacher start guide: room script, 3-color What Had to Change? gauge, Old Crossing worked turn, 1-page Flight Log, and Starting Stations 01–10.'
-        },
-        {
-          id: 'K-13', pack: 'PACK-01', track: 'app', added: '2026-11-18T17:45:22', timeLabel: '5:45 PM',
-          mins: 15, format: 'HTML · 44 SCIONs', tag: '',
-          handle: '44-SCION Cockpit & Interior Atlas',
-          title: 'Trout Town · Turkey Sub SCION Interior Atlas (44 Prompts)',
-          file: 'scion-interior-atlas.html',
-          thumb: 'thumbs/scion-interior-atlas.jpg', pages: 0,
-          diff: 'Interactive dark-room frame atlas with 44 one-click copyable SCION system instructions across cockpit views, The Works kit, and Trout Town episodes.'
-        },
-        {
-          id: 'K-14', pack: 'PACK-04', track: 'film', added: '2026-11-18T17:40:50', timeLabel: '5:40 PM',
-          mins: 1, format: 'MP4 · 0:38', tag: '',
-          handle: 'Snail Mail 38s Dispatch Call',
-          title: 'Porthole Post · Snail Mail 38-Second Launch Call',
-          file: 'films/porthole-post-call.mp4',
-          thumb: 'thumbs/porthole-post-call.jpg', pages: 0,
-          diff: 'Play first before handing out sheets: “Psst, Pilot. There’s a trout at your window.” Introduces the 1-day air dial and mail exchange.'
-        },
-        {
-          id: 'K-15', pack: 'PACK-04', track: 'film', added: '2026-11-18T17:39:48', timeLabel: '5:39 PM',
-          mins: 1, format: 'MP4 · 0:21', tag: '',
-          handle: 'Room for One More (21s Bell Cartoon)',
-          title: 'Room for One More · Minnow Bend Loose Bell (Face 4)',
-          file: 'films/room-for-one-more.mp4',
-          thumb: 'thumbs/room-for-one-more.jpg', pages: 0,
-          diff: 'Worked 21-second sample cartoon for Face 4 Plausible: Trout noses the hooked bell onto its side so the baby trout sleep inside.'
-        },
-        {
-          id: 'K-16', pack: 'PACK-04', track: 'kit', added: '2026-11-18T17:39:25', timeLabel: '5:39 PM',
-          mins: 20, format: 'PDF · 5p', tag: 'red',
-          handle: '16-Pilot Mail Exchange Crew Notes',
-          title: 'Porthole Post · Crew Notes, Bell Example & Alternate Fronts',
-          file: 'kits/Porthole_Post_Crew_Notes.pdf',
-          thumb: 'thumbs/Porthole_Post_Crew_Notes.jpg',
-          stem: 'Porthole_Post_Crew_Notes', pages: 5,
-          diff: 'Teacher script for seating 16 pilots (four trios + one quad), 6 endings for the Minnow Bend bell, plus alternate “Who lost this?” and “Who made that sound?” fronts.'
-        },
-        {
-          id: 'K-17', pack: 'PACK-04', track: 'sheet', added: '2026-11-18T17:36:03', timeLabel: '5:36 PM',
-          mins: 18, format: 'PNG · 2-Up Spread', tag: 'red',
-          handle: 'Snail Mail 2-Up Student Spread',
-          title: 'Who Called the Turkey Sub? / What Happens Next? (2-Up Spread)',
-          file: 'sheets/Porthole_Post_Worksheet.png',
-          thumb: 'thumbs/Porthole_Post_Worksheet.jpg', pages: 0,
-          diff: 'Friendly elementary 2-up spread: Snail Mail illustration, wide rounded drawing frame, LEGOS prompts on left, odd/even porthole endings + Dear Alien postcard on right.'
-        },
-        {
-          id: 'K-18', pack: 'PACK-05', track: 'kit', added: '2026-11-18T17:32:31', timeLabel: '5:32 PM',
-          mins: 10, format: 'PDF · 2p Cutout', tag: '',
-          handle: 'Die-Window Cut-Out Table Masks',
-          title: 'Trouttown / One Turn · Window Masks & Table State Machine',
-          file: 'kits/Trouttown_One_Turn.pdf',
-          thumb: 'thumbs/Trouttown_One_Turn.jpg',
-          stem: 'Trouttown_One_Turn', pages: 2,
-          diff: 'Actual-size paper window masks (Before Roll, 1–2, 3–4, 5–6) to cover unrolled outcomes on the desk, plus the 7-state REST→RECOVERY table guide.'
-        },
-        {
-          id: 'K-19', pack: 'PACK-05', track: 'kit', added: '2026-11-18T17:27:29', timeLabel: '5:27 PM',
-          mins: 18, format: 'PDF · 5p', tag: 'blue',
-          handle: '30-Porthole Classroom Seed Deck (v1)',
-          title: 'PAE-09 v1 · Submarine Porthole Log & 30-Porthole Seed Deck',
-          file: 'kits/paeleo-09-porthole-flight-log.pdf',
-          thumb: 'thumbs/paeleo-09-porthole-flight-log.jpg',
-          stem: 'paeleo-09-porthole-flight-log', pages: 5,
-          diff: 'Contains the complete 30-porthole rim clue table (#01 Giant Boot through #30 Vowel Bubbles) mapped to Ouxpo/SCION rules, plus the v1 6-bolt log.'
-        },
-        {
-          id: 'K-20', pack: 'PACK-05', track: 'sheet', added: '2026-11-18T17:21:18', timeLabel: '5:21 PM',
-          mins: 20, format: 'PDF · 20p + Web', tag: 'blue',
-          handle: '10 Oulipo Classroom Sheets (v1 B&W)',
-          title: 'Turkey Sub · 10 Oulipo/SCION Classroom Worksheets (v1)',
-          file: 'sheets/Turkey_Sub_10_Worksheets.pdf',
-          thumb: 'thumbs/Turkey_Sub_10_Worksheets.jpg',
-          stem: 'Turkey_Sub_10_Worksheets', pages: 4,
-          diff: 'High-contrast monochrome v1 edition of V01–V10 (ideal for black-and-white school copiers), paired with an interactive browser tab viewer.',
-          variants: [
-            { label: 'Open Web Deck', url: 'turkey-sub-10-worksheets.html' }
-          ]
-        },
-        {
-          id: 'K-21', pack: 'PACK-07', track: 'app', added: '2026-11-18T17:10:15', timeLabel: '5:10 PM',
-          mins: 15, format: 'HTML · Atlas', tag: 'yellow',
-          handle: 'Yellow Submarine & TROUTOWN Cutout Atlas',
-          title: 'Yellow Submarine, TROUTOWN & Cross-Media Cutout Reference Atlas',
-          file: 'cutout-reference-atlas.html',
-          thumb: 'thumbs/cutout-reference-atlas.jpg', pages: 0,
-          diff: 'Pop-art rostrum-camera reference atlas: 9-biome Yellow Submarine montage chart, 4 die-cut hull states, 6 TROUTOWN mechanics, and 13 cross-media reference clips.'
-        },
-        {
-          id: 'K-22', pack: 'PACK-07', track: 'app', added: '2026-11-18T17:06:25', timeLabel: '5:06 PM',
-          mins: 10, format: 'HTML · Playable App', tag: 'orange',
-          handle: 'Ep. 8 Playable Sub Cockpit & 1d6 Lab',
-          title: 'Trout Town Ep. 8 — The Tourkey Sub (Interactive Helm)',
-          file: 'ep8-tourkey-sub.html',
-          thumb: '', pages: 0,
-          diff: 'Live touch/keyboard submarine simulator with D-pad steering, engine & pressure gauges, 1d6 clinamen roller, and Air-Helmet Oulipo radio gate.'
-        },
-        {
-          id: 'K-23', pack: 'PACK-05', track: 'kit', added: '2026-11-18T17:00:53', timeLabel: '5:00 PM',
-          mins: 25, format: 'PDF · 5p Cards', tag: '',
-          handle: 'Something Fell In (12 Cut-Out Deeds)',
-          title: 'Something Fell In · Twelve Cut-Out Deeds for the Turkey Sub',
-          file: 'kits/Trouttown_Twelve_Deeds.pdf',
-          thumb: 'thumbs/Trouttown_Twelve_Deeds.jpg',
-          stem: 'Trouttown_Twelve_Deeds', pages: 5,
-          diff: '12 ready-to-play deed cards (Shine the lamp, Read snail trail, Cut motor, Copy frog, Tow turtle…) for crews who want pre-written outcomes instead of blank writing.'
-        },
-        {
-          id: 'K-24', pack: 'PACK-06', track: 'sheet', added: '2026-11-18T17:00:07', timeLabel: '5:00 PM',
-          mins: 30, format: 'PNG · 5-Shot Spread', tag: 'red',
-          handle: '5-Shot Director’s Continuity Spread',
-          title: 'One Day of Air. Who Knows the Way? (5-Shot Director’s Sheet)',
-          file: 'sheets/Trout_Town_Directors_Sheet.png',
-          thumb: 'thumbs/Trout_Town_Directors_Sheet.jpg', pages: 0,
-          diff: 'Multi-scene storyboard spread: one crew directs all 5 LEGOS beats in sequence and tracks which clues Bird (B) vs. Fish (F) remember on the Memory Strip.'
-        },
-        {
-          id: 'K-25', pack: 'PACK-06', track: 'film', added: '2026-11-18T16:57:34', timeLabel: '4:57 PM',
-          mins: 1, format: 'MP4 · 1:00', tag: '',
-          handle: 'Who Remembers the Turn? (60s Film)',
-          title: 'Who Remembers the Turn? · Across the Cut (Walland Bridge)',
-          file: 'films/who-remembers-the-turn.mp4',
-          thumb: 'thumbs/who-remembers-the-turn.jpg', pages: 0,
-          diff: '60-second film built specifically to introduce K-24 (5-Shot Director’s Sheet): demonstrates clues carrying across cuts while spent air stays spent.'
-        },
-        {
-          id: 'K-26', pack: 'PACK-06', track: 'sheet', added: '2026-11-18T16:21:50', timeLabel: '4:21 PM',
-          mins: 20, format: 'PDF · 2p', tag: '',
-          handle: 'Dock Piñata 6-Chances Sheet',
-          title: 'One Day of Air. One Ride Home. (Walland Grade 4 Piñata Sheet)',
-          file: 'sheets/Trout_Town_Student_Worksheet.pdf',
-          thumb: 'thumbs/Trout_Town_Student_Worksheet.jpg',
-          stem: 'Trout_Town_Student_Worksheet', pages: 2,
-          diff: 'Solo/pair 2-page creative writing sheet: build LEGOS world on page 1, then trace Cause → Piñata Burst → Personal Memory → Tell an Alien on page 2.',
-          variants: [
-            { label: 'Early 3:13 PM Draft (2p)', url: 'sheets/Trout_Town_Film_Worksheet.pdf' }
-          ]
-        },
-        {
-          id: 'K-27', pack: 'PACK-06', track: 'film', added: '2026-11-18T16:19:41', timeLabel: '4:19 PM',
-          mins: 1, format: 'MP4 · 1:00', tag: '',
-          handle: 'The Other End of the Rope (60s Film)',
-          title: 'Turkey Sub Opening · The Other End of the Rope',
-          file: 'films/turkey-sub-opening.mp4',
-          thumb: 'thumbs/turkey-sub-opening.jpg', pages: 0,
-          diff: 'Signature 60-second Walland Bridge film: Turkey sees a taut rope inside; Trout sees the snagged branch blocking its door outside, followed by Take Two & striped tape.'
-        },
-        {
-          id: 'K-28', pack: 'PACK-07', track: 'essay', added: '2026-11-18T16:19:16', timeLabel: '4:19 PM',
-          mins: 12, format: 'PDF · 8p', tag: '',
-          handle: 'What Changes When the Drawing Stays Still?',
-          title: 'What Changes When the Drawing Stays Still? (PAELEO Reference)',
-          file: 'essays/What_Changes_in_the_Screening_Room.pdf',
-          thumb: 'thumbs/What_Changes_in_the_Screening_Room.jpg',
-          stem: 'What_Changes_in_the_Screening_Room', pages: 8,
-          diff: '8-page studio reference packet: 7 definitions, 4-point reality audit, 1-page breakdown of K-27 (The Other End of the Rope), 17 Ouxpo workshops, and 25 test films.'
-        },
-        {
-          id: 'K-29', pack: 'PACK-06', track: 'sheet', added: '2026-11-18T16:16:24', timeLabel: '4:16 PM',
-          mins: 20, format: 'PDF · 32p Roster', tag: '',
-          handle: 'Walland 32-Page Named Class Print Pack',
-          title: 'Walland Grade 4 · Pre-Named Class Print Sheets (Runs 01–16)',
-          file: 'sheets/Walland_Class_Print_Sheets.pdf',
-          thumb: 'thumbs/Walland_Class_Print_Sheets.jpg',
-          stem: 'Walland_Class_Print_Sheets', pages: 4,
-          diff: 'Pre-personalized 32-page classroom print batch (Brody / Run 01 onward) ready to feed straight into a duplex printer for Walland Grade 4.'
-        },
-        {
-          id: 'K-30', pack: 'PACK-07', track: 'essay', added: '2026-11-18T15:25:42', timeLabel: '3:25 PM',
-          mins: 10, format: 'PDF · 7p + Web', tag: '',
-          handle: 'Who Had the Key? + NGSS & Blueprint',
-          title: 'Who Had the Key? Why We Made the PAELEO Oulipo Screening Room',
-          file: 'essays/Who_Had_the_Key.pdf',
-          thumb: 'thumbs/Who_Had_the_Key.jpg',
-          stem: 'Who_Had_the_Key', pages: 7,
-          diff: 'Accessible 7-page studio essay introducing Lécroart’s folded key comic, Oulipo/Ouxpo, “Foraged or handmade, never faked,” and worldtext.',
-          variants: [
-            { label: 'Screening Room Web Blueprint', url: 'screening-room-blueprint.html' },
-            { label: 'NGSS 1p Call Sheet (PDF)', url: 'sheets/Turkey_Sub_NGSS_Studio_Sheet.pdf' },
-            { label: 'NGSS Call Sheet (Web)', url: 'ngss-studio-sheet.html' }
-          ]
-        }
+        { id:'K-01', num:'01', pack:'P1', track:'kit', added:'18:14', meta:'6p PDF · 6:14 PM', name:'Direct the Turkey Sub', desc:'6-page trio packet with AI helper job card and 3-beat editor sheet.', file:'kits/Turkey_Sub_Student_Director_Worksheet.pdf', stem:'Turkey_Sub_Student_Director_Worksheet', pages:6 },
+        { id:'K-02', num:'02', pack:'P2', track:'sheet', added:'18:12', meta:'2p PDF · 6:12 PM', name:'Brass 6-Bolt Porthole Log', desc:'Cleanest 2-page front/back porthole worksheet (die-pip bolts, no PSI math).', file:'sheets/tour_key_porthole_worksheet.pdf', stem:'tour_key_porthole_worksheet', pages:2 },
+        { id:'K-03', num:'03', pack:'P1', track:'kit', added:'18:05', meta:'8p PDF · 6:05 PM', name:'19-Still Frame Study', desc:'Visual lookbook of 19 reference stills + bread-tin sub model.', file:'kits/Trout_Town_Turkey_Sub_Frame_Study.pdf', stem:'Trout_Town_Turkey_Sub_Frame_Study', pages:8 },
+        { id:'K-04', num:'04', pack:'P7', track:'essay', added:'18:01', meta:'Web · 6:00 PM', name:'Prompts as Constitutions', desc:'Studio one-pager and 42-work verification audit.', file:'prompts-as-constitutions.html', pages:0 },
+        { id:'K-05', num:'05', pack:'P7', track:'essay', added:'18:00', meta:'Web · 6:00 PM', name:'Constraint Makes Generation Falsifiable', desc:'Thesis, lineage, and 4-engine architecture for PAELEO.', file:'constraint-makes-generation-falsifiable.html', pages:0 },
+        { id:'K-06', num:'06', pack:'P3', track:'kit', added:'17:59', meta:'3p PDF · 5:59 PM', name:'From a Tour to a Shot (Multiplane)', desc:'3-page guide for sliding Near, Action, and Far paper plates.', file:'kits/Turkey_Sub_Multiplane_Studio.pdf', stem:'Turkey_Sub_Multiplane_Studio', pages:3 },
+        { id:'K-07', num:'07', pack:'P3', track:'film', added:'17:58', meta:'0:05 MP4 · 5:58 PM', name:'Old Crossing Gate Proof', desc:'5-second multiplane clip: reeds slide, teeth shadows appear, gate drops.', file:'films/turkey-sub-gate-proof.mp4', thumb:'thumbs/turkey-sub-gate-proof.jpg', pages:0 },
+        { id:'K-08', num:'08', pack:'P2', track:'sheet', added:'17:57', meta:'20p PDF · 5:57 PM', name:'10 Scientific Protocols (v2 Color)', desc:'Color-coded V01–V10 sheets with Port Trouble (-h) vs. Starboard Rescue (+h).', file:'sheets/Turkey_Sub_10_Scientific_Protocols_v2.pdf', stem:'Turkey_Sub_10_Scientific_Protocols_v2', pages:4 },
+        { id:'K-09', num:'09', pack:'P2', track:'kit', added:'17:57', meta:'5p PDF · 5:57 PM', name:'Hydrostatic Weirdness Gauge + Log (v2)', desc:'Explains the 14.7 / 40 / 90 PSI dial + 3 worked examples + blank log.', file:'kits/PAE-09_Hydrostatic_Gauge_Guide_and_Log.pdf', stem:'PAE-09_Hydrostatic_Gauge_Guide_and_Log', pages:5 },
+        { id:'K-10', num:'10', pack:'P3', track:'sheet', added:'17:54', meta:'48p PDF · 5:54 PM', name:'24 Brass Tourkey Multiplane Stops', desc:'24 drowned TVA & Smokies stops with 3 depth cels + Two-Key Launch.', file:'sheets/TOURKEY_Multiplane_ClassPack_24.pdf', stem:'TOURKEY_Multiplane_ClassPack_24', pages:4, extras:[{l:'Web Deck',u:'tourkey-multiplane-worksheets-24.html'},{l:'3-Student Trio PDF',u:'sheets/TOURKEY_Multiplane_Trio_Sample.pdf'}] },
+        { id:'K-11', num:'11', pack:'P6', track:'sheet', added:'17:50', meta:'48p PDF · 5:50 PM', name:'24 Flood-Pulse P→E→O Dispatches', desc:'24 Grade 4 river emergencies (Prompt → Ekphrasis → River Operation).', file:'sheets/PAELEO_PEO_ClassPack_24_Dispatches.pdf', stem:'PAELEO_PEO_ClassPack_24_Dispatches', pages:4, extras:[{l:'Web Deck',u:'paeleo-peo-worksheets-24.html'},{l:'3-Student Trio PDF',u:'sheets/PAELEO_PEO_Trio_Sample.pdf'},{l:'Blank Master',u:'sheets/PAELEO_PEO_Master_Blank.pdf'}] },
+        { id:'K-12', num:'12', pack:'P5', track:'kit', added:'17:47', meta:'9p PDF · 5:47 PM', name:'Turkey Sub Classroom Kit (10 Stations)', desc:'Run One Turn script, 3-color gauge, Flight Log, and Stations 01–10.', file:'kits/Turkey_Sub_Classroom_Kit.pdf', stem:'Turkey_Sub_Classroom_Kit', pages:9 },
+        { id:'K-13', num:'13', pack:'P1', track:'app', added:'17:45', meta:'Web · 5:45 PM', name:'SCION Interior Atlas (44 Prompts)', desc:'Cockpit & Trout Town frame atlas with 44 copyable SCION prompts.', file:'scion-interior-atlas.html', thumb:'thumbs/scion-interior-atlas.jpg', pages:0 },
+        { id:'K-14', num:'14', pack:'P4', track:'film', added:'17:40', meta:'0:38 MP4 · 5:40 PM', name:'Snail Mail 38s Dispatch Call', desc:'Play first: “Psst, Pilot. There’s a trout at your window.”', file:'films/porthole-post-call.mp4', thumb:'thumbs/porthole-post-call.jpg', pages:0 },
+        { id:'K-15', num:'15', pack:'P4', track:'film', added:'17:39', meta:'0:21 MP4 · 5:39 PM', name:'Room for One More (Bell Cartoon)', desc:'21-second worked cartoon at Minnow Bend (Face 4 Plausible).', file:'films/room-for-one-more.mp4', thumb:'thumbs/room-for-one-more.jpg', pages:0 },
+        { id:'K-16', num:'16', pack:'P4', track:'kit', added:'17:39', meta:'5p PDF · 5:39 PM', name:'Porthole Post Crew Notes', desc:'How to run the 16-pilot mail exchange + Lost Object & Sound fronts.', file:'kits/Porthole_Post_Crew_Notes.pdf', stem:'Porthole_Post_Crew_Notes', pages:5 },
+        { id:'K-17', num:'17', pack:'P4', track:'sheet', added:'17:36', meta:'PNG Spread · 5:36 PM', name:'Porthole Post 2-Up Student Spread', desc:'“Who called the Turkey Sub?” + “What happens next?” + Dear Alien card.', file:'sheets/Porthole_Post_Worksheet.png', pages:0 },
+        { id:'K-18', num:'18', pack:'P5', track:'kit', added:'17:32', meta:'2p PDF · 5:32 PM', name:'One Turn Die-Window Masks', desc:'Cut-out paper covers that hide unrolled outcomes on the table.', file:'kits/Trouttown_One_Turn.pdf', stem:'Trouttown_One_Turn', pages:2 },
+        { id:'K-19', num:'19', pack:'P5', track:'kit', added:'17:27', meta:'5p PDF · 5:27 PM', name:'30-Porthole Seed Deck (PAE-09 v1)', desc:'Complete table of 30 pre-seeded porthole clues (#01–#30) + v1 log.', file:'kits/paeleo-09-porthole-flight-log.pdf', stem:'paeleo-09-porthole-flight-log', pages:5 },
+        { id:'K-20', num:'20', pack:'P5', track:'sheet', added:'17:21', meta:'20p PDF · 5:21 PM', name:'10 Oulipo Classroom Sheets (v1 B&W)', desc:'Black-and-white copier edition of V01–V10 + browser viewer.', file:'sheets/Turkey_Sub_10_Worksheets.pdf', stem:'Turkey_Sub_10_Worksheets', pages:4, extras:[{l:'Web Deck',u:'turkey-sub-10-worksheets.html'}] },
+        { id:'K-21', num:'21', pack:'P7', track:'app', added:'17:10', meta:'Web · 5:10 PM', name:'Yellow Submarine & TROUTOWN Cutout Atlas', desc:'9-biome montage chart, cutout hull states, and 13 reference videos.', file:'cutout-reference-atlas.html', thumb:'thumbs/cutout-reference-atlas.jpg', pages:0 },
+        { id:'K-22', num:'22', pack:'P7', track:'app', added:'17:06', meta:'App · 5:06 PM', name:'Ep. 8 — The Tourkey Sub (Playable App)', desc:'Interactive submarine helm, pressure lab, and 1d6 roller.', file:'ep8-tourkey-sub.html', pages:0 },
+        { id:'K-23', num:'23', pack:'P5', track:'kit', added:'17:00', meta:'5p PDF · 5:00 PM', name:'Something Fell In (12 Cut-Out Deeds)', desc:'12 ready-to-play deed cards + First Contact & Witness Slip.', file:'kits/Trouttown_Twelve_Deeds.pdf', stem:'Trouttown_Twelve_Deeds', pages:5 },
+        { id:'K-24', num:'24', pack:'P6', track:'sheet', added:'17:00', meta:'PNG Spread · 5:00 PM', name:'5-Shot Director’s Continuity Sheet', desc:'“One day of air. Who knows the way?” — 5 LEGOS shots + Memory Strip.', file:'sheets/Trout_Town_Directors_Sheet.png', pages:0 },
+        { id:'K-25', num:'25', pack:'P6', track:'film', added:'16:57', meta:'1:00 MP4 · 4:57 PM', name:'Who Remembers the Turn? (Across the Cut)', desc:'60-second Walland Bridge companion film for the 5-Shot Director’s Sheet.', file:'films/who-remembers-the-turn.mp4', thumb:'thumbs/who-remembers-the-turn.jpg', pages:0 },
+        { id:'K-26', num:'26', pack:'P6', track:'sheet', added:'16:21', meta:'2p PDF · 4:21 PM', name:'One Day of Air. One Ride Home. (Piñata)', desc:'Grade 4 solo/pair sheet: LEGOS world + 6 dock piñata chances.', file:'sheets/Trout_Town_Student_Worksheet.pdf', stem:'Trout_Town_Student_Worksheet', pages:2, extras:[{l:'Early 2p Draft',u:'sheets/Trout_Town_Film_Worksheet.pdf'},{l:'NGSS 1p PDF',u:'sheets/Turkey_Sub_NGSS_Studio_Sheet.pdf'}] },
+        { id:'K-27', num:'27', pack:'P6', track:'film', added:'16:19', meta:'1:00 MP4 · 4:19 PM', name:'The Other End of the Rope (Opening Film)', desc:'60-second film: taut line inside, snagged branch outside, Take Two.', file:'films/turkey-sub-opening.mp4', thumb:'thumbs/turkey-sub-opening.jpg', pages:0 },
+        { id:'K-28', num:'28', pack:'P7', track:'essay', added:'16:19', meta:'8p PDF · 4:19 PM', name:'What Changes When the Drawing Stays Still?', desc:'8-page reference: definitions, evidence audit, 17 workshops, 25 films.', file:'essays/What_Changes_in_the_Screening_Room.pdf', stem:'What_Changes_in_the_Screening_Room', pages:8 },
+        { id:'K-29', num:'29', pack:'P6', track:'sheet', added:'16:16', meta:'32p PDF · 4:16 PM', name:'Walland 32-Page Named Class Roster', desc:'Pre-named Grade 4 student print batch (Runs 01–16).', file:'sheets/Walland_Class_Print_Sheets.pdf', stem:'Walland_Class_Print_Sheets', pages:4 },
+        { id:'K-30', num:'30', pack:'P7', track:'essay', added:'15:25', meta:'7p PDF · 3:25 PM', name:'Who Had the Key?', desc:'7-page essay on the folded comic, Ouxpo, and public failures.', file:'essays/Who_Had_the_Key.pdf', stem:'Who_Had_the_Key', pages:7, extras:[{l:'Web Blueprint',u:'screening-room-blueprint.html'}] }
       ];
 
-      var TAG_COLORS = {
-        red: '#e53935',
-        yellow: '#f5b400',
-        blue: '#1e88e5',
-        orange: '#fb8c00'
-      };
-      var TRACK_NAMES = {
-        film: 'Film',
-        app: 'Interactive',
-        kit: 'Teacher Kit',
-        sheet: 'Student Sheet',
-        essay: 'Studio Essay'
-      };
-
-      // ── PERSISTENT CURATION STATE + UNDO STACK ──
-      var STORAGE_KEY = 'turkey_sub_keyring_v2';
-      var state = {
-        mode: 'packs',       // 'packs' | 'flat'
-        sort: 'newest',
-        filter: 'all',
-        query: '',
-        verdicts: {},        // { 'K-01': 'pick' | 'test' | 'skip' }
-        notes: {},           // { 'K-01': '...' }
-        undo: null           // { verdicts, notes, label }
-      };
-
-      try {
-        var raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) {
-          var parsed = JSON.parse(raw);
-          if (parsed && typeof parsed === 'object') {
-            state.verdicts = parsed.verdicts || {};
-            state.notes = parsed.notes || {};
-          }
-        }
-      } catch (e) {}
-
-      function saveState() {
-        try {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify({
-            verdicts: state.verdicts,
-            notes: state.notes
-          }));
-        } catch (e) {}
+      var STORE = 'turkey_sub_simple_stars_v1';
+      var stars = {};
+      var undoStars = null;
+      try { stars = JSON.parse(localStorage.getItem(STORE) || '{}') || {}; } catch (e) {}
+      function saveStars() {
+        try { localStorage.setItem(STORE, JSON.stringify(stars)); } catch (e) {}
       }
 
-      function snapshotUndo(label) {
-        state.undo = {
-          verdicts: Object.assign({}, state.verdicts),
-          notes: Object.assign({}, state.notes),
-          label: label
-        };
-      }
+      var mode = 'packs';   // 'packs' | 'newest' | 'oldest' | 'starred'
+      var typeFilter = 'all';
+      var query = '';
+      var visibleIds = [];
+      var activeId = null;
+      var activePage = 1;
 
-      // ── THEME & GAUGE DRAWER ──
-      var plateBtns = document.querySelectorAll('[data-plate-btn]');
-      function applyPlate(p) {
-        document.documentElement.setAttribute('data-plate', p);
-        var meta = document.getElementById('themeColorMeta');
-        if (meta) meta.setAttribute('content', p === 'porthole' ? '#0d191e' : '#f8f5ee');
-        plateBtns.forEach(function (b) {
-          b.classList.toggle('active', b.getAttribute('data-plate-btn') === p);
+      function esc(s) {
+        return String(s || '').replace(/[&<>"']/g, function (c) {
+          return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
         });
-        try { localStorage.setItem('turkey_sub_plate', p); } catch (e) {}
       }
-      applyPlate(document.documentElement.getAttribute('data-plate') || 'paper');
-      plateBtns.forEach(function (b) {
-        b.addEventListener('click', function () { applyPlate(b.getAttribute('data-plate-btn')); });
-      });
 
-      var gaugeToggle = document.getElementById('gaugeToggle');
-      var gaugeDrawer = document.getElementById('gaugeDrawer');
-      gaugeToggle.addEventListener('click', function () {
-        var open = gaugeDrawer.hidden;
-        gaugeDrawer.hidden = !open;
-        gaugeToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
+      function getKey(idOrNum) {
+        var norm = String(idOrNum || '').toUpperCase().replace(/^#/, '');
+        if (/^\d{1,2}$/.test(norm)) norm = 'K-' + norm.padStart(2, '0');
+        for (var i = 0; i < KEYS.length; i++) if (KEYS[i].id === norm) return KEYS[i];
+        return null;
+      }
 
-      // ── FILTERING & SORTING ──
-      function matchesKey(k) {
-        var v = state.verdicts[k.id] || '';
-        // Hide skipped items in normal views unless specifically viewing 'skip'
-        if (state.filter !== 'skip' && v === 'skip') return false;
-
-        if (state.filter === 'pick' && v !== 'pick') return false;
-        if (state.filter === 'test' && v !== 'test') return false;
-        if (state.filter === 'skip' && v !== 'skip') return false;
-        if (['film', 'app', 'kit', 'sheet', 'essay'].indexOf(state.filter) !== -1 && k.track !== state.filter) {
-          return false;
-        }
-
-        if (state.query) {
-          var note = state.notes[k.id] || '';
-          var hay = [k.id, k.pack, k.handle, k.title, k.diff, k.file, k.timeLabel, k.format, k.tag, note].join(' ').toLowerCase();
-          if (hay.indexOf(state.query) === -1) return false;
+      function matches(k) {
+        if (mode === 'starred' && !stars[k.id]) return false;
+        if (typeFilter !== 'all' && k.track !== typeFilter) return false;
+        if (query) {
+          var hay = (k.id + ' ' + k.num + ' ' + k.name + ' ' + k.desc + ' ' + k.meta + ' ' + k.file).toLowerCase();
+          if (hay.indexOf(query) === -1) return false;
         }
         return true;
       }
 
-      function sortKeys(list) {
-        var copy = list.slice();
-        var tagOrder = { red: 1, orange: 2, yellow: 3, blue: 4, '': 9 };
-        copy.sort(function (a, b) {
-          if (state.sort === 'newest') return b.added.localeCompare(a.added);
-          if (state.sort === 'oldest') return a.added.localeCompare(b.added);
-          if (state.sort === 'time') return (a.mins - b.mins) || b.added.localeCompare(a.added);
-          if (state.sort === 'code') return a.id.localeCompare(b.id);
-          if (state.sort === 'tag') return (tagOrder[a.tag] - tagOrder[b.tag]) || b.added.localeCompare(a.added);
-          return 0;
-        });
-        return copy;
-      }
-
-      function escapeHTML(s) {
-        return String(s || '').replace(/[&<>"']/g, function (c) {
-          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-        });
-      }
-
-      // ── RENDER ONE KEY CARD ──
-      function renderKeyCard(k) {
-        var v = state.verdicts[k.id] || '';
-        var note = state.notes[k.id] || '';
-        var isHTML = /\.html$/i.test(k.file);
-        var isPrintable = /\.(pdf|png)$/i.test(k.file);
-        var dotHTML = k.tag ? '<span class="finder-dot" style="background:' + TAG_COLORS[k.tag] + '" title="Finder ' + k.tag + ' tag"></span>' : '';
-        var thumbInner = k.thumb
-          ? '<img src="./' + k.thumb + '" alt="" loading="lazy">'
-          : '<span class="key-thumb-fallback">' + escapeHTML(k.id) + '<br>' + escapeHTML(k.format) + '</span>';
-        var pageBadge = k.pages > 1 ? '<span class="page-badge">' + k.pages + 'p flip</span>' : (k.track === 'film' ? '<span class="page-badge">▶ Play</span>' : '');
-
-        var primaryBtn = isHTML
-          ? '<a class="act-btn primary" href="./' + k.file + '">Launch ↗</a>'
-          : '<button type="button" class="act-btn primary" data-inspect="' + k.id + '">' + (k.track === 'film' ? '▶ Watch' : 'Inspect') + '</button>';
-
-        var printBtn = isPrintable
-          ? '<button type="button" class="act-btn" data-print="' + k.id + '" title="Print ' + escapeHTML(k.file) + '">🖨 Print</button>'
-          : '';
-
-        var dlBtn = isHTML
-          ? '<button type="button" class="act-btn" data-inspect="' + k.id + '">Details</button>'
-          : '<a class="act-btn" href="./' + k.file + '" download title="Download file">⬇</a>';
-
+      function rowHTML(k) {
+        var on = !!stars[k.id];
         return (
-          '<article class="key-card" id="card-' + k.id + '" data-track="' + k.track + '" data-verdict="' + v + '">' +
-            '<div class="key-top">' +
-              '<div class="key-id-group">' +
-                '<div class="key-fob" aria-hidden="true">' + (ICONS[k.id] || '') + '</div>' +
-                '<button type="button" class="callout-btn" data-copy-id="' + k.id + '" title="Copy direct callout link #' + k.id + '">' + k.id + '</button>' +
-                '<span class="track-lbl">' + TRACK_NAMES[k.track] + '</span>' +
-              '</div>' +
-              '<div class="key-meta-right">' + dotHTML + '<span>' + escapeHTML(k.timeLabel) + '</span></div>' +
-            '</div>' +
-            '<div class="key-mid">' +
-              '<button type="button" class="key-thumb-btn" data-inspect="' + k.id + '" aria-label="Inspect ' + escapeHTML(k.handle) + '">' +
-                thumbInner + pageBadge +
-              '</button>' +
-              '<div class="key-copy">' +
-                '<h3 class="key-handle"><button type="button" data-inspect="' + k.id + '">' + escapeHTML(k.handle) + '</button></h3>' +
-                '<p class="key-diff">' + escapeHTML(k.diff) + '</p>' +
-                '<div class="key-specs">' +
-                  '<span class="spec-pill">' + escapeHTML(k.format) + '</span>' +
-                  '<span class="spec-pill">~' + k.mins + ' min</span>' +
-                  '<span class="spec-pill">' + k.pack + '</span>' +
-                '</div>' +
-                (note ? '<div class="key-note-preview">“' + escapeHTML(note) + '”</div>' : '') +
-              '</div>' +
-            '</div>' +
-            '<div class="key-foot">' +
-              '<div class="verdict-grp" role="group" aria-label="Mark ' + k.id + '">' +
-                '<button type="button" class="v-btn" data-key="' + k.id + '" data-v="pick" aria-pressed="' + (v === 'pick') + '">★ Pick</button>' +
-                '<button type="button" class="v-btn" data-key="' + k.id + '" data-v="test" aria-pressed="' + (v === 'test') + '">◐ Test</button>' +
-                '<button type="button" class="v-btn" data-key="' + k.id + '" data-v="skip" aria-pressed="' + (v === 'skip') + '" title="Hide from ring">✕</button>' +
-              '</div>' +
-              '<div class="act-grp">' + primaryBtn + printBtn + dlBtn + '</div>' +
-            '</div>' +
-          '</article>'
+          '<li class="row" data-track="' + k.track + '">' +
+            '<span class="row-icon" aria-hidden="true">' + (ICONS[k.id] || '') + '</span>' +
+            '<span class="row-id">' + k.num + '</span>' +
+            '<button type="button" class="row-main" data-open="' + k.id + '">' +
+              '<span class="row-title">' + esc(k.name) + '</span>' +
+              '<span class="row-desc">' + esc(k.desc) + '</span>' +
+            '</button>' +
+            '<span class="row-meta">' + esc(k.meta) + '</span>' +
+            '<button type="button" class="star-btn" data-star="' + k.id + '" aria-pressed="' + on + '" aria-label="Star ' + esc(k.name) + '">' + (on ? '★' : '☆') + '</button>' +
+          '</li>'
         );
       }
 
-      var currentVisibleIds = [];
+      function renderList() {
+        var starIds = Object.keys(stars).filter(function (id) { return stars[id]; });
+        var starredTab = document.getElementById('starredTab');
+        starredTab.hidden = (starIds.length === 0 && mode !== 'starred');
+        starredTab.textContent = '★ Starred (' + starIds.length + ')';
 
-      function renderAll() {
-        // Update filter chip counts
-        var counts = { all: 0, pick: 0, test: 0, skip: 0, film: 0, app: 0, kit: 0, sheet: 0, essay: 0 };
-        KEYS.forEach(function (k) {
-          var v = state.verdicts[k.id] || '';
-          if (v === 'skip') {
-            counts.skip++;
-          } else {
-            counts.all++;
-            counts[k.track] = (counts[k.track] || 0) + 1;
-          }
-          if (v === 'pick') counts.pick++;
-          if (v === 'test') counts.test++;
-        });
-        Object.keys(counts).forEach(function (key) {
-          var el = document.querySelector('[data-cnt="' + key + '"]');
-          if (el) el.textContent = counts[key];
-        });
-        document.getElementById('chipSkip').hidden = (counts.skip === 0 && state.filter !== 'skip');
+        var starBar = document.getElementById('starBar');
+        starBar.hidden = (starIds.length === 0 && !undoStars);
+        if (!starBar.hidden) {
+          document.getElementById('starCountText').textContent = starIds.length
+            ? ('★ ' + starIds.length + ' marked: ' + starIds.join(', '))
+            : 'Stars cleared.';
+          document.getElementById('undoStarBtn').hidden = !undoStars;
+          document.getElementById('zipStarredBtn').hidden = (starIds.length === 0);
+          document.getElementById('copyStarredBtn').hidden = (starIds.length === 0);
+          document.getElementById('clearStarBtn').hidden = (starIds.length === 0);
+        }
 
-        var filtered = sortKeys(KEYS.filter(matchesKey));
-        currentVisibleIds = [];
+        var list = KEYS.filter(matches);
+        if (mode === 'oldest') list = list.slice().reverse();
 
-        var packsEl = document.getElementById('packsContainer');
-        var flatEl = document.getElementById('flatContainer');
-        var emptyEl = document.getElementById('emptyMsg');
+        visibleIds = [];
+        var out = '';
 
-        if (state.mode === 'packs') {
-          packsEl.hidden = false;
-          flatEl.hidden = true;
-          var html = '';
+        if (mode === 'packs') {
           PACKS.forEach(function (p) {
-            var pKeys = filtered.filter(function (k) { return k.pack === p.id; });
-            if (!pKeys.length) return;
-            pKeys.forEach(function (k) { currentVisibleIds.push(k.id); });
-            html += (
-              '<section class="pack-block" id="' + p.id + '">' +
+            var items = list.filter(function (k) { return k.pack === p.id; });
+            if (!items.length) return;
+            items.forEach(function (k) { visibleIds.push(k.id); });
+            out += (
+              '<section class="pack-group">' +
                 '<div class="pack-head">' +
-                  '<div>' +
-                    '<div class="pack-kicker"><span class="pack-id">' + p.id + '</span><span>' + escapeHTML(p.meta) + '</span></div>' +
-                    '<h2>' + escapeHTML(p.name) + '</h2>' +
-                    '<p>' + escapeHTML(p.desc) + '</p>' +
-                  '</div>' +
-                  '<div class="pack-btns">' +
-                    '<button type="button" class="pack-zip-btn" data-zip-pack="' + p.id + '">⬇ Download Pack (.zip · ' + pKeys.length + ')</button>' +
-                  '</div>' +
+                  '<h2>' + esc(p.title) + '</h2>' +
+                  '<button type="button" class="text-btn" data-zip-pack="' + p.id + '">Download pack (.zip)</button>' +
                 '</div>' +
-                '<div class="key-grid">' + pKeys.map(renderKeyCard).join('') + '</div>' +
+                '<p class="pack-sub">' + esc(p.sub) + '</p>' +
+                '<ul class="item-list">' + items.map(rowHTML).join('') + '</ul>' +
               '</section>'
             );
           });
-          packsEl.innerHTML = html;
         } else {
-          packsEl.hidden = true;
-          flatEl.hidden = false;
-          currentVisibleIds = filtered.map(function (k) { return k.id; });
-          flatEl.innerHTML = filtered.map(renderKeyCard).join('');
+          visibleIds = list.map(function (k) { return k.id; });
+          if (list.length) {
+            out = '<ul class="item-list" style="margin-top:8px">' + list.map(rowHTML).join('') + '</ul>';
+          }
         }
 
-        emptyEl.hidden = (filtered.length > 0);
-        renderTray(counts);
+        document.getElementById('listContent').innerHTML = out;
+        document.getElementById('emptyState').hidden = (list.length > 0);
       }
 
-      function renderTray(counts) {
-        var tray = document.getElementById('curationTray');
-        var totalMarked = counts.pick + counts.test + counts.skip;
-        tray.hidden = (totalMarked === 0 && !state.undo);
-        if (tray.hidden) return;
+      // ── READER VIEW ──
+      function openReader(id, pushHash) {
+        var k = getKey(id);
+        if (!k) return;
+        activeId = k.id;
+        activePage = 1;
+        if (pushHash !== false) history.replaceState(null, '', '#' + k.id);
 
-        var parts = [];
-        if (counts.pick) parts.push('★ ' + counts.pick + ' Pick' + (counts.pick > 1 ? 's' : ''));
-        if (counts.test) parts.push('◐ ' + counts.test + ' Test');
-        if (counts.skip) parts.push('✕ ' + counts.skip + ' Skipped');
-        if (!parts.length && state.undo) parts.push('Marks cleared');
-        document.getElementById('trayCounts').textContent = parts.join(' · ');
+        document.getElementById('listView').hidden = true;
+        var rv = document.getElementById('readerView');
+        rv.hidden = false;
 
-        document.getElementById('trayZipPicks').hidden = (counts.pick === 0);
-        document.getElementById('trayShowPicks').hidden = (counts.pick === 0);
-        document.getElementById('trayUndo').hidden = !state.undo;
+        var head = document.getElementById('readerHead');
+        var colors = { sheet:'var(--c-sheet)', kit:'var(--c-kit)', film:'var(--c-film)', app:'var(--c-app)', essay:'var(--c-essay)' };
+        head.style.setProperty('--row-c', colors[k.track] || 'var(--ink)');
+
+        var order = visibleIds.indexOf(k.id) !== -1 ? visibleIds : KEYS.map(function (x) { return x.id; });
+        var pos = order.indexOf(k.id);
+        document.getElementById('itemPos').textContent = k.id + ' (' + (pos + 1) + '/' + order.length + ')';
+        document.getElementById('prevItem').disabled = (pos <= 0);
+        document.getElementById('nextItem').disabled = (pos >= order.length - 1);
+
+        document.getElementById('readerIcon').innerHTML = ICONS[k.id] || '';
+        document.getElementById('readerCode').textContent = k.id;
+        document.getElementById('readerMeta').textContent = k.meta;
+        document.getElementById('readerTitle').textContent = k.name;
+        document.getElementById('readerDesc').textContent = k.desc;
+
+        renderReaderActions(k);
+        renderReaderStage(k);
+        window.scrollTo(0, 0);
       }
 
-      // ── SET VERDICT ──
-      function toggleVerdict(id, v) {
-        snapshotUndo('verdict');
-        if (state.verdicts[id] === v) {
-          delete state.verdicts[id];
+      function renderReaderActions(k) {
+        var isWeb = /\.html$/i.test(k.file);
+        var isPrint = /\.(pdf|png)$/i.test(k.file);
+        var on = !!stars[k.id];
+        var html = '';
+
+        if (isWeb) {
+          html += '<a class="btn solid" href="./' + k.file + '">Open Interactive Page →</a>';
         } else {
-          state.verdicts[id] = v;
+          html += '<a class="btn solid" href="./' + k.file + '" target="_blank" rel="noopener">Open Full File ↗</a>';
+          if (isPrint) html += '<button type="button" class="btn" id="rPrintBtn">Print</button>';
+          html += '<a class="btn" href="./' + k.file + '" download>Download</a>';
         }
-        saveState();
-        renderAll();
-        if (inspectorOpenId === id) syncInspectorVerdict();
+        html += '<button type="button" class="btn" id="rStarBtn">' + (on ? '★ Starred' : '☆ Star') + '</button>';
+        html += '<button type="button" class="btn" id="rCopyBtn">Copy #' + k.num + '</button>';
+
+        if (k.extras && k.extras.length) {
+          k.extras.forEach(function (ex) {
+            html += '<a class="btn" href="./' + ex.u + '" target="_blank" rel="noopener">' + esc(ex.l) + ' ↗</a>';
+          });
+        }
+
+        var el = document.getElementById('readerActions');
+        el.innerHTML = html;
+
+        var pb = document.getElementById('rPrintBtn');
+        if (pb) pb.onclick = function () { printFile(k); };
+
+        document.getElementById('rStarBtn').onclick = function () {
+          toggleStar(k.id);
+          renderReaderActions(k);
+        };
+        document.getElementById('rCopyBtn').onclick = function (e) {
+          var b = e.currentTarget;
+          var url = location.origin + location.pathname + '#' + k.id;
+          if (navigator.clipboard) navigator.clipboard.writeText(k.id + ' · ' + k.name + ' — ' + url);
+          b.textContent = 'Copied!';
+          setTimeout(function () { b.textContent = 'Copy #' + k.num; }, 1200);
+        };
       }
 
-      // ── PRINT HELPER (Direct iframe print with safe new-tab fallback) ──
-      function triggerPrint(k) {
+      function renderReaderStage(k) {
+        var pBar = document.getElementById('readerPages');
+        var stage = document.getElementById('readerStage');
+
+        if (k.track === 'film') {
+          pBar.hidden = true;
+          stage.innerHTML = '<video controls autoplay playsinline poster="./' + (k.thumb || '') + '"><source src="./' + k.file + '" type="video/mp4"></video>';
+          return;
+        }
+
+        if (k.pages && k.pages > 0) {
+          pBar.hidden = (k.pages <= 1);
+          if (k.pages > 1) {
+            var links = '';
+            for (var p = 1; p <= k.pages; p++) {
+              var lbl = p === 1 ? 'Page 1 (Front)' : (p === 2 ? 'Page 2 (Back)' : 'Page ' + p);
+              links += '<button type="button" class="p-link' + (p === activePage ? ' active' : '') + '" data-page="' + p + '">' + lbl + '</button>';
+            }
+            pBar.innerHTML = links;
+          }
+          stage.innerHTML = '<img src="./pages/' + k.stem + '-p' + activePage + '.jpg" alt="' + esc(k.name) + ' page ' + activePage + '">';
+          return;
+        }
+
+        pBar.hidden = true;
+        var img = /\.png$/i.test(k.file) ? k.file : k.thumb;
+        if (img) {
+          stage.innerHTML = '<img src="./' + img + '" alt="' + esc(k.name) + '">';
+        } else {
+          stage.innerHTML = '';
+        }
+      }
+
+      function closeReader() {
+        var vid = document.querySelector('#readerStage video');
+        if (vid) vid.pause();
+        activeId = null;
+        document.getElementById('readerView').hidden = true;
+        document.getElementById('listView').hidden = false;
+        if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+        renderList();
+      }
+
+      function stepReader(delta) {
+        if (!activeId) return;
+        var order = visibleIds.indexOf(activeId) !== -1 ? visibleIds : KEYS.map(function (x) { return x.id; });
+        var next = order.indexOf(activeId) + delta;
+        if (next >= 0 && next < order.length) openReader(order[next]);
+      }
+
+      document.getElementById('backToList').onclick = closeReader;
+      document.getElementById('homeTitle').onclick = function (e) {
+        if (activeId) { e.preventDefault(); closeReader(); }
+      };
+      document.getElementById('prevItem').onclick = function () { stepReader(-1); };
+      document.getElementById('nextItem').onclick = function () { stepReader(1); };
+
+      document.getElementById('readerPages').addEventListener('click', function (e) {
+        var b = e.target.closest('[data-page]');
+        if (!b || !activeId) return;
+        activePage = parseInt(b.getAttribute('data-page'), 10) || 1;
+        renderReaderStage(getKey(activeId));
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (!activeId) return;
+        if (e.target && e.target.tagName === 'INPUT') return;
+        if (e.key === 'ArrowLeft') { e.preventDefault(); stepReader(-1); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); stepReader(1); }
+        else if (e.key === 'Escape') { e.preventDefault(); closeReader(); }
+      });
+
+      // Touch swipe in Reader
+      var sx = 0, sy = 0;
+      document.getElementById('readerView').addEventListener('touchstart', function (e) {
+        if (e.touches.length === 1) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }
+      }, { passive: true });
+      document.getElementById('readerView').addEventListener('touchend', function (e) {
+        if (e.changedTouches.length === 1) {
+          var dx = e.changedTouches[0].clientX - sx;
+          var dy = e.changedTouches[0].clientY - sy;
+          if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.6) stepReader(dx < 0 ? 1 : -1);
+        }
+      }, { passive: true });
+
+      // ── STARS & UNDO ──
+      function toggleStar(id) {
+        undoStars = null;
+        if (stars[id]) delete stars[id];
+        else stars[id] = true;
+        saveStars();
+        renderList();
+      }
+
+      document.addEventListener('click', function (e) {
+        var openBtn = e.target.closest('[data-open]');
+        if (openBtn) { openReader(openBtn.getAttribute('data-open')); return; }
+
+        var starBtn = e.target.closest('[data-star]');
+        if (starBtn) { toggleStar(starBtn.getAttribute('data-star')); return; }
+
+        var zipBtn = e.target.closest('[data-zip-pack]');
+        if (zipBtn) {
+          var pid = zipBtn.getAttribute('data-zip-pack');
+          var items = KEYS.filter(function (k) { return k.pack === pid; });
+          downloadZip(items, 'Turkey_Sub_' + pid + '.zip');
+        }
+      });
+
+      // ── PRINT & ZIP WITH STOP ──
+      var statusLine = document.getElementById('statusLine');
+      var statusText = document.getElementById('statusText');
+      var stopBtn = document.getElementById('stopBtn');
+      var dismissBtn = document.getElementById('dismissBtn');
+      var zipAbort = null;
+
+      function setStatus(msg, canStop, canClose) {
+        statusLine.hidden = false;
+        statusText.textContent = msg;
+        stopBtn.hidden = !canStop;
+        dismissBtn.hidden = !canClose;
+      }
+      stopBtn.onclick = function () { if (zipAbort) zipAbort.abort(); };
+      dismissBtn.onclick = function () { statusLine.hidden = true; };
+
+      function printFile(k) {
         var url = './' + k.file;
-        var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-        if (isIOS) {
+        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
           window.open(url, '_blank', 'noopener');
           return;
         }
-        var frame = document.getElementById('printFrame');
-        showJob('Loading ' + k.id + ' (' + k.handle + ') for printing…', false, false);
-        frame.onload = function () {
+        var f = document.getElementById('printFrame');
+        setStatus('Preparing ' + k.id + ' for printer…', false, false);
+        f.onload = function () {
           try {
-            frame.contentWindow.focus();
-            frame.contentWindow.print();
-            showJob('Sent ' + k.id + ' to printer dialog.', false, true);
-          } catch (e) {
+            f.contentWindow.focus();
+            f.contentWindow.print();
+            setStatus('Opened print dialog for ' + k.id + '.', false, true);
+          } catch (err) {
+            statusLine.hidden = true;
             window.open(url, '_blank', 'noopener');
-            hideJob();
           }
         };
-        frame.src = url;
+        f.src = url;
       }
-
-      // ── ZERO-DEPENDENCY BROWSER .ZIP BUILDER WITH STOP (ABORTCONTROLLER) ──
-      var activeZipAbort = null;
-      var jobBar = document.getElementById('jobBar');
-      var jobText = document.getElementById('jobText');
-      var jobStopBtn = document.getElementById('jobStopBtn');
-      var jobDismissBtn = document.getElementById('jobDismissBtn');
-
-      function showJob(msg, canStop, canDismiss, isFault) {
-        jobBar.hidden = false;
-        jobBar.classList.toggle('fault', !!isFault);
-        jobText.textContent = msg;
-        jobStopBtn.hidden = !canStop;
-        jobDismissBtn.hidden = !canDismiss;
-      }
-      function hideJob() { jobBar.hidden = true; }
-
-      jobStopBtn.addEventListener('click', function () {
-        if (activeZipAbort) activeZipAbort.abort();
-      });
-      jobDismissBtn.addEventListener('click', hideJob);
 
       function crc32(buf) {
-        var table = crc32.table;
-        if (!table) {
-          table = crc32.table = new Uint32Array(256);
+        var t = crc32.t;
+        if (!t) {
+          t = crc32.t = new Uint32Array(256);
           for (var i = 0; i < 256; i++) {
             var c = i;
             for (var k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
-            table[i] = c >>> 0;
+            t[i] = c >>> 0;
           }
         }
         var crc = 0xFFFFFFFF;
-        for (var j = 0; j < buf.length; j++) {
-          crc = table[(crc ^ buf[j]) & 0xFF] ^ (crc >>> 8);
-        }
+        for (var j = 0; j < buf.length; j++) crc = t[(crc ^ buf[j]) & 0xFF] ^ (crc >>> 8);
         return (crc ^ 0xFFFFFFFF) >>> 0;
       }
 
-      function buildStoreZip(entries) {
-        var encoder = new TextEncoder();
-        var localParts = [];
-        var centralParts = [];
-        var offset = 0;
-
-        entries.forEach(function (ent) {
-          var nameBytes = encoder.encode(ent.name);
-          var data = ent.data;
-          var crc = crc32(data);
-
-          var lh = new Uint8Array(30 + nameBytes.length);
-          var lv = new DataView(lh.buffer);
-          lv.setUint32(0, 0x04034b50, true);
-          lv.setUint16(4, 20, true);
-          lv.setUint16(8, 0, true); // store (uncompressed — fast & exact for PDF/MP4/PNG)
-          lv.setUint32(14, crc, true);
-          lv.setUint32(18, data.length, true);
-          lv.setUint32(22, data.length, true);
-          lv.setUint16(26, nameBytes.length, true);
-          lh.set(nameBytes, 30);
-
-          var ch = new Uint8Array(46 + nameBytes.length);
-          var cv = new DataView(ch.buffer);
-          cv.setUint32(0, 0x02014b50, true);
-          cv.setUint16(4, 20, true);
-          cv.setUint16(6, 20, true);
-          cv.setUint32(16, crc, true);
-          cv.setUint32(20, data.length, true);
-          cv.setUint32(24, data.length, true);
-          cv.setUint16(28, nameBytes.length, true);
-          cv.setUint32(42, offset, true);
-          ch.set(nameBytes, 46);
-
-          localParts.push(lh, data);
-          centralParts.push(ch);
-          offset += lh.length + data.length;
-        });
-
-        var centralSize = centralParts.reduce(function (s, p) { return s + p.length; }, 0);
-        var eocd = new Uint8Array(22);
-        var ev = new DataView(eocd.buffer);
-        ev.setUint32(0, 0x06054b50, true);
-        ev.setUint16(8, entries.length, true);
-        ev.setUint16(10, entries.length, true);
-        ev.setUint32(12, centralSize, true);
-        ev.setUint32(16, offset, true);
-
-        return new Blob(localParts.concat(centralParts, [eocd]), { type: 'application/zip' });
-      }
-
-      async function downloadZipBundle(keysList, zipFilename) {
-        if (!keysList.length) return;
-        if (activeZipAbort) activeZipAbort.abort();
+      async function downloadZip(items, filename) {
+        if (!items.length) return;
+        if (zipAbort) zipAbort.abort();
         var ctrl = new AbortController();
-        activeZipAbort = ctrl;
-
+        zipAbort = ctrl;
         try {
-          var entries = [];
-          for (var i = 0; i < keysList.length; i++) {
-            var k = keysList[i];
-            var baseName = k.id + '_' + k.file.split('/').pop();
-            showJob('Packing ' + (i + 1) + ' / ' + keysList.length + ' · ' + baseName, true, false, false);
+          var enc = new TextEncoder();
+          var locals = [], centrals = [], offset = 0;
+          for (var i = 0; i < items.length; i++) {
+            var k = items[i];
+            var name = k.id + '_' + k.file.split('/').pop();
+            setStatus('Downloading ' + (i + 1) + '/' + items.length + ' · ' + name, true, false);
             var res = await fetch('./' + k.file, { signal: ctrl.signal });
-            if (!res.ok) throw new Error('HTTP ' + res.status + ' on ' + k.file);
-            var buf = new Uint8Array(await res.arrayBuffer());
-            entries.push({ name: baseName, data: buf });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            var data = new Uint8Array(await res.arrayBuffer());
+            var nb = enc.encode(name), crc = crc32(data);
+
+            var lh = new Uint8Array(30 + nb.length), lv = new DataView(lh.buffer);
+            lv.setUint32(0, 0x04034b50, true); lv.setUint16(4, 20, true);
+            lv.setUint32(14, crc, true); lv.setUint32(18, data.length, true);
+            lv.setUint32(22, data.length, true); lv.setUint16(26, nb.length, true);
+            lh.set(nb, 30);
+
+            var ch = new Uint8Array(46 + nb.length), cv = new DataView(ch.buffer);
+            cv.setUint32(0, 0x02014b50, true); cv.setUint16(4, 20, true); cv.setUint16(6, 20, true);
+            cv.setUint32(16, crc, true); cv.setUint32(20, data.length, true);
+            cv.setUint32(24, data.length, true); cv.setUint16(28, nb.length, true);
+            cv.setUint32(42, offset, true); ch.set(nb, 46);
+
+            locals.push(lh, data); centrals.push(ch);
+            offset += lh.length + data.length;
           }
-          var blob = buildStoreZip(entries);
+          var cSize = centrals.reduce(function (s, p) { return s + p.length; }, 0);
+          var eocd = new Uint8Array(22), ev = new DataView(eocd.buffer);
+          ev.setUint32(0, 0x06054b50, true);
+          ev.setUint16(8, items.length, true); ev.setUint16(10, items.length, true);
+          ev.setUint32(12, cSize, true); ev.setUint32(16, offset, true);
+
+          var blob = new Blob(locals.concat(centrals, [eocd]), { type: 'application/zip' });
           var a = document.createElement('a');
-          a.href = URL.createObjectURL(blob);
-          a.download = zipFilename;
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-          setTimeout(function () { URL.revokeObjectURL(a.href); }, 8000);
-          showJob('Downloaded ' + zipFilename + ' (' + entries.length + ' files).', false, true, false);
+          a.href = URL.createObjectURL(blob); a.download = filename;
+          document.body.appendChild(a); a.click(); a.remove();
+          setStatus('Saved ' + filename + '.', false, true);
         } catch (err) {
-          if (err && err.name === 'AbortError') {
-            showJob('Pack download stopped. Nothing was saved.', false, true, false);
-          } else {
-            showJob('Pack download failed (' + (err.message || 'network error') + '). Individual files remain available.', false, true, true);
-          }
+          if (err && err.name === 'AbortError') setStatus('Stopped download.', false, true);
+          else setStatus('Download failed. Open individual items to save.', false, true);
         } finally {
-          activeZipAbort = null;
+          zipAbort = null;
         }
       }
 
-      // ── CLICK-THROUGH LIGHT TABLE INSPECTOR ──
-      var dialog = document.getElementById('inspectorDialog');
-      var inspectorOpenId = null;
-      var inspectorPage = 1;
+      // ── FILTER & MODE WIRING ──
+      document.querySelectorAll('[data-mode]').forEach(function (btn) {
+        btn.onclick = function () {
+          mode = btn.getAttribute('data-mode');
+          document.querySelectorAll('[data-mode]').forEach(function (b) { b.classList.toggle('active', b === btn); });
+          renderList();
+        };
+      });
 
-      function getKey(id) {
-        for (var i = 0; i < KEYS.length; i++) if (KEYS[i].id === id) return KEYS[i];
-        return null;
-      }
+      document.querySelectorAll('[data-type]').forEach(function (btn) {
+        btn.onclick = function () {
+          typeFilter = btn.getAttribute('data-type');
+          document.querySelectorAll('[data-type]').forEach(function (b) {
+            b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+          });
+          if (activeId) closeReader();
+          else renderList();
+        };
+      });
 
-      function syncInspectorVerdict() {
-        var v = state.verdicts[inspectorOpenId] || '';
-        document.querySelectorAll('[data-insp-v]').forEach(function (b) {
-          b.setAttribute('aria-pressed', b.getAttribute('data-insp-v') === v ? 'true' : 'false');
+      var findInput = document.getElementById('findInput');
+      findInput.oninput = function () {
+        query = findInput.value.trim().toLowerCase();
+        renderList();
+      };
+      document.getElementById('resetSearchBtn').onclick = function () {
+        findInput.value = ''; query = ''; typeFilter = 'all';
+        document.querySelectorAll('[data-type]').forEach(function (b) {
+          b.setAttribute('aria-pressed', b.getAttribute('data-type') === 'all' ? 'true' : 'false');
         });
-      }
+        renderList();
+      };
 
-      function renderInspectorMedia(k) {
-        var tabsEl = document.getElementById('inspPageTabs');
-        var wrap = document.getElementById('inspMediaWrap');
-
-        if (k.track === 'film') {
-          tabsEl.hidden = true;
-          wrap.innerHTML = '<video controls autoplay playsinline poster="./' + k.thumb + '"><source src="./' + k.file + '" type="video/mp4"></video>';
-          return;
-        }
-
-        if (k.pages && k.pages > 1) {
-          tabsEl.hidden = false;
-          var tHTML = '';
-          for (var p = 1; p <= k.pages; p++) {
-            var lbl = p === 1 ? 'Page 1 (Front)' : (p === 2 ? 'Page 2 (Back)' : 'Page ' + p);
-            tHTML += '<button type="button" class="p-tab' + (p === inspectorPage ? ' active' : '') + '" data-set-page="' + p + '">' + lbl + '</button>';
-          }
-          tabsEl.innerHTML = tHTML;
-          wrap.innerHTML = '<img src="./pages/' + k.stem + '-p' + inspectorPage + '.jpg" alt="' + escapeHTML(k.title) + ' page ' + inspectorPage + '">';
-          return;
-        }
-
-        tabsEl.hidden = true;
-        var imgSrc = /\.png$/i.test(k.file) ? k.file : k.thumb;
-        if (imgSrc) {
-          wrap.innerHTML = '<img src="./' + imgSrc + '" alt="' + escapeHTML(k.title) + '">';
-        } else {
-          wrap.innerHTML = '<div class="insp-box" style="padding:36px;text-align:center"><strong>' + escapeHTML(k.title) + '</strong><p style="margin:8px 0 14px;color:var(--muted)">Interactive web document — launch full screen to explore.</p><a class="act-btn primary" href="./' + k.file + '">Open Web Document ↗</a></div>';
-        }
-      }
-
-      function openInspector(id) {
-        var k = getKey(id);
-        if (!k) return;
-        inspectorOpenId = id;
-        inspectorPage = 1;
-        history.replaceState(null, '', '#' + id);
-
-        var idx = currentVisibleIds.indexOf(id);
-        var list = idx !== -1 ? currentVisibleIds : KEYS.map(function (x) { return x.id; });
-        var pos = list.indexOf(id);
-        document.getElementById('inspPos').textContent = (pos + 1) + ' / ' + list.length;
-        document.getElementById('inspPrev').disabled = (pos <= 0);
-        document.getElementById('inspNext').disabled = (pos >= list.length - 1);
-
-        document.getElementById('inspIcon').innerHTML = ICONS[k.id] || '';
-        var copyBtn = document.getElementById('inspCopyId');
-        copyBtn.textContent = k.id + ' · Copy Link';
-        copyBtn.onclick = function () { copyCalloutId(k.id, copyBtn); };
-
-        document.getElementById('inspTimePack').textContent = k.pack + ' · Added ' + k.timeLabel + ' · ~' + k.mins + ' min';
-        document.getElementById('inspTitle').textContent = k.handle;
-        document.getElementById('inspFile').textContent = k.file.split('/').pop() + ' (' + k.format + ')';
-        document.getElementById('inspDiff').textContent = k.diff;
-
-        var noteInput = document.getElementById('inspNote');
-        noteInput.value = state.notes[k.id] || '';
-
-        syncInspectorVerdict();
-        renderInspectorMedia(k);
-
-        var isHTML = /\.html$/i.test(k.file);
-        var isPrintable = /\.(pdf|png)$/i.test(k.file);
-        var acts = '';
-        if (isHTML) {
-          acts += '<a class="act-btn primary" href="./' + k.file + '" style="grid-column:1/-1">Launch Interactive Page ↗</a>';
-        } else {
-          acts += '<a class="act-btn primary" href="./' + k.file + '" target="_blank" rel="noopener">Open Full File ↗</a>';
-          acts += '<a class="act-btn" href="./' + k.file + '" download>⬇ Download</a>';
-        }
-        if (isPrintable) {
-          acts += '<button type="button" class="act-btn" id="inspPrintBtn" style="grid-column:1/-1">🖨 Print Sheet Directly</button>';
-        }
-        document.getElementById('inspActions').innerHTML = acts;
-        var pBtn = document.getElementById('inspPrintBtn');
-        if (pBtn) pBtn.onclick = function () { triggerPrint(k); };
-
-        var vWrap = document.getElementById('inspVariantsWrap');
-        var vList = document.getElementById('inspVariants');
-        if (k.variants && k.variants.length) {
-          vWrap.hidden = false;
-          vList.innerHTML = k.variants.map(function (vr) {
-            return '<a class="act-btn" href="./' + vr.url + '" target="_blank" rel="noopener">' + escapeHTML(vr.label) + ' ↗</a>';
-          }).join('');
-        } else {
-          vWrap.hidden = true;
-        }
-
-        if (!dialog.open && dialog.showModal) dialog.showModal();
-      }
-
-      function stepInspector(delta) {
-        if (!inspectorOpenId) return;
-        var list = currentVisibleIds.indexOf(inspectorOpenId) !== -1
-          ? currentVisibleIds
-          : KEYS.map(function (x) { return x.id; });
-        var idx = list.indexOf(inspectorOpenId);
-        var next = idx + delta;
-        if (next >= 0 && next < list.length) openInspector(list[next]);
-      }
-
-      function closeInspector() {
-        // Pause any playing video inside inspector on exit
-        var vid = document.querySelector('#inspMediaWrap video');
-        if (vid) vid.pause();
-        inspectorOpenId = null;
-        if (dialog.open) dialog.close();
-        if (location.hash && /^#K-\d+$/i.test(location.hash)) {
-          history.replaceState(null, '', location.pathname + location.search);
-        }
-      }
-
-      document.getElementById('inspClose').addEventListener('click', closeInspector);
-      document.getElementById('inspPrev').addEventListener('click', function () { stepInspector(-1); });
-      document.getElementById('inspNext').addEventListener('click', function () { stepInspector(1); });
-
-      // Mobile touch-swipe left/right across keys inside the Light Table
-      var touchStartX = 0;
-      var touchStartY = 0;
-      var inspStageEl = document.getElementById('inspStage');
-      inspStageEl.addEventListener('touchstart', function (e) {
-        if (!e.touches || e.touches.length !== 1) return;
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-      }, { passive: true });
-      inspStageEl.addEventListener('touchend', function (e) {
-        if (!e.changedTouches || e.changedTouches.length !== 1) return;
-        var dx = e.changedTouches[0].clientX - touchStartX;
-        var dy = e.changedTouches[0].clientY - touchStartY;
-        if (Math.abs(dx) > 54 && Math.abs(dx) > Math.abs(dy) * 1.6) {
-          stepInspector(dx < 0 ? 1 : -1);
-        }
-      }, { passive: true });
-      dialog.addEventListener('click', function (e) { if (e.target === dialog) closeInspector(); });
-      dialog.addEventListener('close', function () {
-        var vid = document.querySelector('#inspMediaWrap video');
-        if (vid) vid.pause();
-        inspectorOpenId = null;
-      });
-
-      document.getElementById('inspPageTabs').addEventListener('click', function (e) {
-        var btn = e.target.closest('[data-set-page]');
-        if (!btn || !inspectorOpenId) return;
-        inspectorPage = parseInt(btn.getAttribute('data-set-page'), 10) || 1;
-        renderInspectorMedia(getKey(inspectorOpenId));
-      });
-
-      document.getElementById('inspVerdictGrp').addEventListener('click', function (e) {
-        var btn = e.target.closest('[data-insp-v]');
-        if (!btn || !inspectorOpenId) return;
-        toggleVerdict(inspectorOpenId, btn.getAttribute('data-insp-v'));
-      });
-
-      document.getElementById('inspNote').addEventListener('input', function (e) {
-        if (!inspectorOpenId) return;
-        var val = e.target.value.trim();
-        if (val) state.notes[inspectorOpenId] = val;
-        else delete state.notes[inspectorOpenId];
-        saveState();
-        renderAll();
-      });
-
-      // Keyboard navigation in Light Table Inspector
-      document.addEventListener('keydown', function (e) {
-        if (!dialog.open || !inspectorOpenId) return;
-        if (document.activeElement && document.activeElement.tagName === 'INPUT') return;
-        if (e.key === 'ArrowLeft') { e.preventDefault(); stepInspector(-1); }
-        else if (e.key === 'ArrowRight') { e.preventDefault(); stepInspector(1); }
-        else if (e.key === '1') { toggleVerdict(inspectorOpenId, 'pick'); }
-        else if (e.key === '2') { toggleVerdict(inspectorOpenId, 'test'); }
-        else if (e.key === '3') { toggleVerdict(inspectorOpenId, 'skip'); }
-      });
-
-      // ── COPY CALLOUT HELPERS ──
-      function copyCalloutId(id, btnEl) {
-        var k = getKey(id);
-        if (!k) return;
-        var url = location.origin + location.pathname + '#' + id;
-        var text = id + ' · ' + k.handle + ' (' + k.file.split('/').pop() + ') — ' + url;
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text);
-        }
-        if (btnEl) {
-          var prev = btnEl.textContent;
-          btnEl.textContent = 'Copied ' + id + '!';
-          setTimeout(function () { btnEl.textContent = prev; }, 1300);
-        }
-      }
-
-      // ── DELEGATED CLICKS ON MAIN WORKSPACE ──
-      document.addEventListener('click', function (e) {
-        var vBtn = e.target.closest('.v-btn[data-key]');
-        if (vBtn) {
-          toggleVerdict(vBtn.getAttribute('data-key'), vBtn.getAttribute('data-v'));
-          return;
-        }
-        var inspBtn = e.target.closest('[data-inspect]');
-        if (inspBtn) {
-          openInspector(inspBtn.getAttribute('data-inspect'));
-          return;
-        }
-        var printBtn = e.target.closest('[data-print]');
-        if (printBtn) {
-          var pk = getKey(printBtn.getAttribute('data-print'));
-          if (pk) triggerPrint(pk);
-          return;
-        }
-        var copyBtn = e.target.closest('[data-copy-id]');
-        if (copyBtn) {
-          copyCalloutId(copyBtn.getAttribute('data-copy-id'), copyBtn);
-          return;
-        }
-        var zipBtn = e.target.closest('[data-zip-pack]');
-        if (zipBtn) {
-          var packId = zipBtn.getAttribute('data-zip-pack');
-          var pKeys = KEYS.filter(function (k) { return k.pack === packId && state.verdicts[k.id] !== 'skip'; });
-          downloadZipBundle(pKeys, 'Turkey_Sub_' + packId + '.zip');
-        }
-      });
-
-      // ── TOP CONTROL DECK WIRING ──
-      var tabPacks = document.getElementById('tabPacks');
-      var tabFlat = document.getElementById('tabFlat');
-      function setMode(m) {
-        state.mode = m;
-        tabPacks.setAttribute('aria-selected', m === 'packs' ? 'true' : 'false');
-        tabFlat.setAttribute('aria-selected', m === 'flat' ? 'true' : 'false');
-        renderAll();
-      }
-      tabPacks.addEventListener('click', function () { setMode('packs'); });
-      tabFlat.addEventListener('click', function () { setMode('flat'); });
-
-      document.getElementById('sortSelect').addEventListener('change', function (e) {
-        state.sort = e.target.value;
-        // Switching sort other than newest while in Packs smoothly switches to All Keys so global sort order is immediately visible
-        if (state.mode === 'packs' && state.sort !== 'newest') setMode('flat');
-        else renderAll();
-      });
-
-      var fChips = document.querySelectorAll('.f-chip[data-filter]');
-      function setFilter(f) {
-        state.filter = f;
-        fChips.forEach(function (c) {
-          c.setAttribute('aria-pressed', c.getAttribute('data-filter') === f ? 'true' : 'false');
-        });
-        renderAll();
-      }
-      fChips.forEach(function (c) {
-        c.addEventListener('click', function () { setFilter(c.getAttribute('data-filter')); });
-      });
-
-      var searchBox = document.getElementById('searchBox');
-      var searchClear = document.getElementById('searchClear');
-      searchBox.addEventListener('input', function () {
-        state.query = searchBox.value.trim().toLowerCase();
-        searchClear.hidden = !state.query;
-        renderAll();
-      });
-      searchClear.addEventListener('click', function () {
-        searchBox.value = '';
-        state.query = '';
-        searchClear.hidden = true;
-        renderAll();
-        searchBox.focus();
-      });
-
-      document.getElementById('resetAllBtn').addEventListener('click', function () {
-        searchBox.value = '';
-        state.query = '';
-        searchClear.hidden = true;
-        setFilter('all');
-      });
-
-      // ── CURATION TRAY ACTIONS ──
-      document.getElementById('trayShowPicks').addEventListener('click', function () {
-        setMode('flat');
-        setFilter('pick');
-      });
-      document.getElementById('trayZipPicks').addEventListener('click', function () {
-        var picks = KEYS.filter(function (k) { return state.verdicts[k.id] === 'pick'; });
-        downloadZipBundle(picks, 'Turkey_Sub_Selected_Picks.zip');
-      });
-      document.getElementById('trayCopyBrief').addEventListener('click', function (e) {
-        var btn = e.currentTarget;
+      document.getElementById('copyStarredBtn').onclick = function (e) {
+        var b = e.currentTarget;
         var base = location.origin + location.pathname;
-        var lines = KEYS.filter(function (k) {
-          return state.verdicts[k.id] === 'pick' || state.verdicts[k.id] === 'test';
-        }).map(function (k) {
-          var badge = state.verdicts[k.id] === 'pick' ? '★ PICK' : '◐ TEST';
-          var note = state.notes[k.id] ? ' — "' + state.notes[k.id] + '"' : '';
-          return '- [' + badge + '] ' + k.id + ' · ' + k.handle + ' (' + k.file.split('/').pop() + ')' + note + ' ' + base + '#' + k.id;
-        });
-        if (lines.length && navigator.clipboard) {
-          navigator.clipboard.writeText(lines.join('\n'));
-          var prev = btn.textContent;
-          btn.textContent = 'Copied ' + lines.length + ' Callouts!';
-          setTimeout(function () { btn.textContent = prev; }, 1500);
+        var txt = KEYS.filter(function (k) { return stars[k.id]; }).map(function (k) {
+          return k.id + ' · ' + k.name + ' — ' + base + '#' + k.id;
+        }).join('\n');
+        if (txt && navigator.clipboard) navigator.clipboard.writeText(txt);
+        b.textContent = 'Copied!';
+        setTimeout(function () { b.textContent = 'Copy callouts'; }, 1200);
+      };
+      document.getElementById('zipStarredBtn').onclick = function () {
+        downloadZip(KEYS.filter(function (k) { return stars[k.id]; }), 'Turkey_Sub_Starred.zip');
+      };
+      document.getElementById('clearStarBtn').onclick = function () {
+        undoStars = Object.assign({}, stars);
+        stars = {};
+        if (mode === 'starred') {
+          mode = 'packs';
+          document.querySelectorAll('[data-mode]').forEach(function (b) {
+            b.classList.toggle('active', b.getAttribute('data-mode') === 'packs');
+          });
         }
-      });
-      document.getElementById('trayUndo').addEventListener('click', function () {
-        if (!state.undo) return;
-        state.verdicts = state.undo.verdicts;
-        state.notes = state.undo.notes;
-        state.undo = null;
-        saveState();
-        renderAll();
-      });
+        saveStars();
+        renderList();
+      };
+      document.getElementById('undoStarBtn').onclick = function () {
+        if (!undoStars) return;
+        stars = undoStars;
+        undoStars = null;
+        saveStars();
+        renderList();
+      };
 
-      // Two-tap guarded Reset (Law 10: Friction rises with risk)
-      var resetArmed = false;
-      var resetTimer = null;
-      document.getElementById('trayReset').addEventListener('click', function (e) {
-        var btn = e.currentTarget;
-        if (!resetArmed) {
-          resetArmed = true;
-          btn.textContent = 'Confirm Reset?';
-          resetTimer = setTimeout(function () {
-            resetArmed = false;
-            btn.textContent = 'Reset';
-          }, 3000);
-          return;
-        }
-        clearTimeout(resetTimer);
-        resetArmed = false;
-        btn.textContent = 'Reset';
-        snapshotUndo('reset');
-        state.verdicts = {};
-        state.notes = {};
-        if (state.filter === 'pick' || state.filter === 'test' || state.filter === 'skip') {
-          state.filter = 'all';
-          fChips.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-filter') === 'all' ? 'true' : 'false'); });
-        }
-        saveState();
-        renderAll();
-      });
-
-      // ── INITIAL RENDER + URL HASH DEEP-LINK (#K-01..#K-30) ──
-      renderAll();
-      function checkHash() {
-        var h = (location.hash || '').replace(/^#/, '').toUpperCase();
-        if (/^K-\d{2}$/.test(h) && getKey(h)) {
-          openInspector(h);
-        }
+      renderList();
+      function syncHash() {
+        var k = getKey(location.hash);
+        if (k) openReader(k.id, false);
       }
-      checkHash();
-      window.addEventListener('hashchange', checkHash);
+      syncHash();
+      window.addEventListener('hashchange', syncHash);
     })();
   </script>
 </body>
