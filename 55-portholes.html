@@ -117,7 +117,64 @@
       font-weight: 600;
       text-decoration: none;
     }
+    .btn.active {
+      background: var(--ink);
+      color: var(--paper);
+    }
 
+    /* ── ILLUSTRATED PORTHOLE GALLERY ── */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+      gap: 26px 22px;
+      padding-top: 18px;
+    }
+    .g-item {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .g-img-btn {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .g-img-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      mix-blend-mode: multiply;
+      transition: transform 0.16s ease;
+    }
+    .g-img-btn:hover img { transform: scale(1.03); }
+    .g-head {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .g-clue {
+      font-size: 13.5px;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .g-fork {
+      font-size: 13px;
+      line-height: 1.35;
+      margin-top: 3px;
+    }
+    .g-fork strong {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── ILLUSTRATED TABLE ── */
     table {
       width: 100%;
       border-collapse: collapse;
@@ -134,17 +191,38 @@
       border-bottom: 1.5px solid var(--rule-dark);
     }
     td {
-      padding: 9px 8px;
+      padding: 8px 8px;
       border-bottom: 1px solid var(--rule);
-      vertical-align: top;
+      vertical-align: middle;
     }
     tr:hover td { background: #f2eee4; }
     .col-port {
+      width: 158px;
+      white-space: nowrap;
+    }
+    .port-cell {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .port-thumb {
+      width: 72px;
+      height: 72px;
+      flex: 0 0 72px;
+      display: block;
+    }
+    .port-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      mix-blend-mode: multiply;
+    }
+    .port-id {
       font-family: var(--mono);
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 700;
       white-space: nowrap;
-      width: 112px;
     }
     .src {
       display: block;
@@ -159,30 +237,101 @@
       font-family: var(--mono);
       font-size: 12px;
       color: var(--rule-col);
-      width: 175px;
+      width: 170px;
+    }
+
+    /* ── SINGLE PORTHOLE ZOOM MODAL ── */
+    .lightbox[hidden] { display: none !important; }
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 24, 26, 0.72);
+      z-index: 50;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+    }
+    .lb-card {
+      background: var(--paper);
+      border: 1.5px solid var(--rule-dark);
+      max-width: 560px;
+      width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
+      padding: 16px 18px 18px;
+    }
+    .lb-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 12.5px;
+    }
+    .lb-nav { display: flex; gap: 12px; align-items: center; }
+    .lb-img {
+      width: 100%;
+      max-width: 440px;
+      aspect-ratio: 1 / 1;
+      margin: 10px auto;
+      display: block;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+    .lb-clue {
+      font-family: var(--serif);
+      font-size: 19px;
+      margin: 4px 0 2px;
+    }
+    .lb-forks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--rule);
+      font-size: 14px;
+    }
+    .lb-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--rule-col);
     }
 
     @media screen and (max-width: 780px) {
       thead { display: none; }
       table, tbody, tr, td { display: block; width: 100%; }
-      tr { padding: 11px 0; border-bottom: 1.5px solid var(--rule); }
+      tr { padding: 12px 0; border-bottom: 1.5px solid var(--rule); }
       td { border: 0; padding: 2px 0; }
-      .col-port { width: auto; font-size: 13px; }
+      .col-port { width: auto; margin-bottom: 4px; }
       .col-rule { width: auto; margin-top: 3px; }
       .turkey-view::before { content: "Turkey out: "; font-weight: 700; }
       .trout-view::before { content: "Trout in: "; font-weight: 700; }
       .search { width: 100%; }
+      .lb-forks { grid-template-columns: 1fr; }
     }
 
     @media print {
-      @page { size: letter landscape; margin: 0.38in; }
-      body { background: #fff; font-size: 10px; line-height: 1.28; }
+      @page { size: letter landscape; margin: 0.34in; }
+      body { background: #fff; font-size: 9.5px; line-height: 1.25; }
       .wrap { max-width: none; padding: 0; }
-      .top-nav, .bar { display: none !important; }
+      .top-nav, .bar, #galleryWrap, .lightbox { display: none !important; }
+      #tableWrap { display: block !important; }
       header { padding: 0 0 6px; }
-      h1 { font-size: 18px; margin-bottom: 2px; }
-      .sub { font-size: 10.5px; }
-      th, td { padding: 4px 5px; }
+      h1 { font-size: 17px; margin-bottom: 2px; }
+      .sub { font-size: 10px; }
+      th, td { padding: 3px 5px; }
+      .col-port { width: 122px; }
+      .port-thumb { width: 44px; height: 44px; flex: 0 0 44px; }
+      .port-id { font-size: 10px; }
       tr { break-inside: avoid; page-break-inside: avoid; }
     }
   </style>
@@ -191,7 +340,7 @@
   <div class="wrap">
     <nav class="top-nav">
       <a href="./index.html">← Turkey Sub</a>
-      <span>PAE-09 · 55-Porthole Duck/Rabbit Seed Deck</span>
+      <span><a href="./lineage-jukebox.html" style="text-decoration:underline;text-underline-offset:3px">18-Song Lineage &amp; Patchworld Lenses →</a></span>
     </nav>
 
     <header>
@@ -210,23 +359,33 @@
       </div>
       <div class="right-tools">
         <input type="search" class="search" id="q" placeholder="Filter portholes…" aria-label="Filter portholes">
+        <button type="button" class="btn active" id="btnGallery">Gallery</button>
+        <button type="button" class="btn" id="btnTable">Table</button>
         <a class="btn" href="./kits/PAE-09_55_Porthole_Duck_Rabbit_Deck.pdf" target="_blank" rel="noopener">PDF</a>
         <button type="button" class="btn" onclick="window.print()">Print</button>
       </div>
     </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Porthole</th>
-          <th>Pre-Printed Rim Clue (Outside)</th>
-          <th>Turkey Looking Out (This or That?)</th>
-          <th>Trout Looking In (This or That?)</th>
-          <th>Ouxpo / SCION Rule</th>
-        </tr>
-      </thead>
-      <tbody id="rows"></tbody>
-    </table>
+    <div id="galleryWrap" class="gallery"></div>
+
+    <div id="tableWrap" hidden>
+      <table>
+        <thead>
+          <tr>
+            <th>Porthole</th>
+            <th>Pre-Printed Rim Clue (Outside)</th>
+            <th>Turkey Looking Out (This or That?)</th>
+            <th>Trout Looking In (This or That?)</th>
+            <th>Ouxpo / SCION Rule</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Porthole preview">
+    <div class="lb-card" id="lbCard"></div>
   </div>
 
   <script>
@@ -292,8 +451,21 @@
     ];
 
     var activeFilter = "all";
+    var viewMode = "gallery";
+    var visibleIdx = [];
+    var lbPos = -1;
+
     var qEl = document.getElementById("q");
     var rowsEl = document.getElementById("rows");
+    var galEl = document.getElementById("galleryWrap");
+    var tblWrap = document.getElementById("tableWrap");
+    var btnGal = document.getElementById("btnGallery");
+    var btnTbl = document.getElementById("btnTable");
+    var lbEl = document.getElementById("lightbox");
+    var lbCard = document.getElementById("lbCard");
+
+    function pad2(n) { return n < 10 ? "0" + n : String(n); }
+    function imgFor(idx) { return "./portholes/p" + pad2(idx + 1) + ".jpg"; }
 
     function esc(s) {
       return String(s).replace(/[&<>"']/g, function (c) {
@@ -303,14 +475,40 @@
 
     function render() {
       var q = (qEl.value || "").trim().toLowerCase();
-      var html = "";
-      SEEDS.forEach(function (r) {
+      var thtml = "";
+      var ghtml = "";
+      visibleIdx = [];
+
+      SEEDS.forEach(function (r, idx) {
         var tags = r[6];
         if (activeFilter !== "all" && tags.indexOf(activeFilter) === -1) return;
         if (q && r.join(" ").toLowerCase().indexOf(q) === -1) return;
-        html += (
+        var pos = visibleIdx.length;
+        visibleIdx.push(idx);
+        var src = imgFor(idx);
+
+        ghtml += (
+          '<article class="g-item">' +
+            '<button type="button" class="g-img-btn" data-pos="' + pos + '" aria-label="Open ' + esc(r[0]) + '">' +
+              '<img src="' + src + '" alt="' + esc(r[0] + " — " + r[1]) + '" loading="lazy">' +
+            '</button>' +
+            '<div class="g-head">' + esc(r[0]) + '</div>' +
+            '<div class="g-clue">' + esc(r[1]) + '<span class="src">' + esc(r[2]) + '</span></div>' +
+            '<div class="g-fork turkey-view"><strong>Turkey:</strong> ' + esc(r[3]) + '</div>' +
+            '<div class="g-fork trout-view"><strong>Trout:</strong> ' + esc(r[4]) + '</div>' +
+          '</article>'
+        );
+
+        thtml += (
           "<tr>" +
-            '<td class="col-port">' + esc(r[0]) + "</td>" +
+            '<td class="col-port">' +
+              '<div class="port-cell">' +
+                '<button type="button" class="port-thumb" data-pos="' + pos + '" aria-label="Open ' + esc(r[0]) + '">' +
+                  '<img src="' + src + '" alt="' + esc(r[0]) + '">' +
+                '</button>' +
+                '<span class="port-id">' + esc(r[0]) + '</span>' +
+              '</div>' +
+            "</td>" +
             "<td>" + esc(r[1]) + '<span class="src">' + esc(r[2]) + "</span></td>" +
             '<td class="turkey-view">' + esc(r[3]) + "</td>" +
             '<td class="trout-view">' + esc(r[4]) + "</td>" +
@@ -318,8 +516,73 @@
           "</tr>"
         );
       });
-      rowsEl.innerHTML = html || '<tr><td colspan="5" style="padding:24px;color:var(--mute)">No matching portholes.</td></tr>';
+
+      galEl.innerHTML = ghtml || '<p style="color:var(--mute);padding:16px 0">No matching portholes.</p>';
+      rowsEl.innerHTML = thtml || '<tr><td colspan="5" style="padding:24px;color:var(--mute)">No matching portholes.</td></tr>';
+
+      document.querySelectorAll("[data-pos]").forEach(function (b) {
+        b.onclick = function () { openLb(parseInt(b.getAttribute("data-pos"), 10)); };
+      });
     }
+
+    function setMode(m) {
+      viewMode = m;
+      galEl.hidden = (m !== "gallery");
+      tblWrap.hidden = (m !== "table");
+      btnGal.classList.toggle("active", m === "gallery");
+      btnTbl.classList.toggle("active", m === "table");
+    }
+
+    function openLb(pos) {
+      if (pos < 0 || pos >= visibleIdx.length) return;
+      lbPos = pos;
+      var idx = visibleIdx[pos];
+      var r = SEEDS[idx];
+      var src = imgFor(idx);
+      lbCard.innerHTML = (
+        '<div class="lb-top">' +
+          '<strong>' + esc(r[0]) + ' (' + (pos + 1) + '/' + visibleIdx.length + ')</strong>' +
+          '<div class="lb-nav">' +
+            '<button type="button" id="lbPrev"' + (pos === 0 ? " disabled" : "") + '>← Prev</button>' +
+            '<button type="button" id="lbNext"' + (pos >= visibleIdx.length - 1 ? " disabled" : "") + '>Next →</button>' +
+            '<button type="button" id="lbClose" style="font-weight:700">Close ✕</button>' +
+          '</div>' +
+        '</div>' +
+        '<img class="lb-img" src="' + src + '" alt="' + esc(r[0] + " — " + r[1]) + '">' +
+        '<div class="lb-clue">' + esc(r[1]) + '</div>' +
+        '<span class="src">' + esc(r[2]) + '</span>' +
+        '<div class="lb-forks">' +
+          '<div class="turkey-view"><strong>Turkey Looking Out</strong><br>' + esc(r[3]) + '</div>' +
+          '<div class="trout-view"><strong>Trout Looking In</strong><br>' + esc(r[4]) + '</div>' +
+        '</div>' +
+        '<div class="lb-foot">' +
+          '<span>' + esc(r[5]) + '</span>' +
+          '<a href="' + src + '" download="porthole-' + pad2(idx + 1) + '.jpg" style="text-decoration:underline">Download JPG</a>' +
+        '</div>'
+      );
+      lbEl.hidden = false;
+      document.getElementById("lbClose").onclick = closeLb;
+      var pv = document.getElementById("lbPrev");
+      var nx = document.getElementById("lbNext");
+      if (pv) pv.onclick = function () { openLb(pos - 1); };
+      if (nx) nx.onclick = function () { openLb(pos + 1); };
+    }
+
+    function closeLb() {
+      lbEl.hidden = true;
+      lbPos = -1;
+    }
+
+    lbEl.onclick = function (e) { if (e.target === lbEl) closeLb(); };
+    document.addEventListener("keydown", function (e) {
+      if (lbEl.hidden) return;
+      if (e.key === "Escape") closeLb();
+      if (e.key === "ArrowLeft" && lbPos > 0) openLb(lbPos - 1);
+      if (e.key === "ArrowRight" && lbPos < visibleIdx.length - 1) openLb(lbPos + 1);
+    });
+
+    btnGal.onclick = function () { setMode("gallery"); };
+    btnTbl.onclick = function () { setMode("table"); };
 
     document.querySelectorAll(".tab").forEach(function (btn) {
       btn.onclick = function () {
@@ -329,6 +592,7 @@
       };
     });
     qEl.oninput = render;
+    setMode("gallery");
     render();
   </script>
 </body>
