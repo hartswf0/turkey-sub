@@ -1,18 +1,61 @@
 /* ============================================================================
- * Turkey Sub · Video-to-Game Interactive Cockpit Runtime (portals/player.js)
+ * Turkey Sub · Wave 3 Video-to-Game 3-Pass Cockpit Runtime (portals/player.js)
  * Runs handmade SCION Setup-A scene modules (window.PORTAL_SCENES[1..55])
- * at 60fps in a live HTML5 <canvas>, with keyboard + pointer controls,
- * procedural WebAudio cockpit foley, and inspectable window.__game state.
+ * + 13.0s 3-Pass Snail Mail & Alien Listening Post layer (portals/snail-mail.js)
+ * at 60fps in a live HTML5 <canvas>, with keyboard + pointer controls:
+ *   - 1st Pass · Probable (Faces 1–2 · Teal #1d596e)   — Turkey Looks Out
+ *   - 2nd Pass · Plausible (Faces 3–4 · Green #2d6846) — Trout Looks In
+ *   - 3rd Pass · Preposterous (Faces 5–6 · Rust #9e3d1c) — Dear Alien Saucer
+ * Includes per-porthole Snail Mail Postcard Dispatch persistence in localStorage,
+ * procedural WebAudio cockpit + postal + cosmic saucer foley, and window.__game.
  * ============================================================================ */
 (function () {
   "use strict";
 
   var W = 1280;
   var H = 720;
-  var LOOP_DUR = 10.0;
+  var LOOP_DUR = 13.0;
+  var SNAIL_TRIP_DUR = 2.6; // 2.6s interactive 3-stop Turkey -> Trout -> Dear Alien delivery
+  var SNAIL_STORE_KEY = "turkey_sub_snail_mail_v1";
+
+  var COL_PROBABLE = "#1d596e";     // 1–2 Teal (Turkey)
+  var COL_PLAUSIBLE = "#2d6846";    // 3–4 Green (Trout)
+  var COL_PREPOSTEROUS = "#9e3d1c"; // 5–6 Rust (Alien)
 
   var audioCtx = null;
   var ambientNodes = null;
+
+  function loadAllSnailNotes() {
+    try {
+      var raw = window.localStorage ? window.localStorage.getItem(SNAIL_STORE_KEY) : null;
+      if (!raw) return {};
+      var parsed = JSON.parse(raw);
+      return (parsed && typeof parsed === "object") ? parsed : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function loadPortalSnailNote(portalId) {
+    var map = loadAllSnailNotes();
+    var val = map[String(portalId)];
+    return typeof val === "string" ? val : "";
+  }
+
+  function savePortalSnailNote(portalId, noteText) {
+    try {
+      if (!window.localStorage) return;
+      var map = loadAllSnailNotes();
+      var key = String(portalId);
+      var clean = typeof noteText === "string" ? noteText.trim().slice(0, 180) : "";
+      if (clean) {
+        map[key] = clean;
+      } else {
+        delete map[key];
+      }
+      window.localStorage.setItem(SNAIL_STORE_KEY, JSON.stringify(map));
+    } catch (e) {}
+  }
 
   function ensureAudio(muted) {
     if (muted) return null;
@@ -79,6 +122,66 @@
     } catch (e) {}
   }
 
+  // Synthesize cosmic tube-theremin warble + saucer telemetry pings + triangle postmark chord
+  function scheduleAlienSaucerFoley(ctx, startAt) {
+    // 1. Silky tube-theremin vibrato warble
+    var th = ctx.createOscillator();
+    var lfo = ctx.createOscillator();
+    var lfoG = ctx.createGain();
+    var thG = ctx.createGain();
+    th.type = "sine";
+    th.frequency.setValueAtTime(587.33, startAt);
+    th.frequency.exponentialRampToValueAtTime(880.0, startAt + 0.28);
+    th.frequency.exponentialRampToValueAtTime(659.25, startAt + 0.68);
+
+    lfo.type = "sine";
+    lfo.frequency.setValueAtTime(11.5, startAt);
+    lfoG.gain.setValueAtTime(26.0, startAt);
+    lfo.connect(lfoG);
+    lfoG.connect(th.frequency);
+
+    thG.gain.setValueAtTime(0.001, startAt);
+    thG.gain.linearRampToValueAtTime(0.085, startAt + 0.09);
+    thG.gain.exponentialRampToValueAtTime(0.0008, startAt + 0.72);
+    th.connect(thG);
+    thG.connect(ctx.destination);
+    th.start(startAt);
+    lfo.start(startAt);
+    th.stop(startAt + 0.74);
+    lfo.stop(startAt + 0.74);
+
+    // 2. Saucer holographic telemetry scanner pips
+    var scanFreqs = [1318.5, 1760.0, 1567.98, 2093.0];
+    scanFreqs.forEach(function (f, i) {
+      var po = ctx.createOscillator();
+      var pg = ctx.createGain();
+      var t0 = startAt + 0.12 + i * 0.075;
+      po.type = "triangle";
+      po.frequency.setValueAtTime(f, t0);
+      pg.gain.setValueAtTime(0.055, t0);
+      pg.gain.exponentialRampToValueAtTime(0.0008, t0 + 0.065);
+      po.connect(pg);
+      pg.connect(ctx.destination);
+      po.start(t0);
+      po.stop(t0 + 0.07);
+    });
+
+    // 3. Cosmic triangle postmark chord
+    [783.99, 1174.66, 1479.98].forEach(function (cf, ci) {
+      var co = ctx.createOscillator();
+      var cg = ctx.createGain();
+      var tc = startAt + 0.42 + ci * 0.025;
+      co.type = "sine";
+      co.frequency.setValueAtTime(cf, tc);
+      cg.gain.setValueAtTime(0.06 / (ci * 0.4 + 1), tc);
+      cg.gain.exponentialRampToValueAtTime(0.0008, tc + 0.45);
+      co.connect(cg);
+      cg.connect(ctx.destination);
+      co.start(tc);
+      co.stop(tc + 0.47);
+    });
+  }
+
   function playSound(kind, detail, muted) {
     var ctx = ensureAudio(muted);
     if (!ctx) return;
@@ -120,7 +223,7 @@
         bOsc.frequency.setValueAtTime(detail ? 190 : 250, now);
         bOsc.frequency.exponentialRampToValueAtTime(detail ? 92 : 145, now + 0.14);
         bGain.gain.setValueAtTime(0.22, now);
-        bGain.gain.exponentialRampToValueAtTime(0.001, now + 0.16);
+        bGain.exponentialRampToValueAtTime(0.001, now + 0.16);
         bOsc.connect(bGain);
         bGain.connect(ctx.destination);
         bOsc.start(now);
@@ -136,9 +239,84 @@
         sg.connect(ctx.destination);
         snap.start(now + 0.045);
         snap.stop(now + 0.095);
+      } else if (kind === "snail") {
+        // 1. Crisp postcard paper envelope slide into the 7:30 brass mail-hatch
+        var sLen = Math.floor(ctx.sampleRate * 0.20);
+        var sBuf = ctx.createBuffer(1, sLen, ctx.sampleRate);
+        var sData = sBuf.getChannelData(0);
+        for (var si = 0; si < sLen; si++) {
+          var u = si / sLen;
+          sData[si] = (Math.random() * 2 - 1) * Math.sin(u * Math.PI) * 0.55;
+        }
+        var nSrc = ctx.createBufferSource();
+        nSrc.buffer = sBuf;
+        var bp = ctx.createBiquadFilter();
+        bp.type = "bandpass";
+        bp.Q.value = 2.4;
+        bp.frequency.setValueAtTime(920, now);
+        bp.frequency.exponentialRampToValueAtTime(2480, now + 0.18);
+        var ng = ctx.createGain();
+        ng.gain.setValueAtTime(0.18, now);
+        ng.gain.exponentialRampToValueAtTime(0.001, now + 0.20);
+        nSrc.connect(bp);
+        bp.connect(ng);
+        ng.connect(ctx.destination);
+        nSrc.start(now);
+
+        // Brass mail-hatch flap click
+        var flap = ctx.createOscillator();
+        var fg = ctx.createGain();
+        flap.type = "triangle";
+        flap.frequency.setValueAtTime(1180, now + 0.01);
+        flap.frequency.exponentialRampToValueAtTime(740, now + 0.055);
+        fg.gain.setValueAtTime(0.10, now + 0.01);
+        fg.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+        flap.connect(fg);
+        fg.connect(ctx.destination);
+        flap.start(now + 0.01);
+        flap.stop(now + 0.065);
+
+        // 2. Soft pearlescent glass-glide shimmer (7:30 -> 3:50 Trout)
+        var glide = ctx.createOscillator();
+        var gg = ctx.createGain();
+        glide.type = "sine";
+        glide.frequency.setValueAtTime(329.63, now + 0.14);
+        glide.frequency.linearRampToValueAtTime(523.25, now + 1.05);
+        gg.gain.setValueAtTime(0.001, now + 0.14);
+        gg.gain.linearRampToValueAtTime(0.042, now + 0.36);
+        gg.gain.exponentialRampToValueAtTime(0.001, now + 1.12);
+        glide.connect(gg);
+        gg.connect(ctx.destination);
+        glide.start(now + 0.14);
+        glide.stop(now + 1.14);
+
+        // 3. Tiny brass postal-bell chime on Trout handoff (~1.12s)
+        [
+          { f: 1046.50, dt: 1.10, a: 0.12, dur: 0.40 },
+          { f: 1567.98, dt: 1.15, a: 0.09, dur: 0.38 }
+        ].forEach(function (b) {
+          var bo = ctx.createOscillator();
+          var bg = ctx.createGain();
+          var t0 = now + b.dt;
+          bo.type = "sine";
+          bo.frequency.setValueAtTime(b.f, t0);
+          bg.gain.setValueAtTime(b.a, t0);
+          bg.gain.exponentialRampToValueAtTime(0.0008, t0 + b.dur);
+          bo.connect(bg);
+          bg.connect(ctx.destination);
+          bo.start(t0);
+          bo.stop(t0 + b.dur + 0.02);
+        });
+
+        // 4. Cosmic saucer telemetry & triangle postmark chime on Dear Alien arrival (~1.90s)
+        scheduleAlienSaucerFoley(ctx, now + 1.88);
+      } else if (kind === "alien") {
+        scheduleAlienSaucerFoley(ctx, now);
       } else if (kind === "view") {
         // Across-the-glass perspective cut chime
-        var notes = detail === "trout" ? [392.0, 587.33] : (detail === "turkey" ? [440.0, 329.63] : [392.0, 493.88]);
+        var notes = detail === "trout"
+          ? [392.0, 587.33]
+          : (detail === "turkey" ? [440.0, 523.25] : [392.0, 493.88]);
         notes.forEach(function (freq, idx) {
           var o = ctx.createOscillator();
           var gn = ctx.createGain();
@@ -204,11 +382,18 @@
     return "Preposterous";
   }
 
+  function tierVoiceForRoll(r) {
+    if (!r || r < 1) return "";
+    if (r <= 2) return "Turkey · 1st Pass";
+    if (r <= 4) return "Trout · 2nd Pass";
+    return "Dear Alien · 3rd Pass";
+  }
+
   function tierColor(r) {
     if (!r || r < 1) return "#6b767c";
-    if (r <= 2) return "#1d596e";
-    if (r <= 4) return "#2d6846";
-    return "#9e3d1c";
+    if (r <= 2) return COL_PROBABLE;
+    if (r <= 4) return COL_PLAUSIBLE;
+    return COL_PREPOSTEROUS;
   }
 
   // Fallback Setup-A renderer if a scene script is still loading or missing
@@ -217,14 +402,12 @@
     ctx.fillStyle = "#132427";
     ctx.fillRect(0, 0, width, 536);
 
-    // Subtle bread-tin ribs & right-side dent
     ctx.strokeStyle = "#1f383d";
     ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.ellipse(640, 268, 595, 248, 0, 0, Math.PI * 2);
     ctx.stroke();
 
-    // Porthole water
     var cx = 640, cy = 255, r = 185;
     ctx.save();
     ctx.beginPath();
@@ -237,7 +420,6 @@
     ctx.fillRect(cx - r, cy - r, r * 2, r * 2);
     ctx.restore();
 
-    // Brass rim + 6 bolts + 2-o'clock chip
     ctx.strokeStyle = "#b8893a";
     ctx.lineWidth = 22;
     ctx.beginPath();
@@ -262,11 +444,16 @@
       ctx.fillText((meta && meta.station ? meta.station + " — " : "") + (meta && meta.clue ? meta.clue : "Setup A Cockpit"), 36, 585);
     }
     ctx.restore();
+
+    if (window.SNAIL_MAIL && typeof window.SNAIL_MAIL.drawCourier === "function") {
+      window.SNAIL_MAIL.drawCourier(ctx, width, height, t, state, meta);
+    }
   }
 
-  // Subtle tactile feedback toast drawn on top of canvas for 0.85s after key/click
+  // Subtle tactile feedback toast drawn on top of canvas (strictly hidden in blind-critic mode)
   function renderToastOverlay(ctx, toast, nowMs, state) {
     if (!toast || nowMs > toast.until) return;
+    if (state && state.showCaptions === false) return;
     var remain = Math.max(0, Math.min(1, (toast.until - nowMs) / 850));
     var alpha = remain < 0.3 ? remain / 0.3 : 1;
     ctx.save();
@@ -299,11 +486,13 @@
 
   var game = {
     active: false,
+    loopDuration: LOOP_DUR,
     portalId: 1,
     station: "#01 · Bow",
     clue: "",
     turkeyFork: "",
     troutFork: "",
+    alienFork: "",
     scionRule: "",
     defaultTool: "lamp",
     t: 2.2,
@@ -321,14 +510,62 @@
       routeMarked: false,
       showCaptions: true,
       muted: false,
-      paused: false
+      paused: false,
+      snailActive: false,
+      snailT: 0,
+      snailDelivered: false,
+      snailCount: 0,
+      snailNote: ""
     },
 
     getScene: function (id) {
+      if (window.SNAIL_MAIL && typeof window.SNAIL_MAIL.attachAll === "function") {
+        window.SNAIL_MAIL.attachAll();
+      }
       var target = id || this.portalId;
       if (target === "intro" && window.TROUT_SUB_INTRO) return window.TROUT_SUB_INTRO;
       var scenes = window.PORTAL_SCENES || {};
       return scenes[target] || null;
+    },
+
+    getSnailNote: function (id) {
+      return loadPortalSnailNote(id || this.portalId);
+    },
+
+    getAllSnailNotes: function () {
+      return loadAllSnailNotes();
+    },
+
+    setSnailNote: function (noteText, id) {
+      var targetId = id || this.portalId;
+      var clean = typeof noteText === "string" ? noteText.trim().slice(0, 180) : "";
+      savePortalSnailNote(targetId, clean);
+      if (Number(targetId) === Number(this.portalId)) {
+        this.state.snailNote = clean;
+        if (!clean && !this.state.snailActive) {
+          this.state.snailDelivered = false;
+        }
+        if (typeof onUiSync === "function") onUiSync(this);
+        this.renderNow();
+      }
+      return clean;
+    },
+
+    _buildRenderState: function () {
+      var rs = {
+        lamp: !!this.state.lamp,
+        ballast: !!this.state.ballast,
+        view: this.state.view,
+        roll: this.state.roll,
+        showCaptions: this.state.showCaptions,
+        snailActive: !!this.state.snailActive,
+        snailNote: this.state.snailNote || "",
+        snailMail: this.state.snailActive ? this.state.snailT : !!this.state.snailDelivered
+      };
+      if (this.state.snailActive) {
+        rs.snailT = this.state.snailT;
+      }
+      return rs;
     },
 
     _recordAction: function (tag, label, color) {
@@ -342,26 +579,36 @@
         ballast: this.state.ballast,
         view: this.state.view,
         roll: this.state.roll,
+        snailActive: this.state.snailActive,
+        snailNote: this.state.snailNote,
         showCaptions: this.state.showCaptions
       });
       if (this.history.length > 30) this.history.shift();
       toast = {
         text: label,
         color: color || "#14181a",
-        until: performance.now() + 950
+        until: performance.now() + 1050
       };
       if (typeof onUiSync === "function") onUiSync(this);
       this.renderNow();
     },
 
     loadPortal: function (id, seedFallback) {
+      if (window.SNAIL_MAIL && typeof window.SNAIL_MAIL.attachAll === "function") {
+        window.SNAIL_MAIL.attachAll();
+      }
       var num = Math.max(1, Math.min(55, parseInt(id, 10) || 1));
       var sc = this.getScene(num);
+      var savedNote = loadPortalSnailNote(num);
+      var alienLookup = (window.ALIEN_PASSES && window.ALIEN_PASSES[num]) ||
+        (window.SNAIL_MAIL && typeof window.SNAIL_MAIL.getAlienFork === "function" ? window.SNAIL_MAIL.getAlienFork(num) : "");
+
       this.portalId = num;
       this.station = (sc && sc.station) || (seedFallback && seedFallback[0]) || ("#" + (num < 10 ? "0" + num : num));
       this.clue = (sc && sc.clue) || (seedFallback && seedFallback[1]) || "";
       this.turkeyFork = (sc && sc.turkeyFork) || (seedFallback && seedFallback[3]) || "";
       this.troutFork = (sc && sc.troutFork) || (seedFallback && seedFallback[4]) || "";
+      this.alienFork = (sc && sc.alienFork) || alienLookup || "";
       this.scionRule = (sc && sc.scionRule) || (seedFallback && seedFallback[5]) || "";
       this.defaultTool = (sc && sc.defaultTool) || "lamp";
 
@@ -372,12 +619,17 @@
       this.state.tier = null;
       this.state.routeMarked = false;
       this.state.paused = false;
+      this.state.snailActive = false;
+      this.state.snailT = 0;
+      this.state.snailNote = savedNote;
+      this.state.snailDelivered = !!savedNote;
+      this.state.snailCount = savedNote ? 1 : 0;
       this.t = 0.0;
       this.framesRendered = 0;
       this.lastAction = "load:" + num;
       toast = {
-        text: "PORTAL " + this.station + " · READY (L / B / SPACE / R / C)",
-        color: "#1d596e",
+        text: "PORTAL " + this.station + " · 3-PASS READY (L / B / S / SPACE / R / C)",
+        color: COL_PROBABLE,
         until: performance.now() + 1200
       };
       if (typeof onUiSync === "function") onUiSync(this);
@@ -387,6 +639,9 @@
 
     mount: function (canvas, id, seedFallback, uiCallback) {
       this.unmount();
+      if (window.SNAIL_MAIL && typeof window.SNAIL_MAIL.attachAll === "function") {
+        window.SNAIL_MAIL.attachAll();
+      }
       activeCanvas = canvas;
       if (activeCanvas) {
         activeCanvas.width = W;
@@ -430,19 +685,72 @@
     },
 
     _advanceTime: function (dt) {
+      if (this.state.snailActive) {
+        var prevST = typeof this.state.snailT === "number" ? this.state.snailT : 0;
+        var nextST = prevST + dt / SNAIL_TRIP_DUR;
+
+        // Cut #1: Mail Snail crosses 7:30 -> 3:50 to Brook Trout (Plausible · 3–4 Green)
+        if (prevST < 0.44 && nextST >= 0.44) {
+          this.state.view = "trout";
+          this.t = 6.4;
+          this.state.routeMarked = true;
+          this.state.snailDelivered = true;
+          toast = {
+            text: "2ND PASS · PLAUSIBLE (3–4) · TROUT STAMPS & CLIMBS TO ALIEN",
+            color: COL_PLAUSIBLE,
+            until: performance.now() + 1000
+          };
+          if (typeof onUiSync === "function") onUiSync(this);
+        }
+
+        // Cut #2: Mail Snail climbs right bezel to 12:00 Alien Saucer Pod (Preposterous · 5–6 Rust)
+        if (prevST < 0.75 && nextST >= 0.75) {
+          this.state.view = "alien";
+          this.t = 10.4;
+          this.state.routeMarked = true;
+          this.state.snailDelivered = true;
+          toast = {
+            text: "3RD PASS · PREPOSTEROUS (5–6) · DEAR ALIEN SAUCER SCAN",
+            color: COL_PREPOSTEROUS,
+            until: performance.now() + 1150
+          };
+          if (typeof onUiSync === "function") onUiSync(this);
+        }
+
+        if (nextST >= 1.0) {
+          this.state.snailT = 1.0;
+          this.state.snailActive = false;
+          this.state.snailDelivered = true;
+          this.state.routeMarked = true;
+          if (typeof onUiSync === "function") onUiSync(this);
+        } else {
+          this.state.snailT = nextST;
+        }
+      }
+
       if (this.state.view === "turkey") {
-        // Keep t inside Act 2 (2.2s .. 5.4s) so both t-based and state.view-based rigs enact Turkey's pass
+        // 1st Pass · Probable (1.8s .. 4.8s)
         var nextTk = this.t + dt;
-        if (nextTk < 2.2 || nextTk >= 5.4) nextTk = 2.2 + ((nextTk - 2.2) % 3.2 + 3.2) % 3.2;
+        if (nextTk < 1.8 || nextTk >= 4.8) nextTk = 1.8 + ((nextTk - 1.8) % 3.0 + 3.0) % 3.0;
         this.t = nextTk;
       } else if (this.state.view === "trout") {
-        // Keep t inside Act 3 (5.8s .. 9.6s) so both t-based and state.view-based rigs enact Trout's pass
+        // 2nd Pass · Plausible (5.2s .. 8.0s)
         var nextTr = this.t + dt;
-        if (nextTr < 5.8 || nextTr >= 9.6) nextTr = 5.8 + ((nextTr - 5.8) % 3.8 + 3.8) % 3.8;
+        if (nextTr < 5.2 || nextTr >= 8.0) nextTr = 5.2 + ((nextTr - 5.2) % 2.8 + 2.8) % 2.8;
         this.t = nextTr;
+      } else if (this.state.view === "alien") {
+        // 3rd Pass · Preposterous / Dear Alien (9.1s .. 12.8s)
+        var nextAl = this.t + dt;
+        if (nextAl < 9.1 || nextAl >= 12.8) nextAl = 9.1 + ((nextAl - 9.1) % 3.7 + 3.7) % 3.7;
+        this.t = nextAl;
       } else {
+        var prevAutoT = this.t;
         this.t = (this.t + dt) % LOOP_DUR;
-        if (this.t >= 5.6) this.state.routeMarked = true;
+        if (this.t >= 5.0) this.state.routeMarked = true;
+        // Subtle cosmic saucer foley when Auto 13s loop enters Pass 3 at t=8.85s
+        if (prevAutoT < 8.85 && this.t >= 8.85 && this.active && !this.state.muted) {
+          playSound("alien", true, this.state.muted);
+        }
       }
     },
 
@@ -458,6 +766,39 @@
       this.t = clamped;
       if (typeof onUiSync === "function") onUiSync(this);
       this.renderNow(performance.now());
+      return this.getSnapshot();
+    },
+
+    sendSnailMail: function (note) {
+      if (typeof note === "string") {
+        var trimmed = note.trim().slice(0, 180);
+        if (trimmed.length > 0) {
+          this.state.snailNote = trimmed;
+          savePortalSnailNote(this.portalId, trimmed);
+        }
+      } else if (!this.state.snailNote) {
+        var existing = loadPortalSnailNote(this.portalId);
+        if (existing) this.state.snailNote = existing;
+      }
+
+      this.state.view = "turkey";
+      this.t = 3.85;
+      this.state.paused = false;
+      this.state.snailActive = true;
+      this.state.snailT = 0.0;
+      this.state.snailDelivered = false;
+      this.state.snailCount = (this.state.snailCount || 0) + 1;
+
+      playSound("snail", this.state.snailNote || true, this.state.muted);
+
+      var notePreview = this.state.snailNote
+        ? ('"' + (this.state.snailNote.length > 32 ? this.state.snailNote.slice(0, 32) + "…" : this.state.snailNote) + '"')
+        : "TURKEY -> TROUT -> DEAR ALIEN";
+      this._recordAction(
+        "snail:" + this.state.snailCount,
+        "[S] SNAIL MAIL · " + notePreview,
+        COL_PROBABLE
+      );
       return this.getSnapshot();
     },
 
@@ -478,39 +819,56 @@
       this._recordAction(
         "ballast:" + (this.state.ballast ? "on" : "off"),
         "[B] BALLAST SLOT · " + (this.state.ballast ? "FITTED (LOW SHELTER SIGHTLINE)" : "RELEASED TO BENCH"),
-        this.state.ballast ? "#2d6846" : "#394246"
+        this.state.ballast ? COL_PLAUSIBLE : "#394246"
       );
       return this.state.ballast;
     },
 
     setView: function (v) {
-      var target = (v === "turkey" || v === "trout" || v === "auto") ? v : "auto";
+      var target = (v === "turkey" || v === "trout" || v === "alien" || v === "auto") ? v : "auto";
       this.state.view = target;
-      if (target === "turkey" && (this.t < 2.2 || this.t >= 5.4)) {
-        this.t = 2.6;
-      } else if (target === "trout" && (this.t < 5.8 || this.t >= 9.6)) {
+      this.state.snailActive = false;
+      if (target === "turkey") {
+        this.t = 2.8;
+        playSound("view", "turkey", this.state.muted);
+      } else if (target === "trout") {
         this.t = 6.4;
         this.state.routeMarked = true;
+        playSound("view", "trout", this.state.muted);
+      } else if (target === "alien") {
+        this.t = 10.4;
+        this.state.routeMarked = true;
+        playSound("alien", true, this.state.muted);
+      } else {
+        playSound("view", "auto", this.state.muted);
       }
-      playSound("view", target, this.state.muted);
+
       var lbl = target === "turkey"
-        ? "[SPACE] FIRST PASS · TURKEY LOOKING OUT (1·3·5)"
+        ? "[SPACE] 1ST PASS · PROBABLE (1–2) · TURKEY LOOKING OUT"
         : (target === "trout"
-          ? "[SPACE] SECOND PASS · TROUT LOOKING IN (2·4·6)"
-          : "[A] AUTO 10s TWO-PASS CYCLE");
-      var col = target === "turkey" ? "#9e3d1c" : (target === "trout" ? "#1d596e" : "#14181a");
+          ? "[SPACE] 2ND PASS · PLAUSIBLE (3–4) · TROUT LOOKING IN"
+          : (target === "alien"
+            ? "[SPACE] 3RD PASS · PREPOSTEROUS (5–6) · DEAR ALIEN SAUCER"
+            : "[A] AUTO 13s 3-PASS SNAIL MAIL CHAIN"));
+      var col = target === "turkey"
+        ? COL_PROBABLE
+        : (target === "trout" ? COL_PLAUSIBLE : (target === "alien" ? COL_PREPOSTEROUS : "#14181a"));
       this._recordAction("view:" + target, lbl, col);
       return this.state.view;
     },
 
+    // [Space] cycles: Turkey (Probable 1–2) -> Trout (Plausible 3–4) -> Alien (Preposterous 5–6) -> Auto
     flipView: function () {
+      var cur = this.state.view;
       var next;
-      if (this.state.view === "turkey") {
+      if (cur === "turkey") {
         next = "trout";
-      } else if (this.state.view === "trout") {
-        next = "turkey";
+      } else if (cur === "trout") {
+        next = "alien";
+      } else if (cur === "alien") {
+        next = "auto";
       } else {
-        next = this.t < 5.6 ? "trout" : "turkey";
+        next = "turkey";
       }
       return this.setView(next);
     },
@@ -523,10 +881,10 @@
       this.state.tier = tierForRoll(val);
       this.state.routeMarked = true;
       playSound("roll", val, this.state.muted);
-      var side = (val % 2 === 1) ? "Turkey Odd" : "Trout Even";
+      var voice = tierVoiceForRoll(val);
       this._recordAction(
         "roll:" + val,
-        "[R] ROLLED 1d6 BOLT #" + val + " · " + this.state.tier.toUpperCase() + " (" + side + ")",
+        "[R] ROLLED 1d6 BOLT #" + val + " · " + this.state.tier.toUpperCase() + " (" + voice + ")",
         tierColor(val)
       );
       return val;
@@ -537,8 +895,8 @@
       playSound("captions", this.state.showCaptions, this.state.muted);
       this._recordAction(
         "captions:" + (this.state.showCaptions ? "on" : "off"),
-        "[C] CAPTIONS · " + (this.state.showCaptions ? "STORY STRIP VISIBLE" : "BLIND CRITIC MODE (NO TEXT)"),
-        "#2d6846"
+        "[C] CAPTIONS · " + (this.state.showCaptions ? "3-PASS STORY STRIP VISIBLE" : "BLIND CRITIC MODE (NO TEXT)"),
+        COL_PLAUSIBLE
       );
       return this.state.showCaptions;
     },
@@ -564,13 +922,7 @@
     renderNow: function (nowMs) {
       if (!activeCtx || !activeCanvas) return;
       var sc = this.getScene(this.portalId);
-      var renderState = {
-        lamp: !!this.state.lamp,
-        ballast: !!this.state.ballast,
-        view: this.state.view,
-        roll: this.state.roll,
-        showCaptions: this.state.showCaptions
-      };
+      var renderState = this._buildRenderState();
 
       activeCtx.save();
       activeCtx.setTransform(1, 0, 0, 1, 0, 0);
@@ -591,7 +943,6 @@
       }
       activeCtx.restore();
 
-      // If showCaptions === false, enforce PAELEO blind-critic invariant cleanly on lower strip if a crew left text
       renderToastOverlay(activeCtx, toast, nowMs || performance.now(), renderState);
       this.framesRendered += 1;
     },
@@ -605,6 +956,16 @@
         var x = ((ev.clientX - rect.left) / rect.width) * W;
         var y = ((ev.clientY - rect.top) / rect.height) * H;
 
+        // 0. Mail Snail Courier, 7:30 hatch, 3:50 perch, or 12:00 Alien Pod -> Send Snail Mail!
+        if (
+          window.SNAIL_MAIL &&
+          typeof window.SNAIL_MAIL.hitTest === "function" &&
+          window.SNAIL_MAIL.hitTest(x, y, self.t, self._buildRenderState(), self.getScene(self.portalId))
+        ) {
+          self.sendSnailMail();
+          return;
+        }
+
         var dx = x - 640;
         var dy = y - 255;
         var dist = Math.sqrt(dx * dx + dy * dy);
@@ -614,7 +975,7 @@
           self.rollDie();
           return;
         }
-        // 2. Inside porthole glass -> Flip Turkey / Trout perspective
+        // 2. Inside porthole glass -> Cycle Turkey / Trout / Alien / Auto pass
         if (dist < 175) {
           self.flipView();
           return;
@@ -639,7 +1000,7 @@
           self.rollDie();
           return;
         }
-        // Default: flip view
+        // Default: cycle 3-pass view
         self.flipView();
       };
     },
@@ -651,37 +1012,43 @@
       if (ev.metaKey || ev.ctrlKey || ev.altKey) return false;
 
       var k = ev.key;
-      if (k === "l" || k === "L") {
+      var code = ev.code;
+      if (k === "l" || k === "L" || code === "KeyL") {
         ev.preventDefault();
         this.toggleLamp();
         return true;
       }
-      if (k === "b" || k === "B") {
+      if (k === "b" || k === "B" || code === "KeyB") {
         ev.preventDefault();
         this.toggleBallast();
         return true;
       }
-      if (k === " " || k === "Spacebar") {
+      if (k === "s" || k === "S" || code === "KeyS") {
+        ev.preventDefault();
+        this.sendSnailMail();
+        return true;
+      }
+      if (k === " " || k === "Spacebar" || code === "Space") {
         ev.preventDefault();
         this.flipView();
         return true;
       }
-      if (k === "a" || k === "A") {
+      if (k === "a" || k === "A" || code === "KeyA") {
         ev.preventDefault();
         this.setView("auto");
         return true;
       }
-      if (k === "r" || k === "R") {
+      if (k === "r" || k === "R" || code === "KeyR") {
         ev.preventDefault();
         this.rollDie();
         return true;
       }
-      if (k === "c" || k === "C") {
+      if (k === "c" || k === "C" || code === "KeyC") {
         ev.preventDefault();
         this.toggleCaptions();
         return true;
       }
-      if (k === "m" || k === "M") {
+      if (k === "m" || k === "M" || code === "KeyM") {
         ev.preventDefault();
         this.toggleMute();
         return true;
@@ -697,9 +1064,13 @@
     getSnapshot: function () {
       return {
         active: this.active,
+        loopDuration: LOOP_DUR,
         portalId: this.portalId,
         station: this.station,
         clue: this.clue,
+        turkeyFork: this.turkeyFork,
+        troutFork: this.troutFork,
+        alienFork: this.alienFork,
         defaultTool: this.defaultTool,
         t: Number(this.t.toFixed(3)),
         fps: this.fps,
@@ -715,7 +1086,12 @@
           routeMarked: this.state.routeMarked,
           showCaptions: this.state.showCaptions,
           muted: this.state.muted,
-          paused: this.state.paused
+          paused: this.state.paused,
+          snailActive: !!this.state.snailActive,
+          snailT: Number((this.state.snailT || 0).toFixed(3)),
+          snailDelivered: !!this.state.snailDelivered,
+          snailCount: this.state.snailCount || 0,
+          snailNote: this.state.snailNote || ""
         }
       };
     }
@@ -726,7 +1102,7 @@
   }, true);
 
   window.addEventListener("keyup", function (ev) {
-    if (game.active && (ev.key === " " || ev.key === "Spacebar")) {
+    if (game.active && (ev.key === " " || ev.key === "Spacebar" || ev.code === "Space")) {
       var tag = ev.target && ev.target.tagName ? ev.target.tagName.toUpperCase() : "";
       if (tag !== "INPUT" && tag !== "TEXTAREA" && tag !== "SELECT") {
         ev.preventDefault();

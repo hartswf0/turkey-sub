@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>55 Duck/Rabbit Portholes · PAELEO Screening Room &amp; Playable Cockpit · Turkey Sub</title>
-  <meta name="description" content="55 handmade PAELEO/SCION bread-tin porthole films and live 60fps Video-to-Game playable cockpits for Trout Town · Turkey Sub, independently verified by blind critics.">
+  <title>55 Portholes · 3-Pass Snail Mail Screening Room &amp; Playable Cockpit · Turkey Sub</title>
+  <meta name="description" content="55 handmade 3-pass PAELEO/SCION bread-tin porthole films (Turkey Probable 1–2, Trout Plausible 3–4, Dear Alien Preposterous 5–6 via Snail Mail) and live 60fps Video-to-Game playable cockpits.">
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <style>
     :root {
@@ -15,8 +15,13 @@
       --mute: #6b767c;
       --rule: #dfdad0;
       --rule-dark: #14181a;
-      --turkey: #9e3d1c;
-      --trout: #1d596e;
+      /* Canonical Wave 3 Three-Pass Snail Mail Rubric */
+      --probable: #1d596e;     /* 1st Pass · Faces 1–2 · Teal (Turkey Out) */
+      --plausible: #2d6846;    /* 2nd Pass · Faces 3–4 · Green (Trout In) */
+      --preposterous: #9e3d1c; /* 3rd Pass · Faces 5–6 · Rust (Dear Alien) */
+      --turkey: #1d596e;
+      --trout: #2d6846;
+      --alien: #9e3d1c;
       --rule-col: #2d6846;
       --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
       --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
@@ -36,10 +41,10 @@
     a { color: inherit; }
     button, input, select { font: inherit; color: inherit; }
     button { cursor: pointer; background: none; border: 0; padding: 0; }
-    :focus-visible { outline: 2px solid var(--trout); outline-offset: 2px; }
+    :focus-visible { outline: 2px solid var(--probable); outline-offset: 2px; }
 
     .wrap {
-      max-width: 1140px;
+      max-width: 1160px;
       margin: 0 auto;
       padding: clamp(18px, 3.5vw, 34px) clamp(14px, 3.5vw, 28px) 76px;
     }
@@ -86,7 +91,7 @@
     .sub {
       margin: 0;
       color: var(--ink-2);
-      max-width: 78ch;
+      max-width: 84ch;
       font-size: 15px;
     }
 
@@ -137,7 +142,7 @@
       padding: 4px 8px;
       font-family: var(--mono);
       font-size: 12px;
-      max-width: 280px;
+      max-width: 290px;
     }
     .intro-grid {
       display: grid;
@@ -174,8 +179,8 @@
     .intro-steps {
       margin: 0;
       padding-left: 18px;
-      font-size: 14px;
-      line-height: 1.46;
+      font-size: 13.8px;
+      line-height: 1.44;
       color: var(--ink-2);
     }
     .intro-steps li { margin-bottom: 6px; }
@@ -309,10 +314,15 @@
       color: var(--paper);
     }
 
+    /* ── 3-PASS RUBRIC COLORS ── */
+    .pass-1, .turkey-view { color: var(--probable); font-weight: 500; }
+    .pass-2, .trout-view  { color: var(--plausible); font-weight: 500; }
+    .pass-3, .alien-view  { color: var(--preposterous); font-weight: 500; }
+
     /* ── SCREENING ROOM GALLERY ── */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(262px, 1fr));
       gap: 26px 22px;
       padding-top: 18px;
     }
@@ -382,9 +392,9 @@
       text-decoration: underline;
       text-underline-offset: 3px;
     }
-    .act-link.play-game { color: var(--trout); }
-    .act-link.critic-link { color: var(--rule-col); }
-    .act-link.stop { color: var(--turkey); }
+    .act-link.play-game { color: var(--probable); }
+    .act-link.critic-link { color: var(--plausible); }
+    .act-link.stop { color: var(--preposterous); }
     .g-head-row {
       display: flex;
       justify-content: space-between;
@@ -408,18 +418,29 @@
       margin-bottom: 6px;
     }
     .g-fork {
-      font-size: 13px;
-      line-height: 1.35;
+      font-size: 12.8px;
+      line-height: 1.34;
       margin-top: 3px;
     }
     .g-fork strong {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10.5px;
       text-transform: uppercase;
       letter-spacing: 0.03em;
     }
+    .g-snail-note {
+      margin-top: 6px;
+      padding-top: 5px;
+      border-top: 1px dashed var(--rule);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-2);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-    /* ── ILLUSTRATED TABLE ── */
+    /* ── ILLUSTRATED 3-PASS TABLE ── */
     table {
       width: 100%;
       border-collapse: collapse;
@@ -428,22 +449,23 @@
     th {
       text-align: left;
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10.5px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       color: var(--mute);
-      padding: 9px 8px;
+      padding: 9px 7px;
       border-bottom: 1.5px solid var(--rule-dark);
     }
     td {
-      padding: 8px 8px;
+      padding: 8px 7px;
       border-bottom: 1px solid var(--rule);
       vertical-align: middle;
+      font-size: 13.5px;
     }
     tr:hover td { background: var(--paper-2); }
-    .col-port { width: 176px; white-space: nowrap; }
-    .port-cell { display: flex; align-items: center; gap: 10px; }
-    .port-thumb { width: 68px; height: 68px; flex: 0 0 68px; display: block; }
+    .col-port { width: 162px; white-space: nowrap; }
+    .port-cell { display: flex; align-items: center; gap: 9px; }
+    .port-thumb { width: 60px; height: 60px; flex: 0 0 60px; display: block; }
     .port-thumb img {
       width: 100%;
       height: 100%;
@@ -464,13 +486,11 @@
       font-size: 11px;
       color: var(--mute);
     }
-    .turkey-view { color: var(--turkey); font-weight: 500; }
-    .trout-view { color: var(--trout); font-weight: 500; }
     .col-rule {
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--rule-col);
-      width: 170px;
+      width: 150px;
     }
 
     /* ── PORTHOLE SCREENING & VIDEO-TO-GAME MODAL ── */
@@ -490,7 +510,7 @@
       transform: translateZ(0);
       background: var(--paper);
       border: 1.5px solid var(--rule-dark);
-      max-width: 960px;
+      max-width: 980px;
       width: 100%;
       max-height: 94vh;
       overflow-y: auto;
@@ -544,6 +564,55 @@
     .compare-col-head + .game-canvas {
       margin-top: 0;
     }
+
+    /* ── 1-LINE SNAIL MAIL POSTCARD DISPATCH INPUT BAR ── */
+    .snail-dispatch-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 7px 10px;
+      background: #fffdf8;
+      border: 1px solid var(--rule-dark);
+      border-top: 0;
+      font-family: var(--mono);
+      font-size: 11.5px;
+    }
+    .snail-stamp-icon {
+      width: 11px;
+      height: 11px;
+      flex: 0 0 11px;
+      background: #d13424;
+      border: 1px solid var(--ink);
+      display: inline-block;
+    }
+    .snail-dispatch-label {
+      font-weight: 700;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .snail-dispatch-input {
+      flex: 1 1 260px;
+      min-width: 180px;
+      border: 0;
+      border-bottom: 1px solid var(--rule-dark);
+      background: transparent;
+      padding: 3px 4px;
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--ink);
+    }
+    .snail-dispatch-input:focus {
+      outline: none;
+      border-bottom-color: var(--probable);
+    }
+    .snail-dispatch-status {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--plausible);
+      white-space: nowrap;
+    }
+
     .cockpit-bar {
       display: flex;
       flex-wrap: wrap;
@@ -576,13 +645,23 @@
       color: var(--paper);
     }
     .c-btn.turkey-on {
-      background: var(--turkey);
-      border-color: var(--turkey);
+      background: var(--probable);
+      border-color: var(--probable);
       color: var(--paper);
     }
     .c-btn.trout-on {
-      background: var(--trout);
-      border-color: var(--trout);
+      background: var(--plausible);
+      border-color: var(--plausible);
+      color: var(--paper);
+    }
+    .c-btn.alien-on {
+      background: var(--preposterous);
+      border-color: var(--preposterous);
+      color: var(--paper);
+    }
+    .c-btn.snail-on {
+      background: var(--preposterous);
+      border-color: var(--preposterous);
       color: var(--paper);
     }
     .cockpit-readout {
@@ -647,12 +726,12 @@
     }
     .lb-forks {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
       margin-top: 10px;
       padding-top: 10px;
       border-top: 1px solid var(--rule);
-      font-size: 14px;
+      font-size: 13.5px;
     }
     .lb-foot {
       display: flex;
@@ -668,33 +747,38 @@
       color: var(--rule-col);
     }
 
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 820px) {
       thead { display: none; }
       table, tbody, tr, td { display: block; width: 100%; }
       tr { padding: 12px 0; border-bottom: 1.5px solid var(--rule); }
       td { border: 0; padding: 2px 0; }
       .col-port { width: auto; margin-bottom: 4px; }
       .col-rule { width: auto; margin-top: 3px; }
-      .turkey-view::before { content: "Turkey out: "; font-weight: 700; }
-      .trout-view::before { content: "Trout in: "; font-weight: 700; }
+      td.pass-1::before { content: "1–2 Turkey (Probable): "; font-weight: 700; }
+      td.pass-2::before { content: "3–4 Trout (Plausible): "; font-weight: 700; }
+      td.pass-3::before { content: "5–6 Alien (Preposterous): "; font-weight: 700; }
       .search { width: 100%; }
       .lb-forks, .intro-grid, .compare-grid { grid-template-columns: 1fr; }
       .chapter-select { max-width: 100%; }
     }
 
     @media print {
-      @page { size: letter landscape; margin: 0.34in; }
-      body { background: #fff; font-size: 9.5px; line-height: 1.25; }
+      @page { size: letter landscape; margin: 0.30in; }
+      body { background: #fff; font-size: 8.8px; line-height: 1.22; }
       .wrap { max-width: none; padding: 0; }
       .top-nav, .bar, #introSection, #galleryWrap, .lightbox, .no-print { display: none !important; }
       #tableWrap { display: block !important; }
-      header { padding: 0 0 6px; }
-      h1 { font-size: 17px; margin-bottom: 2px; }
-      .sub { font-size: 10px; }
-      th, td { padding: 3px 5px; }
-      .col-port { width: 122px; }
-      .port-thumb { width: 44px; height: 44px; flex: 0 0 44px; }
-      .port-id { font-size: 10px; }
+      header { padding: 0 0 5px; border-bottom: 1.5px solid #14181a; }
+      h1 { font-size: 16px; margin-bottom: 2px; }
+      .head-meta { font-size: 9px; }
+      .sub { font-size: 9.2px; max-width: none; }
+      th { font-size: 8px; padding: 4px 4px; }
+      td { font-size: 8.8px; padding: 3px 4px; }
+      .src { font-size: 7.8px; }
+      .col-port { width: 112px; }
+      .port-thumb { width: 38px; height: 38px; flex: 0 0 38px; }
+      .port-id { font-size: 9.2px; }
+      .col-rule { width: 118px; font-size: 8.2px; }
       tr { break-inside: avoid; page-break-inside: avoid; }
     }
   </style>
@@ -711,17 +795,17 @@
 
     <header>
       <div class="head-row">
-        <h1>55 Portholes · Screening Room &amp; Playable Cockpit</h1>
-        <span class="head-meta">56 Handmade Films · 55 Playable 60fps Portals · 56/56 Blind-Critic Verified</span>
+        <h1>55 Portholes · 3-Pass Snail Mail Screening Room &amp; Cockpit</h1>
+        <span class="head-meta">56 Handmade 3-Pass Films · 55 Playable 60fps Portals · 56/56 Blind-Critic Verified</span>
       </div>
-      <p class="sub">One shared silhouette at the chipped bread-tin porthole, two crisp <em>this-or-that?</em> forks across the glass, and a live Video-to-Game cockpit for every station: watch the handmade SCION film or operate the lamp, ballast, perspective cut, and 1d6 bolts yourself.</p>
+      <p class="sub">One shared silhouette at the chipped bread-tin porthole, three <em>this-or-that?</em> passes connected by <strong>Snail Mail</strong> across the glass — <b class="pass-1">1–2 Probable (Turkey Out)</b>, <b class="pass-2">3–4 Plausible (Trout In)</b>, and <b class="pass-3">5–6 Preposterous (Dear Alien)</b> — with a live 60fps playable cockpit for every station.</p>
     </header>
 
     <section class="intro-box" id="introSection" aria-label="PAELEO Screening Stage and Turkey Sub SCION prompts">
       <div class="stage-reels">
         <div class="reel-tabs" role="tablist" aria-label="Screening stage film selector">
-          <button type="button" class="reel-btn active" id="btnReelIntro" role="tab" aria-selected="true">1. Activity Intro (0:48 · Setup A)</button>
-          <button type="button" class="reel-btn" id="btnReelMaster" role="tab" aria-selected="false">2. Trout Sub Feature Reel (10:00 · 55 Portals)</button>
+          <button type="button" class="reel-btn active" id="btnReelIntro" role="tab" aria-selected="true">1. Activity Intro (0:52 · 3-Pass Snail Mail)</button>
+          <button type="button" class="reel-btn" id="btnReelMaster" role="tab" aria-selected="false">2. Trout Sub Feature Reel (12:48 · 55 Portals)</button>
         </div>
         <div class="chapter-jump">
           <label for="reelChapterSelect">Jump chapter:</label>
@@ -733,22 +817,22 @@
         <div>
           <video class="intro-vid" id="topStageVideo" controls preload="metadata" playsinline poster="./thumbs/portholes-scion-intro.jpg" src="./films/portholes-scion-intro.mp4"></video>
           <div class="stage-caption">
-            <span id="stageNowPlaying">Reel 1 · Activity Introduction — Turkey Sub SCION Setup A (0:48)</span>
-            <a href="./films/trout-sub-55-portals.mp4" download="trout-sub-55-portals.mp4" style="text-decoration:underline">Download Feature Reel (66 MB)</a>
+            <span id="stageNowPlaying">Reel 1 · Activity Introduction — 3-Pass Snail Mail &amp; Setup A (0:52)</span>
+            <a href="./films/trout-sub-55-portals.mp4" download="trout-sub-55-portals.mp4" style="text-decoration:underline">Download 3-Pass Feature Reel (69 MB)</a>
           </div>
         </div>
         <div>
-          <div class="intro-kicker">PAELEO Screening Room + Video-to-Game Setup A</div>
+          <div class="intro-kicker">PAELEO Screening Room · 3-Pass Snail Mail + Setup A</div>
           <ol class="intro-steps">
-            <li><strong>Take Turkey’s seat (Setup A):</strong> Oval bread-roll tin, right-side dent, 2-o’clock chipped brass porthole, ballast slot left, chalk chart center, lamp toggle right.</li>
-            <li><strong>Watch the film or play the portal:</strong> Click <strong>▶ Watch Film</strong> for the 10s handmade SCION cut, or <strong>🎮 Play Portal</strong> to operate <code>[L]</code> Lamp, <code>[B]</code> Ballast, <code>[Space]</code> View, and <code>[R]</code> 1d6 live at 60fps.</li>
-            <li><strong>Read both sides of the glass:</strong> Turkey writes odd faces (<code>1·3·5</code> looking out); Trout writes even faces (<code>2·4·6</code> looking in) across <b style="color:var(--trout)">Probable</b>, <b style="color:var(--rule-col)">Plausible</b>, and <b style="color:var(--turkey)">Preposterous</b>.</li>
-            <li><strong>Check the blind critic ledger:</strong> Open <strong>SCION + Critic</strong> on any porthole to inspect its uncaptioned contact strip (<code>showCaptions: false</code>) and independent verdict.</li>
+            <li><strong>Take Turkey’s seat (Setup A):</strong> Oval bread-roll tin, right-side dent, 2-o’clock chipped brass porthole with <code>7:30</code> Snail Mail hatch, ballast slot left, chalk chart center, lamp toggle right.</li>
+            <li><strong>Watch the 13s film or play at 60fps:</strong> Click <strong>▶ Watch Film</strong> or <strong>🎮 Play Portal</strong> to operate <code>[L]</code> Lamp, <code>[B]</code> Ballast, <code>[S]</code> Snail Mail, <code>[Space]</code> 3-Pass View, and <code>[R]</code> 1d6.</li>
+            <li><strong>Pass Snail Mail across the glass:</strong> Voices muffle through thick glass and creek water, so the <strong>Mail Snail</strong> carries postcards from <b class="pass-1">Turkey inside (1–2 Probable)</b> across the porthole to <b class="pass-2">Brook the Trout outside (3–4 Plausible)</b>.</li>
+            <li><strong>Climb to Dear Alien &amp; send your clue:</strong> Next the Mail Snail climbs the brass bezel to the <b class="pass-3">Alien Listening Post (5–6 Preposterous / Out of Bounds)</b>; type your own 1-line postcard clue beneath any playable portal and inspect its blind-critic strip in <strong>SCION + Critic</strong>.</li>
           </ol>
           <div class="intro-links">
             <a href="./scion-interior-atlas.html">44 Turkey Sub SCION Prompts →</a>
             <a href="./screening-room-blueprint.html">Screening Room Blueprint →</a>
-            <button type="button" id="btnOpenFirstPlay" style="color:var(--trout)">🎮 Launch Cockpit #01</button>
+            <button type="button" id="btnOpenFirstPlay" style="color:var(--probable)">🎮 Launch Cockpit #01</button>
           </div>
         </div>
       </div>
@@ -790,8 +874,9 @@
           <tr>
             <th>Porthole</th>
             <th>Pre-Printed Rim Clue (Outside)</th>
-            <th>Turkey Looking Out (This or That?)</th>
-            <th>Trout Looking In (This or That?)</th>
+            <th>1st Pass · Probable (1–2 · Turkey Out)</th>
+            <th>2nd Pass · Plausible (3–4 · Trout In)</th>
+            <th>3rd Pass · Preposterous (5–6 · Dear Alien)</th>
             <th>Ouxpo / SCION Rule</th>
           </tr>
         </thead>
@@ -804,9 +889,11 @@
     <div class="lb-card" id="lbCard"></div>
   </div>
 
-  <!-- Data, 11 Handmade SCION Portal Crew Modules (#01–#55), Intro Module, and Video-to-Game Player -->
+  <!-- Data, Wave 3 Alien Passes, Snail Mail Courier Layer, Intro + 11 SCION Crew Modules (#01–#55), and Video-to-Game Player -->
   <script src="./portholes-scion-data.js"></script>
   <script src="./verdicts-data.js"></script>
+  <script src="./alien-passes.js"></script>
+  <script src="./portals/snail-mail.js"></script>
   <script src="./portals/intro-scion.js"></script>
   <script src="./portals/crew-01.js"></script>
   <script src="./portals/crew-02.js"></script>
@@ -819,6 +906,7 @@
   <script src="./portals/crew-09.js"></script>
   <script src="./portals/crew-10.js"></script>
   <script src="./portals/crew-11.js"></script>
+  <script>if (window.SNAIL_MAIL && typeof window.SNAIL_MAIL.attachAll === "function") window.SNAIL_MAIL.attachAll();</script>
   <script src="./portals/player.js"></script>
 
   <script>
@@ -885,6 +973,7 @@
 
     var CORE_SCIONS = window.TURKEY_SUB_SCIONS || [];
     var VERDICTS = window.PORTAL_VERDICTS || {};
+    var ALIEN_MAP = window.ALIEN_PASSES || {};
     var prefersReduced = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
 
     var activeScionIdx = 0;
@@ -919,11 +1008,25 @@
     function imgFor(idx) { return "./portholes/p" + pad2(idx + 1) + ".jpg"; }
     function filmFor(idx) { return "./films/portholes/p" + pad2(idx + 1) + ".mp4"; }
     function stripFor(idx) { return "./checks/p" + pad2(idx + 1) + "-strip.jpg"; }
+    function alienForkFor(idx) {
+      var id = idx + 1;
+      if (ALIEN_MAP[id]) return ALIEN_MAP[id];
+      if (window.SNAIL_MAIL && typeof window.SNAIL_MAIL.getAlienFork === "function") {
+        return window.SNAIL_MAIL.getAlienFork(id);
+      }
+      return "";
+    }
+    function savedNoteFor(idx) {
+      if (window.__game && typeof window.__game.getSnailNote === "function") {
+        return window.__game.getSnailNote(idx + 1);
+      }
+      return "";
+    }
 
-    // Exact concatenated chapter start timestamps inside films/trout-sub-55-portals.mp4
+    // Exact concatenated chapter start timestamps inside films/trout-sub-55-portals.mp4 (52.0s intro + 55 x 13.0s portals)
     function chapterStartSec(chIdx) {
       if (chIdx <= 0) return 0;
-      return Number((48.024 + (chIdx - 1) * 10.024 + 0.06).toFixed(2));
+      return Number((52.024 + (chIdx - 1) * 13.024 + 0.06).toFixed(2));
     }
     function fmtTime(sec) {
       var s = Math.max(0, Math.floor(sec));
@@ -949,7 +1052,7 @@
 
     /* ── TOP SCREENING STAGE REELS & CHAPTERS ── */
     function initScreeningStage() {
-      var opts = '<option value="0">00 · Activity Intro — SCION Setup A (0:00)</option>';
+      var opts = '<option value="0">00 · Activity Intro — 3-Pass Snail Mail &amp; Setup A (0:00)</option>';
       SEEDS.forEach(function (r, idx) {
         var st = chapterStartSec(idx + 1);
         opts += '<option value="' + (idx + 1) + '">' + esc(r[0] + " — " + r[1]) + " (" + fmtTime(st) + ")</option>";
@@ -970,8 +1073,8 @@
           topVid.load();
         }
         nowPlayingEl.textContent = isIntro
-          ? "Reel 1 · Activity Introduction — Turkey Sub SCION Setup A (0:48)"
-          : "Reel 2 · Trout Sub Feature Anthology — Intro + All 55 Portals (10:00)";
+          ? "Reel 1 · Activity Introduction — 3-Pass Snail Mail & Setup A (0:52)"
+          : "Reel 2 · Trout Sub Feature Anthology — Intro + All 55 3-Pass Portals (12:48)";
 
         if (typeof seekSec === "number") {
           var applySeek = function () {
@@ -1004,11 +1107,11 @@
       topVid.addEventListener("timeupdate", function () {
         if (activeReel !== "master") return;
         var ct = topVid.currentTime || 0;
-        var ch = ct < 48.0 ? 0 : Math.min(55, 1 + Math.floor((ct - 48.024) / 10.024));
+        var ch = ct < 52.0 ? 0 : Math.min(55, 1 + Math.floor((ct - 52.024) / 13.024));
         if (ch < 0) ch = 0;
         if (String(ch) !== chSelect.value) chSelect.value = String(ch);
         if (ch === 0) {
-          nowPlayingEl.textContent = "Reel 2 · 00 · Activity Introduction — Turkey Sub SCION Setup A";
+          nowPlayingEl.textContent = "Reel 2 · 00 · Activity Introduction — 3-Pass Snail Mail & Setup A";
         } else if (SEEDS[ch - 1]) {
           nowPlayingEl.textContent = "Reel 2 · " + SEEDS[ch - 1][0] + " — " + SEEDS[ch - 1][1];
         }
@@ -1025,23 +1128,25 @@
 
     function buildPortScionMd(idx) {
       var r = SEEDS[idx];
+      var aFork = alienForkFor(idx);
       return (
         "# SCION · Porthole " + r[0] + " (" + r[1] + ")\n\n" +
         "## 1. Assignment and inputs\n" +
         "You are the SCION animation operator for Turkey Sub Porthole " + r[0] + " (“" + r[1] + "”, lineage: " + r[2] + "). " +
-        "Deliver a 10.0-second handmade 2D Canvas multiplane & Video-to-Game bread-tin cockpit scene using Turkey Sub Setup A.\n\n" +
-        "## 2. Creative thesis\n" +
-        "Hold one shared silhouette at the chipped brass porthole long enough to support two opposite readings across the glass:\n" +
-        "- First Pass · Turkey Looking Out (Odd faces 1·3·5): “" + r[3] + "”\n" +
-        "- Second Pass · Trout Looking In (Even faces 2·4·6): “" + r[4] + "”\n\n" +
+        "Deliver a 13.0-second handmade 2D Canvas multiplane & Video-to-Game 3-Pass Snail Mail scene using Turkey Sub Setup A.\n\n" +
+        "## 2. Three-Pass Snail Mail thesis\n" +
+        "Hold one shared silhouette at the chipped brass porthole across all three 1d6 tiers connected by the Trout Town Mail Snail:\n" +
+        "- First Pass · Probable (Faces 1–2 · Teal #1d596e · Turkey Looking Out): “" + r[3] + "”\n" +
+        "- Second Pass · Plausible (Faces 3–4 · Green #2d6846 · Trout Looking In via Snail Mail): “" + r[4] + "”\n" +
+        "- Third Pass · Preposterous / Out of Bounds (Faces 5–6 · Rust #9e3d1c · Dear Alien Listening Post): “" + aFork + "”\n\n" +
         "## 3. Setup A invariants & interactive controls\n" +
-        "Lock Setup A inside the oval bread-roll tin: right-side dent, centered 6-bolt brass porthole with offset latch and 2-o’clock rim chip, " +
+        "Lock Setup A inside the oval bread-roll tin: right-side dent, centered 6-bolt brass porthole with offset latch, 2-o’clock rim chip, and 7:30 Snail Mail hatch ([S]), " +
         "ballast/single attachment slot bottom-left ([B]), chalk route chart under glass bottom-center, and brass lamp toggle bottom-right ([L]). " +
         "Keep warm 2900K task light inside and cool river current outside, with zero text leaks when showCaptions is false.\n\n" +
-        "## 4. Governing rule and transition\n" +
-        "Apply " + r[5] + ". <clear hardware + murky port> [operate lamp toggle or ballast slot while looking] -> <" + r[1] + " revealed across the cut>. " +
-        "At 5.6s (or [Space] view flip), shift across the glass to Trout’s river witness view, log the rolled 1d6 consequence ([R]: 1–2 Probable, 3–4 Plausible, 5–6 Preposterous), " +
-        "and mark the verified route on the chalk chart under glass for Brook and the next pilot."
+        "## 4. Governing rule and 3-pass transition\n" +
+        "Apply " + r[5] + ". At 4.3–5.2s the Mail Snail ferries Turkey’s red-stamped postcard across the glass to Brook the Trout (Pass 2 · Plausible); " +
+        "at 8.1–9.0s the Mail Snail climbs the right brass bezel to 12:00 where the 3-eyed Alien Saucer Listener scans the prop and stamps the cosmic triangle postmark (Pass 3 · Preposterous), " +
+        "arming all six 1d6 bolts ([R]) and marking the verified route on the chalk chart under glass."
       );
     }
 
@@ -1051,7 +1156,7 @@
       return (
         "<poml>\n" +
         "  <role>SCION Animation Operator · Turkey Sub " + r[0] + "</role>\n" +
-        "  <task>Animate &amp; make playable Setup A two-way porthole proof for “" + r[1] + "” (" + r[5] + ")</task>\n" +
+        "  <task>Animate &amp; make playable Setup A 3-pass Snail Mail porthole proof for “" + r[1] + "” (" + r[5] + ")</task>\n" +
         "  <instructions>\n" + md + "\n  </instructions>\n" +
         "</poml>"
       );
@@ -1071,12 +1176,13 @@
       var verdictHtml = introVerdict ? (
         '<div class="verdict-box" style="margin-top:10px">' +
           '<div class="verdict-head">' +
-            '<span class="verdict-pass">✓ PASSED · Independent Blind Critic (' + esc(introVerdict.critic || "critic-1") + ')</span>' +
+            '<span class="verdict-pass">✓ PASSED · Independent Blind Critic (' + esc(introVerdict.critic || "post-critic") + ')</span>' +
             '<span class="verdict-measured">' + esc(introVerdict.measured || "") + '</span>' +
           '</div>' +
-          '<img class="verdict-strip" src="./checks/intro-strip.jpg" alt="Activity Intro blind &amp; captioned verification contact strip" loading="lazy">' +
+          '<img class="verdict-strip" src="./checks/intro-strip.jpg" alt="Activity Intro 6-column blind &amp; captioned verification contact strip" loading="lazy">' +
           '<div class="verdict-body">' +
             '<p><strong>Blind Reading (Uncaptioned Strip):</strong> ' + esc(introVerdict.blind_reading || "") + '</p>' +
+            (introVerdict.three_pass_chain ? '<p><strong>3-Pass Snail Mail Chain:</strong> ' + esc(introVerdict.three_pass_chain) + '</p>' : '') +
           '</div>' +
         '</div>'
       ) : "";
@@ -1127,9 +1233,9 @@
       if (!cards.length) return;
 
       cards.forEach(function (v) {
-        var seg = (v.getAttribute("data-seg") || "1.8,8.2").split(",");
-        var a = parseFloat(seg[0]) || 1.8;
-        var b = parseFloat(seg[1]) || 8.2;
+        var seg = (v.getAttribute("data-seg") || "1.6,11.8").split(",");
+        var a = parseFloat(seg[0]) || 1.6;
+        var b = parseFloat(seg[1]) || 11.8;
         v.addEventListener("loadedmetadata", function () {
           try { v.currentTime = a; } catch (e) {}
         });
@@ -1145,7 +1251,6 @@
           var v = entry.target;
           if (entry.isIntersecting && autoPreview && lbEl.hidden) {
             if (!v.getAttribute("src")) {
-              // Cap concurrent active muted decoders at 8 so all 55 cards scroll effortlessly
               while (loadedPreviewVids.length >= 8) {
                 var oldest = loadedPreviewVids.shift();
                 if (oldest && oldest !== v) {
@@ -1179,8 +1284,10 @@
 
       SEEDS.forEach(function (r, idx) {
         var tags = r[6];
+        var aFork = alienForkFor(idx);
+        var sNote = savedNoteFor(idx);
         if (activeFilter !== "all" && tags.indexOf(activeFilter) === -1) return;
-        if (q && r.join(" ").toLowerCase().indexOf(q) === -1) return;
+        if (q && (r.join(" ") + " " + aFork + " " + sNote).toLowerCase().indexOf(q) === -1) return;
         var pos = visibleIdx.length;
         visibleIdx.push(idx);
         var src = imgFor(idx);
@@ -1195,7 +1302,7 @@
           mediaBlock = (
             '<div class="g-media-wrap">' +
               '<button type="button" class="g-preview-btn" data-pos="' + pos + '" data-ltab="play" aria-label="Open Playable Portal for ' + esc(r[0]) + '">' +
-                '<video class="loop-vid" muted playsinline preload="none" poster="' + src + '" data-loop-vid="' + fsrc + '" data-seg="1.8,8.2"></video>' +
+                '<video class="loop-vid" muted playsinline preload="none" poster="' + src + '" data-loop-vid="' + fsrc + '" data-seg="1.6,11.8"></video>' +
               '</button>' +
             '</div>'
           );
@@ -1224,8 +1331,10 @@
               '<span class="g-rule-tag">' + esc(shortRule) + '</span>' +
             '</div>' +
             '<div class="g-clue">' + esc(r[1]) + '<span class="src">' + esc(r[2]) + '</span></div>' +
-            '<div class="g-fork turkey-view"><strong>Turkey:</strong> ' + esc(r[3]) + '</div>' +
-            '<div class="g-fork trout-view"><strong>Trout:</strong> ' + esc(r[4]) + '</div>' +
+            '<div class="g-fork pass-1"><strong>1–2 Turkey:</strong> ' + esc(r[3]) + '</div>' +
+            '<div class="g-fork pass-2"><strong>3–4 Trout:</strong> ' + esc(r[4]) + '</div>' +
+            '<div class="g-fork pass-3"><strong>5–6 Alien:</strong> ' + esc(aFork) + '</div>' +
+            (sNote ? '<div class="g-snail-note" title="' + esc(sNote) + '">✉ Snail Mail: “' + esc(sNote) + '”</div>' : '') +
           '</article>'
         );
 
@@ -1247,15 +1356,16 @@
               '</div>' +
             "</td>" +
             "<td>" + esc(r[1]) + '<span class="src">' + esc(r[2]) + "</span></td>" +
-            '<td class="turkey-view">' + esc(r[3]) + "</td>" +
-            '<td class="trout-view">' + esc(r[4]) + "</td>" +
+            '<td class="pass-1">' + esc(r[3]) + "</td>" +
+            '<td class="pass-2">' + esc(r[4]) + "</td>" +
+            '<td class="pass-3">' + esc(aFork) + "</td>" +
             '<td class="col-rule">' + esc(r[5]) + "</td>" +
           "</tr>"
         );
       });
 
       galEl.innerHTML = ghtml || '<p style="color:var(--mute);padding:16px 0">No matching portholes.</p>';
-      rowsEl.innerHTML = thtml || '<tr><td colspan="5" style="padding:24px;color:var(--mute)">No matching portholes.</td></tr>';
+      rowsEl.innerHTML = thtml || '<tr><td colspan="6" style="padding:24px;color:var(--mute)">No matching portholes.</td></tr>';
 
       document.querySelectorAll("[data-inline]").forEach(function (b) {
         b.onclick = function () {
@@ -1284,15 +1394,33 @@
       render();
     }
 
-    /* ── MODAL: PLAYABLE COCKPIT + SIDE-BY-SIDE COMPARE + FILM + SCION & CRITIC ── */
+    /* ── MODAL: PLAYABLE 3-PASS COCKPIT + SNAIL MAIL DISPATCH + COMPARE + CRITIC ── */
+    function buildSnailDispatchHtml(portalId) {
+      var saved = (window.__game && typeof window.__game.getSnailNote === "function")
+        ? window.__game.getSnailNote(portalId)
+        : "";
+      return (
+        '<form class="snail-dispatch-bar" id="snailDispatchForm" autocomplete="off">' +
+          '<span class="snail-stamp-icon" aria-hidden="true"></span>' +
+          '<label class="snail-dispatch-label" for="snailNoteInput">Snail Mail Dispatch:</label>' +
+          '<input type="text" id="snailNoteInput" class="snail-dispatch-input" maxlength="180" ' +
+            'value="' + esc(saved) + '" ' +
+            'placeholder="Write a 1-line Snail Mail clue from Turkey to Trout (or Dear Alien)...">' +
+          '<button type="submit" class="c-btn" id="snailSendBtn">Send Postcard [S]</button>' +
+          '<span class="snail-dispatch-status" id="snailSavedStatus">' + (saved ? "✓ Saved" : "") + '</span>' +
+        '</form>'
+      );
+    }
+
     function buildCockpitControlsHtml() {
       return (
         '<div class="cockpit-bar" id="cockpitBar">' +
           '<div class="cockpit-btns">' +
             '<button type="button" class="c-btn" id="gBtnLamp" title="Keyboard: L">[L] Lamp</button>' +
             '<button type="button" class="c-btn" id="gBtnBallast" title="Keyboard: B">[B] Ballast</button>' +
-            '<button type="button" class="c-btn" id="gBtnFlip" title="Keyboard: Space">[Space] Flip View</button>' +
-            '<button type="button" class="c-btn" id="gBtnAuto" title="Keyboard: A">[A] Auto 10s</button>' +
+            '<button type="button" class="c-btn" id="gBtnSnail" title="Keyboard: S (or click the Mail Snail on the porthole rim)">[S] Snail Mail</button>' +
+            '<button type="button" class="c-btn" id="gBtnFlip" title="Keyboard: Space (cycles Turkey -> Trout -> Dear Alien -> Auto)">[Space] 3-Pass</button>' +
+            '<button type="button" class="c-btn" id="gBtnAuto" title="Keyboard: A">[A] Auto 13s</button>' +
             '<button type="button" class="c-btn" id="gBtnRoll" title="Keyboard: R (or 1-6)">[R] Roll 1d6</button>' +
             '<button type="button" class="c-btn" id="gBtnCap" title="Keyboard: C">[C] Captions</button>' +
             '<button type="button" class="c-btn" id="gBtnMute" title="Keyboard: M">[M] Sound</button>' +
@@ -1305,12 +1433,15 @@
     function syncCockpitButtons(gm) {
       var bLamp = document.getElementById("gBtnLamp");
       var bBal = document.getElementById("gBtnBallast");
+      var bSnail = document.getElementById("gBtnSnail");
       var bFlip = document.getElementById("gBtnFlip");
       var bAuto = document.getElementById("gBtnAuto");
       var bRoll = document.getElementById("gBtnRoll");
       var bCap = document.getElementById("gBtnCap");
       var bMute = document.getElementById("gBtnMute");
       var ro = document.getElementById("cockpitReadout");
+      var sInput = document.getElementById("snailNoteInput");
+      var sStatus = document.getElementById("snailSavedStatus");
       if (!bLamp || !gm) return;
 
       bLamp.classList.toggle("on", !!gm.state.lamp);
@@ -1319,11 +1450,24 @@
       bBal.classList.toggle("on", !!gm.state.ballast);
       bBal.textContent = "[B] Ballast: " + (gm.state.ballast ? "IN" : "OUT");
 
+      if (bSnail) {
+        bSnail.classList.toggle("snail-on", !!gm.state.snailActive);
+        bSnail.classList.toggle("on", !gm.state.snailActive && !!gm.state.snailDelivered);
+        bSnail.textContent = gm.state.snailActive
+          ? "[S] Snail Mail: Delivering…"
+          : (gm.state.snailDelivered ? "[S] Snail Mail ✓" : "[S] Snail Mail");
+      }
+
       bFlip.classList.toggle("turkey-on", gm.state.view === "turkey");
       bFlip.classList.toggle("trout-on", gm.state.view === "trout");
+      bFlip.classList.toggle("alien-on", gm.state.view === "alien");
       bFlip.textContent = gm.state.view === "turkey"
-        ? "[Space] View: Turkey Out"
-        : (gm.state.view === "trout" ? "[Space] View: Trout In" : "[Space] Flip Turkey/Trout");
+        ? "[Space] 1–2 Turkey (Probable)"
+        : (gm.state.view === "trout"
+          ? "[Space] 3–4 Trout (Plausible)"
+          : (gm.state.view === "alien"
+            ? "[Space] 5–6 Dear Alien (Preposterous)"
+            : "[Space] Pass: Turkey/Trout/Alien"));
 
       bAuto.classList.toggle("on", gm.state.view === "auto");
 
@@ -1338,6 +1482,15 @@
       bMute.classList.toggle("on", !gm.state.muted);
       bMute.textContent = gm.state.muted ? "[M] Muted" : "[M] Audio ON";
 
+      if (sInput && document.activeElement !== sInput && typeof gm.state.snailNote === "string") {
+        if (sInput.value !== gm.state.snailNote) sInput.value = gm.state.snailNote;
+      }
+      if (sStatus) {
+        sStatus.textContent = gm.state.snailActive
+          ? "Crossing glass…"
+          : (gm.state.snailNote ? "✓ Saved #" + pad2(gm.portalId) : "");
+      }
+
       if (ro) {
         ro.textContent = "Default: " + gm.defaultTool.toUpperCase() + " · Actions: " + gm.actionCount;
       }
@@ -1350,8 +1503,26 @@
       gm.mount(cv, portalId, seedRow, syncCockpitButtons);
       syncCockpitButtons(gm);
 
+      var sInput = document.getElementById("snailNoteInput");
+      var sForm = document.getElementById("snailDispatchForm");
+
+      if (sInput) {
+        sInput.oninput = function () {
+          gm.setSnailNote(sInput.value, portalId);
+        };
+      }
+      if (sForm) {
+        sForm.onsubmit = function (ev) {
+          ev.preventDefault();
+          gm.sendSnailMail(sInput ? sInput.value : undefined);
+        };
+      }
+
       document.getElementById("gBtnLamp").onclick = function () { gm.toggleLamp(); };
       document.getElementById("gBtnBallast").onclick = function () { gm.toggleBallast(); };
+      document.getElementById("gBtnSnail").onclick = function () {
+        gm.sendSnailMail(sInput && sInput.value.trim() ? sInput.value : undefined);
+      };
       document.getElementById("gBtnFlip").onclick = function () { gm.flipView(); };
       document.getElementById("gBtnAuto").onclick = function () { gm.setView("auto"); };
       document.getElementById("gBtnRoll").onclick = function () { gm.rollDie(); };
@@ -1392,6 +1563,7 @@
       var idx = visibleIdx[pos];
       var pNum = idx + 1;
       var r = SEEDS[idx];
+      var aFork = alienForkFor(idx);
       var src = imgFor(idx);
       var fsrc = filmFor(idx);
       var stripSrc = stripFor(idx);
@@ -1403,7 +1575,8 @@
       if (lbTab === "play") {
         stageHtml = (
           '<div>' +
-            '<canvas id="portalGameCanvas" class="game-canvas" width="1280" height="720" aria-label="Interactive Setup A Cockpit for ' + esc(r[0]) + '"></canvas>' +
+            '<canvas id="portalGameCanvas" class="game-canvas" width="1280" height="720" aria-label="Interactive Setup A 3-Pass Cockpit for ' + esc(r[0]) + '"></canvas>' +
+            buildSnailDispatchHtml(pNum) +
             buildCockpitControlsHtml() +
           '</div>'
         );
@@ -1412,14 +1585,15 @@
           '<div>' +
             '<div class="compare-grid">' +
               '<div>' +
-                '<div class="compare-col-head"><span>Generated Film · MP4 (0:10)</span><button type="button" id="btnSyncCompare" style="text-decoration:underline;font-weight:700">⟳ Sync Both to 0.0s</button></div>' +
+                '<div class="compare-col-head"><span>Generated 3-Pass Film · MP4 (0:13)</span><button type="button" id="btnSyncCompare" style="text-decoration:underline;font-weight:700">⟳ Sync Both to 0.0s</button></div>' +
                 '<video id="compareFilmVideo" class="lb-vid" controls autoplay loop muted playsinline src="' + fsrc + '" poster="' + src + '"></video>' +
               '</div>' +
               '<div>' +
-                '<div class="compare-col-head"><span>Playable Portal · Live 60fps Canvas</span><span style="color:var(--trout)">window.__game</span></div>' +
-                '<canvas id="portalGameCanvas" class="game-canvas" width="1280" height="720" aria-label="Interactive Setup A Cockpit for ' + esc(r[0]) + '"></canvas>' +
+                '<div class="compare-col-head"><span>Playable Portal · Live 60fps Canvas</span><span style="color:var(--probable)">window.__game</span></div>' +
+                '<canvas id="portalGameCanvas" class="game-canvas" width="1280" height="720" aria-label="Interactive Setup A 3-Pass Cockpit for ' + esc(r[0]) + '"></canvas>' +
               '</div>' +
             '</div>' +
+            buildSnailDispatchHtml(pNum) +
             buildCockpitControlsHtml() +
           '</div>'
         );
@@ -1433,18 +1607,19 @@
             (verdict ? (
               '<div class="verdict-box">' +
                 '<div class="verdict-head">' +
-                  '<span class="verdict-pass">✓ PAELEO &amp; VIDEO-TO-GAME ' + esc((verdict.status || "passed").toUpperCase()) + ' · Blind Critic: ' + esc(verdict.critic || "critic") + '</span>' +
+                  '<span class="verdict-pass">✓ PAELEO 3-PASS SNAIL MAIL ' + esc((verdict.status || "passed").toUpperCase()) + ' · Blind Critic: ' + esc(verdict.critic || "post-critic") + '</span>' +
                   '<span class="verdict-measured">' + esc(verdict.measured || "") + '</span>' +
                 '</div>' +
-                '<img class="verdict-strip" src="' + esc(verdict.strip || stripSrc) + '" alt="Uncaptioned vs captioned 5-frame verification strip for ' + esc(r[0]) + '">' +
+                '<img class="verdict-strip" src="' + esc(verdict.strip || stripSrc) + '" alt="Uncaptioned vs captioned 6-frame 3-pass verification strip for ' + esc(r[0]) + '">' +
                 '<div class="verdict-body">' +
                   '<p><strong>Blind Reading (Top Row · showCaptions: false):</strong> ' + esc(verdict.blind_reading || "") + '</p>' +
+                  (verdict.three_pass_chain ? '<p><strong>3-Pass Snail Mail &amp; Alien Chain:</strong> ' + esc(verdict.three_pass_chain) + '</p>' : '') +
                   (verdict.note ? '<p><strong>Critic Note:</strong> ' + esc(verdict.note) + '</p>' : '') +
                 '</div>' +
               '</div>'
             ) : '') +
             '<div class="scion-bar">' +
-              '<span>SCION Setup-A Operator Prompt · ' + esc(r[0]) + '</span>' +
+              '<span>SCION 3-Pass Setup-A Operator Prompt · ' + esc(r[0]) + '</span>' +
               '<div style="display:flex;gap:8px">' +
                 '<button type="button" class="btn" id="lbCopyMd">Copy .md</button>' +
                 '<button type="button" class="btn" id="lbCopyPoml">Copy .poml</button>' +
@@ -1469,7 +1644,7 @@
         '<div class="scion-tabs" style="margin:8px 0 4px">' +
           '<button type="button" class="s-tab' + (lbTab === "play" ? " active" : "") + '" data-lt="play">🎮 Play Portal (60fps)</button>' +
           '<button type="button" class="s-tab' + (lbTab === "compare" ? " active" : "") + '" data-lt="compare">⇄ Film vs. Game</button>' +
-          '<button type="button" class="s-tab' + (lbTab === "film" ? " active" : "") + '" data-lt="film">▶ Watch Film (0:10)</button>' +
+          '<button type="button" class="s-tab' + (lbTab === "film" ? " active" : "") + '" data-lt="film">▶ Watch Film (0:13)</button>' +
           '<button type="button" class="s-tab' + (lbTab === "scion" ? " active" : "") + '" data-lt="scion">SCION + Critic</button>' +
           '<button type="button" class="s-tab' + (lbTab === "still" ? " active" : "") + '" data-lt="still">Still Seed</button>' +
         '</div>' +
@@ -1477,8 +1652,9 @@
         '<div class="lb-clue">' + esc(r[1]) + '</div>' +
         '<span class="src">' + esc(r[2]) + '</span>' +
         '<div class="lb-forks">' +
-          '<div class="turkey-view"><strong>Turkey Looking Out (1·3·5)</strong><br>' + esc(r[3]) + '</div>' +
-          '<div class="trout-view"><strong>Trout Looking In (2·4·6)</strong><br>' + esc(r[4]) + '</div>' +
+          '<div class="pass-1"><strong>1st Pass · Probable (1–2 · Turkey Out)</strong><br>' + esc(r[3]) + '</div>' +
+          '<div class="pass-2"><strong>2nd Pass · Plausible (3–4 · Trout In)</strong><br>' + esc(r[4]) + '</div>' +
+          '<div class="pass-3"><strong>3rd Pass · Preposterous (5–6 · Dear Alien)</strong><br>' + esc(aFork) + '</div>' +
         '</div>' +
         '<div class="lb-foot">' +
           '<span>' + esc(r[5]) + '</span>' +
@@ -1521,12 +1697,17 @@
       lbCard.innerHTML = "";
       lbEl.hidden = true;
       lbPos = -1;
-      setupPreviewObserver();
+      render();
     }
 
     lbEl.onclick = function (e) { if (e.target === lbEl) closeLb(); };
     document.addEventListener("keydown", function (e) {
       if (lbEl.hidden) return;
+      var tag = e.target && e.target.tagName ? e.target.tagName.toUpperCase() : "";
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
+        if (e.key === "Escape") { e.target.blur(); }
+        return;
+      }
       if (e.key === "Escape") { e.preventDefault(); closeLb(); }
       else if (e.key === "ArrowLeft" && lbPos > 0) { e.preventDefault(); openLb(lbPos - 1); }
       else if (e.key === "ArrowRight" && lbPos < visibleIdx.length - 1) { e.preventDefault(); openLb(lbPos + 1); }
