@@ -430,7 +430,16 @@
       .find-input { width: 100%; }
       .controls { gap: 8px; }
     }
-  </style>
+  
+    .tourkey{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:18px;align-items:start;margin:14px 0 18px;padding:14px;border:1px solid currentColor;border-radius:8px}
+    .tk-poster{position:relative;display:block}.tk-poster img{display:block;width:100%;height:auto;border-radius:6px}
+    .tk-poster span{position:absolute;left:8px;bottom:8px;background:#111;color:#fff;font:600 13px/1 system-ui,sans-serif;padding:7px 10px;border-radius:99px}
+    .tk-body h2{margin:0 0 4px;font-size:22px}.tk-body p{margin:0 0 10px;max-width:60ch}
+    .tk-main,.tk-mixes{list-style:none;margin:0;padding:0}.tk-main li,.tk-mixes li{padding:5px 0;border-top:1px solid rgba(128,128,128,.3)}
+    .tk-main a{font-weight:700}.tk-main span,.tk-mixes span{opacity:.7;font-size:13px;margin-left:6px}
+    .tourkey details{margin-top:8px}.tourkey summary{cursor:pointer;font-weight:600}
+    @media(max-width:640px){.tourkey{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
   <div class="shell">
@@ -451,6 +460,22 @@
         <button type="button" class="leg-item" data-type="essay" aria-pressed="false"><span class="swatch" style="background:var(--c-essay)"></span>Essay</button>
       </div>
     </header>
+
+    <!-- TOURKEY TROUTTOWN: the film, its worksheets and slips -->
+    <section class="tourkey" aria-label="Tourkey Trouttown downloads">
+      <a class="tk-poster" href="https://youtu.be/ooiBjWKV8vQ" target="_blank" rel="noopener"><img src="./tourkey/poster.jpg" alt="Tourkey Trouttown film" width="640" height="360"><span>▶ Watch on YouTube</span></a>
+      <div class="tk-body">
+        <h2>Tourkey Trouttown</h2>
+        <p>Turkey takes a tour of Trout Town. One film, one slip and one worksheet per pilot. Print the slips and logs, then play the film.</p>
+        <ul class="tk-main">
+          <li><a href="./tourkey/tourkey-trouttown.mp4" download>Film · MP4</a> <span>16:35 · 93 MB</span></li>
+          <li><a href="./tourkey/porthole-logs.pdf" download>Porthole Logs · PDF</a> <span>55 worksheets, front and back · 2 MB</span></li>
+          <li><a href="./tourkey/slips.pdf" download>Slips · PDF</a> <span>55 slips, three to a page · 8 MB</span></li>
+          <li><a href="./tourkey/chapters.txt" download>Chapters · TXT</a> <span>for the video description</span></li>
+        </ul>
+        <details><summary>Ten song mixes (MP4)</summary><ul class="tk-mixes"><li><a href="./tourkey/mixes/mix-02-nobody-living-can-ever-stop-me.mp4" download>Mix 01 · Nobody Living Can Ever Stop Me</a> <span>4:10 · 38 MB</span></li><li><a href="./tourkey/mixes/mix-03-the-prophet.mp4" download>Mix 02 · The Prophet</a> <span>2:40 · 24 MB</span></li><li><a href="./tourkey/mixes/mix-04-motor-run-on-the-water.mp4" download>Mix 03 · 水上のモーター走行 (Motor Run on the Water)</a> <span>1:59 · 19 MB</span></li><li><a href="./tourkey/mixes/mix-05-whales-belly-escape.mp4" download>Mix 04 · Whale's Belly Escape</a> <span>2:00 · 19 MB</span></li><li><a href="./tourkey/mixes/mix-06-warning-unheeded.mp4" download>Mix 05 · Warning Unheeded</a> <span>2:38 · 24 MB</span></li><li><a href="./tourkey/mixes/mix-07-exodus-song.mp4" download>Mix 06 · Exodus Song: Viennese Epic to Satire</a> <span>4:20 · 39 MB</span></li><li><a href="./tourkey/mixes/mix-08-the-verne-bench.mp4" download>Mix 07 · The Verne Bench</a> <span>1:26 · 14 MB</span></li><li><a href="./tourkey/mixes/mix-09-gaslit-feerie.mp4" download>Mix 08 · Gaslit Feerie Pit-Piano and Star-Film Salon</a> <span>1:32 · 15 MB</span></li><li><a href="./tourkey/mixes/mix-10-whale-belly-breach.mp4" download>Mix 09 · Whale Belly Breach</a> <span>1:23 · 13 MB</span></li></ul></details>
+      </div>
+    </section>
 
     <!-- ACTIVE DOWNLOAD / PRINT TRACE (HIDDEN AT REST) -->
     <div class="status-line" id="statusLine" hidden role="status" aria-live="polite">
