@@ -1,13 +1,23 @@
 /* ============================================================================
- * Turkey Sub · Multi-SCION Remake (V2 · 16.0s) & V1 Cockpit (13.0s) Runtime
- * File: portals/player.js  (window.__game)
+ * Turkey Sub · V3 Branching Game (18.0s · 4×3=12 Branches), V2 Remake (16.0s)
+ *              & V1 Setup-A Cockpit (13.0s) Unified Runtime
+ * File: portals/player.js  (window.__game / window.PORTAL_PLAYER)
  *
- * Runs BOLAS Oulipo Screening Room V2 Multi-SCION Remake rigs
- * (window.PORTAL_REMAKE_SCENES[1..55], default, LOOP_DUR = 16.0s) alongside
- * preserved V1 Setup-A Cockpits (window.PORTAL_V1_SCENES[1..55], 13.0s) at 60fps:
- *   - [V] Edition: V2 SCION Remake ⇄ V1 Cockpit
- *   - [Space] 4-Beat Cycle: A Real -> B Turkey -> C Trout -> D Alien -> Auto
- *   - [L] Lamp · [B] Ballast · [S] Snail Mail Postcard · [R] 1d6 · [C] Captions
+ * Defaults to V3 Branching Video Game (window.PORTAL_V3_GAMES[1..55] powered by
+ * window.BRANCH_GAME & window.PORTHOLE_BRANCH_TREES), while keeping V2 Linear
+ * Cutout Remake (PORTAL_REMAKE_SCENES) and V1 Setup-A Cockpit (PORTAL_V1_SCENES)
+ * switchable at any moment via [V]!
+ *
+ * Full V3 Input & UI Capabilities:
+ *   - On-Canvas Clickable ✕ · ○ · △ · □ & Stage-2 Tier Prompts + 12-Dot Slate
+ *   - Tactile HTML Controller Deck:
+ *       Stage 1: ✕ Cross [1/X] · ○ Circle [2/O] · △ Triangle [3/T] · □ Square [4/S]
+ *       Stage 2: Probable [1/Q] · Plausible [2/W] · Preposterous [3/E]
+ *       Utility: [R] Roll Fate · [Backspace] Rewind Fork · [A] Auto-Showcase 18s
+ *   - HTML5 Gamepad API (navigator.getGamepads() polled in requestAnimationFrame)
+ *     for native PlayStation DualSense & Xbox controller play!
+ *   - Persistent 12-Branch Discovery Tracker (localStorage, 0..660 across 55
+ *     portholes) + Reusable 4×3 Interactive Branching Tree Map (mountControllerDeck).
  *   - Strict PAELEO Blind Invariant: 0 fillText/strokeText calls when
  *     state.showCaptions === false.
  * ============================================================================ */
@@ -16,6 +26,7 @@
 
   var W = 1280;
   var H = 720;
+  var V3_LOOP_DUR = 18.0;
   var LOOP_DUR = 16.0;
   var V1_LOOP_DUR = 13.0;
   var SNAIL_TRIP_DUR = 2.6;
@@ -24,10 +35,63 @@
   var COL_REAL = "#14110d";
   var COL_PROBABLE = "#1d596e";     // B · Turkey
   var COL_PLAUSIBLE = "#0f8f80";    // C · Trout
+  var COL_PLAUSIBLE_DEEP = "#2d6846";
   var COL_PREPOSTEROUS = "#d42a1e"; // D · Alien
+  var COL_PREPOSTEROUS_RUST = "#9e3d1c";
+
+  var BTN_COLORS = {
+    x: "#2563eb",
+    o: "#d42a1e",
+    triangle: "#0f8f80",
+    square: "#b45309"
+  };
+  var BTN_SYMBOLS = {
+    x: "\u2715",
+    o: "\u25cb",
+    triangle: "\u25b3",
+    square: "\u25a1"
+  };
+  var BTN_HOTKEYS = {
+    x: "1 / X",
+    o: "2 / O",
+    triangle: "3 / T",
+    square: "4 / S"
+  };
+  var TIER_HOTKEYS = {
+    probable: "1 / Q",
+    plausible: "2 / W",
+    preposterous: "3 / E"
+  };
 
   var audioCtx = null;
   var ambientNodes = null;
+  var hitProbeCanvas = null;
+  var hitProbeCtx = null;
+
+  function escHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function pad2(n) {
+    var v = Math.max(0, Math.floor(Number(n) || 0));
+    return v < 10 ? "0" + v : String(v);
+  }
+
+  function ensureHitProbeCtx() {
+    if (hitProbeCtx) return hitProbeCtx;
+    if (typeof document === "undefined") return null;
+    try {
+      hitProbeCanvas = document.createElement("canvas");
+      hitProbeCanvas.width = 16;
+      hitProbeCanvas.height = 16;
+      hitProbeCtx = hitProbeCanvas.getContext("2d");
+      return hitProbeCtx;
+    } catch (e) {
+      return null;
+    }
+  }
 
   function ensureV1Snapshot() {
     if (window.SNAIL_MAIL && typeof window.SNAIL_MAIL.attachAll === "function") {
@@ -125,7 +189,7 @@
 
       var g = ctx.createGain();
       g.gain.value = 0.0001;
-      g.gain.setTargetAtTime(0.028, ctx.currentTime, 0.25);
+      g.gain.setTargetAtTime(0.024, ctx.currentTime, 0.25);
 
       src.connect(lp);
       lp.connect(g);
@@ -174,20 +238,6 @@
       po.start(t0);
       po.stop(t0 + 0.07);
     });
-
-    [783.99, 1174.66, 1479.98].forEach(function (cf, ci) {
-      var co = ctx.createOscillator();
-      var cg = ctx.createGain();
-      var tc = startAt + 0.42 + ci * 0.025;
-      co.type = "sine";
-      co.frequency.setValueAtTime(cf, tc);
-      cg.gain.setValueAtTime(0.055 / (ci * 0.4 + 1), tc);
-      cg.gain.exponentialRampToValueAtTime(0.0008, tc + 0.45);
-      co.connect(cg);
-      cg.connect(ctx.destination);
-      co.start(tc);
-      co.stop(tc + 0.47);
-    });
   }
 
   function playSound(kind, detail, muted) {
@@ -214,7 +264,7 @@
         bOsc.frequency.setValueAtTime(detail ? 190 : 250, now);
         bOsc.frequency.exponentialRampToValueAtTime(detail ? 92 : 145, now + 0.14);
         bGain.gain.setValueAtTime(0.20, now);
-        bGain.exponentialRampToValueAtTime(0.001, now + 0.16);
+        bGain.gain.exponentialRampToValueAtTime(0.001, now + 0.16);
         bOsc.connect(bGain);
         bGain.connect(ctx.destination);
         bOsc.start(now);
@@ -360,6 +410,100 @@
     ctx.restore();
   }
 
+  /* V3 Bridge Renderer when a pod scene file is still loading:
+   * Uses BRANCH_GAME camera, volumetric effects, particles & HUD layered over
+   * the blind V2 Multi-SCION cutout plate so all 17 nodes are 100% playable!
+   * Emits ZERO fillText/strokeText calls when showCaptions === false!
+   */
+  function renderV3BridgeScene(ctx, width, height, rawT, machineOrState, portalId, fallbackMeta) {
+    var BG = window.BRANCH_GAME;
+    if (!BG) {
+      renderFallbackCockpit(ctx, width, height, rawT, machineOrState || {}, fallbackMeta);
+      return;
+    }
+    var showCap = !(machineOrState && machineOrState.showCaptions === false);
+    var resolved = BG.resolveState(portalId, rawT, machineOrState, { showCaptions: showCap });
+    var v2Sc = window.PORTAL_REMAKE_SCENES && window.PORTAL_REMAKE_SCENES[portalId];
+    var S = window.SCION_STAGE;
+
+    var mappedV2Time = 1.0 + ((resolved.t || 0) % 2.6);
+    if (resolved.phase === "stem" || resolved.phase === "tier_select") {
+      var bIdx = BG.BUTTON_ORDER.indexOf(resolved.selectedButton || "x");
+      mappedV2Time = 0.8 + bIdx * 0.55 + ((resolved.stemT || 0) % 1.8);
+    } else if (resolved.phase === "outcome") {
+      var baseBeat = resolved.selectedTier === "probable" ? 4.4
+        : (resolved.selectedTier === "plausible" ? 8.4 : 12.4);
+      mappedV2Time = baseBeat + ((resolved.outcomeT || 0) % 3.2);
+    }
+
+    ctx.save();
+    BG.beginCameraRig(ctx, width, height, resolved.camPose, { stageH: resolved.blind ? height : BG.STAGE_H });
+
+    if (v2Sc && typeof v2Sc.render === "function") {
+      v2Sc.render(ctx, width, height, mappedV2Time, {
+        edition: "v2",
+        lamp: resolved.lampOn,
+        ballast: resolved.ballastOn,
+        view: resolved.phase === "outcome"
+          ? (resolved.selectedTier === "probable" ? "turkey" : (resolved.selectedTier === "plausible" ? "trout" : "alien"))
+          : "real",
+        showCaptions: false,
+        snailActive: resolved.snailActive,
+        snailT: resolved.snailT,
+        snailMail: resolved.snailActive ? resolved.snailT : false
+      });
+    } else if (S && typeof S.drawBolasBackdrop === "function") {
+      S.drawBolasBackdrop(ctx, width, height, resolved.bolasStyle, portalId, resolved.t, { showCaptions: false });
+      var plates = S.getPortalPlates ? S.getPortalPlates(portalId) : null;
+      if (plates && plates.portholeImg && S.drawScissorCutout) {
+        S.drawScissorCutout(ctx, plates.portholeImg, 0.1, 0.1, 0.8, 0.8, 390, 120, 500, 400, { seed: portalId });
+      }
+    }
+
+    // Button-specific volumetric shader accents
+    if (resolved.selectedButton === "x") {
+      var ax = (resolved.buttonInfo && resolved.buttonInfo.anchor && resolved.buttonInfo.anchor.x) || 430;
+      var ay = (resolved.buttonInfo && resolved.buttonInfo.anchor && resolved.buttonInfo.anchor.y) || 270;
+      BG.drawVolumetricBeam(ctx, 80, 90, ax, ay, { color: "#60a5fa", coreColor: "#eff6ff", spread: 145, t: resolved.t, intensity: 0.95 });
+      BG.drawLanternHalo(ctx, ax, ay, 125, { color: "#60a5fa", t: resolved.t, intensity: 0.75 });
+    } else if (resolved.selectedButton === "o") {
+      var ox = (resolved.buttonInfo && resolved.buttonInfo.anchor && resolved.buttonInfo.anchor.x) || 850;
+      var oy = (resolved.buttonInfo && resolved.buttonInfo.anchor && resolved.buttonInfo.anchor.y) || 275;
+      BG.drawDeterministicParticles(ctx, "bubbles", ox, oy + 40, resolved.t, { loop: true, count: 20, spreadX: 160 });
+    } else if (resolved.selectedButton === "triangle" && BG.drawSnailSilverTrail) {
+      var tx = (resolved.buttonInfo && resolved.buttonInfo.anchor && resolved.buttonInfo.anchor.x) || 435;
+      var ty = (resolved.buttonInfo && resolved.buttonInfo.anchor && resolved.buttonInfo.anchor.y) || 455;
+      BG.drawSnailSilverTrail(ctx, 180, 520, tx, ty, Math.min(1, (resolved.stemT || 0.6) / 1.8), { t: resolved.t });
+    } else if (resolved.selectedButton === "square") {
+      var sqx = (resolved.buttonInfo && resolved.buttonInfo.anchor && resolved.buttonInfo.anchor.x) || 845;
+      var sqy = (resolved.buttonInfo && resolved.buttonInfo.anchor && resolved.buttonInfo.anchor.y) || 455;
+      BG.drawLanternHalo(ctx, sqx, sqy, 110, { color: "#fbbf24", t: resolved.t, intensity: 0.75 });
+    }
+
+    if (resolved.phase === "outcome" && resolved.selectedTier === "preposterous" && BG.drawTractorRings) {
+      BG.drawTractorRings(ctx, 640, 110, 640, 430, resolved.t, { color: "#0f8f80", altColor: "#d42a1e", alpha: 0.75 });
+    }
+
+    if (machineOrState && machineOrState.particles && typeof machineOrState.particles.draw === "function" && !resolved.isShowcase) {
+      machineOrState.particles.draw(ctx);
+    }
+    if (resolved.shockwave && resolved.shockwave.anchor) {
+      BG.drawInputShockwave(ctx, resolved.shockwave.anchor.x, resolved.shockwave.anchor.y, resolved.shockwave.u, resolved.shockwave.button || resolved.shockwave.color);
+    }
+
+    BG.endCameraRig(ctx);
+    BG.drawVignetteGrain(ctx, width, height, resolved.t, { fullHeight: resolved.blind, strength: 0.42 });
+
+    var hud = BG.drawControllerHUD(ctx, width, height, resolved, {
+      portalId: portalId,
+      showCaptions: !resolved.blind
+    });
+    if (machineOrState && typeof machineOrState === "object" && hud && hud.hitboxes) {
+      machineOrState.hitboxes = hud.hitboxes;
+    }
+    ctx.restore();
+  }
+
   function renderToastOverlay(ctx, toast, nowMs, state) {
     if (!toast || nowMs > toast.until) return;
     if (state && state.showCaptions === false) return;
@@ -367,13 +511,13 @@
     var alpha = remain < 0.3 ? remain / 0.3 : 1;
     ctx.save();
     ctx.globalAlpha = alpha * 0.94;
-    ctx.font = "600 14px 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace";
+    ctx.font = "600 13.5px 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace";
     var txt = toast.text;
-    var padX = 14;
+    var padX = 13;
     var tw = ctx.measureText(txt).width + padX * 2;
-    var bx = 22;
-    var by = 18;
-    var bh = 30;
+    var bx = 20;
+    var by = 16;
+    var bh = 28;
     ctx.fillStyle = "#fbfaf7";
     ctx.strokeStyle = toast.color || "#14110d";
     ctx.lineWidth = 2;
@@ -386,16 +530,122 @@
     ctx.restore();
   }
 
+  function svgSymbolMarkup(btnKey, size) {
+    var sz = size || 18;
+    if (btnKey === "x") {
+      return '<svg width="' + sz + '" height="' + sz + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+    }
+    if (btnKey === "o") {
+      return '<svg width="' + sz + '" height="' + sz + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><circle cx="12" cy="12" r="7.5"/></svg>';
+    }
+    if (btnKey === "triangle") {
+      return '<svg width="' + sz + '" height="' + sz + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linejoin="round"><polygon points="12,4.5 20,18.5 4,18.5"/></svg>';
+    }
+    return '<svg width="' + sz + '" height="' + sz + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linejoin="round"><rect x="5.5" y="5.5" width="13" height="13" rx="1"/></svg>';
+  }
+
+  function injectDeckStyles() {
+    if (typeof document === "undefined") return;
+    if (document.getElementById("ts-v3-deck-styles")) return;
+    var st = document.createElement("style");
+    st.id = "ts-v3-deck-styles";
+    st.textContent = [
+      ".v3-deck-wrap { font-family: 'Literata', Georgia, serif; color: #14110d; margin-top: 10px; display: grid; gap: 12px; }",
+      ".v3-pad-shell { background: #14181f; color: #f8f6f0; border: 2px solid #14110d; padding: 12px 14px 14px; display: grid; gap: 10px; box-shadow: 0 4px 0 #14110d; }",
+      ".v3-pad-top { display: flex; justify-content: space-between; align-items: center; gap: 8px 12px; flex-wrap: wrap; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.14); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11.5px; }",
+      ".v3-stage-pill { display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px; border-radius: 2px; background: #2563eb; color: #fff; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; }",
+      ".v3-stage-pill.ph-tier { background: #0f8f80; }",
+      ".v3-stage-pill.ph-outcome { background: #d42a1e; }",
+      ".v3-stage-pill.ph-showcase { background: #b45309; }",
+      ".v3-stage-msg { color: #e5e1d6; font-size: 12px; }",
+      ".v3-pad-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }",
+      ".v3-mini-btn { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; padding: 4px 8px; border: 1px solid rgba(255,255,255,0.28); background: #1e242e; color: #f8f6f0; border-radius: 2px; cursor: pointer; }",
+      ".v3-mini-btn:hover { border-color: #fff; background: #2a3240; }",
+      ".v3-mini-btn.on { border-color: #34d399; color: #a7f3d0; }",
+      ".v3-gp-badge { padding: 3px 8px; border-radius: 2px; font-size: 10.5px; border: 1px solid rgba(255,255,255,0.2); color: #9ca3af; }",
+      ".v3-gp-badge.live { border-color: #34d399; color: #6ee7b7; background: rgba(16,185,129,0.14); font-weight: 700; }",
+      ".v3-face-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; }",
+      ".v3-face-btn { display: grid; grid-template-columns: 36px minmax(0, 1fr); align-items: center; gap: 9px; text-align: left; padding: 9px 10px; background: #1d232d; border: 2px solid rgba(255,255,255,0.16); border-radius: 4px; color: #f8f6f0; cursor: pointer; transition: transform 0.08s ease, border-color 0.12s ease, background 0.12s ease; }",
+      ".v3-face-btn:hover { transform: translateY(-1px); background: #252d3a; border-color: var(--btn-col, #60a5fa); }",
+      ".v3-face-btn.selected { background: color-mix(in srgb, var(--btn-col, #2563eb) 28%, #181d26); border-color: #ffffff; box-shadow: 0 0 0 2px var(--btn-col, #2563eb); }",
+      ".v3-cap { width: 34px; height: 34px; border-radius: 50%; background: #101318; border: 2px solid var(--btn-col, #60a5fa); color: var(--btn-col, #60a5fa); display: grid; place-items: center; flex-shrink: 0; }",
+      ".v3-face-btn.selected .v3-cap { background: var(--btn-col, #2563eb); color: #fff; border-color: #fff; }",
+      ".v3-face-title { font-family: 'Big Shoulders Display', Impact, sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.05; color: #fff; display: flex; justify-content: space-between; align-items: center; gap: 4px; }",
+      ".v3-face-sub { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; color: #cbd5e1; line-height: 1.25; margin-top: 2px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }",
+      ".v3-kbd { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 9.8px; padding: 1px 5px; background: rgba(255,255,255,0.1); border-radius: 2px; color: #e2e8f0; font-weight: 600; white-space: nowrap; }",
+      ".v3-dots3 { display: inline-flex; gap: 3px; margin-top: 4px; }",
+      ".v3-dots3 i { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.18); display: inline-block; }",
+      ".v3-dots3 i.u { background: #34d399; }",
+      ".v3-tier-bar { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) auto; gap: 8px; align-items: stretch; padding-top: 4px; }",
+      ".v3-tier-btn { text-align: left; padding: 8px 10px; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.2); background: #1b212a; color: #f8f6f0; cursor: pointer; display: grid; gap: 2px; transition: border-color 0.12s ease, background 0.12s ease; }",
+      ".v3-tier-btn:hover { border-color: var(--tier-hi, #38bdf8); background: #232b37; }",
+      ".v3-tier-btn.ready { border-color: var(--tier-hi, #38bdf8); background: color-mix(in srgb, var(--tier-col, #1d596e) 32%, #171c24); }",
+      ".v3-tier-btn.active { border-color: #fff; background: var(--tier-col, #1d596e); box-shadow: 0 0 0 1.5px #fff; }",
+      ".v3-tier-top { display: flex; justify-content: space-between; align-items: center; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--tier-hi, #7dd3fc); }",
+      ".v3-tier-btn.active .v3-tier-top { color: #fff; }",
+      ".v3-tier-preview { font-size: 12.5px; line-height: 1.25; color: #f1f5f9; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }",
+      ".v3-util-cluster { display: flex; gap: 6px; flex-wrap: wrap; align-items: stretch; }",
+      ".v3-util-btn { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; padding: 7px 10px; border: 1.5px solid rgba(255,255,255,0.24); background: #202733; color: #f8f6f0; border-radius: 3px; cursor: pointer; white-space: nowrap; }",
+      ".v3-util-btn:hover { border-color: #f2b85a; color: #fde68a; }",
+      ".v3-util-btn.on { background: #b45309; border-color: #fde68a; color: #fff; }",
+      ".v3-matrix-card { border: 2px solid #14110d; background: #fffdf8; padding: 12px 14px 14px; }",
+      ".v3-matrix-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 14px; flex-wrap: wrap; padding-bottom: 8px; border-bottom: 1.5px solid #14110d; margin-bottom: 10px; }",
+      ".v3-matrix-head h4 { font-family: 'Big Shoulders Display', Impact, sans-serif; font-weight: 900; font-size: 21px; letter-spacing: 0.02em; text-transform: uppercase; margin: 0; color: #14110d; }",
+      ".v3-matrix-prog { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11.5px; color: #1d596e; font-weight: 700; }",
+      ".v3-matrix-grid { display: grid; grid-template-columns: minmax(150px, 0.95fr) repeat(3, minmax(0, 1fr)); gap: 7px; align-items: stretch; }",
+      ".v3-m-colhead { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 6px 8px; background: #f3efe6; border: 1px solid #d6d3cc; border-top: 3px solid var(--tcol, #14110d); color: #14110d; }",
+      ".v3-m-rowstub { display: flex; align-items: center; gap: 8px; padding: 8px 9px; background: #f8f6f0; border: 1.5px solid #d6d3cc; border-left: 4px solid var(--bcol, #2563eb); text-align: left; cursor: pointer; }",
+      ".v3-m-rowstub:hover { border-color: #14110d; background: #f1ede2; }",
+      ".v3-m-sym { width: 24px; height: 24px; border-radius: 50%; background: var(--bcol, #2563eb); color: #fff; display: grid; place-items: center; flex-shrink: 0; }",
+      ".v3-m-cell { text-align: left; padding: 8px 9px; border: 1.5px solid #d6d3cc; background: #fbfaf7; border-radius: 2px; cursor: pointer; display: grid; gap: 3px; align-content: start; transition: border-color 0.1s ease, background 0.1s ease; }",
+      ".v3-m-cell:hover { border-color: #14110d; background: #f3efe6; }",
+      ".v3-m-cell.unlocked { background: #ffffff; border-color: #8c8577; border-left: 4px solid var(--tcol, #1d596e); }",
+      ".v3-m-cell.playing { border: 2px solid #d42a1e; background: #fff7ed; box-shadow: 2px 2px 0 #14110d; }",
+      ".v3-m-tag { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: #766e62; display: flex; justify-content: space-between; gap: 4px; }",
+      ".v3-m-cell.unlocked .v3-m-tag { color: var(--tcol, #1d596e); font-weight: 700; }",
+      ".v3-m-cell.playing .v3-m-tag { color: #d42a1e; font-weight: 700; }",
+      ".v3-m-title { font-weight: 600; font-size: 13px; line-height: 1.28; color: #14110d; }",
+      ".v3-m-cell:not(.unlocked) .v3-m-title { color: #5b5348; font-size: 12.2px; }",
+      ".v3-m-cap { font-size: 11.5px; line-height: 1.3; color: #5b5348; }",
+      ".v3-legacy-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }",
+      "@media (max-width: 900px) { .v3-face-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .v3-tier-bar { grid-template-columns: 1fr; } .v3-matrix-grid { grid-template-columns: 1fr; } .v3-m-colhead { display: none; } }"
+    ].join("\n");
+    document.head.appendChild(st);
+  }
+
   var rafId = 0;
   var lastRafMs = 0;
   var activeCanvas = null;
   var activeCtx = null;
   var onUiSync = null;
   var toast = null;
+  var mountedDecks = [];
+  var prevExtraPadState = {};
+
+  function notifyAllSubscribers(gm) {
+    if (typeof onUiSync === "function") {
+      try { onUiSync(gm); } catch (e) {}
+    }
+    for (var i = mountedDecks.length - 1; i >= 0; i--) {
+      var d = mountedDecks[i];
+      if (!d || !d.el || (typeof document !== "undefined" && !document.body.contains(d.el))) {
+        mountedDecks.splice(i, 1);
+        continue;
+      }
+      if (typeof d.sync === "function") {
+        try { d.sync(gm); } catch (e) {}
+      }
+    }
+    if (typeof window !== "undefined" && typeof window.dispatchEvent === "function") {
+      try {
+        window.dispatchEvent(new CustomEvent("turkeysub:gamechange", { detail: gm.getSnapshot() }));
+      } catch (e) {}
+    }
+  }
 
   var game = {
     active: false,
-    loopDuration: LOOP_DUR,
+    loopDuration: V3_LOOP_DUR,
     portalId: 1,
     station: "#01 · Bow",
     clue: "",
@@ -404,17 +654,20 @@
     alienFork: "",
     scionRule: "",
     defaultTool: "lamp",
-    t: 0.4,
+    t: 0.0,
     fps: 60,
     framesRendered: 0,
     actionCount: 0,
     lastAction: null,
+    gamepadConnected: false,
+    gamepadId: "",
+    machine: null,
     history: [],
     state: {
-      edition: "v2", // "v2" (16.0s BOLAS Multi-SCION Remake, default) | "v1" (13.0s Setup-A Cockpit)
+      edition: "v3", // "v3" (18.0s 12-Branch Game, default) | "v2" (16.0s Linear Cutout) | "v1" (13.0s Setup-A Cockpit)
       lamp: true,
       ballast: false,
-      view: "auto",  // "auto" | "real" | "turkey" | "trout" | "alien"
+      view: "auto",
       roll: 0,
       tier: null,
       routeMarked: false,
@@ -428,26 +681,103 @@
       snailNote: ""
     },
 
+    _ensureMachine: function () {
+      var BG = window.BRANCH_GAME;
+      if (!BG || typeof BG.createMachine !== "function") return null;
+      if (!this.machine) {
+        var self = this;
+        this.machine = BG.createMachine(this.portalId || 1, {
+          showCaptions: this.state.showCaptions !== false,
+          muted: !!this.state.muted,
+          onChange: function (m, eventTag, extra) {
+            self.t = m.t;
+            self.actionCount += 1;
+            self.lastAction = eventTag;
+            if (extra && extra.newlyUnlocked && typeof window !== "undefined") {
+              toast = {
+                text: "\u2713 UNLOCKED BRANCH " + (extra.portalCount || 1) + "/12 \u00b7 GLOBAL " + (extra.totalCount || 1) + "/660",
+                color: COL_PLAUSIBLE,
+                until: performance.now() + 1350
+              };
+            }
+            notifyAllSubscribers(self);
+          }
+        });
+      }
+      this.machine.showCaptions = (this.state.showCaptions !== false);
+      this.machine.muted = !!this.state.muted;
+      return this.machine;
+    },
+
+    isV3Active: function () {
+      return this.state.edition === "v3" && !!window.BRANCH_GAME;
+    },
+
     isV2Active: function (id) {
       var target = id || this.portalId;
-      if (this.state.edition === "v1") return false;
+      if (this.state.edition !== "v2") return false;
       return !!(window.PORTAL_REMAKE_SCENES && window.PORTAL_REMAKE_SCENES[target]);
     },
 
     getActiveDuration: function (id) {
-      return this.isV2Active(id) ? LOOP_DUR : V1_LOOP_DUR;
+      if (this.isV3Active()) return V3_LOOP_DUR;
+      if (this.isV2Active(id)) return LOOP_DUR;
+      return V1_LOOP_DUR;
     },
 
     getScene: function (id, editionOverride) {
       ensureV1Snapshot();
       var target = id || this.portalId;
       if (target === "intro" && window.TROUT_SUB_INTRO) return window.TROUT_SUB_INTRO;
-      var ed = editionOverride || this.state.edition || "v2";
+      var ed = editionOverride || this.state.edition || "v3";
+      if (ed === "v3") {
+        if (window.PORTAL_V3_GAMES && window.PORTAL_V3_GAMES[target]) {
+          return window.PORTAL_V3_GAMES[target];
+        }
+        if (window.BRANCH_GAME && typeof window.BRANCH_GAME.getGame === "function") {
+          var bgSc = window.BRANCH_GAME.getGame(target);
+          if (bgSc) return bgSc;
+        }
+        return null; // Handled cleanly by renderV3BridgeScene
+      }
       if (ed === "v2" && window.PORTAL_REMAKE_SCENES && window.PORTAL_REMAKE_SCENES[target]) {
         return window.PORTAL_REMAKE_SCENES[target];
       }
       var v1Map = window.PORTAL_V1_SCENES || window.PORTAL_SCENES || {};
       return v1Map[target] || (window.PORTAL_REMAKE_SCENES && window.PORTAL_REMAKE_SCENES[target]) || null;
+    },
+
+    getBranchTree: function (id) {
+      var target = id || this.portalId;
+      if (window.BRANCH_GAME && typeof window.BRANCH_GAME.getBranchTree === "function") {
+        return window.BRANCH_GAME.getBranchTree(target);
+      }
+      if (window.PORTHOLE_BRANCH_TREES && window.PORTHOLE_BRANCH_TREES[target]) {
+        return window.PORTHOLE_BRANCH_TREES[target];
+      }
+      return null;
+    },
+
+    getDiscoveryMatrix: function (id) {
+      var target = id || this.portalId;
+      if (window.BRANCH_GAME && window.BRANCH_GAME.discovery) {
+        return window.BRANCH_GAME.discovery.getMatrix(target);
+      }
+      return { portalId: target, unlockedCount: 0, totalBranches: 12, globalUnlockedCount: 0, globalTotalBranches: 660, rows: [] };
+    },
+
+    getUnlockedCount: function (id) {
+      if (window.BRANCH_GAME && window.BRANCH_GAME.discovery) {
+        return window.BRANCH_GAME.discovery.getPortalCount(id || this.portalId);
+      }
+      return 0;
+    },
+
+    getGlobalUnlockedCount: function () {
+      if (window.BRANCH_GAME && window.BRANCH_GAME.discovery) {
+        return window.BRANCH_GAME.discovery.getTotalCount();
+      }
+      return 0;
     },
 
     getSnailNote: function (id) {
@@ -467,7 +797,7 @@
         if (!clean && !this.state.snailActive) {
           this.state.snailDelivered = false;
         }
-        if (typeof onUiSync === "function") onUiSync(this);
+        notifyAllSubscribers(this);
         this.renderNow();
       }
       return clean;
@@ -503,55 +833,176 @@
         action: tag,
         edition: this.state.edition,
         t: Number(this.t.toFixed(2)),
-        lamp: this.state.lamp,
-        ballast: this.state.ballast,
-        view: this.state.view,
-        roll: this.state.roll,
-        snailActive: this.state.snailActive,
-        snailNote: this.state.snailNote,
+        phase: this.machine ? this.machine.phase : null,
+        button: this.machine ? this.machine.selectedButton : null,
+        tier: this.machine ? this.machine.selectedTier : this.state.tier,
         showCaptions: this.state.showCaptions
       });
-      if (this.history.length > 30) this.history.shift();
-      toast = {
-        text: label,
-        color: color || "#14110d",
-        until: performance.now() + 1080
-      };
-      if (typeof onUiSync === "function") onUiSync(this);
+      if (this.history.length > 40) this.history.shift();
+      if (label) {
+        toast = {
+          text: label,
+          color: color || "#14110d",
+          until: performance.now() + 1080
+        };
+      }
+      notifyAllSubscribers(this);
       this.renderNow();
     },
 
+    /* ---------- V3 2-Stage Branching Controls ---------- */
+
+    selectButton: function (btnKey) {
+      if (!this.isV3Active()) this.setEdition("v3");
+      var m = this._ensureMachine();
+      if (!m) return false;
+      this.state.paused = false;
+      var ok = m.selectButton(btnKey);
+      this.renderNow();
+      return ok;
+    },
+
+    pressButton: function (btnKey) {
+      if (!this.isV3Active()) this.setEdition("v3");
+      var m = this._ensureMachine();
+      if (!m) return false;
+      this.state.paused = false;
+      var ok = m.pressButton(btnKey);
+      this.renderNow();
+      return ok;
+    },
+
+    selectTier: function (tierKey, btnOverride) {
+      if (!this.isV3Active()) this.setEdition("v3");
+      var m = this._ensureMachine();
+      if (!m) return false;
+      this.state.paused = false;
+      var ok = m.selectTier(tierKey, btnOverride);
+      this.renderNow();
+      return ok;
+    },
+
+    jumpToBranch: function (btnKey, tierKey) {
+      if (!this.isV3Active()) this.setEdition("v3");
+      var m = this._ensureMachine();
+      if (!m) return false;
+      this.state.paused = false;
+      var ok = m.jumpToBranch(btnKey, tierKey);
+      this.renderNow();
+      return ok;
+    },
+
+    rewindFork: function () {
+      if (!this.isV3Active()) return false;
+      var m = this._ensureMachine();
+      if (!m) return false;
+      this.state.paused = false;
+      var ok = m.rewind();
+      this.renderNow();
+      return ok;
+    },
+
+    rewind: function () {
+      return this.rewindFork();
+    },
+
+    resetToRoot: function () {
+      if (!this.isV3Active()) return false;
+      var m = this._ensureMachine();
+      if (!m) return false;
+      this.state.paused = false;
+      var ok = m.resetToRoot();
+      this.renderNow();
+      return ok;
+    },
+
+    rollFate: function (seed) {
+      if (this.isV3Active()) {
+        var m = this._ensureMachine();
+        if (!m) return false;
+        this.state.paused = false;
+        var ok = m.randomBranch(seed);
+        this.renderNow();
+        return ok;
+      }
+      return this.rollDie(seed);
+    },
+
+    randomBranch: function (seed) {
+      return this.rollFate(seed);
+    },
+
+    startAutoShowcase: function (atSec) {
+      if (!this.isV3Active()) this.setEdition("v3");
+      var m = this._ensureMachine();
+      if (!m) return false;
+      this.state.paused = false;
+      m.startShowcase(typeof atSec === "number" ? atSec : 0);
+      this.t = m.t;
+      toast = {
+        text: "[A] 18.0s BRANCHING SHOWCASE REEL \u00b7 PRESS \u2715 \u00b7 \u25cb \u00b7 \u25b3 \u00b7 \u25a1 TO TAKE CONTROL",
+        color: "#b45309",
+        until: performance.now() + 1250
+      };
+      notifyAllSubscribers(this);
+      this.renderNow();
+      return true;
+    },
+
+    toggleShowcase: function () {
+      if (!this.isV3Active()) return this.startAutoShowcase(0);
+      var m = this._ensureMachine();
+      if (!m) return false;
+      if (m.phase === "showcase") {
+        return this.resetToRoot();
+      }
+      return this.startAutoShowcase(0);
+    },
+
+    /* ---------- Edition Switcher: V3 (18s) ⇄ V2 (16s) ⇄ V1 (13s) ---------- */
+
     setEdition: function (ed) {
-      var nextEd = (ed === "v1") ? "v1" : "v2";
+      var nextEd = (ed === "v1" || ed === "v2" || ed === "v3") ? ed : "v3";
+      if (nextEd === "v3" && !window.BRANCH_GAME) nextEd = "v2";
       this.state.edition = nextEd;
       this.loopDuration = this.getActiveDuration();
-      this.t = 0.25;
+      this.t = nextEd === "v3" ? 0.0 : 0.25;
       this.state.view = "auto";
       this.state.snailActive = false;
-      if (nextEd === "v2" && window.SCION_STAGE && typeof window.SCION_STAGE.preloadPortalPlates === "function") {
+      if (nextEd === "v3") {
+        var m = this._ensureMachine();
+        if (m) m.setPortal(this.portalId, "root");
+      }
+      if ((nextEd === "v3" || nextEd === "v2") && window.SCION_STAGE && typeof window.SCION_STAGE.preloadPortalPlates === "function") {
         window.SCION_STAGE.preloadPortalPlates(this.portalId);
       }
-      playSound("edition", nextEd === "v2", this.state.muted);
-      this._recordAction(
-        "edition:" + nextEd,
-        nextEd === "v2"
-          ? "[V] EDITION: V2 MULTI-SCION BOLAS REMAKE (16.0s)"
-          : "[V] EDITION: V1 ORIGINAL SETUP-A COCKPIT (13.0s)",
-        nextEd === "v2" ? COL_PREPOSTEROUS : COL_PROBABLE
-      );
+      playSound("edition", nextEd !== "v1", this.state.muted);
+      var edLabel = nextEd === "v3"
+        ? "[V] EDITION: V3 BRANCHING GAME (\u2715\u00b7\u25cb\u00b7\u25b3\u00b7\u25a1 \u00d7 3 TIERS = 12 ENDINGS)"
+        : (nextEd === "v2"
+          ? "[V] EDITION: V2 LINEAR CUTOUT REMAKE (16.0s)"
+          : "[V] EDITION: V1 ORIGINAL SETUP-A COCKPIT (13.0s)");
+      var edCol = nextEd === "v3" ? "#2563eb" : (nextEd === "v2" ? COL_PREPOSTEROUS : COL_PROBABLE);
+      this._recordAction("edition:" + nextEd, edLabel, edCol);
       return this.state.edition;
     },
 
     toggleEdition: function () {
-      return this.setEdition(this.state.edition === "v2" ? "v1" : "v2");
+      var order = window.BRANCH_GAME ? ["v3", "v2", "v1"] : ["v2", "v1"];
+      var idx = order.indexOf(this.state.edition);
+      var next = order[(idx + 1) % order.length];
+      return this.setEdition(next);
     },
 
-    loadPortal: function (id, seedFallback, initialEdition) {
+    loadPortal: function (id, seedFallback, initialEdition, startPhase) {
       ensureV1Snapshot();
       var num = Math.max(1, Math.min(55, parseInt(id, 10) || 1));
-      if (initialEdition === "v1" || initialEdition === "v2") {
-        this.state.edition = initialEdition;
+      if (initialEdition === "v1" || initialEdition === "v2" || initialEdition === "v3") {
+        this.state.edition = (initialEdition === "v3" && !window.BRANCH_GAME) ? "v2" : initialEdition;
+      } else if (!this.state.edition) {
+        this.state.edition = window.BRANCH_GAME ? "v3" : "v2";
       }
+
       if (window.SCION_STAGE && typeof window.SCION_STAGE.preloadPortalPlates === "function") {
         var self = this;
         window.SCION_STAGE.preloadPortalPlates(num).then(function () {
@@ -559,20 +1010,21 @@
         }).catch(function () {});
       }
 
-      var sc = this.getScene(num);
+      var v2Sc = this.getScene(num, "v2");
       var v1Sc = this.getScene(num, "v1");
+      var tree = this.getBranchTree(num);
       var stOpt = (window.STUDENT_OPTIONS && window.STUDENT_OPTIONS[num]) || null;
       var savedNote = loadPortalSnailNote(num);
       var alienLookup = (stOpt && stOpt.d) || (window.ALIEN_PASSES && window.ALIEN_PASSES[num]) || "";
 
       this.portalId = num;
       this.loopDuration = this.getActiveDuration(num);
-      this.station = (sc && sc.station) || (stOpt && stOpt.station) || (seedFallback && seedFallback[0]) || ("#" + (num < 10 ? "0" + num : num));
-      this.clue = (stOpt && stOpt.a) || (sc && sc.clue) || (seedFallback && seedFallback[1]) || "";
+      this.station = (tree && tree.station) || (v2Sc && v2Sc.station) || (stOpt && stOpt.station) || (seedFallback && seedFallback[0]) || ("#" + pad2(num));
+      this.clue = (tree && tree.clue) || (stOpt && stOpt.a) || (v2Sc && v2Sc.clue) || (seedFallback && seedFallback[1]) || "";
       this.turkeyFork = (stOpt && stOpt.b) || (v1Sc && v1Sc.turkeyFork) || (seedFallback && seedFallback[3]) || "";
       this.troutFork = (stOpt && stOpt.c) || (v1Sc && v1Sc.troutFork) || (seedFallback && seedFallback[4]) || "";
       this.alienFork = alienLookup;
-      this.scionRule = (sc && sc.scionRule) || (seedFallback && seedFallback[5]) || "";
+      this.scionRule = (v2Sc && v2Sc.scionRule) || (seedFallback && seedFallback[5]) || "";
       this.defaultTool = (v1Sc && v1Sc.defaultTool) || "lamp";
 
       this.state.lamp = this.defaultTool !== "ballast";
@@ -590,17 +1042,25 @@
       this.t = 0.0;
       this.framesRendered = 0;
       this.lastAction = "load:" + num;
+
+      var m = this._ensureMachine();
+      if (m) {
+        m.setPortal(num, startPhase || "root");
+      }
+
       toast = {
-        text: this.station + " · " + (this.isV2Active(num) ? "V2 SCION REMAKE (16s)" : "V1 COCKPIT (13s)") + " · [V] EDITION · [SPACE] A·B·C·D",
-        color: this.isV2Active(num) ? COL_PREPOSTEROUS : COL_PROBABLE,
-        until: performance.now() + 1250
+        text: this.station + " \u00b7 " + (this.isV3Active()
+          ? "V3 12-BRANCH GAME \u00b7 PRESS \u2715 \u00b7 \u25cb \u00b7 \u25b3 \u00b7 \u25a1"
+          : (this.isV2Active(num) ? "V2 SCION REMAKE (16s)" : "V1 COCKPIT (13s)")),
+        color: this.isV3Active() ? "#2563eb" : (this.isV2Active(num) ? COL_PREPOSTEROUS : COL_PROBABLE),
+        until: performance.now() + 1150
       };
-      if (typeof onUiSync === "function") onUiSync(this);
+      notifyAllSubscribers(this);
       this.renderNow();
       return this.getSnapshot();
     },
 
-    mount: function (canvas, id, seedFallback, uiCallback, initialEdition) {
+    mount: function (canvas, id, seedFallback, uiCallback, initialEdition, startPhase) {
       this.unmount();
       ensureV1Snapshot();
       activeCanvas = canvas;
@@ -612,7 +1072,7 @@
       }
       onUiSync = uiCallback || null;
       this.active = true;
-      this.loadPortal(id, seedFallback, initialEdition);
+      this.loadPortal(id, seedFallback, initialEdition || "v3", startPhase);
       lastRafMs = performance.now();
       startAmbient(this.state.muted);
       var self = this;
@@ -624,6 +1084,7 @@
         if (dt > 0.001) {
           self.fps = Math.round(0.85 * self.fps + 0.15 * (1 / dt));
         }
+        self._pollGamepad();
         if (!self.state.paused) {
           self._advanceTime(dt);
         }
@@ -640,12 +1101,76 @@
         rafId = 0;
       }
       stopAmbient();
+      if (activeCanvas) {
+        activeCanvas.style.cursor = "default";
+      }
       activeCanvas = null;
       activeCtx = null;
       onUiSync = null;
     },
 
+    _pollGamepad: function () {
+      if (typeof navigator === "undefined" || typeof navigator.getGamepads !== "function") return;
+      var pads;
+      try { pads = navigator.getGamepads(); } catch (e) { return; }
+      if (!pads) return;
+
+      var connectedAny = false;
+      var padName = "";
+      for (var i = 0; i < pads.length; i++) {
+        var gp = pads[i];
+        if (gp && gp.connected) {
+          connectedAny = true;
+          padName = gp.id || "Gamepad";
+          // Extra shoulder / trigger / D-pad bindings
+          var extras = [
+            { idx: 4, act: "prev_portal" }, // L1 / LB
+            { idx: 5, act: "next_portal" }, // R1 / RB
+            { idx: 6, act: "rewind" },      // L2 / LT
+            { idx: 7, act: "showcase" }     // R2 / RT
+          ];
+          for (var e = 0; e < extras.length; e++) {
+            var ex = extras[e];
+            var btnObj = gp.buttons && gp.buttons[ex.idx];
+            var pressed = !!(btnObj && (btnObj.pressed || btnObj.value > 0.6));
+            var k = i + ":ex:" + ex.idx;
+            var was = !!prevExtraPadState[k];
+            prevExtraPadState[k] = pressed;
+            if (pressed && !was) {
+              if (ex.act === "rewind") this.rewindFork();
+              else if (ex.act === "showcase") this.toggleShowcase();
+              else if (ex.act === "prev_portal" && this.portalId > 1) {
+                this.loadPortal(this.portalId - 1, null, this.state.edition);
+              } else if (ex.act === "next_portal" && this.portalId < 55) {
+                this.loadPortal(this.portalId + 1, null, this.state.edition);
+              }
+            }
+          }
+        }
+      }
+
+      if (connectedAny !== this.gamepadConnected) {
+        this.gamepadConnected = connectedAny;
+        this.gamepadId = padName;
+        notifyAllSubscribers(this);
+      }
+
+      if (this.isV3Active() && this.machine && typeof this.machine.pollGamepad === "function") {
+        this.machine.pollGamepad(navigator);
+      }
+    },
+
     _advanceTime: function (dt) {
+      if (this.isV3Active()) {
+        var m = this._ensureMachine();
+        if (m) {
+          this.loopDuration = V3_LOOP_DUR;
+          m.update(dt);
+          this.t = m.t;
+          return;
+        }
+      }
+
       var isV2 = this.isV2Active();
       var dur = isV2 ? LOOP_DUR : V1_LOOP_DUR;
       this.loopDuration = dur;
@@ -664,7 +1189,7 @@
             color: COL_PLAUSIBLE,
             until: performance.now() + 1000
           };
-          if (typeof onUiSync === "function") onUiSync(this);
+          notifyAllSubscribers(this);
         }
 
         if (prevST < 0.75 && nextST >= 0.75) {
@@ -677,7 +1202,7 @@
             color: COL_PREPOSTEROUS,
             until: performance.now() + 1150
           };
-          if (typeof onUiSync === "function") onUiSync(this);
+          notifyAllSubscribers(this);
         }
 
         if (nextST >= 1.0) {
@@ -685,7 +1210,7 @@
           this.state.snailActive = false;
           this.state.snailDelivered = true;
           this.state.routeMarked = true;
-          if (typeof onUiSync === "function") onUiSync(this);
+          notifyAllSubscribers(this);
         } else {
           this.state.snailT = nextST;
         }
@@ -755,7 +1280,14 @@
       var dur = this.getActiveDuration();
       var clamped = Math.max(0, Math.min(dur - 0.001, Number(sec) || 0));
       this.t = clamped;
-      if (typeof onUiSync === "function") onUiSync(this);
+      if (this.isV3Active() && this.machine) {
+        if (this.machine.phase === "showcase") {
+          this.machine.setShowcaseTime(clamped);
+        } else {
+          this.machine.t = clamped;
+        }
+      }
+      notifyAllSubscribers(this);
       this.renderNow(performance.now());
       return this.getSnapshot();
     },
@@ -770,6 +1302,13 @@
       } else if (!this.state.snailNote) {
         var existing = loadPortalSnailNote(this.portalId);
         if (existing) this.state.snailNote = existing;
+      }
+
+      if (this.isV3Active()) {
+        this.state.snailCount = (this.state.snailCount || 0) + 1;
+        this.state.snailDelivered = true;
+        this.selectButton("triangle");
+        return this.getSnapshot();
       }
 
       var isV2 = this.isV2Active();
@@ -795,6 +1334,9 @@
     },
 
     toggleLamp: function () {
+      if (this.isV3Active()) {
+        return this.selectButton("x");
+      }
       this.state.lamp = !this.state.lamp;
       playSound("lamp", this.state.lamp, this.state.muted);
       this._recordAction(
@@ -806,6 +1348,9 @@
     },
 
     toggleBallast: function () {
+      if (this.isV3Active()) {
+        return this.selectButton("o");
+      }
       this.state.ballast = !this.state.ballast;
       playSound("ballast", this.state.ballast, this.state.muted);
       this._recordAction(
@@ -817,6 +1362,13 @@
     },
 
     setView: function (v) {
+      if (this.isV3Active()) {
+        if (v === "auto") return this.startAutoShowcase(0);
+        if (v === "real") return this.resetToRoot();
+        if (v === "turkey") return this.selectTier("probable");
+        if (v === "trout") return this.selectTier("plausible");
+        if (v === "alien") return this.selectTier("preposterous");
+      }
       var target = (v === "real" || v === "turkey" || v === "trout" || v === "alien" || v === "auto") ? v : "auto";
       var isV2 = this.isV2Active();
       this.state.view = target;
@@ -858,8 +1410,10 @@
       return this.state.view;
     },
 
-    // [Space] cycles: A Real -> B Turkey -> C Trout -> D Alien -> Auto
     flipView: function () {
+      if (this.isV3Active()) {
+        return this.rollFate();
+      }
       var order = ["real", "turkey", "trout", "alien", "auto"];
       var idx = order.indexOf(this.state.view);
       var next = order[(idx + 1) % order.length];
@@ -873,6 +1427,16 @@
       this.state.roll = val;
       this.state.tier = tierForRoll(val);
       this.state.routeMarked = true;
+      if (this.isV3Active()) {
+        var mappedTier = val <= 2 ? "probable" : (val <= 4 ? "plausible" : "preposterous");
+        var m = this._ensureMachine();
+        if (m && m.selectedButton) {
+          m.selectTier(mappedTier);
+        } else {
+          this.rollFate();
+        }
+        return val;
+      }
       playSound("roll", val, this.state.muted);
       var voice = tierVoiceForRoll(val);
       this._recordAction(
@@ -885,10 +1449,11 @@
 
     toggleCaptions: function () {
       this.state.showCaptions = !this.state.showCaptions;
+      if (this.machine) this.machine.showCaptions = this.state.showCaptions;
       playSound("captions", this.state.showCaptions, this.state.muted);
       this._recordAction(
         "captions:" + (this.state.showCaptions ? "on" : "off"),
-        "[C] CAPTIONS · " + (this.state.showCaptions ? "BOLAS SLATE & 4-BOX STRIP VISIBLE" : "BLIND CRITIC MODE (0 TEXT CALLS)"),
+        "[C] CAPTIONS · " + (this.state.showCaptions ? "HUD & SLATE VISIBLE" : "BLIND CRITIC MODE (0 TEXT CALLS)"),
         COL_PLAUSIBLE
       );
       return this.state.showCaptions;
@@ -906,17 +1471,33 @@
 
     toggleMute: function () {
       this.state.muted = !this.state.muted;
+      if (this.machine) this.machine.muted = this.state.muted;
+      if (window.BRANCH_GAME && window.BRANCH_GAME.audio) {
+        window.BRANCH_GAME.audio.muted = this.state.muted;
+      }
       if (this.state.muted) stopAmbient();
       else if (this.active) startAmbient(false);
-      if (typeof onUiSync === "function") onUiSync(this);
+      notifyAllSubscribers(this);
       return this.state.muted;
+    },
+
+    _ensureV3Hitboxes: function (v3Sc) {
+      var m = this._ensureMachine();
+      if (!m || this.state.showCaptions === false) return;
+      if (Array.isArray(m.hitboxes) && m.hitboxes.length > 0) return;
+      var probe = ensureHitProbeCtx();
+      if (probe && window.BRANCH_GAME && typeof window.BRANCH_GAME.drawControllerHUD === "function") {
+        var res = window.BRANCH_GAME.drawControllerHUD(probe, W, H, m, {
+          portalId: this.portalId,
+          showCaptions: true,
+          hotspots: (v3Sc && v3Sc.hotspots) || null
+        });
+        if (res && res.hitboxes) m.hitboxes = res.hitboxes;
+      }
     },
 
     renderNow: function (nowMs) {
       if (!activeCtx || !activeCanvas) return;
-      var isV2 = this.isV2Active();
-      var sc = this.getScene(this.portalId, isV2 ? "v2" : "v1");
-      var renderState = this._buildRenderState(isV2);
 
       activeCtx.save();
       activeCtx.setTransform(1, 0, 0, 1, 0, 0);
@@ -926,10 +1507,43 @@
       if (activeCtx.setLineDash) activeCtx.setLineDash([]);
       activeCtx.clearRect(0, 0, W, H);
 
+      if (this.isV3Active()) {
+        var m = this._ensureMachine();
+        var v3Sc = this.getScene(this.portalId, "v3");
+        var v3State = m ? m.getState() : { portalId: this.portalId, showCaptions: this.state.showCaptions };
+        v3State.showCaptions = this.state.showCaptions;
+        if (m) m.hitboxes = [];
+
+        if (v3Sc && typeof v3Sc.render === "function") {
+          try {
+            v3Sc.render(activeCtx, W, H, this.t, v3State);
+            if (m && v3State.hitboxes && v3State.hitboxes.length) {
+              m.hitboxes = v3State.hitboxes;
+            }
+          } catch (err) {
+            renderV3BridgeScene(activeCtx, W, H, this.t, m || v3State, this.portalId, this);
+          }
+        } else {
+          renderV3BridgeScene(activeCtx, W, H, this.t, m || v3State, this.portalId, this);
+        }
+
+        if (m && (!m.hitboxes || !m.hitboxes.length) && this.state.showCaptions !== false) {
+          this._ensureV3Hitboxes(v3Sc);
+        }
+        activeCtx.restore();
+        renderToastOverlay(activeCtx, toast, nowMs || performance.now(), v3State);
+        this.framesRendered += 1;
+        return;
+      }
+
+      var isV2 = this.isV2Active();
+      var sc = this.getScene(this.portalId, isV2 ? "v2" : "v1");
+      var renderState = this._buildRenderState(isV2);
+
       if (sc && typeof sc.render === "function") {
         try {
           sc.render(activeCtx, W, H, this.t, renderState);
-        } catch (err) {
+        } catch (err2) {
           renderFallbackCockpit(activeCtx, W, H, this.t, renderState, this);
         }
       } else {
@@ -941,18 +1555,84 @@
       this.framesRendered += 1;
     },
 
+    _hitTestV3Canvas: function (x, y) {
+      var m = this._ensureMachine();
+      if (!m) return null;
+      var v3Sc = this.getScene(this.portalId, "v3");
+      this._ensureV3Hitboxes(v3Sc);
+      var hb = m.hitTest(x, y);
+      if (hb) return hb;
+
+      // Also hit-test diegetic world anchor circles in root / showcase
+      if (m.phase === "root" || m.phase === "showcase") {
+        var tree = this.getBranchTree(this.portalId);
+        if (tree && tree.buttons) {
+          var keys = ["x", "o", "triangle", "square"];
+          for (var i = 0; i < keys.length; i++) {
+            var bk = keys[i];
+            var anc = tree.buttons[bk] && tree.buttons[bk].anchor;
+            if (!anc) continue;
+            var dx = x - anc.x;
+            var dy = y - anc.y;
+            if (dx * dx + dy * dy <= 52 * 52) {
+              return { kind: "button", button: bk, anchor: anc };
+            }
+          }
+        }
+      }
+      return null;
+    },
+
     _bindCanvasPointer: function (canvas) {
       var self = this;
+
+      canvas.onmousemove = function (ev) {
+        if (!self.active || !self.isV3Active()) {
+          canvas.style.cursor = "pointer";
+          return;
+        }
+        var rect = canvas.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        var x = ((ev.clientX - rect.left) / rect.width) * W;
+        var y = ((ev.clientY - rect.top) / rect.height) * H;
+        var hit = self._hitTestV3Canvas(x, y);
+        canvas.style.cursor = hit ? "pointer" : "default";
+      };
+
       canvas.onclick = function (ev) {
         if (!self.active) return;
         var rect = canvas.getBoundingClientRect();
         if (!rect.width || !rect.height) return;
         var x = ((ev.clientX - rect.left) / rect.width) * W;
         var y = ((ev.clientY - rect.top) / rect.height) * H;
-        var isV2 = self.isV2Active();
 
+        if (self.isV3Active()) {
+          var m = self._ensureMachine();
+          var hit = self._hitTestV3Canvas(x, y);
+          if (hit) {
+            if (hit.kind === "button") self.selectButton(hit.button);
+            else if (hit.kind === "tier") self.selectTier(hit.tier);
+            else if (hit.kind === "rewind") self.rewindFork();
+            else if (hit.kind === "root") self.resetToRoot();
+            else if (hit.kind === "random") self.rollFate();
+            else if (hit.kind === "matrix") self.jumpToBranch(hit.button, hit.tier);
+            return;
+          }
+          if (m && m.phase === "showcase") {
+            self.resetToRoot();
+            return;
+          }
+          if (m && m.phase === "stem" && m.phaseT > 0.2) {
+            m.pressButton(m.selectedButton);
+            notifyAllSubscribers(self);
+            self.renderNow();
+            return;
+          }
+          return;
+        }
+
+        var isV2 = self.isV2Active();
         if (isV2) {
-          // Click on 4-box contact strip in bottom-left BOLAS slate -> jump directly to Variation I..IV
           if (y >= 590 && x >= 18 && x <= 320 && self.state.showCaptions !== false) {
             var boxIdx = Math.min(3, Math.max(0, Math.floor((x - 18) / 74)));
             var vNames = ["real", "turkey", "trout", "alien"];
@@ -997,11 +1677,125 @@
 
       var k = ev.key;
       var code = ev.code;
+
       if (k === "v" || k === "V" || code === "KeyV") {
         ev.preventDefault();
         this.toggleEdition();
         return true;
       }
+      if (k === "c" || k === "C" || code === "KeyC") {
+        ev.preventDefault();
+        this.toggleCaptions();
+        return true;
+      }
+      if (k === "m" || k === "M" || code === "KeyM") {
+        ev.preventDefault();
+        this.toggleMute();
+        return true;
+      }
+
+      if (this.isV3Active()) {
+        var m = this._ensureMachine();
+        var phase = m ? m.phase : "root";
+
+        if (k === "Backspace" || code === "Backspace") {
+          ev.preventDefault();
+          this.rewindFork();
+          return true;
+        }
+        if (k === "r" || k === "R" || code === "KeyR") {
+          ev.preventDefault();
+          this.rollFate();
+          return true;
+        }
+        if (k === "a" || k === "A" || code === "KeyA") {
+          ev.preventDefault();
+          this.toggleShowcase();
+          return true;
+        }
+        // Stage-2 dedicated tier hotkeys Q / W / E
+        if (k === "q" || k === "Q" || code === "KeyQ") {
+          ev.preventDefault();
+          this.selectTier("probable");
+          return true;
+        }
+        if (k === "w" || k === "W" || code === "KeyW") {
+          ev.preventDefault();
+          this.selectTier("plausible");
+          return true;
+        }
+        if (k === "e" || k === "E" || code === "KeyE") {
+          ev.preventDefault();
+          this.selectTier("preposterous");
+          return true;
+        }
+        // Context-aware number keys 1..4 (Stage 1: ✕ ○ △ □ | Stage 2 tier_select: Probable / Plausible / Preposterous / Rewind)
+        if (k === "1") {
+          ev.preventDefault();
+          if (phase === "tier_select") this.selectTier("probable");
+          else this.selectButton("x");
+          return true;
+        }
+        if (k === "2") {
+          ev.preventDefault();
+          if (phase === "tier_select") this.selectTier("plausible");
+          else this.selectButton("o");
+          return true;
+        }
+        if (k === "3") {
+          ev.preventDefault();
+          if (phase === "tier_select") this.selectTier("preposterous");
+          else this.selectButton("triangle");
+          return true;
+        }
+        if (k === "4") {
+          ev.preventDefault();
+          if (phase === "tier_select") this.rewindFork();
+          else this.selectButton("square");
+          return true;
+        }
+        // PlayStation Face Button Hotkeys: X (✕), O (○), T (△), S (□)
+        if (k === "x" || k === "X" || code === "KeyX") {
+          ev.preventDefault();
+          if (phase === "tier_select" || (phase === "stem" && m.selectedButton === "x")) this.pressButton("x");
+          else this.selectButton("x");
+          return true;
+        }
+        if (k === "o" || k === "O" || code === "KeyO") {
+          ev.preventDefault();
+          if (phase === "tier_select" || (phase === "stem" && m.selectedButton === "o")) this.pressButton("o");
+          else this.selectButton("o");
+          return true;
+        }
+        if (k === "t" || k === "T" || code === "KeyT") {
+          ev.preventDefault();
+          if (phase === "tier_select" || (phase === "stem" && m.selectedButton === "triangle")) this.pressButton("triangle");
+          else this.selectButton("triangle");
+          return true;
+        }
+        if (k === "s" || k === "S" || code === "KeyS") {
+          ev.preventDefault();
+          if (phase === "tier_select" || (phase === "stem" && m.selectedButton === "square")) this.pressButton("square");
+          else this.selectButton("square");
+          return true;
+        }
+        if (k === " " || k === "Spacebar" || code === "Space") {
+          ev.preventDefault();
+          if (phase === "stem" && m) {
+            m.pressButton(m.selectedButton || "x");
+            notifyAllSubscribers(this);
+            this.renderNow();
+          } else if (phase === "showcase") {
+            this.resetToRoot();
+          } else {
+            this.togglePause();
+          }
+          return true;
+        }
+        return false;
+      }
+
+      // Legacy V2 / V1 Keyboard Shortcuts
       if (k === "l" || k === "L" || code === "KeyL") {
         ev.preventDefault();
         this.toggleLamp();
@@ -1032,16 +1826,6 @@
         this.rollDie();
         return true;
       }
-      if (k === "c" || k === "C" || code === "KeyC") {
-        ev.preventDefault();
-        this.toggleCaptions();
-        return true;
-      }
-      if (k === "m" || k === "M" || code === "KeyM") {
-        ev.preventDefault();
-        this.toggleMute();
-        return true;
-      }
       if (k >= "1" && k <= "6") {
         ev.preventDefault();
         this.rollDie(parseInt(k, 10));
@@ -1050,7 +1834,290 @@
       return false;
     },
 
+    /* ---------- Tactile HTML Controller Deck + 4×3 Branching Tree Map ---------- */
+
+    mountControllerDeck: function (containerEl, opts) {
+      if (!containerEl) return null;
+      injectDeckStyles();
+      var cfg = opts || {};
+      var self = this;
+      var lastRenderedKey = "";
+
+      function syncDeck() {
+        var pid = self.portalId || 1;
+        var ed = self.state.edition || "v3";
+        var matrix = self.getDiscoveryMatrix(pid);
+        var tree = self.getBranchTree(pid);
+        var m = self._ensureMachine();
+        var phase = (ed === "v3" && m) ? m.phase : ed;
+        var selBtn = (ed === "v3" && m) ? m.selectedButton : null;
+        var selTier = (ed === "v3" && m) ? m.selectedTier : null;
+
+        var structKey = [
+          pid, ed, phase, selBtn || "-", selTier || "-",
+          matrix.unlockedCount, matrix.globalUnlockedCount,
+          self.state.showCaptions ? "1" : "0",
+          self.state.muted ? "1" : "0",
+          self.gamepadConnected ? "gp1" : "gp0",
+          self.state.lamp ? "l1" : "l0",
+          self.state.ballast ? "b1" : "b0",
+          self.state.view
+        ].join("|");
+
+        if (structKey === lastRenderedKey) return;
+        lastRenderedKey = structKey;
+
+        if (ed !== "v3") {
+          containerEl.innerHTML = (
+            '<div class="v3-deck-wrap">' +
+              '<div class="v3-pad-shell">' +
+                '<div class="v3-legacy-bar">' +
+                  '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">' +
+                    '<button type="button" class="v3-util-btn on" data-act="ed-v3">🎮 Switch to V3 12-Branch Game [V]</button>' +
+                    '<button type="button" class="v3-mini-btn" data-act="ed-cycle">[V] Edition: ' + (ed === "v2" ? "V2 Remake (16s)" : "V1 Cockpit (13s)") + '</button>' +
+                    '<button type="button" class="v3-mini-btn" data-act="v-beat">[Space] Cycle A·B·C·D (' + escHtml(self.state.view) + ')</button>' +
+                    '<button type="button" class="v3-mini-btn" data-act="v-lamp">[L] Lamp: ' + (self.state.lamp ? "ON" : "OFF") + '</button>' +
+                    '<button type="button" class="v3-mini-btn" data-act="v-ballast">[B] Ballast: ' + (self.state.ballast ? "IN" : "OUT") + '</button>' +
+                    '<button type="button" class="v3-mini-btn" data-act="v-snail">[S] Snail Mail</button>' +
+                    '<button type="button" class="v3-mini-btn" data-act="v-roll">[R] 1d6</button>' +
+                  '</div>' +
+                  '<div style="display:flex;gap:6px">' +
+                    '<button type="button" class="v3-mini-btn" data-act="captions">[C] ' + (self.state.showCaptions !== false ? "Captions" : "BLIND") + '</button>' +
+                    '<button type="button" class="v3-mini-btn" data-act="mute">[M] ' + (self.state.muted ? "Muted" : "Sound") + '</button>' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +
+            '</div>'
+          );
+          bindDeckActions();
+          return;
+        }
+
+        var stageBadgeTxt = "Stage 1: Choose ✕ / ○ / △ / □ Action";
+        var stageBadgeCls = "v3-stage-pill";
+        var stageSubTxt = (tree && tree.clue) ? ("Prop: " + tree.clue) : "Pick a submarine or courier move you can see!";
+
+        if (phase === "stem" && selBtn && tree && tree.buttons[selBtn]) {
+          stageBadgeTxt = "Stage 1: " + BTN_SYMBOLS[selBtn] + " " + tree.buttons[selBtn].shortLabel + " → Stage 2 Ready";
+          stageSubTxt = tree.buttons[selBtn].physicalStem || "Now choose Probable, Plausible, or Preposterous!";
+        } else if (phase === "tier_select" && selBtn && tree && tree.buttons[selBtn]) {
+          stageBadgeTxt = "Stage 2: Choose Probable / Plausible / Preposterous Outcome";
+          stageBadgeCls = "v3-stage-pill ph-tier";
+          stageSubTxt = "After [" + BTN_SYMBOLS[selBtn] + " " + tree.buttons[selBtn].shortLabel + "] — choose who answers!";
+        } else if (phase === "outcome" && selBtn && selTier && tree && tree.branches[selBtn]) {
+          var outObj = tree.branches[selBtn][selTier] || {};
+          stageBadgeTxt = "Outcome Playing: Rewind or Pick Next Branch";
+          stageBadgeCls = "v3-stage-pill ph-outcome";
+          stageSubTxt = "[" + BTN_SYMBOLS[selBtn] + " → " + selTier.toUpperCase() + "] " + (outObj.title || "") + (outObj.caption ? " — " + outObj.caption : "");
+        } else if (phase === "showcase") {
+          stageBadgeTxt = "Showcase (0:18): Press ✕ / ○ / △ / □ to Play";
+          stageBadgeCls = "v3-stage-pill ph-showcase";
+          stageSubTxt = "Watching 18.0s branching showcase — click any button or 4×3 cell to take live control!";
+        }
+
+        // Build 4 PlayStation Face Buttons
+        var faceHtml = "";
+        var bOrder = ["x", "o", "triangle", "square"];
+        for (var bi = 0; bi < bOrder.length; bi++) {
+          var bKey = bOrder[bi];
+          var bInfo = (tree && tree.buttons && tree.buttons[bKey]) || { shortLabel: bKey, actionPrompt: "" };
+          var isSel = (selBtn === bKey && phase !== "showcase");
+          var dotsHtml = "";
+          var tOrder = ["probable", "plausible", "preposterous"];
+          for (var d = 0; d < 3; d++) {
+            var isU = self.isBranchUnlocked(pid, bKey, tOrder[d]);
+            dotsHtml += '<i class="' + (isU ? "u" : "") + '"></i>';
+          }
+          faceHtml += (
+            '<button type="button" class="v3-face-btn' + (isSel ? " selected" : "") + '" id="ctrlBtn-' + bKey + '" data-v3-btn="' + bKey + '" style="--btn-col:' + BTN_COLORS[bKey] + '">' +
+              '<span class="v3-cap" aria-hidden="true">' + svgSymbolMarkup(bKey, 18) + '</span>' +
+              '<span style="min-width:0">' +
+                '<span class="v3-face-title"><span>' + escHtml(bInfo.shortLabel) + '</span><span class="v3-kbd">' + BTN_HOTKEYS[bKey] + '</span></span>' +
+                '<span class="v3-face-sub">' + escHtml(bInfo.actionPrompt) + '</span>' +
+                '<span class="v3-dots3" aria-hidden="true">' + dotsHtml + '</span>' +
+              '</span>' +
+            '</button>'
+          );
+        }
+
+        // Build 3 Stage-2 Outcome Tier Buttons + Utility Cluster
+        var previewBtnKey = selBtn || "x";
+        var tierConfigs = [
+          { key: "probable", label: "Probable · Turkey", col: COL_PROBABLE, hi: "#7dd3fc" },
+          { key: "plausible", label: "Plausible · Trout", col: COL_PLAUSIBLE_DEEP, hi: "#6ee7b7" },
+          { key: "preposterous", label: "Preposterous · Alien", col: COL_PREPOSTEROUS_RUST, hi: "#fda4af" }
+        ];
+        var tiersHtml = "";
+        for (var ti = 0; ti < tierConfigs.length; ti++) {
+          var tc = tierConfigs[ti];
+          var brPreview = (tree && tree.branches && tree.branches[previewBtnKey] && tree.branches[previewBtnKey][tc.key]) || {};
+          var isTierActive = (phase === "outcome" && selTier === tc.key);
+          var isTierReady = (phase === "tier_select" || phase === "stem");
+          var unlMark = self.isBranchUnlocked(pid, previewBtnKey, tc.key) ? "✓ " : "";
+          tiersHtml += (
+            '<button type="button" class="v3-tier-btn' + (isTierActive ? " active" : (isTierReady ? " ready" : "")) + '" id="ctrlTier-' + tc.key + '" data-v3-tier="' + tc.key + '" style="--tier-col:' + tc.col + ';--tier-hi:' + tc.hi + '">' +
+              '<span class="v3-tier-top"><span>' + unlMark + escHtml(tc.label) + '</span><span class="v3-kbd">' + TIER_HOTKEYS[tc.key] + '</span></span>' +
+              '<span class="v3-tier-preview">' + BTN_SYMBOLS[previewBtnKey] + ' → ' + escHtml(brPreview.title || tc.label) + '</span>' +
+            '</button>'
+          );
+        }
+
+        // Build 4×3 Interactive Branching Tree Matrix
+        var matrixHtml = "";
+        if (cfg.showTreeMatrix !== false) {
+          var rowsMarkup = "";
+          for (var r = 0; r < matrix.rows.length; r++) {
+            var row = matrix.rows[r];
+            var bPrompt = (tree && tree.buttons && tree.buttons[row.button] && tree.buttons[row.button].actionPrompt) || "";
+            rowsMarkup += (
+              '<button type="button" class="v3-m-rowstub" data-v3-btn="' + row.button + '" style="--bcol:' + row.color + '" title="Stage 1: ' + escHtml(row.shortLabel) + '">' +
+                '<span class="v3-m-sym" aria-hidden="true">' + svgSymbolMarkup(row.button, 14) + '</span>' +
+                '<span style="min-width:0">' +
+                  '<strong style="display:block;font-size:13px;line-height:1.2">' + escHtml(row.shortLabel) + '</strong>' +
+                  '<span style="display:block;font-family:\'JetBrains Mono\',monospace;font-size:10px;color:#5b5348;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + escHtml(bPrompt) + '</span>' +
+                '</span>' +
+              '</button>'
+            );
+            for (var c = 0; c < row.cells.length; c++) {
+              var cell = row.cells[c];
+              var isPlayingCell = (phase === "outcome" && selBtn === cell.button && selTier === cell.tier);
+              var tCol = cell.tier === "probable" ? COL_PROBABLE : (cell.tier === "plausible" ? COL_PLAUSIBLE_DEEP : COL_PREPOSTEROUS_RUST);
+              rowsMarkup += (
+                '<button type="button" class="v3-m-cell' + (cell.unlocked ? " unlocked" : "") + (isPlayingCell ? " playing" : "") + '" ' +
+                  'data-v3-branch="' + cell.id + '" data-btn="' + cell.button + '" data-tier="' + cell.tier + '" style="--tcol:' + tCol + '">' +
+                  '<span class="v3-m-tag">' +
+                    '<span>' + cell.buttonSymbol + ' · ' + escHtml(cell.tier) + '</span>' +
+                    '<span>' + (isPlayingCell ? "▶ PLAYING" : (cell.unlocked ? "✓ UNLOCKED" : "CLICK TO PLAY")) + '</span>' +
+                  '</span>' +
+                  '<span class="v3-m-title">' + escHtml(cell.unlocked || isPlayingCell || cfg.revealAllTitles ? cell.title : ("Discover " + cell.buttonSymbol + " → " + cell.tier.charAt(0).toUpperCase() + cell.tier.slice(1))) + '</span>' +
+                  (cell.unlocked || isPlayingCell ? '<span class="v3-m-cap">' + escHtml(cell.caption) + '</span>' : '') +
+                '</button>'
+              );
+            }
+          }
+
+          matrixHtml = (
+            '<div class="v3-matrix-card">' +
+              '<div class="v3-matrix-head">' +
+                '<h4>4 × 3 Interactive Branching Tree · ' + escHtml(self.station) + '</h4>' +
+                '<span class="v3-matrix-prog">Porthole: ' + matrix.unlockedCount + ' / 12 Endings · All 55 Portholes: ' + matrix.globalUnlockedCount + ' / 660 Unlocked</span>' +
+              '</div>' +
+              '<div class="v3-matrix-grid">' +
+                '<div class="v3-m-colhead" style="--tcol:#14110d">Stage 1 · Button</div>' +
+                '<div class="v3-m-colhead" style="--tcol:' + COL_PROBABLE + '">Probable · Turkey (1–2)</div>' +
+                '<div class="v3-m-colhead" style="--tcol:' + COL_PLAUSIBLE_DEEP + '">Plausible · Trout + Snail (3–4)</div>' +
+                '<div class="v3-m-colhead" style="--tcol:' + COL_PREPOSTEROUS_RUST + '">Preposterous · Alien Saucer (5–6)</div>' +
+                rowsMarkup +
+              '</div>' +
+            '</div>'
+          );
+        }
+
+        containerEl.innerHTML = (
+          '<div class="v3-deck-wrap">' +
+            '<div class="v3-pad-shell">' +
+              '<div class="v3-pad-top">' +
+                '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0">' +
+                  '<span class="' + stageBadgeCls + '" id="ctrlStageBadge">' + escHtml(stageBadgeTxt) + '</span>' +
+                  '<span class="v3-stage-msg" id="ctrlStageMsg">' + escHtml(stageSubTxt) + '</span>' +
+                '</div>' +
+                '<div class="v3-pad-meta">' +
+                  '<span class="v3-gp-badge' + (self.gamepadConnected ? " live" : "") + '">' +
+                    (self.gamepadConnected ? "🎮 Gamepad Live" : "🎮 DualSense / Pad Ready") +
+                  '</span>' +
+                  '<button type="button" class="v3-mini-btn" data-act="ed-cycle" title="Switch V3 Branching / V2 Remake / V1 Cockpit">[V] V3 12-Branch ⇄ V2/V1</button>' +
+                  '<button type="button" class="v3-mini-btn' + (self.state.showCaptions !== false ? " on" : "") + '" data-act="captions">[C] ' + (self.state.showCaptions !== false ? "HUD On" : "Blind") + '</button>' +
+                  '<button type="button" class="v3-mini-btn' + (!self.state.muted ? " on" : "") + '" data-act="mute">[M] ' + (self.state.muted ? "Muted" : "Sound") + '</button>' +
+                '</div>' +
+              '</div>' +
+              '<div class="v3-face-grid" role="group" aria-label="Stage 1 Submarine and Courier Face Buttons">' +
+                faceHtml +
+              '</div>' +
+              '<div class="v3-tier-bar" role="group" aria-label="Stage 2 Outcome Tiers and Transport">' +
+                tiersHtml +
+                '<div class="v3-util-cluster">' +
+                  '<button type="button" class="v3-util-btn" id="ctrlRollFate" data-act="roll-fate" title="Shortcut: R">🎲 Roll Fate [R]</button>' +
+                  '<button type="button" class="v3-util-btn" id="ctrlRewind" data-act="rewind" title="Shortcut: Backspace">↺ Rewind [Bksp]</button>' +
+                  '<button type="button" class="v3-util-btn' + (phase === "showcase" ? " on" : "") + '" id="ctrlShowcase" data-act="showcase" title="Shortcut: A">▶ Showcase 18s [A]</button>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            matrixHtml +
+          '</div>'
+        );
+
+        bindDeckActions();
+      }
+
+      function bindDeckActions() {
+        function preInteract() {
+          if (typeof cfg.onBeforeInteract === "function") {
+            try { cfg.onBeforeInteract(); } catch (e) {}
+          }
+        }
+        containerEl.querySelectorAll("[data-v3-btn]").forEach(function (b) {
+          b.onclick = function () {
+            preInteract();
+            var bk = b.getAttribute("data-v3-btn");
+            var m = self._ensureMachine();
+            if (m && m.phase === "stem" && m.selectedButton === bk && m.phaseT > 0.15) {
+              self.pressButton(bk);
+            } else {
+              self.selectButton(bk);
+            }
+          };
+        });
+        containerEl.querySelectorAll("[data-v3-tier]").forEach(function (tb) {
+          tb.onclick = function () {
+            preInteract();
+            self.selectTier(tb.getAttribute("data-v3-tier"));
+          };
+        });
+        containerEl.querySelectorAll("[data-v3-branch]").forEach(function (cellBtn) {
+          cellBtn.onclick = function () {
+            preInteract();
+            self.jumpToBranch(cellBtn.getAttribute("data-btn"), cellBtn.getAttribute("data-tier"));
+          };
+        });
+        containerEl.querySelectorAll("[data-act]").forEach(function (ab) {
+          ab.onclick = function () {
+            var act = ab.getAttribute("data-act");
+            if (act === "roll-fate" || act === "rewind" || act === "showcase" || act === "ed-v3") preInteract();
+            if (act === "roll-fate") self.rollFate();
+            else if (act === "rewind") self.rewindFork();
+            else if (act === "showcase") self.toggleShowcase();
+            else if (act === "ed-cycle") self.toggleEdition();
+            else if (act === "ed-v3") self.setEdition("v3");
+            else if (act === "captions") self.toggleCaptions();
+            else if (act === "mute") self.toggleMute();
+            else if (act === "v-beat") self.flipView();
+            else if (act === "v-lamp") self.toggleLamp();
+            else if (act === "v-ballast") self.toggleBallast();
+            else if (act === "v-snail") self.sendSnailMail();
+            else if (act === "v-roll") self.rollDie();
+          };
+        });
+      }
+
+      // Replace any previous subscription on the same container element
+      for (var i = mountedDecks.length - 1; i >= 0; i--) {
+        if (mountedDecks[i].el === containerEl) mountedDecks.splice(i, 1);
+      }
+      var handle = { el: containerEl, sync: syncDeck };
+      mountedDecks.push(handle);
+      syncDeck();
+      return handle;
+    },
+
+    isBranchUnlocked: function (portalId, btnKey, tierKey) {
+      if (window.BRANCH_GAME && window.BRANCH_GAME.discovery) {
+        return window.BRANCH_GAME.discovery.isUnlocked(portalId || this.portalId, btnKey, tierKey);
+      }
+      return false;
+    },
+
     getSnapshot: function () {
+      var m = this.machine;
       return {
         active: this.active,
         edition: this.state.edition,
@@ -1067,6 +2134,14 @@
         framesRendered: this.framesRendered,
         actionCount: this.actionCount,
         lastAction: this.lastAction,
+        gamepadConnected: this.gamepadConnected,
+        v3: m ? {
+          phase: m.phase,
+          selectedButton: m.selectedButton,
+          selectedTier: m.selectedTier,
+          unlockedCount: this.getUnlockedCount(this.portalId),
+          globalUnlockedCount: this.getGlobalUnlockedCount()
+        } : null,
         state: {
           edition: this.state.edition,
           lamp: this.state.lamp,
@@ -1090,6 +2165,17 @@
 
   window.addEventListener("keydown", function (ev) {
     game.handleKeyDown(ev);
+  });
+
+  window.addEventListener("gamepadconnected", function (ev) {
+    game.gamepadConnected = true;
+    game.gamepadId = (ev && ev.gamepad && ev.gamepad.id) || "Gamepad";
+    notifyAllSubscribers(game);
+  });
+
+  window.addEventListener("gamepaddisconnected", function () {
+    game.gamepadConnected = false;
+    notifyAllSubscribers(game);
   });
 
   window.__game = game;

@@ -1078,6 +1078,7 @@
       <a class="brand" href="#p01" id="brandHome">SCION <span>/</span> 55 PORTHOLE ANIMATION SWARMS</a>
     </div>
     <nav class="masthead-links" aria-label="Related SCION studios and decks">
+      <a href="./trout-sub-game.html" id="mastheadGameLink" style="color:#2563eb;font-weight:700;text-decoration:underline">🎮 Play Full Video Game</a>
       <a href="./scion-interior-atlas.html">44 Interior Atlas SCIONs</a>
       <a href="./porthole-cards.html">✂ Cut-Out Cards</a>
       <a href="https://hartswf0.github.io/bolas/paeleo/scion/oulipo/screening/" target="_blank" rel="noopener">BOLAS Oulipo SCIONs ↗</a>
@@ -1091,7 +1092,7 @@
       <div class="catalogue-head">
         <div>
           <h1>55 Porthole Swarms</h1>
-          <span class="catalogue-sub">Foraged or handmade · 4 Swarms / Station</span>
+          <span class="catalogue-sub">Foraged or handmade · 12 Branches / Station</span>
         </div>
         <button type="button" id="browseToggle" class="browse-toggle" aria-expanded="false" aria-controls="catalogueControls">Browse 55</button>
       </div>
@@ -1126,8 +1127,10 @@
   <script src="./verdicts-data.js"></script>
   <script src="./alien-passes.js"></script>
   <script src="./student-options.js"></script>
+  <script src="./porthole-branch-trees.js"></script>
   <script src="./portals/snail-mail.js"></script>
   <script src="./portals/scion-stage.js"></script>
+  <script src="./portals/branch-game-engine.js"></script>
   <script src="./portals/crew-01.js"></script>
   <script src="./portals/crew-02.js"></script>
   <script src="./portals/crew-03.js"></script>
@@ -1156,6 +1159,16 @@
   <script src="./portals/remake-09.js"></script>
   <script src="./portals/remake-10.js"></script>
   <script src="./portals/remake-11.js"></script>
+  <script src="./portals/v3-pod1-a.js"></script>
+  <script src="./portals/v3-pod1-b.js"></script>
+  <script src="./portals/v3-pod2-a.js"></script>
+  <script src="./portals/v3-pod2-b.js"></script>
+  <script src="./portals/v3-pod3-a.js"></script>
+  <script src="./portals/v3-pod3-b.js"></script>
+  <script src="./portals/v3-pod4-a.js"></script>
+  <script src="./portals/v3-pod4-b.js"></script>
+  <script src="./portals/v3-pod5-a.js"></script>
+  <script src="./portals/v3-pod5-b.js"></script>
   <script src="./portals/player.js"></script>
 
   <script>
@@ -1396,21 +1409,22 @@
             '<div class="screen-frame">' +
               (remakeWatchFullSound
                 ? '<video id="v2MainVideo" controls autoplay playsinline src="' + v2Film + '" poster="' + v2Poster + '"></video>'
-                : '<video id="v2ExcerptVideo" muted loop playsinline autoplay src="' + v2Film + '" poster="' + v2Poster + '" data-seg="1.5,14.5"></video>') +
+                : '<video id="v2ExcerptVideo" muted loop playsinline autoplay src="' + v2Film + '" poster="' + v2Poster + '" data-seg="1.2,16.5"></video>') +
             '</div>' +
             '<div class="film-bar">' +
               '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">' +
                 (remakeWatchFullSound
                   ? '<button type="button" class="btn" id="btnBackExcerpt">↺ Return to silent loop</button>'
-                  : '<button type="button" class="btn primary" id="btnWatchSound"><svg width="12" height="12"><use href="#spk"/></svg>Watch with sound · 0:16</button>') +
+                  : '<button type="button" class="btn primary" id="btnWatchSound"><svg width="12" height="12"><use href="#spk"/></svg>Watch with sound · 0:18</button>') +
                 '<button type="button" class="btn accent-teal" id="btnSwitchCompare">⇄ Compare vs. V1 Cockpit</button>' +
-                '<button type="button" class="btn" id="btnSwitchLiveRig">🎮 Play 60fps Rig</button>' +
+                '<button type="button" class="btn" id="btnSwitchLiveRig">🎮 Play 60fps</button>' +
+                '<a class="btn" style="border-color:#2563eb;color:#2563eb;font-weight:700" href="./trout-sub-game.html#p' + pad + '">🎮 Play Full Video Game ↗</a>' +
               '</div>' +
-              '<div class="beat-jumps" aria-label="Jump to variation">' +
-                '<button type="button" class="beat-chip b-a" data-seek="0.2">I · 0:00 Real</button>' +
-                '<button type="button" class="beat-chip b-b" data-seek="4.1">II · 0:04 Turkey</button>' +
-                '<button type="button" class="beat-chip b-c" data-seek="8.1">III · 0:08 Trout</button>' +
-                '<button type="button" class="beat-chip b-d" data-seek="12.1">IV · 0:12 Alien</button>' +
+              '<div class="beat-jumps" aria-label="Jump to branching showcase beat">' +
+                '<button type="button" class="beat-chip b-a" data-seek="0.2">0:00 Root</button>' +
+                '<button type="button" class="beat-chip b-b" data-seek="4.5">0:04 ✕→Probable</button>' +
+                '<button type="button" class="beat-chip b-c" data-seek="9.9">0:10 ○→Plausible</button>' +
+                '<button type="button" class="beat-chip b-d" data-seek="14.7">0:14 △→Alien</button>' +
               '</div>' +
             '</div>'
           );
@@ -1421,14 +1435,14 @@
             '<div class="compare-grid">' +
               '<div class="compare-col">' +
                 '<div class="compare-head v2">' +
-                  '<strong>V2 · Multi-SCION BOLAS Remake (0:16)</strong>' +
+                  '<strong>V3 · 12-Branch Showcase Film (0:18)</strong>' +
                   '<span style="color:var(--stamp)">' + esc(st.directorSwarm.code + " · " + st.bolasStyle) + '</span>' +
                 '</div>' +
                 '<div class="screen-frame">' +
                   '<video id="cmpV2Video" controls autoplay loop playsinline src="' + v2Film + '" poster="' + v2Poster + '"></video>' +
                 '</div>' +
                 '<div class="compare-note">' +
-                  '<strong>Unleashed 4-SCION Rostrum:</strong> Full-bleed widescreen multiplane cutout collage from 2 real plates (<code>p' + pad + '.jpg</code> + <code>' + esc(atlasMeta.id || "atlas") + '.webp</code>), split-pin jointed puppets, 4 Oulipo variations, and dry spoken voiceover (<em>' + esc(st.voiceName || "Daniel") + '</em>).' +
+                  '<strong>Unleashed V3 Video-to-Game Rostrum:</strong> 18.0s showcase clip demonstrating <code>✕ · ○ · △ · □</code> controller branching across 2 real plates (<code>p' + pad + '.jpg</code> + <code>' + esc(atlasMeta.id || "atlas") + '.webp</code>), volumetric lighting, and spoken VO (<em>' + esc(st.voiceName || "Daniel") + '</em>).' +
                 '</div>' +
               '</div>' +
               '<div class="compare-col">' +
@@ -1448,13 +1462,13 @@
               '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
                 '<button type="button" class="btn primary" id="btnSyncBoth">⟳ Restart &amp; Sync Both (0.0s)</button>' +
                 '<button type="button" class="btn" id="btnPlayPauseBoth">⏯ Play / Pause Both</button>' +
-                '<button type="button" class="btn" id="btnToggleCmpAudio">🔊 Audio: ' + (compareAudioSource === "v2" ? "V2 Remake" : (compareAudioSource === "v1" ? "V1 Cockpit" : "Both Muted")) + '</button>' +
+                '<button type="button" class="btn" id="btnToggleCmpAudio">🔊 Audio: ' + (compareAudioSource === "v2" ? "V3 Showcase" : (compareAudioSource === "v1" ? "V1 Cockpit" : "Both Muted")) + '</button>' +
               '</div>' +
               '<div class="beat-jumps">' +
-                '<button type="button" class="beat-chip b-a" data-cmp-beat="0">Beat A (Real)</button>' +
-                '<button type="button" class="beat-chip b-b" data-cmp-beat="1">Beat B (Turkey)</button>' +
-                '<button type="button" class="beat-chip b-c" data-cmp-beat="2">Beat C (Trout)</button>' +
-                '<button type="button" class="beat-chip b-d" data-cmp-beat="3">Beat D (Alien)</button>' +
+                '<button type="button" class="beat-chip b-a" data-cmp-beat="0">Root (Real)</button>' +
+                '<button type="button" class="beat-chip b-b" data-cmp-beat="1">Probable (Turkey)</button>' +
+                '<button type="button" class="beat-chip b-c" data-cmp-beat="2">Plausible (Trout)</button>' +
+                '<button type="button" class="beat-chip b-d" data-cmp-beat="3">Preposterous (Alien)</button>' +
               '</div>' +
             '</div>'
           );
@@ -1464,26 +1478,16 @@
           var savedNote = getSnailNote(id);
           return (
             '<div class="screen-frame">' +
-              '<canvas id="operatorLiveCanvas" width="1280" height="720" aria-label="60fps Interactive Multi-SCION Rig for ' + esc(st.station) + '"></canvas>' +
+              '<canvas id="operatorLiveCanvas" width="1280" height="720" aria-label="60fps Interactive V3 12-Branch Game for ' + esc(st.station) + '"></canvas>' +
             '</div>' +
             '<form class="snail-bar" id="opSnailForm" autocomplete="off">' +
               '<span class="snail-stamp" aria-hidden="true"></span>' +
               '<strong>Snail Mail Postcard:</strong>' +
-              '<input type="text" id="opSnailInput" class="snail-input" maxlength="180" value="' + esc(savedNote) + '" placeholder="Write a 1-line clue from Turkey to Brook Trout (or Dear Alien)…">' +
-              '<button type="submit" class="r-btn">[S] Dispatch Snail</button>' +
+              '<input type="text" id="opSnailInput" class="snail-input" maxlength="180" value="' + esc(savedNote) + '" placeholder="Write a 1-line clue from Turkey to Brook Trout (triggers △ Mail Snail)…">' +
+              '<button type="submit" class="r-btn">[△] Dispatch Snail</button>' +
               '<span id="opSnailSaved" style="color:var(--teal);font-weight:600">' + (savedNote ? "✓ Saved" : "") + '</span>' +
             '</form>' +
-            '<div class="rig-controls">' +
-              '<div class="rig-btns">' +
-                '<button type="button" class="r-btn ed-v2" id="rBtnEdition" title="Shortcut: V">[V] Edition: V2 SCION Remake ⇄ V1</button>' +
-                '<button type="button" class="r-btn" id="rBtnBeat" title="Shortcut: Space">[Space] Beat: Auto 16s</button>' +
-                '<button type="button" class="r-btn" id="rBtnLamp" title="Shortcut: L">[L] Lamp: ON</button>' +
-                '<button type="button" class="r-btn" id="rBtnBallast" title="Shortcut: B">[B] Ballast: OUT</button>' +
-                '<button type="button" class="r-btn" id="rBtnRoll" title="Shortcut: R">[R] Roll 1d6</button>' +
-                '<button type="button" class="r-btn" id="rBtnCap" title="Shortcut: C">[C] Captions: ON</button>' +
-              '</div>' +
-              '<span id="opRigReadout" style="color:var(--ink-2)">60fps Live Canvas</span>' +
-            '</div>'
+            '<div id="opV3DeckMount"></div>'
           );
         }
 
@@ -1513,28 +1517,28 @@
           );
         }
 
-        // Tab 5: Blind Critic 4-Beat Strip
+        // Tab 5: Blind Critic 6-Column V3 Branching Strip (+ V2 / V1 Archive Strips)
+        var v3Strip = "./checks/p" + pad + "-v3-strip.jpg";
         var v2Strip = "./checks/p" + pad + "-remake-strip.jpg";
         var v1Strip = "./checks/p" + pad + "-strip.jpg";
-        var chosenStrip = stripEdition === "v1" ? v1Strip : ((verdict && verdict.strip) ? verdict.strip : v2Strip);
+        var chosenStrip = stripEdition === "v1" ? v1Strip : (stripEdition === "remake" ? v2Strip : ((verdict && verdict.strip) ? verdict.strip : v3Strip));
         return (
           '<div class="critic-card">' +
             '<div class="critic-head">' +
-              '<span style="color:var(--teal);font-weight:600">✓ PAELEO BLIND CRITIC VERIFIED · ' + esc((verdict && verdict.critic) || "remake-critic + post-critic") + '</span>' +
-              '<div style="display:flex;gap:6px;align-items:center">' +
-                '<button type="button" class="r-btn' + (stripEdition === "v2" ? " on" : "") + '" id="btnStripV2">V2 4-Beat Remake Strip</button>' +
-                '<button type="button" class="r-btn' + (stripEdition === "v1" ? " on" : "") + '" id="btnStripV1">V1 6-Col Cockpit Strip</button>' +
+              '<span style="color:var(--teal);font-weight:600">✓ PAELEO BLIND CRITIC VERIFIED · ' + esc((verdict && verdict.critic) || "v3-critic") + ' (12/12 Branches Passed)</span>' +
+              '<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">' +
+                '<button type="button" class="r-btn' + (stripEdition === "v2" ? " on" : "") + '" id="btnStripV3">V3 6-Col Branching Strip</button>' +
+                '<button type="button" class="r-btn' + (stripEdition === "remake" ? " on" : "") + '" id="btnStripV2">V2 4-Beat Strip</button>' +
+                '<button type="button" class="r-btn' + (stripEdition === "v1" ? " on" : "") + '" id="btnStripV1">V1 Cockpit Strip</button>' +
               '</div>' +
             '</div>' +
-            '<img class="critic-strip-img" id="criticStripImg" src="' + esc(chosenStrip) + '" data-fallback="' + esc(v1Strip) + '" alt="Uncaptioned blind row (top) vs captioned row (bottom) contact strip for ' + esc(st.station) + '">' +
+            '<img class="critic-strip-img" id="criticStripImg" src="' + esc(chosenStrip) + '" data-fallback="' + esc(v2Strip) + '" alt="Uncaptioned blind row (top) vs captioned row (bottom) contact strip for ' + esc(st.station) + '">' +
             '<div class="critic-notes">' +
               (verdict && verdict.measured ? '<p style="font-family:var(--mono);font-size:11.5px;color:var(--ink-2)"><strong>Measured Spec:</strong> ' + esc(verdict.measured) + '</p>' : '') +
               '<p><strong>Blind Reading (Top Row · <code>showCaptions: false</code>, <code>0</code> text calls):</strong> ' +
-                esc((verdict && verdict.blind_reading) || "Top row renders 100% caption-free with zero fillText/strokeText leaks across all 4 variations (2.0s Real Creek, 6.0s Turkey Probable + Snail Mail, 10.0s Trout Plausible + Snail Mail, 14.0s Alien Listening Post).") +
+                esc((verdict && verdict.blind_reading) || "Top row renders 100% caption-free with zero fillText/strokeText leaks across all 6 branching showcase columns.") +
               '</p>' +
-              ((verdict && (verdict.four_beat_arc || verdict.three_pass_chain))
-                ? '<p><strong>4-Beat Variation Chain:</strong> ' + esc(verdict.four_beat_arc || verdict.three_pass_chain) + '</p>'
-                : '') +
+              (verdict && verdict.playtest_summary ? '<p><strong>660-Branch Playtest Verdict:</strong> ' + esc(verdict.playtest_summary) + '</p>' : '') +
             '</div>' +
           '</div>'
         );
@@ -1598,9 +1602,9 @@
           '<header class="work-heading">' +
             '<div class="work-top-bar">' +
               '<div class="meta-pills">' +
-                '<span class="st-pill">✓ Passed review</span>' +
+                '<span class="st-pill">✓ Passed review (12/12 Branches)</span>' +
                 '<span class="style-pill">' + esc(bMeta.label || st.bolasStyle) + '</span>' +
-                '<span class="byline">' + esc(st.reference) + ' · 16.0s (384f) · Voice: ' + esc(st.voiceName || "Daniel") + '</span>' +
+                '<span class="byline">' + esc(st.reference) + ' · 0:18 (432f) · Voice: ' + esc(st.voiceName || "Daniel") + '</span>' +
               '</div>' +
               '<div class="step-btns">' +
                 '<button type="button" class="step-btn" id="btnPrevStation"' + (!prevId ? " disabled" : "") + '>← Prev</button>' +
@@ -1610,23 +1614,24 @@
             '<h2 class="work-title"><span class="station-prefix">' + esc(st.station) + '</span> — ' + esc(st.clue) + '</h2>' +
             '<p class="work-thesis"><strong>' + esc(ws.work) + ' (' + esc(ws.title) + '):</strong> ' + esc(ws.line) + ' Coordinated with <strong>' + esc(ds.code + " " + ds.title) + '</strong>.</p>' +
             '<div class="actions-row">' +
+              '<a class="btn primary" style="background:#2563eb;border-color:#2563eb" href="./trout-sub-game.html#p' + pad + '">🎮 Play Full Video Game (#' + pad + ') ↗</a>' +
               '<button type="button" class="btn primary" id="btnCopyCombined">Copy Combined Multi-SCION .md</button>' +
               '<button type="button" class="btn" id="btnSavePoml">Save .poml</button>' +
               '<button type="button" class="btn" id="btnSaveMd">Save .md</button>' +
               '<button type="button" class="btn" id="btnCopyDeepLink">Copy Link #p' + pad + '</button>' +
-              '<a class="btn accent-teal" href="./55-portholes.html#play-' + pad + '">Open Playable Cockpit ↗</a>' +
+              '<a class="btn accent-teal" href="./55-portholes.html#play-' + pad + '">Open Screening Modal ↗</a>' +
               '<span class="copy-status" id="copyStatus"></span>' +
             '</div>' +
           '</header>' +
 
-          /* 2. Interactive Remake vs. V1 Stage */
-          '<section class="stage-shell" aria-label="Interactive V2 Multi-SCION Remake vs V1 Cockpit Stage">' +
+          /* 2. Interactive V3 Branching Showcase, Side-by-Side & 60fps Game Stage */
+          '<section class="stage-shell" aria-label="Interactive V3 Branching Showcase and 60fps Game Stage">' +
             '<div class="stage-tabs" role="tablist" aria-label="Stage view mode">' +
-              '<button type="button" class="stage-tab" role="tab" data-stab="remake" aria-selected="' + (activeStageTab === "remake") + '">▶ V2 Multi-SCION Remake (0:16)</button>' +
-              '<button type="button" class="stage-tab" role="tab" data-stab="compare" aria-selected="' + (activeStageTab === "compare") + '">⇄ Compare V2 Remake vs. V1 Cockpit</button>' +
-              '<button type="button" class="stage-tab" role="tab" data-stab="rig" aria-selected="' + (activeStageTab === "rig") + '">🎮 Play 60fps Live Rig (V2 / V1 Toggle)</button>' +
+              '<button type="button" class="stage-tab" role="tab" data-stab="remake" aria-selected="' + (activeStageTab === "remake") + '">▶ V3 Showcase Film (0:18)</button>' +
+              '<button type="button" class="stage-tab" role="tab" data-stab="rig" aria-selected="' + (activeStageTab === "rig") + '">🎮 Play 60fps (✕·○·△·□ × 12 Branches)</button>' +
+              '<button type="button" class="stage-tab" role="tab" data-stab="compare" aria-selected="' + (activeStageTab === "compare") + '">⇄ Compare V3 Film vs. V1 Cockpit</button>' +
               '<button type="button" class="stage-tab" role="tab" data-stab="plates" aria-selected="' + (activeStageTab === "plates") + '">🖼 Reference Seed &amp; Atlas Anchor</button>' +
-              '<button type="button" class="stage-tab" role="tab" data-stab="critic" aria-selected="' + (activeStageTab === "critic") + '">✓ Blind Critic 4-Beat Strip</button>' +
+              '<button type="button" class="stage-tab" role="tab" data-stab="critic" aria-selected="' + (activeStageTab === "critic") + '">✓ Blind Critic 6-Col Strip</button>' +
             '</div>' +
             '<div class="stage-body" id="stageBody">' +
               buildStageContentHtml(st, verdict) +
@@ -1814,15 +1819,12 @@
         selectionEl.querySelectorAll("[data-jump-beat]").forEach(function (b) {
           b.onclick = function () {
             var which = b.getAttribute("data-jump-beat");
-            var mapSec = { a: 0.2, b: 4.1, c: 8.1, d: 12.1 };
+            var mapSec = { a: 0.2, b: 4.5, c: 9.9, d: 14.7 };
             var mapView = { a: "real", b: "turkey", c: "trout", d: "alien" };
             if (activeStageTab === "rig") {
-              rig.view = mapView[which] || "auto";
-              rig.t = mapSec[which] || 0.2;
               if (window.__game && window.__game.active && typeof window.__game.setView === "function") {
-                window.__game.setView(rig.view);
+                window.__game.setView(mapView[which] || "auto");
               }
-              syncRigButtons();
             } else {
               activeStageTab = "remake";
               remakeWatchFullSound = true;
@@ -1845,16 +1847,16 @@
         if (activeStageTab === "remake") {
           var exVid = document.getElementById("v2ExcerptVideo");
           if (exVid) {
-            var seg = (exVid.getAttribute("data-seg") || "1.5,14.5").split(",");
-            var sA = parseFloat(seg[0]) || 1.5;
-            var sB = parseFloat(seg[1]) || 14.5;
+            var seg = (exVid.getAttribute("data-seg") || "1.2,16.5").split(",");
+            var sA = parseFloat(seg[0]) || 1.2;
+            var sB = parseFloat(seg[1]) || 16.5;
             exVid.addEventListener("loadedmetadata", function () {
               if (exVid.duration > sA + 0.5) {
                 try { exVid.currentTime = sA; } catch (e) {}
               }
             });
             exVid.addEventListener("timeupdate", function () {
-              var capB = Math.min(sB, (exVid.duration || 16) - 0.25);
+              var capB = Math.min(sB, (exVid.duration || 18) - 0.25);
               if (exVid.currentTime > capB || exVid.currentTime < sA - 0.35) {
                 try { exVid.currentTime = sA; } catch (e) {}
               }
@@ -1898,7 +1900,7 @@
               var mv = document.getElementById("v2MainVideo");
               if (mv) {
                 var apply = function () {
-                  try { mv.currentTime = Math.min(sec, (mv.duration || 16) - 0.3); mv.play().catch(function () {}); } catch (e) {}
+                  try { mv.currentTime = Math.min(sec, (mv.duration || 18) - 0.3); mv.play().catch(function () {}); } catch (e) {}
                 };
                 if (mv.readyState >= 1) apply();
                 else mv.addEventListener("loadedmetadata", apply, { once: true });
@@ -1934,14 +1936,14 @@
           document.getElementById("btnToggleCmpAudio").onclick = function (ev) {
             compareAudioSource = compareAudioSource === "v2" ? "v1" : (compareAudioSource === "v1" ? "mute" : "v2");
             applyCmpMute();
-            ev.currentTarget.textContent = "🔊 Audio: " + (compareAudioSource === "v2" ? "V2 Remake" : (compareAudioSource === "v1" ? "V1 Cockpit" : "Both Muted"));
+            ev.currentTarget.textContent = "🔊 Audio: " + (compareAudioSource === "v2" ? "V3 Showcase" : (compareAudioSource === "v1" ? "V1 Cockpit" : "Both Muted"));
           };
           selectionEl.querySelectorAll("[data-cmp-beat]").forEach(function (cb) {
             cb.onclick = function () {
               var bIdx = parseInt(cb.getAttribute("data-cmp-beat"), 10) || 0;
-              var v2Times = [0.3, 4.2, 8.2, 12.2];
+              var v2Times = [0.3, 4.6, 10.0, 14.8];
               var v1Times = [0.8, 3.0, 6.6, 10.4];
-              if (v2) { try { v2.currentTime = Math.min(v2Times[bIdx], (v2.duration || 16) - 0.3); v2.play().catch(function () {}); } catch (e) {} }
+              if (v2) { try { v2.currentTime = Math.min(v2Times[bIdx], (v2.duration || 18) - 0.3); v2.play().catch(function () {}); } catch (e) {} }
               if (v1) { try { v1.currentTime = Math.min(v1Times[bIdx], (v1.duration || 13) - 0.3); v1.play().catch(function () {}); } catch (e) {} }
             };
           });
@@ -1957,213 +1959,55 @@
               }
             };
           }
+          var bs3 = document.getElementById("btnStripV3");
           var bs2 = document.getElementById("btnStripV2");
           var bs1 = document.getElementById("btnStripV1");
-          if (bs2) bs2.onclick = function () { stripEdition = "v2"; renderSelection(); };
+          if (bs3) bs3.onclick = function () { stripEdition = "v2"; renderSelection(); };
+          if (bs2) bs2.onclick = function () { stripEdition = "remake"; renderSelection(); };
           if (bs1) bs1.onclick = function () { stripEdition = "v1"; renderSelection(); };
         }
       }
 
-      /* ── LIVE 60FPS RIG (SUPPORTS V2 MULTI-SCION REMAKE ⇄ V1 COCKPIT) ── */
-      function syncRigButtons() {
-        var bEd = document.getElementById("rBtnEdition");
-        var bBeat = document.getElementById("rBtnBeat");
-        var bLamp = document.getElementById("rBtnLamp");
-        var bBal = document.getElementById("rBtnBallast");
-        var bRoll = document.getElementById("rBtnRoll");
-        var bCap = document.getElementById("rBtnCap");
-        var ro = document.getElementById("opRigReadout");
-        if (!bEd) return;
-
-        bEd.classList.toggle("on", rig.edition === "v2");
-        bEd.textContent = rig.edition === "v2"
-          ? "[V] Edition: V2 SCION Remake ⇄ V1"
-          : "[V] Edition: V1 Cockpit ⇄ V2 Remake";
-
-        bBeat.className = "r-btn" + (
-          rig.view === "turkey" ? " v-turkey" :
-          rig.view === "trout" ? " v-trout" :
-          rig.view === "alien" ? " v-alien" :
-          rig.view === "real" ? " on" : ""
-        );
-        var beatLabels = {
-          auto: "[Space] Auto (" + (rig.edition === "v2" ? "16s" : "13s") + ")",
-          real: "[Space] A · Real Creek",
-          turkey: "[Space] B · Turkey Probable",
-          trout: "[Space] C · Trout Plausible",
-          alien: "[Space] D · Alien Preposterous"
-        };
-        bBeat.textContent = beatLabels[rig.view] || beatLabels.auto;
-
-        bLamp.classList.toggle("on", !!rig.lamp);
-        bLamp.textContent = "[L] Lamp: " + (rig.lamp ? "ON" : "OFF");
-
-        bBal.classList.toggle("on", !!rig.ballast);
-        bBal.textContent = "[B] Ballast: " + (rig.ballast ? "IN" : "OUT");
-
-        bRoll.classList.toggle("on", rig.roll > 0);
-        bRoll.textContent = rig.roll > 0 ? ("[R] 1d6: #" + rig.roll) : "[R] Roll 1d6";
-
-        bCap.classList.toggle("on", rig.showCaptions !== false);
-        bCap.textContent = "[C] Captions: " + (rig.showCaptions !== false ? "ON" : "BLIND (0 text)");
-
-        if (ro) {
-          var hasV2 = !!(window.PORTAL_REMAKE_SCENES && window.PORTAL_REMAKE_SCENES[selectedId]);
-          ro.textContent = (rig.edition === "v2"
-            ? (hasV2 ? "V2 Multi-SCION Rig · 60fps" : "V2 Loading / Fallback · 60fps")
-            : "V1 Cockpit Rig · 60fps") + " · t=" + rig.t.toFixed(1) + "s";
-        }
-      }
-
+      /* ── LIVE 60FPS V3 12-BRANCH GAME (WITH TACTILE CONTROLLER & 4×3 MATRIX) ── */
       function mountOperatorLiveRig(st) {
         stopLiveRig();
         var cv = document.getElementById("operatorLiveCanvas");
-        if (!cv) return;
-        var ctx = cv.getContext("2d");
+        var gm = window.__game;
+        if (!cv || !gm) return;
         var id = st.id;
 
-        rig.t = 0.35;
-        rig.view = "auto";
-        rig.lamp = true;
-        rig.ballast = false;
-        rig.roll = 0;
-        rig.snailActive = false;
-        rig.snailT = 0;
-        rig.snailNote = getSnailNote(id);
-        rig.snailDelivered = !!rig.snailNote;
-
-        if (window.SCION_STAGE && typeof window.SCION_STAGE.preloadPortalPlates === "function") {
-          window.SCION_STAGE.preloadPortalPlates(id);
-        }
-        ensureRemakeBatchLoaded(id, function (hasRemake) {
-          if (!hasRemake && rig.edition === "v2") {
-            // Keep edition v2 if scion-stage preview can render, or fallback gracefully
+        gm.mount(cv, id, null, function (g) {
+          var sInput = document.getElementById("opSnailInput");
+          var sSaved = document.getElementById("opSnailSaved");
+          if (sInput && document.activeElement !== sInput && typeof g.state.snailNote === "string") {
+            if (sInput.value !== g.state.snailNote) sInput.value = g.state.snailNote;
           }
-          syncRigButtons();
-        });
+          if (sSaved) {
+            sSaved.textContent = g.state.snailNote ? "✓ Saved" : "";
+          }
+        }, "v3", "root");
 
-        syncRigButtons();
-
-        document.getElementById("rBtnEdition").onclick = function () {
-          rig.edition = rig.edition === "v2" ? "v1" : "v2";
-          rig.t = 0.35;
-          syncRigButtons();
-        };
-        document.getElementById("rBtnBeat").onclick = cycleRigBeat;
-        document.getElementById("rBtnLamp").onclick = function () { rig.lamp = !rig.lamp; syncRigButtons(); };
-        document.getElementById("rBtnBallast").onclick = function () { rig.ballast = !rig.ballast; syncRigButtons(); };
-        document.getElementById("rBtnRoll").onclick = function () { rig.roll = 1 + Math.floor(Math.random() * 6); syncRigButtons(); };
-        document.getElementById("rBtnCap").onclick = function () { rig.showCaptions = !rig.showCaptions; syncRigButtons(); };
+        var deckEl = document.getElementById("opV3DeckMount");
+        if (deckEl && typeof gm.mountControllerDeck === "function") {
+          gm.mountControllerDeck(deckEl, { showTreeMatrix: true });
+        }
 
         var sInput = document.getElementById("opSnailInput");
         var sForm = document.getElementById("opSnailForm");
         var sSaved = document.getElementById("opSnailSaved");
         if (sInput) {
           sInput.oninput = function () {
-            rig.snailNote = saveSnailNote(id, sInput.value);
-            if (sSaved) sSaved.textContent = rig.snailNote ? "✓ Saved" : "";
+            var saved = saveSnailNote(id, sInput.value);
+            if (sSaved) sSaved.textContent = saved ? "✓ Saved" : "";
           };
         }
         if (sForm) {
           sForm.onsubmit = function (ev) {
             ev.preventDefault();
-            if (sInput && sInput.value.trim()) {
-              rig.snailNote = saveSnailNote(id, sInput.value);
-              if (sSaved) sSaved.textContent = "✓ Dispatched";
-            }
-            rig.snailActive = true;
-            rig.snailT = 0;
-            rig.view = "turkey";
-            rig.t = rig.edition === "v2" ? 4.4 : 3.85;
-            syncRigButtons();
+            gm.sendSnailMail(sInput ? sInput.value : undefined);
+            if (sSaved) sSaved.textContent = "✓ Dispatched via △";
           };
         }
-
-        cv.onclick = function () {
-          cycleRigBeat();
-        };
-
-        rigLastMs = performance.now();
-        function frame(nowMs) {
-          rigRaf = requestAnimationFrame(frame);
-          var dt = Math.min(0.1, Math.max(0, (nowMs - rigLastMs) / 1000));
-          rigLastMs = nowMs;
-
-          var isV2 = (rig.edition === "v2") && !!(window.PORTAL_REMAKE_SCENES && window.PORTAL_REMAKE_SCENES[id]);
-          var dur = isV2 ? 16.0 : 13.0;
-
-          if (rig.snailActive) {
-            rig.snailT += dt / 2.6;
-            if (rig.snailT >= 0.45 && rig.snailT < 0.75 && rig.view !== "trout") {
-              rig.view = "trout";
-              rig.t = isV2 ? 8.4 : 6.4;
-              syncRigButtons();
-            } else if (rig.snailT >= 0.75 && rig.view !== "alien") {
-              rig.view = "alien";
-              rig.t = isV2 ? 12.4 : 10.4;
-              syncRigButtons();
-            }
-            if (rig.snailT >= 1.0) {
-              rig.snailT = 1.0;
-              rig.snailActive = false;
-              rig.snailDelivered = true;
-              syncRigButtons();
-            }
-          }
-
-          if (isV2) {
-            if (rig.view === "real") rig.t = 0.4 + ((rig.t - 0.4 + dt) % 3.4 + 3.4) % 3.4;
-            else if (rig.view === "turkey") rig.t = 4.2 + ((rig.t - 4.2 + dt) % 3.6 + 3.6) % 3.6;
-            else if (rig.view === "trout") rig.t = 8.2 + ((rig.t - 8.2 + dt) % 3.6 + 3.6) % 3.6;
-            else if (rig.view === "alien") rig.t = 12.2 + ((rig.t - 12.2 + dt) % 3.6 + 3.6) % 3.6;
-            else rig.t = (rig.t + dt) % dur;
-          } else {
-            if (rig.view === "real") rig.t = 0.5 + ((rig.t - 0.5 + dt) % 1.4 + 1.4) % 1.4;
-            else if (rig.view === "turkey") rig.t = 1.8 + ((rig.t - 1.8 + dt) % 3.0 + 3.0) % 3.0;
-            else if (rig.view === "trout") rig.t = 5.2 + ((rig.t - 5.2 + dt) % 2.8 + 2.8) % 2.8;
-            else if (rig.view === "alien") rig.t = 9.1 + ((rig.t - 9.1 + dt) % 3.7 + 3.7) % 3.7;
-            else rig.t = (rig.t + dt) % dur;
-          }
-
-          var scene = isV2
-            ? window.PORTAL_REMAKE_SCENES[id]
-            : ((window.PORTAL_V1_SCENES && window.PORTAL_V1_SCENES[id]) || (window.PORTAL_SCENES && window.PORTAL_SCENES[id]));
-
-          var rState = {
-            lamp: rig.lamp,
-            ballast: rig.ballast,
-            view: ( !isV2 && rig.view === "real" ) ? "auto" : rig.view,
-            roll: rig.roll,
-            showCaptions: rig.showCaptions,
-            snailActive: rig.snailActive,
-            snailT: rig.snailT,
-            snailNote: rig.snailNote,
-            snailMail: rig.snailActive ? rig.snailT : rig.snailDelivered
-          };
-
-          ctx.save();
-          ctx.setTransform(1, 0, 0, 1, 0, 0);
-          ctx.clearRect(0, 0, 1280, 720);
-          if (scene && typeof scene.render === "function") {
-            try {
-              scene.render(ctx, 1280, 720, rig.t, rState);
-            } catch (e) {}
-          }
-          ctx.restore();
-        }
-        rigRaf = requestAnimationFrame(frame);
-      }
-
-      function cycleRigBeat() {
-        var order = ["real", "turkey", "trout", "alien", "auto"];
-        var idx = order.indexOf(rig.view);
-        rig.view = order[(idx + 1) % order.length];
-        var isV2 = (rig.edition === "v2") && !!(window.PORTAL_REMAKE_SCENES && window.PORTAL_REMAKE_SCENES[selectedId]);
-        if (rig.view === "real") rig.t = 0.5;
-        else if (rig.view === "turkey") rig.t = isV2 ? 4.3 : 2.6;
-        else if (rig.view === "trout") rig.t = isV2 ? 8.3 : 6.2;
-        else if (rig.view === "alien") rig.t = isV2 ? 12.3 : 10.2;
-        syncRigButtons();
       }
 
       function syncMastheadHeight() {
@@ -2188,6 +2032,8 @@
         if (updateHash) {
           history.replaceState(null, "", "#p" + pad2(clamped));
         }
+        var mhGameLink = document.getElementById("mastheadGameLink");
+        if (mhGameLink) mhGameLink.href = "./trout-sub-game.html#p" + pad2(clamped);
         renderCatalogue();
         renderSelection();
 
@@ -2205,7 +2051,7 @@
         }
       }
 
-      // Global keyboard shortcuts when Live Rig is mounted (or [ / ] station step)
+      // Global station step shortcuts ([ / ])
       window.addEventListener("keydown", function (ev) {
         var tag = ev.target && ev.target.tagName ? ev.target.tagName.toUpperCase() : "";
         if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
@@ -2213,44 +2059,8 @@
 
         if (ev.key === "[") {
           if (selectedId > 1) { ev.preventDefault(); selectPorthole(selectedId - 1, true); }
-          return;
-        }
-        if (ev.key === "]") {
+        } else if (ev.key === "]") {
           if (selectedId < 55) { ev.preventDefault(); selectPorthole(selectedId + 1, true); }
-          return;
-        }
-
-        if (activeStageTab !== "rig") return;
-        var k = ev.key;
-        if (k === "v" || k === "V") {
-          ev.preventDefault();
-          rig.edition = rig.edition === "v2" ? "v1" : "v2";
-          syncRigButtons();
-        } else if (k === " " || ev.code === "Space") {
-          ev.preventDefault();
-          cycleRigBeat();
-        } else if (k === "l" || k === "L") {
-          ev.preventDefault();
-          rig.lamp = !rig.lamp;
-          syncRigButtons();
-        } else if (k === "b" || k === "B") {
-          ev.preventDefault();
-          rig.ballast = !rig.ballast;
-          syncRigButtons();
-        } else if (k === "r" || k === "R") {
-          ev.preventDefault();
-          rig.roll = 1 + Math.floor(Math.random() * 6);
-          syncRigButtons();
-        } else if (k === "c" || k === "C") {
-          ev.preventDefault();
-          rig.showCaptions = !rig.showCaptions;
-          syncRigButtons();
-        } else if (k === "s" || k === "S") {
-          ev.preventDefault();
-          rig.snailActive = true;
-          rig.snailT = 0;
-          rig.view = "turkey";
-          syncRigButtons();
         }
       });
 

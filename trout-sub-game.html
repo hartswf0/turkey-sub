@@ -1,0 +1,972 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Trout Sub · Playable Branching Video Game (✕ · ○ · △ · □ × 12 Endings)</title>
+  <meta name="description" content="Playable 60fps Video-to-Game + PAELEO Oulipo branching browser game across all 55 portholes: 4 PlayStation submarine/courier actions (✕ · ○ · △ · □) × 3 outcome tiers (Probable · Plausible · Preposterous) = 12 branches per porthole (660 total endings).">
+  <meta name="theme-color" content="#fbfaf7">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=JetBrains+Mono:wght@400;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+  <style>
+    :root {
+      --paper: #fbfaf7;
+      --paper-2: #f3efe6;
+      --label: #fffdf8;
+      --stage-dark: #121519;
+      --stage-mid: #1a1f27;
+      --ink: #14110d;
+      --ink-2: #5b5348;
+      --mute: #766e62;
+      --rule: #d6d3cc;
+
+      /* PlayStation Submarine Action Colors */
+      --ps-x: #2563eb;
+      --ps-o: #d42a1e;
+      --ps-tri: #0f8f80;
+      --ps-sq: #b45309;
+
+      /* Canonical 3-Tier Witness Colors */
+      --probable: #1d596e;
+      --plausible: #2d6846;
+      --preposterous: #9e3d1c;
+      --stamp: #d42a1e;
+      --teal: #0f8f80;
+
+      --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+      --body: "Literata", Georgia, "Iowan Old Style", serif;
+      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 16px/1.5 var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration-color: var(--stamp); text-underline-offset: 3px; }
+    button, input, select { font: inherit; color: inherit; }
+    button { cursor: pointer; background: none; border: 0; padding: 0; }
+    :focus-visible { outline: 2px solid var(--stamp); outline-offset: 2px; }
+    img, video, canvas { max-width: 100%; display: block; }
+
+    /* ── TOP CABINET BAR ── */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(251, 250, 247, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--ink);
+      padding: 8px clamp(12px, 2.4vw, 24px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px 16px;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+    .top-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .top-links a {
+      text-decoration: none;
+      color: var(--ink-2);
+      white-space: nowrap;
+    }
+    .top-links a:hover {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: var(--stamp);
+    }
+    .top-links .primary-back {
+      color: var(--ink);
+      font-weight: 700;
+      padding: 4px 8px;
+      border: 1.5px solid var(--ink);
+      background: var(--label);
+      border-radius: 2px;
+    }
+    .top-links .primary-back:hover {
+      background: var(--ink);
+      color: var(--paper);
+      text-decoration: none;
+    }
+
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .global-prog {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border: 1.5px solid var(--ink);
+      background: var(--label);
+      border-radius: 2px;
+      font-weight: 700;
+      color: var(--probable);
+      white-space: nowrap;
+    }
+    .prog-track {
+      width: 64px;
+      height: 7px;
+      background: #e2ddd2;
+      border-radius: 99px;
+      overflow: hidden;
+      display: inline-block;
+    }
+    .prog-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--teal);
+      transition: width 0.2s ease;
+    }
+
+    .station-picker {
+      display: inline-flex;
+      align-items: center;
+      border: 1.5px solid var(--ink);
+      background: var(--label);
+      border-radius: 2px;
+    }
+    .st-step-btn {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 5px 9px;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .st-step-btn:hover:not(:disabled) {
+      background: var(--paper-2);
+    }
+    .st-step-btn:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+    .st-select {
+      border: 0;
+      border-left: 1px solid var(--rule);
+      border-right: 1px solid var(--rule);
+      background: transparent;
+      padding: 5px 8px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      max-width: 280px;
+      color: var(--ink);
+    }
+
+    /* ── MAIN CABINET WRAP ── */
+    .cabinet {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 14px clamp(12px, 2.5vw, 24px) 64px;
+    }
+
+    /* ── STATION LOCKUP + MODE TOGGLE BAR ── */
+    .stage-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px 18px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .st-title-block {
+      min-width: 0;
+    }
+    .st-kicker {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .bolas-chip {
+      padding: 1px 6px;
+      background: var(--paper-2);
+      border: 1px solid var(--rule);
+      color: var(--probable);
+      font-weight: 600;
+      border-radius: 2px;
+    }
+    .st-headline {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(26px, 3.6vw, 40px);
+      line-height: 0.98;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      margin: 3px 0 0;
+    }
+    .st-headline .code {
+      color: var(--stamp);
+    }
+
+    .mode-tabs {
+      display: inline-flex;
+      flex-wrap: wrap;
+      border: 2px solid var(--ink);
+      background: var(--label);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .mode-tab {
+      font-family: var(--mono);
+      font-size: 11.8px;
+      font-weight: 600;
+      padding: 8px 12px;
+      color: var(--ink-2);
+      border-right: 1px solid var(--rule);
+      white-space: nowrap;
+      transition: background 0.1s ease, color 0.1s ease;
+    }
+    .mode-tab:last-child { border-right: 0; }
+    .mode-tab:hover { background: var(--paper-2); color: var(--ink); }
+    .mode-tab[aria-selected="true"] {
+      background: var(--ink);
+      color: var(--paper);
+      font-weight: 700;
+    }
+
+    /* ── DARK STAGE FRAME (#121519) ── */
+    .stage-cabinet {
+      background: var(--stage-dark);
+      border: 2.5px solid var(--ink);
+      padding: 10px;
+      box-shadow: 0 4px 0 var(--ink);
+    }
+    .single-screen {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #0d1014;
+      overflow: hidden;
+    }
+    .single-screen canvas,
+    .single-screen video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Side-by-Side Milestone 2 Comparison Layout */
+    .sbs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      align-items: start;
+    }
+    .sbs-pane {
+      background: var(--stage-mid);
+      border: 1.5px solid rgba(255, 255, 255, 0.16);
+      padding: 8px;
+    }
+    .sbs-pane-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: #e5e1d6;
+    }
+    .sbs-pane-head strong {
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .sbs-tag {
+      padding: 2px 6px;
+      border-radius: 2px;
+      font-size: 10px;
+      font-weight: 700;
+      background: rgba(37, 99, 235, 0.28);
+      border: 1px solid #60a5fa;
+      color: #dbeafe;
+    }
+    .sbs-tag.clip {
+      background: rgba(212, 42, 30, 0.25);
+      border-color: #f87171;
+      color: #fee2e2;
+    }
+    .sbs-toolbar {
+      margin-top: 9px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px 12px;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: #cbd5e1;
+    }
+    .stage-chip {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 9px;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      background: #1e242e;
+      color: #f8f6f0;
+      border-radius: 2px;
+    }
+    .stage-chip:hover {
+      border-color: #fde68a;
+      color: #fde68a;
+    }
+    .stage-chip.primary {
+      background: var(--ps-x);
+      border-color: #93c5fd;
+      color: #fff;
+    }
+
+    /* ── COLLAPSIBLE ARCHIVE & ATLAS DRAWERS ── */
+    .drawers {
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+    .cab-drawer {
+      border: 1.5px solid var(--ink);
+      background: var(--label);
+      padding: 10px 14px;
+    }
+    .cab-drawer summary {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      color: var(--ink);
+    }
+    .atlas-55-grid {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+      gap: 6px;
+    }
+    .atlas-tile {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 6px 7px;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      text-align: left;
+      border-radius: 2px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
+    }
+    .atlas-tile:hover {
+      border-color: var(--ink);
+      background: var(--paper-2);
+    }
+    .atlas-tile.current {
+      border: 1.5px solid var(--stamp);
+      background: #fff7ed;
+      font-weight: 700;
+    }
+    .atlas-tile.complete {
+      border-left: 4px solid var(--teal);
+    }
+    .snail-form {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+    .snail-inp {
+      flex: 1 1 260px;
+      padding: 6px 10px;
+      border: 1.5px solid var(--ink);
+      background: #fff;
+      font-family: var(--body);
+      font-size: 14px;
+    }
+    .plain-btn {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 6px 11px;
+      border: 1.5px solid var(--ink);
+      background: var(--paper-2);
+      border-radius: 2px;
+    }
+    .plain-btn:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .strip-preview {
+      margin-top: 10px;
+      border: 1.5px solid var(--ink);
+      width: 100%;
+      height: auto;
+      background: var(--stage-dark);
+    }
+
+    @media (max-width: 860px) {
+      .sbs-grid { grid-template-columns: 1fr; }
+      .st-select { max-width: 195px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- TOP NAVIGATION, GLOBAL 660 PROGRESS & STATION PICKER -->
+  <header class="top-bar">
+    <nav class="top-links" aria-label="Studio Navigation">
+      <a class="primary-back" href="./55-portholes.html">← 55 Portholes Screening Room</a>
+      <a id="navOperatorLink" href="./scion-porthole-operator.html#p01">🧬 55 Multi-SCION Operator Desk</a>
+      <a href="./porthole-cards.html">✂ Student Cards</a>
+      <a href="./index.html">All Packs</a>
+    </nav>
+
+    <div class="top-right">
+      <div class="global-prog" id="globalProgressBadge" title="Persistent localStorage branch tracker across all 55 portholes (55 × 12 = 660 endings)">
+        <span id="globalProgressText">Branches Unlocked: 0 / 660</span>
+        <span class="prog-track" aria-hidden="true"><span class="prog-fill" id="globalProgressFill"></span></span>
+      </div>
+
+      <div class="station-picker" role="group" aria-label="Porthole Station Picker">
+        <button type="button" class="st-step-btn" id="btnPrevPortal" title="Previous Porthole ([)">← Prev</button>
+        <select class="st-select" id="stationSelect" aria-label="Choose Porthole #01 to #55"></select>
+        <button type="button" class="st-step-btn" id="btnNextPortal" title="Next Porthole (])">Next →</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="cabinet">
+    <!-- STATION HEADLINE + 3-WAY MODE TOGGLE -->
+    <div class="stage-header">
+      <div class="st-title-block">
+        <div class="st-kicker">
+          <span id="stationPortProgress">Porthole #01 · 0 / 12 Branches</span>
+          <span class="bolas-chip" id="stationRecipeChip">PAELEO × Video-to-Game V3</span>
+        </div>
+        <h1 class="st-headline" id="stationHeadline"><span class="code">#01 · Bow</span> — Giant Size 11 Rubber Boot</h1>
+      </div>
+
+      <div class="mode-tabs" role="tablist" aria-label="Stage Play & Comparison Mode">
+        <button type="button" class="mode-tab" role="tab" id="modeBtnPlay" data-mode="play" aria-selected="true">🎮 Play Branching Game (60fps)</button>
+        <button type="button" class="mode-tab" role="tab" id="modeBtnSideBySide" data-mode="sidebyside" aria-selected="false">⇄ Side-by-Side: Generated Clip vs. Live Game</button>
+        <button type="button" class="mode-tab" role="tab" id="modeBtnShowcase" data-mode="clip" aria-selected="false">▶ Watch Showcase Clip (0:18)</button>
+      </div>
+    </div>
+
+    <!-- DARK 1280×720 CABINET STAGE -->
+    <section class="stage-cabinet" id="stageCabinet" aria-label="Trout Sub Video-to-Game Stage">
+      <div id="stageMount"></div>
+    </section>
+
+    <!-- TACTILE PLAYSTATION ✕ · ○ · △ · □ SUBMARINE CONTROLLER BAR + 4×3 BRANCHING TREE MATRIX -->
+    <section id="controllerDeckMount" aria-label="Submarine Controller Bar and 4 by 3 Branching Tree Matrix"></section>
+
+    <!-- CLEAN COLLAPSIBLE PROGRESS ATLAS & PROVENANCE DRAWERS -->
+    <div class="drawers">
+      <details class="cab-drawer" id="atlasDrawer">
+        <summary>55-Porthole Branch Completion Map (<span id="drawerGlobalCount">0 / 660</span> Endings Unlocked — Click Any Porthole to Jump)</summary>
+        <div class="atlas-55-grid" id="atlas55Grid"></div>
+      </details>
+
+      <details class="cab-drawer" id="provenanceDrawer">
+        <summary>Snail Mail Postcard Dispatch · Blind Critic 6-Column Proof Strip &amp; 4-SCION Lineage</summary>
+        <form class="snail-form" id="cabSnailForm" autocomplete="off">
+          <strong>✉ Snail Mail Note (<span id="snailStationLbl">#01</span>):</strong>
+          <input type="text" class="snail-inp" id="cabSnailInput" maxlength="180" placeholder="Write a 1-line clue from Turkey to Brook Trout (triggers △ Mail Snail)…">
+          <button type="submit" class="plain-btn">Dispatch via △ Mail Snail</button>
+          <span id="cabSnailSaved" style="color:var(--teal);font-weight:700"></span>
+        </form>
+        <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:11.5px">
+          <span id="criticMeasuredLine">6-Column Branching Verification Strip (Top Row Blind `showCaptions: false` · Bottom Row Controller HUD)</span>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a id="deepOpLink" href="./scion-porthole-operator.html#p01" style="font-weight:700;color:var(--stamp)">🧬 Inspect 4 SCION Prompts in Operator Desk →</a>
+            <a id="downloadClipLink" href="./films/portholes/p01.mp4" download="porthole-01-v3.mp4">Download 18s Clip ↓</a>
+          </div>
+        </div>
+        <img class="strip-preview" id="criticStripPreview" src="./checks/p01-v3-strip.jpg" data-fallback="./checks/p01-remake-strip.jpg" alt="6-column blind and captioned branching verification strip" loading="lazy">
+      </details>
+    </div>
+  </main>
+
+  <!-- Data, 55 Branching Trees, SCION Stage, V3 Branch Game Engine, V1/V2 Archives & Unified Player -->
+  <script src="./portholes-scion-data.js"></script>
+  <script src="./porthole-scion-stacks.js"></script>
+  <script src="./verdicts-data.js"></script>
+  <script src="./alien-passes.js"></script>
+  <script src="./student-options.js"></script>
+  <script src="./porthole-branch-trees.js"></script>
+  <script src="./portals/snail-mail.js"></script>
+  <script src="./portals/scion-stage.js"></script>
+  <script src="./portals/branch-game-engine.js"></script>
+  <script src="./portals/intro-scion.js"></script>
+  <script src="./portals/crew-01.js"></script>
+  <script src="./portals/crew-02.js"></script>
+  <script src="./portals/crew-03.js"></script>
+  <script src="./portals/crew-04.js"></script>
+  <script src="./portals/crew-05.js"></script>
+  <script src="./portals/crew-06.js"></script>
+  <script src="./portals/crew-07.js"></script>
+  <script src="./portals/crew-08.js"></script>
+  <script src="./portals/crew-09.js"></script>
+  <script src="./portals/crew-10.js"></script>
+  <script src="./portals/crew-11.js"></script>
+  <script>
+    if (window.SNAIL_MAIL && typeof window.SNAIL_MAIL.attachAll === "function") {
+      window.SNAIL_MAIL.attachAll();
+    }
+    window.PORTAL_V1_SCENES = Object.assign({}, window.PORTAL_SCENES || {});
+  </script>
+  <script src="./portals/remake-01.js"></script>
+  <script src="./portals/remake-02.js"></script>
+  <script src="./portals/remake-03.js"></script>
+  <script src="./portals/remake-04.js"></script>
+  <script src="./portals/remake-05.js"></script>
+  <script src="./portals/remake-06.js"></script>
+  <script src="./portals/remake-07.js"></script>
+  <script src="./portals/remake-08.js"></script>
+  <script src="./portals/remake-09.js"></script>
+  <script src="./portals/remake-10.js"></script>
+  <script src="./portals/remake-11.js"></script>
+  <script src="./portals/v3-pod1-a.js"></script>
+  <script src="./portals/v3-pod1-b.js"></script>
+  <script src="./portals/v3-pod2-a.js"></script>
+  <script src="./portals/v3-pod2-b.js"></script>
+  <script src="./portals/v3-pod3-a.js"></script>
+  <script src="./portals/v3-pod3-b.js"></script>
+  <script src="./portals/v3-pod4-a.js"></script>
+  <script src="./portals/v3-pod4-b.js"></script>
+  <script src="./portals/v3-pod5-a.js"></script>
+  <script src="./portals/v3-pod5-b.js"></script>
+  <script src="./portals/player.js"></script>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var TREES = window.PORTHOLE_BRANCH_TREES || {};
+      var STACKS = window.PORTHOLE_SCION_STACKS || {};
+      var STUDENT = window.STUDENT_OPTIONS || {};
+      var VERDICTS = window.PORTAL_VERDICTS || {};
+      var gm = window.__game;
+
+      var currentId = 1;
+      var stageMode = "play"; // "play" | "sidebyside" | "clip"
+      var sbsVideoMuted = true;
+
+      var stationSelect = document.getElementById("stationSelect");
+      var btnPrev = document.getElementById("btnPrevPortal");
+      var btnNext = document.getElementById("btnNextPortal");
+      var stageMount = document.getElementById("stageMount");
+      var deckMount = document.getElementById("controllerDeckMount");
+      var headlineEl = document.getElementById("stationHeadline");
+      var portProgEl = document.getElementById("stationPortProgress");
+      var recipeChipEl = document.getElementById("stationRecipeChip");
+      var globalTextEl = document.getElementById("globalProgressText");
+      var globalFillEl = document.getElementById("globalProgressFill");
+      var drawerGlobalEl = document.getElementById("drawerGlobalCount");
+      var navOpLink = document.getElementById("navOperatorLink");
+      var deepOpLink = document.getElementById("deepOpLink");
+      var dlClipLink = document.getElementById("downloadClipLink");
+      var atlasGridEl = document.getElementById("atlas55Grid");
+      var stripImgEl = document.getElementById("criticStripPreview");
+      var measuredLineEl = document.getElementById("criticMeasuredLine");
+      var snailInputEl = document.getElementById("cabSnailInput");
+      var snailSavedEl = document.getElementById("cabSnailSaved");
+      var snailStationEl = document.getElementById("snailStationLbl");
+      var snailFormEl = document.getElementById("cabSnailForm");
+
+      function pad2(n) { return n < 10 ? "0" + n : String(n); }
+      function esc(s) {
+        return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+      }
+
+      function getStationMeta(id) {
+        var tr = TREES[id] || (gm && gm.getBranchTree ? gm.getBranchTree(id) : null) || {};
+        var st = STACKS[id] || {};
+        var so = STUDENT[id] || {};
+        var station = tr.station || st.station || so.station || ("#" + pad2(id));
+        var clue = tr.realObject || tr.clue || so.a || st.clue || "";
+        var ws = st.workshopScion || {};
+        var ds = st.directorSwarm || {};
+        var recipe = (tr.bolasStyle || st.bolasStyle || "queneau-rostrum") +
+          (ws.work ? (" · " + ws.work) : "") +
+          (ds.code ? (" × " + ds.code + " " + (ds.shortName || "")) : "");
+        return { id: id, pad: pad2(id), station: station, clue: clue, recipe: recipe };
+      }
+
+      function parseLocationRoute() {
+        var params = new URLSearchParams(location.search || "");
+        var h = (location.hash || "").replace(/^#/, "").trim();
+        var id = parseInt(params.get("p") || "", 10);
+        var mode = params.get("mode") || "";
+        var branch = params.get("branch") || "";
+
+        if (!id && h) {
+          var m = /^(?:p|portal-)?(\d{1,2})(?:-(play|sidebyside|sbs|clip))?$/i.exec(h);
+          if (m) {
+            id = parseInt(m[1], 10);
+            if (m[2]) mode = m[2].toLowerCase() === "sbs" ? "sidebyside" : m[2].toLowerCase();
+          }
+        }
+        return {
+          id: (id >= 1 && id <= 55) ? id : 1,
+          mode: (mode === "sidebyside" || mode === "clip" || mode === "play") ? mode : "play",
+          branch: branch
+        };
+      }
+
+      function updateStationDropdown() {
+        var optsHtml = "";
+        for (var i = 1; i <= 55; i++) {
+          var meta = getStationMeta(i);
+          var uCount = gm ? gm.getUnlockedCount(i) : 0;
+          optsHtml += '<option value="' + i + '"' + (i === currentId ? " selected" : "") + '>' +
+            esc(meta.station + " — " + meta.clue.slice(0, 32) + " (" + uCount + "/12)") +
+          "</option>";
+        }
+        stationSelect.innerHTML = optsHtml;
+      }
+
+      function renderAtlasTiles() {
+        var html = "";
+        for (var i = 1; i <= 55; i++) {
+          var meta = getStationMeta(i);
+          var uCount = gm ? gm.getUnlockedCount(i) : 0;
+          var cls = "atlas-tile" + (i === currentId ? " current" : "") + (uCount >= 12 ? " complete" : "");
+          html += '<button type="button" class="' + cls + '" data-jump-portal="' + i + '">' +
+            '<span>' + esc(meta.station) + '</span>' +
+            '<span style="color:' + (uCount > 0 ? "var(--teal)" : "var(--mute)") + '">' + uCount + '/12</span>' +
+          '</button>';
+        }
+        atlasGridEl.innerHTML = html;
+        atlasGridEl.querySelectorAll("[data-jump-portal]").forEach(function (b) {
+          b.onclick = function () {
+            selectPortal(parseInt(b.getAttribute("data-jump-portal"), 10), true);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          };
+        });
+      }
+
+      function syncHeaderAndProgress() {
+        var meta = getStationMeta(currentId);
+        var portUnlocked = gm ? gm.getUnlockedCount(currentId) : 0;
+        var globalUnlocked = gm ? gm.getGlobalUnlockedCount() : 0;
+        var pct = Math.min(100, (globalUnlocked / 660) * 100);
+
+        headlineEl.innerHTML = '<span class="code">' + esc(meta.station) + '</span> — ' + esc(meta.clue);
+        portProgEl.textContent = "Porthole #" + meta.pad + " · " + portUnlocked + " / 12 Branches Unlocked";
+        recipeChipEl.textContent = meta.recipe;
+
+        globalTextEl.textContent = "Branches Unlocked: " + globalUnlocked + " / 660";
+        globalFillEl.style.width = pct.toFixed(2) + "%";
+        drawerGlobalEl.textContent = globalUnlocked + " / 660";
+
+        btnPrev.disabled = (currentId <= 1);
+        btnNext.disabled = (currentId >= 55);
+
+        navOpLink.href = "./scion-porthole-operator.html#p" + meta.pad;
+        deepOpLink.href = "./scion-porthole-operator.html#p" + meta.pad;
+        dlClipLink.href = "./films/portholes/p" + meta.pad + ".mp4";
+        dlClipLink.setAttribute("download", "porthole-" + meta.pad + "-v3.mp4");
+
+        updateStationDropdown();
+        renderAtlasTiles();
+      }
+
+      function syncProvenanceDrawer() {
+        var pad = pad2(currentId);
+        var v = VERDICTS[String(currentId)] || null;
+        var v3Strip = "./checks/p" + pad + "-v3-strip.jpg";
+        var fbStrip = "./checks/p" + pad + "-remake-strip.jpg";
+        stripImgEl.setAttribute("data-fallback", fbStrip);
+        stripImgEl.src = (v && v.strip) ? v.strip : v3Strip;
+        if (v && v.measured) {
+          measuredLineEl.textContent = "✓ Blind Critic Passed · " + v.measured;
+        } else {
+          measuredLineEl.textContent = "6-Column Branching Verification Strip (1.2s Root · 3.4s [✕] · 6.0s Probable · 9.0s [○] · 11.8s Plausible · 16.0s [△] Alien)";
+        }
+
+        snailStationEl.textContent = "#" + pad;
+        var note = gm ? gm.getSnailNote(currentId) : "";
+        if (document.activeElement !== snailInputEl) {
+          snailInputEl.value = note;
+        }
+        snailSavedEl.textContent = note ? "✓ Saved" : "";
+      }
+
+      stripImgEl.onerror = function () {
+        var fb = stripImgEl.getAttribute("data-fallback");
+        if (fb && stripImgEl.src.indexOf(fb.replace("./", "")) === -1) {
+          stripImgEl.src = fb;
+        }
+      };
+
+      function teardownVideos() {
+        stageMount.querySelectorAll("video").forEach(function (v) {
+          try {
+            v.pause();
+            v.removeAttribute("src");
+            v.load();
+          } catch (e) {}
+        });
+      }
+
+      function renderStage() {
+        teardownVideos();
+        if (gm && gm.active) gm.unmount();
+
+        var pad = pad2(currentId);
+        var clipSrc = "./films/portholes/p" + pad + ".mp4";
+        var posterSrc = "./thumbs/p" + pad + "-remake.jpg";
+
+        document.querySelectorAll(".mode-tab").forEach(function (tb) {
+          tb.setAttribute("aria-selected", tb.getAttribute("data-mode") === stageMode ? "true" : "false");
+        });
+
+        if (stageMode === "play") {
+          stageMount.innerHTML = (
+            '<div class="single-screen">' +
+              '<canvas id="cabinetCanvas" width="1280" height="720" aria-label="60fps Playable Branching Video Game for Porthole #' + pad + '"></canvas>' +
+            '</div>'
+          );
+          var cv = document.getElementById("cabinetCanvas");
+          gm.mount(cv, currentId, null, function () { syncHeaderAndProgress(); }, "v3", "root");
+        } else if (stageMode === "sidebyside") {
+          stageMount.innerHTML = (
+            '<div class="sbs-grid">' +
+              '<div class="sbs-pane">' +
+                '<div class="sbs-pane-head">' +
+                  '<strong>Generated Showcase Clip · 0:18</strong>' +
+                  '<span class="sbs-tag clip">p' + pad + '.mp4 · 432f @ 24fps</span>' +
+                '</div>' +
+                '<div class="single-screen">' +
+                  '<video id="sbsClipVideo" controls autoplay loop ' + (sbsVideoMuted ? "muted " : "") + 'playsinline src="' + clipSrc + '" poster="' + posterSrc + '"></video>' +
+                '</div>' +
+              '</div>' +
+              '<div class="sbs-pane">' +
+                '<div class="sbs-pane-head">' +
+                  '<strong>Live Branching Game · 60fps</strong>' +
+                  '<span class="sbs-tag">17 Interactive Nodes · 12 Endings</span>' +
+                '</div>' +
+                '<div class="single-screen">' +
+                  '<canvas id="cabinetCanvas" width="1280" height="720" aria-label="Live Side-by-Side Branching Game Canvas"></canvas>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="sbs-toolbar">' +
+              '<div style="display:flex;gap:6px;flex-wrap:wrap">' +
+                '<button type="button" class="stage-chip primary" id="btnSbsSyncShowcase">⟳ Sync Clip &amp; Live Showcase (0:00)</button>' +
+                '<button type="button" class="stage-chip" id="btnSbsFreePlay">🎮 Free Interactive Control (Stage 1)</button>' +
+                '<button type="button" class="stage-chip" id="btnSbsAudio">🔊 Clip Audio: ' + (sbsVideoMuted ? "Muted" : "On") + '</button>' +
+              '</div>' +
+              '<div style="display:flex;gap:5px;flex-wrap:wrap">' +
+                '<button type="button" class="stage-chip" data-sbs-seek="0.2">0:00 Root</button>' +
+                '<button type="button" class="stage-chip" data-sbs-seek="2.3">0:02 [✕] Stem</button>' +
+                '<button type="button" class="stage-chip" data-sbs-seek="4.6">0:04 ✕→Probable</button>' +
+                '<button type="button" class="stage-chip" data-sbs-seek="8.0">0:08 [○] Stem</button>' +
+                '<button type="button" class="stage-chip" data-sbs-seek="10.0">0:10 ○→Plausible</button>' +
+                '<button type="button" class="stage-chip" data-sbs-seek="14.8">0:14 △→Alien</button>' +
+              '</div>' +
+            '</div>'
+          );
+
+          var sbsCv = document.getElementById("cabinetCanvas");
+          var sbsVid = document.getElementById("sbsClipVideo");
+          gm.mount(sbsCv, currentId, null, function () { syncHeaderAndProgress(); }, "v3", "root");
+
+          document.getElementById("btnSbsSyncShowcase").onclick = function () {
+            if (sbsVid) {
+              try { sbsVid.currentTime = 0; sbsVid.play().catch(function () {}); } catch (e) {}
+            }
+            gm.startAutoShowcase(0);
+          };
+          document.getElementById("btnSbsFreePlay").onclick = function () {
+            gm.resetToRoot();
+          };
+          document.getElementById("btnSbsAudio").onclick = function (ev) {
+            sbsVideoMuted = !sbsVideoMuted;
+            if (sbsVid) sbsVid.muted = sbsVideoMuted;
+            ev.currentTarget.textContent = "🔊 Clip Audio: " + (sbsVideoMuted ? "Muted" : "On");
+          };
+          stageMount.querySelectorAll("[data-sbs-seek]").forEach(function (b) {
+            b.onclick = function () {
+              var sec = parseFloat(b.getAttribute("data-sbs-seek")) || 0;
+              if (sbsVid) {
+                try { sbsVid.currentTime = sec; sbsVid.play().catch(function () {}); } catch (e) {}
+              }
+              gm.startAutoShowcase(sec);
+            };
+          });
+        } else {
+          // Watch Showcase Clip (0:18)
+          stageMount.innerHTML = (
+            '<div class="single-screen">' +
+              '<video id="showcaseClipVideo" controls autoplay playsinline src="' + clipSrc + '" poster="' + posterSrc + '"></video>' +
+            '</div>' +
+            '<div class="sbs-toolbar">' +
+              '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">' +
+                '<button type="button" class="stage-chip primary" id="btnClipToPlay">🎮 Switch to 60fps Interactive Game</button>' +
+                '<span>Pre-rendered 18.0s Showcase MP4 (`p' + pad + '.mp4`) — or click any ✕ · ○ · △ · □ button below to play live!</span>' +
+              '</div>' +
+              '<div style="display:flex;gap:5px;flex-wrap:wrap">' +
+                '<button type="button" class="stage-chip" data-clip-seek="0.1">0:00 Root</button>' +
+                '<button type="button" class="stage-chip" data-clip-seek="2.25">0:02 [✕]</button>' +
+                '<button type="button" class="stage-chip" data-clip-seek="4.5">0:04 Probable</button>' +
+                '<button type="button" class="stage-chip" data-clip-seek="7.9">0:08 [○]</button>' +
+                '<button type="button" class="stage-chip" data-clip-seek="9.9">0:10 Plausible</button>' +
+                '<button type="button" class="stage-chip" data-clip-seek="14.7">0:14 Alien</button>' +
+              '</div>' +
+            '</div>'
+          );
+          gm.loadPortal(currentId, null, "v3", "root");
+          var clipVid = document.getElementById("showcaseClipVideo");
+          document.getElementById("btnClipToPlay").onclick = function () {
+            setMode("play", true);
+          };
+          stageMount.querySelectorAll("[data-clip-seek]").forEach(function (b) {
+            b.onclick = function () {
+              var sec = parseFloat(b.getAttribute("data-clip-seek")) || 0;
+              if (clipVid) {
+                try { clipVid.currentTime = sec; clipVid.play().catch(function () {}); } catch (e) {}
+              }
+            };
+          });
+        }
+
+        gm.mountControllerDeck(deckMount, {
+          showTreeMatrix: true,
+          onBeforeInteract: function () {
+            if (stageMode === "clip") {
+              stageMode = "play";
+              renderStage();
+            }
+          }
+        });
+
+        syncHeaderAndProgress();
+        syncProvenanceDrawer();
+      }
+
+      function setMode(nextMode, updateHash) {
+        stageMode = (nextMode === "sidebyside" || nextMode === "clip") ? nextMode : "play";
+        if (updateHash) {
+          var suffix = stageMode === "play" ? "" : ("-" + stageMode);
+          history.replaceState(null, "", "#p" + pad2(currentId) + suffix);
+        }
+        renderStage();
+      }
+
+      function selectPortal(nextId, updateHash) {
+        currentId = Math.max(1, Math.min(55, parseInt(nextId, 10) || 1));
+        if (updateHash) {
+          var suffix = stageMode === "play" ? "" : ("-" + stageMode);
+          history.replaceState(null, "", "#p" + pad2(currentId) + suffix);
+        }
+        renderStage();
+      }
+
+      document.querySelectorAll(".mode-tab").forEach(function (tb) {
+        tb.onclick = function () {
+          setMode(tb.getAttribute("data-mode"), true);
+        };
+      });
+
+      stationSelect.onchange = function () {
+        selectPortal(parseInt(stationSelect.value, 10), true);
+      };
+      btnPrev.onclick = function () {
+        if (currentId > 1) selectPortal(currentId - 1, true);
+      };
+      btnNext.onclick = function () {
+        if (currentId < 55) selectPortal(currentId + 1, true);
+      };
+
+      snailInputEl.oninput = function () {
+        if (gm) {
+          var clean = gm.setSnailNote(snailInputEl.value, currentId);
+          snailSavedEl.textContent = clean ? "✓ Saved" : "";
+        }
+      };
+      snailFormEl.onsubmit = function (ev) {
+        ev.preventDefault();
+        if (stageMode === "clip") setMode("play", false);
+        if (gm) {
+          gm.sendSnailMail(snailInputEl.value);
+          snailSavedEl.textContent = "✓ Dispatched via △";
+        }
+      };
+
+      window.addEventListener("keydown", function (ev) {
+        var tag = ev.target && ev.target.tagName ? ev.target.tagName.toUpperCase() : "";
+        if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+        if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+        if (ev.key === "[" && currentId > 1) {
+          ev.preventDefault();
+          selectPortal(currentId - 1, true);
+        } else if (ev.key === "]" && currentId < 55) {
+          ev.preventDefault();
+          selectPortal(currentId + 1, true);
+        }
+      });
+
+      window.addEventListener("turkeysub:gamechange", function (ev) {
+        if (ev && ev.detail && ev.detail.portalId && ev.detail.portalId !== currentId) {
+          currentId = ev.detail.portalId;
+          syncProvenanceDrawer();
+        }
+        syncHeaderAndProgress();
+      });
+
+      window.addEventListener("hashchange", function () {
+        var rt = parseLocationRoute();
+        if (rt.id !== currentId || rt.mode !== stageMode) {
+          currentId = rt.id;
+          stageMode = rt.mode;
+          renderStage();
+        }
+      });
+
+      // Boot Cabinet
+      var initRoute = parseLocationRoute();
+      currentId = initRoute.id;
+      stageMode = initRoute.mode;
+      renderStage();
+      if (initRoute.branch && initRoute.branch.indexOf(".") !== -1 && gm) {
+        var bp = initRoute.branch.split(".");
+        gm.jumpToBranch(bp[0], bp[1]);
+      }
+    })();
+  </script>
+</body>
+</html>
