@@ -1,0 +1,167 @@
+[
+  {
+    "id": 41,
+    "station": "#41 \u00b7 Catwalk",
+    "crew": "crew-9",
+    "critic": "critic-3",
+    "status": "passed",
+    "strip": "./checks/p41-strip.jpg",
+    "measured": "1280x720 24fps 10.02s (240f) H.264+AAC@44.1kHz rms=0.0513; Canvas \u0394px(Act1=158.1, Act2=30.6, Act3=51.2); 0 runtime errors",
+    "blind_reading": "Uncaptioned top strip: Wild-turkey wing flips right Lamp Toggle at ~1s inside oval bread-tin cockpit (2-o'clock rim chip, ballast left, chalk chart center, air dial top-right); Act 2 illuminates a pink sea bream in dark sunglasses striding on hinged wooden stick legs with a shimmering double-image ripple; Act 3 brings in a spotted Brook Trout alongside spoked wheelchair wheels (6.8s) and a red-white soup can with curled tin lid (9.2s) as bolt #6 glints and the chalk route dot updates.",
+    "note": "Measured: ffprobe/PCM & Puppeteer verified. Structurally verified: window.PORTAL_SCENES[41].render supports interactive lamp/ballast/view/roll/showCaptions with zero text in blind mode. Perceptually judged: Substrate Collision (SCION 22) stages both Turkey ('Evolved land-fish or mirage?') and Trout ('Legless bird wheelchair or soup can?') forks without text."
+  },
+  {
+    "id": 42,
+    "station": "#42 \u00b7 Ferry",
+    "crew": "crew-9",
+    "critic": "critic-3",
+    "status": "passed",
+    "strip": "./checks/p42-strip.jpg",
+    "measured": "1280x720 24fps 10.02s (240f) H.264+AAC@44.1kHz rms=0.0546; Canvas \u0394px(Act1=123.0, Act2=22.7, Act3=31.3); 0 runtime errors",
+    "blind_reading": "Uncaptioned top strip: Turkey wing slides left Ballast Tray at ~1s; Act 2 reveals two brass pin-jointed figures standing between fixed mottled tree trunks above a carved marker who raise toll paddles and rotate edge-on in 3D to expose paper-thin cardboard backs; Act 3 shifts to a spotted Brook Trout guarding the carved boundary stone (6.8s) and hoisting a gold ferry pennant (9.2s) while bolt #2 glints and the chalk chart marks.",
+    "note": "Measured: ffprobe/PCM & Puppeteer verified. Structurally verified: window.PORTAL_SCENES[42].render interactive state & blind-caption suppression verified. Perceptually judged: Fixed Bank, New Mark (SCION 16) makes 'Tollbooth ushers or paper cutouts?' and 'Boundary-stone thief or new ferryboat?' immediately legible."
+  },
+  {
+    "id": 43,
+    "station": "#43 \u00b7 Snout",
+    "crew": "crew-9",
+    "critic": "critic-3",
+    "status": "passed",
+    "strip": "./checks/p43-strip.jpg",
+    "measured": "1280x720 24fps 10.02s (240f) H.264+AAC@44.1kHz rms=0.0583; Canvas \u0394px(Act1=166.5, Act2=34.3, Act3=38.5); 0 runtime errors",
+    "blind_reading": "Uncaptioned top strip: Turkey wing flips right Lamp Toggle at ~1s; warm cone reveals a crayon-spotted yellow shark pressing its snout on the porthole glass; Act 2 opens a rectangular cutaway cabin window in the shark's flank amidst drifting spice flecks; Act 3 introduces a spotted Brook Trout nibbling floating crumbs (6.8s) and swimming in synchronized side-by-side alignment with the yellow shark (9.2s) as bolt #4 glints and the chalk chart updates.",
+    "note": "Measured: ffprobe/PCM & Puppeteer verified. Structurally verified: window.PORTAL_SCENES[43].render interactive state & blind-caption suppression verified. Perceptually judged: Dollhouse Cutaway (SCION 31) cleanly stages 'Lemon-pepper predator or rescue sub?' vs 'Canned snack dispenser or fellow yellow fish?'."
+  },
+  {
+    "id": 44,
+    "station": "#44 \u00b7 Rotor",
+    "crew": "crew-9",
+    "critic": "critic-3",
+    "status": "passed",
+    "strip": "./checks/p44-strip.jpg",
+    "measured": "1280x720 24fps 10.02s (240f) H.264+AAC@44.1kHz rms=0.0559; Canvas \u0394px(Act1=167.7, Act2=78.4, Act3=85.4); 0 runtime errors",
+    "blind_reading": "Uncaptioned top strip: Turkey wing flips right Lamp Toggle at ~1s onto an eccentric black-and-white spiral disc mounted on a timber/iron A-frame; Act 2 spins the rotorelief rapidly with inward vortex particles and concentric hypnosis rings; Act 3 brings a spotted Brook Trout past colored pie-slice wedges with a top clapper (6.8s) and churning white soap suds across the lower porthole glass (9.2s) as bolt #6 glints and the chalk chart updates.",
+    "note": "Measured: ffprobe/PCM & Puppeteer verified. Structurally verified: window.PORTAL_SCENES[44].render interactive state & blind-caption suppression verified. Perceptually judged: Rotating Type & Depth (Oucipo) strongly stages 'Whirlpool turbine or hypnosis trap?' vs 'Diner pie-prize wheel or washing machine?'."
+  },
+  {
+    "id": 45,
+    "station": "#45 \u00b7 Extruder",
+    "crew": "crew-9",
+    "critic": "critic-3",
+    "status": "passed",
+    "strip": "./checks/p45-strip.jpg",
+    "measured": "1280x720 24fps 10.02s (240f) H.264+AAC@44.1kHz rms=0.0538; Canvas \u0394px(Act1=99.6, Act2=18.1, Act3=29.5); 0 runtime errors",
+    "blind_reading": "Uncaptioned top strip: Turkey wing slides left Ballast Tray at ~1s; outside, a wire-hung coral plastic cone funnel draws a red-bulb silver baster into its wide mouth while multicolored pellets stream from its narrow spout in Act 2; Act 3 shows a spotted Brook Trout hovering beneath rising iridescent bubbles (6.8s) and reverse-drawn gravel/pellets (9.2s) as bolt #2 glints and the chalk chart marks.",
+    "note": "Measured: ffprobe/PCM & Puppeteer verified. Structurally verified: window.PORTAL_SCENES[45].render interactive state & blind-caption suppression verified. Perceptually judged: Reverse Manufacture (Outrapo) cleanly enacts 'Utensil un-maker or hull recycler?' vs 'Bubble-blowing toy or gravel vacuum?'."
+  },
+  {
+    "id": 46,
+    "station": "#46 \u00b7 Steps",
+    "crew": "crew-10",
+    "critic": "critic-3",
+    "status": "passed",
+    "strip": "./checks/p46-strip.jpg",
+    "measured": "1280x720 24fps 10.02s (240f) H.264+AAC@44.1kHz rms=0.0507; Canvas \u0394px(Act1=77.8, Act2=22.4, Act3=34.5); 0 runtime errors",
+    "blind_reading": "Uncaptioned top strip: Turkey wing slides left Ballast Tray at ~1s; outside, 3D solid brass letters G-O-B-B-L-E form a diagonal underwater staircase; Act 2 shows heavy downward settling bubbles alongside small river chubs hopping step-by-step up the brass risers; Act 3 brings a spotted Brook Trout swimming along the brass steps while the top letter 'E' hinges loose like a falling sign, bolt #2 glints, and the chalk chart updates.",
+    "note": "Measured: ffprobe/PCM & Puppeteer verified. Structurally verified: window.PORTAL_SCENES[46].render interactive state & HUD/caption suppression verified (only diegetic brass stair letters remain). Perceptually judged: Verbal Slapstick (SCION 47) clearly stages 'Sinking lead weights or step-ladder?' vs 'Free brass staircase or falling sign?'."
+  },
+  {
+    "id": 47,
+    "station": "#47 \u00b7 Armada",
+    "crew": "crew-10",
+    "critic": "critic-3",
+    "status": "passed",
+    "strip": "./checks/p47-strip.jpg",
+    "measured": "1280x720 24fps 10.02s (240f) H.264+AAC@44.1kHz rms=0.0491; Canvas \u0394px(Act1=135.0, Act2=40.6, Act3=46.3); 0 runtime errors",
+    "blind_reading": "Uncaptioned top strip: Turkey wing flips right Lamp Toggle at ~1s to illuminate tiers of lashed upside-down glass Mason jars; Act 2 contrasts green brine-tinted jars with pickle slices on the left against silver trapped-air menisci buoying the lashed timber raft; Act 3 shows a spotted Brook Trout inspecting the sub's round brass rim/latch while towing a single inverted jar skiff on a line as bolt #4 glints and the chalk chart updates.",
+    "note": "Measured: ffprobe/PCM & Puppeteer verified. Structurally verified: window.PORTAL_SCENES[47].render interactive state & blind-caption suppression verified. Perceptually judged: Bricolage Armada (SCION 29) stages 'Pickling-jar factory or air-pocket raft?' vs 'Bottle-cap opener or trade skiff?' with tactile multiplane clarity."
+  },
+  {
+    "id": 48,
+    "station": "#48 \u00b7 Belfry",
+    "crew": "crew-10",
+    "critic": "critic-3",
+    "status": "passed",
+    "strip": "./checks/p48-strip.jpg",
+    "measured": "1280x720 24fps 10.02s (240f) H.264+AAC@44.1kHz rms=0.0579; Canvas \u0394px(Act1=119.4, Act2=54.8, Act3=54.0); 0 runtime errors",
+    "blind_reading": "Uncaptioned top strip: Turkey wing slides left Ballast Tray at ~1s, locking a wavy air/creek waterline across a flooded tin church steeple; Act 2 stages a perched bird on the dry tin roof above water alongside a bright lightning arc striking the finial rod; Act 3 stages a spotted Brook Trout inside the submerged belfry arch ringing the bronze bell-clapper (radiating acoustic rings) while the rooftop weathervane spins, bolt #6 glints, and the chalk chart updates.",
+    "note": "Measured: ffprobe/PCM & Puppeteer verified. Structurally verified: window.PORTAL_SCENES[48].render interactive state & blind-caption suppression verified. Perceptually judged: Waterline Acoustic Split (SCION 44) cleanly separates above-water Turkey vs underwater Trout readings."
+  },
+  {
+    "id": 49,
+    "station": "#49 \u00b7 Corner",
+    "crew": "crew-10",
+    "critic": "critic-3",
+    "status": "passed",
+    "strip": "./checks/p49-strip.jpg",
+    "measured": "1280x720 24fps 10.02s (240f) H.264+AAC@44.1kHz rms=0.0660; Canvas \u0394px(Act1=123.8, Act2=24.7, Act3=34.8); 0 runtime errors",
+    "blind_reading": "Uncaptioned top strip: Turkey wing flips right Lamp Toggle at ~1s onto drowned brick street buildings, a hanging red-green traffic signal, and a uniformed Trout Cop; Act 2 twinkles festive red/green string bulbs along the span wire beside the glowing red stop lens and raised fin; Act 3 shows the Trout Cop blowing whistle bubbles as the signal shifts from red (6.8s) to green (9.2s) with yellow-cab markings across the glass, bolt #4 glinting, and the chalk chart marked.",
+    "note": "Measured: ffprobe/PCM & Puppeteer verified. Structurally verified: window.PORTAL_SCENES[49].render interactive state & blind-caption suppression verified. Perceptually judged: Civic Law Clinamen (40 PSI) makes 'Christmas lights already or stop sign?' and 'Red-light runner or yellow taxicab?' legible without text."
+  },
+  {
+    "id": 50,
+    "station": "#50 \u00b7 Riffle",
+    "crew": "crew-10",
+    "critic": "critic-3",
+    "status": "passed",
+    "strip": "./checks/p50-strip.jpg",
+    "measured": "1280x720 24fps 10.02s (240f) H.264+AAC@44.1kHz rms=0.0527; Canvas \u0394px(Act1=115.1, Act2=58.8, Act3=29.9); 0 runtime errors",
+    "blind_reading": "Uncaptioned top strip: Turkey wing slides left Ballast Tray at ~1s into riffle cobbles before a giant yellow diamond DAM sign; Act 2 frames a tiny banded Snail Darter bracing its fins directly across the giant sign with roadblock barrier pulses; Act 3 brings a spotted Brook Trout along the gravel bed inspecting the sub's low ballast nose nudging cobbles like a mini bulldozer/dredge as bolt #2 glints and the chalk chart updates.",
+    "note": "Measured: ffprobe/PCM & Puppeteer verified. Structurally verified: window.PORTAL_SCENES[50].render interactive state & HUD/caption suppression verified (only diegetic DAM sign letters remain). Perceptually judged: Scale Reversal (SCION 33) cleanly stages 'Harmless minnow or federal roadblock?' vs 'Mini bulldozer or illegal dredge?'."
+  },
+  {
+    "id": 51,
+    "station": "#51 \u00b7 Grotto",
+    "crew": "crew-11",
+    "critic": "critic-3",
+    "status": "passed",
+    "strip": "./checks/p51-strip.jpg",
+    "measured": "1280x720 24fps 10.02s (240f) H.264+AAC@44.1kHz rms=0.1061; Canvas \u0394px(Act1=88.2, Act2=28.8, Act3=28.1); 0 runtime errors",
+    "blind_reading": "Uncaptioned top strip: Turkey wing flips right Lamp Toggle at ~1s, lighting a hinged stone clam cradling a basketball-sized pale orb; Act 2 lifts the upper valve as bubbles hiss from a seated ring beneath the smooth egg-like sphere; Act 3 brings in a spotted Brook Trout as three bowling-ball finger holes appear on the orb (6.8s) and polish into a warm metallic brass marble sheen (9.2s) while bolt #2 glints and Turkey's wing marks the chalk chart.",
+    "note": "Measured: ffprobe/PCM & Puppeteer verified. Structurally verified: window.PORTAL_SCENES[51].render interactive state & blind-caption suppression verified. Perceptually judged: Repeated Observation (SCION 41) stages 'Peeled boiled egg or valve stopper?' vs 'Bowling-ball thief or giant brass marble?' with crisp acting."
+  },
+  {
+    "id": 52,
+    "station": "#52 \u00b7 Bridge",
+    "crew": "crew-11",
+    "critic": "critic-3",
+    "status": "passed",
+    "strip": "./checks/p52-strip.jpg",
+    "measured": "1280x720 24fps 10.02s (240f) H.264+AAC@44.1kHz rms=0.0940; Canvas \u0394px(Act1=44.8, Act2=7.3, Act3=22.3); 0 runtime errors",
+    "blind_reading": "Uncaptioned top strip: Turkey wing slides left Ballast Tray at ~1s, calming fast stream lines around a taut 3-ply red hawser diagonal from a dark boulder crevice to an upper masonry ring; Act 2 reveals a curling suckered tentacle tip and snagged iron anchor fluke on the boulder horn as the rope vibrates taut; Act 3 shifts to a spotted Brook Trout tugging the upper line (6.8s) then blocked across its stone-lintel burrow doorway by the diagonal hawser (9.2s) as bolt #4 glints and the chalk chart updates.",
+    "note": "Measured: ffprobe/PCM & Puppeteer verified. Structurally verified: window.PORTAL_SCENES[52].render interactive state & blind-caption suppression verified. Perceptually judged: Two Views Across Glass (SCION 17) stages 'Kraken tentacle or snagged anchor?' vs 'Tow-truck helper or doorway blocker?'."
+  },
+  {
+    "id": 53,
+    "station": "#53 \u00b7 Flume",
+    "crew": "crew-11",
+    "critic": "critic-3",
+    "status": "passed",
+    "strip": "./checks/p53-strip.jpg",
+    "measured": "1280x720 24fps 10.02s (240f) H.264+AAC@44.1kHz rms=0.0676; Canvas \u0394px(Act1=67.5, Act2=23.1, Act3=29.4); 0 runtime errors",
+    "blind_reading": "Uncaptioned top strip: Turkey wing slides left Ballast Tray at ~1s beside a rotating 16-bucket iron gristmill wheel above a slanted oak cellar door; Act 2 crimps a scalloped golden pie-crust clay ridge under the lugs while hooking the brass latch to lift a warm-lit elevator shaft; Act 3 wedges a mossy log into the buckets with a spotted Brook Trout nudging it clear (6.8s) and hovering by the wind-up key latch (9.2s) as bolt #6 glints and the chalk chart marks.",
+    "note": "Measured: ffprobe/PCM & Puppeteer verified. Structurally verified: window.PORTAL_SCENES[53].render interactive state & blind-caption suppression verified. Perceptually judged: Reversible Gear Jam (SCION 43) stages 'Pie-crust crimper or secret elevator?' vs 'Wind-up key nose or jammed log?'."
+  },
+  {
+    "id": 54,
+    "station": "#54 \u00b7 Ledge",
+    "crew": "crew-11",
+    "critic": "critic-3",
+    "status": "passed",
+    "strip": "./checks/p54-strip.jpg",
+    "measured": "1280x720 24fps 10.02s (240f) H.264+AAC@44.1kHz rms=0.1104; Canvas \u0394px(Act1=109.3, Act2=33.8, Act3=44.2); 0 runtime errors",
+    "blind_reading": "Uncaptioned top strip: Turkey wing flips right Lamp Toggle at ~1s, illuminating an articulated orange-brown Hellbender salamander curved beneath a shale ledge with swaying frilly skin folds; Act 2 undulates its scalloped gravy-boat flank while puffing a stream of river-dragon bubbles; Act 3 brings a spotted Brook Trout face-to-face on the left comparing wattled/frilled contours beside the tin reflection as bolt #4 glints and the chalk chart updates.",
+    "note": "Measured: ffprobe/PCM & Puppeteer verified. Structurally verified: window.PORTAL_SCENES[54].render interactive state & blind-caption suppression verified. Perceptually judged: Anatomical Double Take (Oubapo) stages 'Ruffled gravy boat or river dragon?' vs 'Long-lost wattled cousin or tin hermit crab?'."
+  },
+  {
+    "id": 55,
+    "station": "#55 \u00b7 Eddy",
+    "crew": "crew-11",
+    "critic": "critic-3",
+    "status": "passed",
+    "strip": "./checks/p55-strip.jpg",
+    "measured": "1280x720 24fps 10.02s (240f) H.264+AAC@44.1kHz rms=0.1057; Canvas \u0394px(Act1=104.3, Act2=33.7, Act3=58.5); 0 runtime errors",
+    "blind_reading": "Uncaptioned top strip: Turkey wing flips right Lamp Toggle at ~1s onto a swirling backwater eddy holding a corked brass-and-glass cylinder stuffed with rolled scrolls; Act 2 spins the cylinder to display a miniature porthole postcard with fine script lines and a red seal; Act 3 brings in a spotted Brook Trout nosing the corked brass tube like a river dead-letter dropbox / alien bottle as bolt #2 glints and the chalk route completes.",
+    "note": "Measured: ffprobe/PCM & Puppeteer verified. Structurally verified: window.PORTAL_SCENES[55].render interactive state & blind-caption suppression verified. Perceptually judged: Recursive Worldtext (PAELEO \u21bb) brings all 54 prior postcards into #55 cleanly without caption dependency."
+  }
+]

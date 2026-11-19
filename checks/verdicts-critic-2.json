@@ -1,0 +1,202 @@
+[
+  {
+    "id": 21,
+    "station": "#21 · Fwd",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.1181; frame-diffs=[6.92,4.22,6.96,1.10]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Turkey's wing slides left ballast block at 0.8–1.8s inside the dented bread-tin cockpit (2-o'clock rim chip visible); five oversized trout heads in a sunken yellow bus tap glowing tablets that pulse sonar rings at 4.0s; at 6.8–9.2s a spotted Brook Trout inspects the miniature bread-tin sub sporting first a brass wind-up key and then a yellow bus-stop sign while bolt #2 glints and the chalk chart logs a gold dot.",
+    "note": "PAELEO & Video-to-Game PASS (crew-05, Collage Scale · SCION 33): 100% handmade Canvas multiplane & articulated cutout rigs (zero Image/JPG loads), zero caption leakage on showCaptions:false, full lamp/ballast/view/roll/showCaptions responsiveness verified under player.js.",
+    "strip": "./checks/p21-strip.jpg"
+  },
+  {
+    "id": 22,
+    "station": "#22 · Trim",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.1188; frame-diffs=[9.95,3.50,5.57,1.25]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Turkey's wing flips right lamp toggle at 0.8–1.8s; warm cone reveals a larger coach trout leading three synchronized squatting trout (gym warm-up at 1.8s shifting to upright spears/tridents at 4.0s); at 6.8–9.2s perspective flips across the glass as a squatting trout eyes the tin sub beneath a giant stopwatch/whistle (6.8s) and then an arched iron kettlebell handle (9.2s), with bolt #4 glinting and chalk route marked.",
+    "note": "PAELEO & Video-to-Game PASS (crew-05, Synchronized Loop · SCION 14): Handmade articulated squat loop, clear visual staging of both Turkey and Trout forks without text, Setup A invariants intact.",
+    "strip": "./checks/p22-strip.jpg"
+  },
+  {
+    "id": 23,
+    "station": "#23 · Scope B",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.1167; frame-diffs=[8.27,3.29,5.19,1.38]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle flips on at 0.8–1.8s, lighting a stippled pink sea-anemone wall clock on a barnacled piling ticking to 3:15 while wavy tentacles curl hungrily inward at 4.0s; at 6.8–9.2s Brook Trout faces the tiny bread-tin sub against the clock dial—first flashing school-bus lights/wheels (6.8s), then crowned with a pocketwatch stem and brass chain (9.2s)—as bolt #6 glints and the chalk chart updates.",
+    "note": "PAELEO & Video-to-Game PASS (crew-05, Organic Dial · SCION 18): Handmade 30-tentacle organic dial rig and reverse-angle sub scale shift; zero static JPG usage; interactive overrides verified.",
+    "strip": "./checks/p23-strip.jpg"
+  },
+  {
+    "id": 24,
+    "station": "#24 · Rudder",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.1156; frame-diffs=[6.03,3.26,4.89,1.12]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Left ballast module slides in at 0.8–1.8s, steadying the view on a chewed hole in diamond green twine netting—showing a dangling snare loop at 1.8s and escaping trout darting through frayed strands at 4.0s; at 6.8–9.2s Brook Trout inspects the bread-tin sub extending silver net-cutting shears (6.8s) and bobbing beneath a red-and-white fishing float (9.2s), with bolt #4 glinting and chalk landmark added.",
+    "note": "PAELEO & Video-to-Game PASS (crew-05, Severed Tether · SCION 41): Spring-damped frayed twine net and clear prop-driven dual readings across the glass; all Setup A invariants verified.",
+    "strip": "./checks/p24-strip.jpg"
+  },
+  {
+    "id": 25,
+    "station": "#25 · Lock",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.1184; frame-diffs=[10.18,2.64,4.78,0.91]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle illuminates a cavern lock where an upright vested Diner Trout walks wearing an inverted glass fishbowl—reading as a brass-collared scuba helmet (1.8s) and sloshing dry-air meniscus bubble (4.0s); at 6.8–9.2s the fishbowl Trout faces the bread-tin sub outfitted first as an astronaut module (6.8s) and then encased inside a corked glass bottle neck (9.2s), with bolt #5 glinting and chalk route marked.",
+    "note": "PAELEO & Video-to-Game PASS (crew-05, Inverted Helmet · Oubapo): Crisp visual inversion symmetry across Act 2 and Act 3; zero text leak in blind mode; interactive state verified.",
+    "strip": "./checks/p25-strip.jpg"
+  },
+  {
+    "id": 26,
+    "station": "#26 · Boiler",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.1691; frame-diffs=[5.78,3.09,3.30,1.66]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Turkey's wing slides left ballast tray at 0.8–1.8s inside the dented bread-tin hull (2-o'clock rim chip clear), settling before a glowing orange riverbed coal vent sending up twisting plumes alongside soup-pot/ladle and brass Nautilus intake valve cues (4.0s); at 6.8–9.2s a spotted Brook Trout warms its fins over the coals like a camp stove / cold tourist while bolt #2 glints and the chalk chart draws its gold dot.",
+    "note": "PAELEO & Video-to-Game PASS (crew-06, Thermal Plume · SCION 51): Handmade glowing ember vent, multiplane thermal plumes, rich bespoke audio (rms=0.1691), zero static JPGs, clean blind-mode bench apron.",
+    "strip": "./checks/p26-strip.jpg"
+  },
+  {
+    "id": 27,
+    "station": "#27 · Port M",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.1656; frame-diffs=[8.99,2.63,3.04,1.44]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle flips at 0.8–1.8s, turning static on a sunken wooden rabbit-ear CRT into an animated yellow sponge mascot wiping glass alongside radiating distress rings (1.8–4.0s); at 6.8–9.2s a large spotted Brook Trout watches the screen vs porthole like a rival channel (6.8s) while a silver repair wrench rises beside Turkey's reflection (9.2s), bolt #4 glints, and the chalk chart updates.",
+    "note": "PAELEO & Video-to-Game PASS (crew-06, Frame-in-Frame · SCION 27): Nested CRT canvas animation inside the porthole frame; Setup A cockpit invariants and live interactive controls verified.",
+    "strip": "./checks/p27-strip.jpg"
+  },
+  {
+    "id": 28,
+    "station": "#28 · Stbd M",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.1662; frame-diffs=[5.12,2.33,2.99,1.37]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Left ballast tray engages at 0.8–1.8s beneath a stone tunnel arch as dozens of scattered silver minnows lock into a harmonic S-curve ribbon—looping like a lasso (1.8s) and converging into a directional exit-arrow chevron (4.0s); at 6.8–9.2s a capped Brook Trout leads the glittering minnow parade past Turkey's metallic sub reflection, bolt #3 glints, and the chalk chart logs a gold dot.",
+    "note": "PAELEO & Video-to-Game PASS (crew-06, Flock Ribbon · SCION 06): John Whitney-style harmonic 84-minnow flock choreography in pure Canvas code; full state interactivity verified.",
+    "strip": "./checks/p28-strip.jpg"
+  },
+  {
+    "id": 29,
+    "station": "#29 · Deck",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.1640; frame-diffs=[8.06,3.37,5.45,4.10]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle flips at 0.8–1.8s, illuminating an open album on the riverbed whose turning pages shed sepia house-and-portrait snapshots upward (1.8–4.0s); at 6.8–9.2s Brook Trout enters into a bright camera-flash burst (6.8s) followed by an open cream picture-frame mat drifting across Turkey's reflection (9.2s), with bolt #4 glinting and chalk chart marked.",
+    "note": "PAELEO & Video-to-Game PASS (crew-06, Drift Archive · SCION 39): Multiplane drifting sepia cards, clear flash/frame Trout staging, strong frame-to-frame motion across all 10s.",
+    "strip": "./checks/p29-strip.jpg"
+  },
+  {
+    "id": 30,
+    "station": "#30 · Top",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.1673; frame-diffs=[7.27,2.70,3.39,2.11]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle illuminates six golden vowel spheres (A·E·I·O·U·Y) suspended beneath a stone bridge lock; at 4.0s the 'E' bubble vanishes into a dashed lipogram ring while mine-horn / lock-keyhole cues pulse; at 6.8–9.2s Brook Trout swims along the glowing vowel row toward Turkey's pointed beak and buzzer rings, bolt #6 glints, and the chalk chart records the mark.",
+    "note": "PAELEO & Video-to-Game PASS (crew-06, Lipogram Password · Oulipo): Enacts Perec/Juster lipogram mechanics directly in bubble motion; zero HUD text in blind mode; interactive controls verified.",
+    "strip": "./checks/p30-strip.jpg"
+  },
+  {
+    "id": 31,
+    "station": "#31 · Galley B",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0807; frame-diffs=[5.54,2.75,2.68,0.95]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Articulated feathered wing flips right lamp toggle at 0.8–1.8s inside the dented bread-tin cockpit (2-o'clock rim chip & left Turkey silhouette clear), lighting a sunken aluminum bread-roll tin stamped WARM TO 375°F with glowing amber underside, herb sprig & oven dial vs dashed spare-hull rivet template (4.0s); at 6.8–9.2s a Brook Trout in a folded white spa head-towel joins basking minnows and peers at rising toast-slice golden bubbles, bolt #2 glints, chalk chart marked.",
+    "note": "PAELEO & Video-to-Game PASS (crew-07, Thermal Inversion · SCION 51): Handmade aluminum tin with matching dent, inventive spa-towel & toast-bubble visual acting, zero caption text in blind mode.",
+    "strip": "./checks/p31-strip.jpg"
+  },
+  {
+    "id": 32,
+    "station": "#32 · Beak Arm",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0716; frame-diffs=[5.68,3.06,3.37,1.64]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle flips at 0.8–1.8s as a 3-stage brass scissor-jack pantograph extends from a yellow bow hatch toward an iron skeleton key by a bridge lock—clacking serrated tongs beside a red creek crab before clamping the key (4.0s); at 6.8s Brook Trout opens its jaw wide showing a gleaming tooth beneath the forceps (mechanical dentist), then at 9.2s eyes a domino-masked tong jiggling the key (burglar), bolt #6 glints, chalk chart marked.",
+    "note": "PAELEO & Video-to-Game PASS (crew-07, Gadget Extension · SCION 13): True kinematic 3-stage pantograph linkage and unmistakable dentist-to-burglar character acting; interactive state verified.",
+    "strip": "./checks/p32-strip.jpg"
+  },
+  {
+    "id": 33,
+    "station": "#33 · Salon",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0520; frame-diffs=[3.67,2.55,2.54,0.81]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Feathered wing slides left ballast tray at 0.8–1.8s, settling behind a foreground shelter stone lip with slack dock ribbon; pleated velvet curtains part inside a chiseled stone arch and five iron culvert bars with bowing silhouette minnows and tunnel splash rings (4.0s); at 6.8–9.2s Brook Trout glides behind the culvert bars beneath monster-jaw tooth shadows (6.8s) and flickering warm movie-projector beams (9.2s), bolt #4 glints, chalk chart marked.",
+    "note": "PAELEO & Video-to-Game PASS (crew-07, Mystimation Silhouette · SCION 02): Karel Zeman cross-hatched stonework, velvet pleats, shelter-lip ballast consequence, and projector flicker cleanly staged.",
+    "strip": "./checks/p33-strip.jpg"
+  },
+  {
+    "id": 34,
+    "station": "#34 · Organ",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0660; frame-diffs=[5.08,2.70,2.67,1.36]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle flips at 0.8–1.8s, energizing a Méliès brass cutaway boiler (meshing gears & orange furnace window), pumping leather accordion bellows, seven bubbling copper organ pipes, and an engineer-capped helper trout (1.8–4.0s); at 6.8–9.2s a hero Brook Trout bobs in polka rhythm (6.8s) and then inspects the shuddering steam-puffing boiler radiator (9.2s), bolt #5 glints, chalk chart marked.",
+    "note": "PAELEO & Video-to-Game PASS (crew-07, Cutaway Section · SCION 31): Articulated meshing gears, pleated bellows fan, and musical pipe bubble streams in pure 2D Canvas; interactive state verified.",
+    "strip": "./checks/p34-strip.jpg"
+  },
+  {
+    "id": 35,
+    "station": "#35 · Post #44",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0575; frame-diffs=[3.07,2.59,2.22,1.07]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Left ballast tray slides in at 0.8–1.8s, leveling the porthole opposite leaning rural Mailbox #44 as its door drops, red flag clicks up, and a 1943 canvas sack spills wax-sealed envelopes alongside a peeking white cloth corner (1.8–4.0s); at 6.8–9.2s a Brook Trout in a rural mail-carrier cap and canvas saddlebag catches the handoff envelope past a suction swirl and delivers it to the glass, bolt #2 glints, chalk chart marked.",
+    "note": "PAELEO & Video-to-Game PASS (crew-07, Fixed-Shot Handoff · Oucipo): Faithful Old Loyston #44 rural post staging and continuous across-the-cut envelope handoff; Setup A invariants verified.",
+    "strip": "./checks/p35-strip.jpg"
+  },
+  {
+    "id": 36,
+    "station": "#36 · Bench",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0452; frame-diffs=[2.99,2.86,3.60,1.04]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Fanned turkey wing flips right lamp toggle at 0.8–1.8s inside the dented bread-tin hull (2-o'clock rim chip visible), illuminating an articulated hound on a park bench clutching a red-wax-sealed envelope—glowing with pardon ribbons (1.8s) then stamped/tapped like an overdue bill (4.0s); at 6.8–9.2s Brook Trout glides in with getaway slipstream lines (6.8s) and slots the letter as at a brass mailbox (9.2s), bolt #6 glints, chalk chart marked.",
+    "note": "PAELEO & Video-to-Game PASS (crew-08, Iconic Iteration · Oubapo): Menu/Trondheim single-plate visual re-contextualization of one seated hound silhouette across both passes; 0 console errors.",
+    "strip": "./checks/p36-strip.jpg"
+  },
+  {
+    "id": 37,
+    "station": "#37 · Bulkhead",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0415; frame-diffs=[3.60,3.98,4.39,1.63]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Left ballast module slides in at 0.8–1.8s, leveling a 4-panel accordion-folded silt map where a turkey claw and trout fin meet—extending an olive twig at 1.8s, folding inward to expose hidden bear-trap teeth along the seam at 4.0s; at 6.8–9.2s Brook Trout watches above a friendly clasp (6.8s) before the right map leaf hinges open into a carved wooden decoy (9.2s), bolt #1 glints, chalk chart marked.",
+    "note": "PAELEO & Video-to-Game PASS (crew-08, Folded Seam · Oubapo / V04): Genuine Lécroart accordion-fold geometry transforming olive twig into trap seam and decoy flap; interactive state verified.",
+    "strip": "./checks/p37-strip.jpg"
+  },
+  {
+    "id": 38,
+    "station": "#38 · Visor",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0422; frame-diffs=[4.50,2.78,3.18,0.52]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle flips at 0.8–1.8s, lighting a square cream posterboard saucer schematic with radial callout arrows—cyan sub blueprint ticks at 1.8s shifting to dashed crimson butcher cuts and a meat thermometer at 4.0s; at 6.8–9.2s Brook Trout inspects golden prophecy halos around the saucer (6.8s) and a red overdue-rental meter dial at lower right (9.2s), bolt #2 glints, chalk chart marked.",
+    "note": "PAELEO & Video-to-Game PASS (crew-08, Annotated Schematic · SCION 25): Royal Robertson posterboard schematic cleanly transitions across 4 visual states without caption text leaks.",
+    "strip": "./checks/p38-strip.jpg"
+  },
+  {
+    "id": 39,
+    "station": "#39 · Parlor",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0608; frame-diffs=[2.14,3.53,3.28,0.66]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Left ballast module slides in at 0.8–1.8s, lowering sightline into a floral-wallpapered sunken parlor with tufted green armchair, teacup, braided rug, and warm fringed floor lamp (1.8s), rippling with horizontal mirage waves at 4.0s; at 6.8–9.2s Brook Trout swims into the room eyeing the round glass sub like a goldfish bowl (6.8s) before the braided rug corner lifts in a vacuum vortex toward the port (9.2s), bolt #3 glints, chalk chart marked.",
+    "note": "PAELEO & Video-to-Game PASS (crew-08, Drowned Domesticity · SCION 20): Atmospheric Pyramid Song parlor, evocative Ondes Martenot score (rms=0.0608), and physical rug-suction gag; 0 errors.",
+    "strip": "./checks/p39-strip.jpg"
+  },
+  {
+    "id": 40,
+    "station": "#40 · Reef",
+    "critic": "critic-2",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0449; frame-diffs=[4.60,3.09,3.26,0.67]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle flips at 0.8–1.8s, illuminating white sugar-cube towers and two spinning aluminum reel-to-reel spools whose red-brown tape arches like cranberry festoons (1.8s) and tangles a 3-blade brass propeller (4.0s); at 6.8–9.2s Brook Trout swims through concentric jukebox speaker rings (6.8s) and nibbles/tugs the tape loop beside Turkey's pecking reflection (9.2s), bolt #4 glints, chalk chart marked.",
+    "note": "PAELEO & Video-to-Game PASS (crew-08, Reverse Tape Score · Outrapo): Spinning NAB reels, multiplane sugar-cube reef, and reversible tape choreography; all Setup A & player.js checks passed.",
+    "strip": "./checks/p40-strip.jpg"
+  }
+]

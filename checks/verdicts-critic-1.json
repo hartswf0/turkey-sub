@@ -1,0 +1,212 @@
+[
+  {
+    "id": "intro",
+    "station": "00 · Activity Introduction (SCION Setup A)",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 48.02s (1152f) h264/yuv420p + 44.1kHz AAC rms=0.1249; frame-diffs=[19.77,7.15,5.41,5.51]; TROUT_SUB_INTRO interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned 6-column strip (2.1s, 10.9s, 15.2s, 22.3s, 32.8s, 45.6s): (1) River Works bench under cone lamp with Turkey boarding the bread-roll tin while Brook waits by the lit landing bell across the flooded bend; (2) Setup A interior (right-side dent, 2-o'clock chipped brass rim, 1 Day of Air dial) with Lamp Module snapped into the Single Slot piercing silt to reveal the V-shaped rock notch and stone steps; (3) Ballast Tray swapped into the Single Slot riding calm shelter behind the stone lip beneath fast ribbon current; (4) diagonal Duck/Rabbit split across the chipped glass showing Turkey inside imagining a pan/boat (1·3·5) vs Brook outside seeing a tin survey sub (2·4·6); (5) tumbling 3D-projected 1d6 die landing on 4 pips as bolt #4 glows green and the red ribbon ties at the notch; (6) Turkey's wing saluting over the dotted Chalk Chart Under Glass as Mail Snail carries the Porthole Postcard and Brook rings the brass landing bell.",
+    "note": "PAELEO & Video-to-Game PASS (intro-director, 6 Core Episode SCIONs): 100% handmade 2D Canvas multiplane & articulated rigs in portals/intro-scion.js, zero text leakage on showCaptions:false, spoken voiceover + chamber score + foley, and verified tools/assemble_trout_sub_film.py anthology normalizer with FFMETADATA1 chapters.",
+    "strip": "./checks/intro-strip.jpg"
+  },
+  {
+    "id": 1,
+    "station": "#01 · Bow",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0479; frame-diffs=[5.38,3.47,3.10,1.45]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Inside Setup A bread-tin cockpit (right-side dent, 2-o'clock rim chip, air dial, ballast/chart/lamp controls), Turkey's wing flips the right lamp toggle at 0.8–1.8s; warm spotlight reveals a giant Size-11 Wellington rubber boot tilting over the beam like a shipwreck, giant's foot, or arch tunnel at 4.0s; at 6.8–9.2s a spotted Brook Trout swims beneath the illuminated tread beside a pinching red creek crab while bolt #2 glints and the chalk chart logs a gold dot.",
+    "note": "PAELEO & Video-to-Game PASS (crew-01, Silhouette · SCION 02): Handmade 2D Canvas backlit cutout rig, zero static JPG zoom, zero text leakage on showCaptions:false, full lamp/ballast/view/roll/showCaptions overrides verified.",
+    "strip": "./checks/p01-strip.jpg"
+  },
+  {
+    "id": 2,
+    "station": "#02 · Galley",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0491; frame-diffs=[5.31,2.85,2.85,0.97]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle flips at 0.8–1.8s, illuminating a submerged wooden diner pass-through window where a Trout Cook in a white chef toque squeezes a silver turkey baster jetting oxygen bubbles toward the glass at 4.0s (cooking roast vs refueling air); at 6.8–9.2s a Brook Trout crosses outside watching the tin hull and rising baster bubbles as bolt #4 glints and the chalk route completes.",
+    "note": "PAELEO & Video-to-Game PASS (crew-01, Double Take · Oubapo): Handmade dual-prop baster & diner galley rig, clear visual staging of both Turkey and Trout forks, interactive state verified.",
+    "strip": "./checks/p02-strip.jpg"
+  },
+  {
+    "id": 3,
+    "station": "#03 · Starbd",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0384; frame-diffs=[5.39,2.65,2.60,0.71]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Lamp toggle lights a sunken Room 4 slate chalkboard bearing HOOK MONSTER and a chalk fishhook at 0.8–1.8s; by 4.0s the chalk 'O' letters wash off into rising white ring-bubbles (Outypopo lipogram) while Turkey peers out; at 6.8–9.2s satchel-wearing student fish inspect the sub across the glass as bolt #5 lights and the chalk chart updates.",
+    "note": "PAELEO & Video-to-Game PASS (crew-01, Lipogram · Outypopo): Handmade washed-chalk lipogram animation & articulated school fish, zero HUD/caption leakage on showCaptions:false, interactive state verified.",
+    "strip": "./checks/p03-strip.jpg"
+  },
+  {
+    "id": 4,
+    "station": "#04 · Belly",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0634; frame-diffs=[3.39,2.31,2.38,0.51]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Turkey's wing slides left ballast slot at 0.8–1.8s to trim down under a stone bridge arch, revealing a mossy Snapping Turtle resting on an antique brass skeleton key; at 4.0s the turtle extends head and legs from its shell like a rival submarine; at 6.8–9.2s Brook Trout watches the turtle rock blissfully over the brass key/rivets as bolt #3 glints.",
+    "note": "PAELEO & Video-to-Game PASS (crew-01, Threshold · SCION 48): Handmade shell-retreat state rig & bridge arch parallax, Setup A invariants intact, interactive state verified.",
+    "strip": "./checks/p04-strip.jpg"
+  },
+  {
+    "id": 5,
+    "station": "#05 · Scope",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0426; frame-diffs=[8.84,4.54,4.91,2.32]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Left ballast trim at 0.8–1.8s brings the porthole onto an air/creek waterline split-plane (autumn maple leaves in golden air above, emerald creek below) where two ringed Raccoon paws scrub a shiny tin plate across the meniscus at 4.0s; at 6.8–9.2s the paws lift the dripping pie tin onto surface ripples while a Brook Trout inspects from underwater and bolt #6 glints.",
+    "note": "PAELEO & Video-to-Game PASS (crew-01, Split Plane · SCION 44): Handmade dual-medium refraction & articulated raccoon paws, clear two-way visual reading, interactive state verified.",
+    "strip": "./checks/p05-strip.jpg"
+  },
+  {
+    "id": 6,
+    "station": "#06 · Stern",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0638; frame-diffs=[8.27,3.28,4.62,1.40]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle flips at 0.8–1.8s, illuminating Sheriff Carp (wearing a tin star badge) holding a 12-inch wooden ruler beside a feathered lure to measure pan/ID length at 4.0s; at 6.8–9.2s Deputy Brook Trout swims in inspecting the feather lure across from Turkey inside the glass while bolt #4 glows and the chalk chart marks gold.",
+    "note": "PAELEO & Video-to-Game PASS (crew-02, Detective · Oulipopo): Handmade articulated Sheriff Carp & ruler rig, zero text leakage on showCaptions:false, interactive state verified.",
+    "strip": "./checks/p06-strip.jpg"
+  },
+  {
+    "id": 7,
+    "station": "#07 · Hatch",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0609; frame-diffs=[3.73,5.83,5.61,1.44]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Left ballast trim at 0.8–1.8s steadies view on six choir trout encircling a moored spiky naval mine that transforms at 4.0s into a colorful striped Star Birthday Pinata; at 6.8–9.2s Brook Trout enters with celebratory sound waves and confetti facing Turkey behind the glass as bolt #2 glints.",
+    "note": "PAELEO & Video-to-Game PASS (crew-02, Sound-Action · SCION 47): Handmade 6-trout choir & mine-to-pinata metamorphosis rig, Setup A invariants intact, interactive state verified.",
+    "strip": "./checks/p07-strip.jpg"
+  },
+  {
+    "id": 8,
+    "station": "#08 · Gauge",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0465; frame-diffs=[12.82,2.98,4.04,1.71]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle at 0.8–1.8s illuminates a foreground Creek Snail crawling across an inked 'X' on a translucent parchment creek map at 4.0s (circling X vs eating the map); at 6.8–9.2s a giant magnified amber Turkey eye looms behind the glass while Brook Trout swims up to inspect the golden snail-shell pebble and bolt #6 glints.",
+    "note": "PAELEO & Video-to-Game PASS (crew-02, Occlusion · SCION 45): Handmade foreground-occlusion snail & parchment map rig, zero static JPG zoom, interactive state verified.",
+    "strip": "./checks/p08-strip.jpg"
+  },
+  {
+    "id": 9,
+    "station": "#09 · Port",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0654; frame-diffs=[6.99,2.56,5.70,0.38]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Left ballast slot slid at 0.8–1.8s over drowned yellow parking-lot stripes as a shopper trout pushes a loaded 3D wire grocery cart straight toward the porthole at 4.0s (supply convoy vs ramming cage); at 6.8–9.2s a green returnable glass bottle floats up from the cart as Turkey and Trout face off across the aisle and bolt #2 lights.",
+    "note": "PAELEO & Video-to-Game PASS (crew-02, Inversion · SCION 19): Handmade perspective wire-cart & wobbling wheel rig, clear two-pass visual staging, interactive state verified.",
+    "strip": "./checks/p09-strip.jpg"
+  },
+  {
+    "id": 10,
+    "station": "#10 · PA",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0532; frame-diffs=[9.46,3.74,4.04,1.24]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle flips at 0.8–1.8s, lighting a mossy red-brick school wall where a single-hinge ribbed clam-shell PA speaker snaps open and shut emitting concentric acoustic waves toward small fish at 4.0s (snapping jaw vs morning intercom); at 6.8–9.2s a student Brook Trout swims in with a hall-pass tag facing Turkey as bolt #4 glints.",
+    "note": "PAELEO & Video-to-Game PASS (crew-02, Single Hinge · SCION 13): Handmade single-hinge jaw/PA pivot & brick multiplane rig, Setup A invariants intact, interactive state verified.",
+    "strip": "./checks/p10-strip.jpg"
+  },
+  {
+    "id": 11,
+    "station": "#11 · Tank",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0942; frame-diffs=[6.26,1.87,3.12,1.70]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Left ballast trim at 0.8–1.8s reveals a tilted red-and-white Igloo water cooler wedged on creek stones trailing three clear vinyl tubes pulsing air packets to small chubs alongside a drifting cup at 4.0s (picnic litter vs gill life-support); at 6.8–9.2s Brook Trout presses the cooler spigot releasing golden fizzy soda bubbles while bolt #2 lights.",
+    "note": "PAELEO & Video-to-Game PASS (crew-03, Bricolage · SCION 29): Handmade brass T-splice & pulsing vinyl tubing rig, zero text leakage on showCaptions:false, interactive state verified.",
+    "strip": "./checks/p11-strip.jpg"
+  },
+  {
+    "id": 12,
+    "station": "#12 · Keel",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0423; frame-diffs=[6.64,3.53,3.12,1.80]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle flips at 0.8–1.8s, lighting a 4-plane corrugated cardboard theater stage with scalloped valance, swirling green Floor Porthole, and popping red arrow sign at 4.0s (whirlpool drain vs tourist trap); at 6.8–9.2s Brook Trout takes a stage bow under a vertical spotlight beam while Turkey watches and bolt #6 glints.",
+    "note": "PAELEO & Video-to-Game PASS (crew-03, Cutout Stage · SCION 31): Handmade multiplane cardboard proscenium & Sea-of-Holes spiral rig, interactive state verified.",
+    "strip": "./checks/p12-strip.jpg"
+  },
+  {
+    "id": 13,
+    "station": "#13 · Arch",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0834; frame-diffs=[5.38,1.82,3.17,1.56]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Left ballast trim at 0.8–1.8s steadies sub before a mossy stone boulder arch from which a brass bell hangs on a twig with a red tripwire/clapper cord amid darting fry at 4.0s (tripwire alarm vs dinner bell); at 6.8–9.2s Brook Trout circles clockwise under the arch ringing the brass bell while Turkey watches and bolt #4 lights.",
+    "note": "PAELEO & Video-to-Game PASS (crew-03, Clockwise Etiquette · SCION 48): Handmade pendulum bell-arch & clockwise ferry state rig, Setup A invariants intact, interactive state verified.",
+    "strip": "./checks/p13-strip.jpg"
+  },
+  {
+    "id": 14,
+    "station": "#14 · Tower",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0346; frame-diffs=[6.60,2.37,3.48,1.73]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle at 0.8–1.8s catches a sinking crimson sugar-maple leaf fluttering in pendulum arcs with glowing ember sparks and misty background leaves at 4.0s (underwater spark vs autumn calendar); at 6.8–9.2s Brook Trout follows the glowing crimson leaf past Turkey's silhouette as bolt #2 glints.",
+    "note": "PAELEO & Video-to-Game PASS (crew-03, Seasonal Timer · SCION 11): Handmade Norstein-mist multiplane & pendulum leaf rig, zero static JPG zoom, interactive state verified.",
+    "strip": "./checks/p14-strip.jpg"
+  },
+  {
+    "id": 15,
+    "station": "#15 · Lens",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0294; frame-diffs=[14.04,2.10,3.00,2.06]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle at 0.8–1.8s lights a 3x3 mortar-grouted cyan glass-block wall whose independent tiles refract a phase-shifted/scrambled sub silhouette at 4.0s (cracked glass vs scrambled sub); at 6.8–9.2s Brook Trout crosses behind the 3x3 grid alongside nine tiny bobbing chicken heads across the nine cells while bolt #6 lights.",
+    "note": "PAELEO & Video-to-Game PASS (crew-03, Grid Phase Shift · SCION 22): Handmade per-tile ctx.clip() refraction grid & 9-cell motif, Setup A invariants intact, interactive state verified.",
+    "strip": "./checks/p15-strip.jpg"
+  },
+  {
+    "id": 16,
+    "station": "#16 · Aft",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.1075; frame-diffs=[3.57,3.20,3.76,1.15]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Turkey's wing slides left ballast slot at 0.8–1.8s inside the dented bread-tin cockpit, steadying sightline on an identical twin Turkey Sub whose periscope and mechanical arm wave back with temporal lag at 4.0s (pond mirror vs yesterday's crew); at 6.8–9.2s a spotted Brook Trout crosses two overlapping tin hulls in traffic-jam/two-headed alignment while bolt #4 glints and the chalk chart marks gold.",
+    "note": "PAELEO & Video-to-Game PASS (crew-04, Temporal Double · SCION 36): Handmade twin-hull articulated wave rig, zero text leakage on showCaptions:false, interactive state verified.",
+    "strip": "./checks/p16-strip.jpg"
+  },
+  {
+    "id": 17,
+    "station": "#17 · Dorsal",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0873; frame-diffs=[7.17,2.41,2.69,1.12]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle flips at 0.8–1.8s, illuminating five upright trout councilors around a semicircular limestone table gesturing with budget ledgers and gavels at 4.0s (high-court jury vs stalled board); at 6.8–9.2s a larger Brook Trout swims across the table as taxpayer witness / meter inspector while bolt #4 glows and the chalk route completes.",
+    "note": "PAELEO & Video-to-Game PASS (crew-04, Committee Clinamen · Oulipo): Handmade 5-councilor articulated table rig, clear two-pass visual staging, interactive state verified.",
+    "strip": "./checks/p17-strip.jpg"
+  },
+  {
+    "id": 18,
+    "station": "#18 · Vent",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0872; frame-diffs=[5.14,1.91,2.19,1.32]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle at 0.8–1.8s lights a sunken brass-bound steamer trunk with a 5-point star cutout peephole where an inner eye/magic gleam peers back at 4.0s (sunken pirate chest vs magic box); at 6.8–9.2s the trunk lid hinges open into a stage box as Brook Trout swims past the glowing star cutout and bolt #2 lights.",
+    "note": "PAELEO & Video-to-Game PASS (crew-04, Reverse Peephole · SCION 17): Handmade hinged steamer trunk & star peephole rig, Setup A invariants intact, interactive state verified.",
+    "strip": "./checks/p18-strip.jpg"
+  },
+  {
+    "id": 19,
+    "station": "#19 · Bilge",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.0895; frame-diffs=[3.14,2.51,2.48,0.89]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Left ballast module engaged at 0.8–1.8s shifts depth around a suspended Russet potato radially skewered with 10 striped bendy straws flexing and venting pressure bubbles at 4.0s (spiky sea urchin vs 14.7 PSI meter); at 6.8–9.2s Brook Trout approaches the straw tips to judge/nibble the potato as bolt #4 glints.",
+    "note": "PAELEO & Video-to-Game PASS (crew-04, Hydrostatic Gauge · SCION 09): Handmade flexing 10-straw hydrostatic potato rig, zero static JPG zoom, interactive state verified.",
+    "strip": "./checks/p19-strip.jpg"
+  },
+  {
+    "id": 20,
+    "station": "#20 · Dome",
+    "critic": "critic-1",
+    "status": "passed",
+    "measured": "1280x720 24fps 10.02s (240f) h264/yuv420p + 44.1kHz AAC rms=0.1219; frame-diffs=[7.93,2.77,2.71,1.16]; interactive state verified (0 errors)",
+    "blind_reading": "Uncaptioned strip: Right lamp toggle at 0.8–1.8s ignites rainbow refracted sunbeams through a Gothic lancet arch window of colored river pebbles flanked by small singing choir fish at 4.0s (sunken palace vs river choir loft); at 6.8–9.2s Brook Trout glides beside the glowing pebble lancet eyeing the brass porthole jar/bell as bolt #2 lights.",
+    "note": "PAELEO & Video-to-Game PASS (crew-04, Refracted Sunbeams · SCION 24): Handmade stained-glass pebble lancet & volumetric caustics rig, interactive state verified.",
+    "strip": "./checks/p20-strip.jpg"
+  }
+]
