@@ -38,11 +38,16 @@
       --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
       --body: "Literata", Georgia, "Iowan Old Style", serif;
       --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --masthead-h: 58px;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
     [hidden] { display: none !important; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--masthead-h, 58px) + 14px);
+      -webkit-text-size-adjust: 100%;
+    }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
     body {
@@ -165,14 +170,15 @@
       display: grid;
       grid-template-columns: minmax(290px, 356px) minmax(0, 1fr);
       align-items: start;
-      min-height: calc(100dvh - 52px);
+      min-height: calc(100dvh - var(--masthead-h, 58px));
     }
 
     /* ── LEFT CATALOGUE SIDEBAR (#01–#55) ── */
     .catalogue {
       position: sticky;
-      top: 50px;
-      height: calc(100dvh - 50px);
+      top: var(--masthead-h, 58px);
+      height: calc(100dvh - var(--masthead-h, 58px));
+      scroll-margin-top: var(--masthead-h, 58px);
       display: flex;
       flex-direction: column;
       border-right: 2px solid var(--ink);
@@ -180,7 +186,7 @@
       min-width: 0;
     }
     .catalogue-head {
-      padding: 14px 16px 10px;
+      padding: 18px 16px 12px;
       border-bottom: 1px solid var(--rule);
       display: flex;
       align-items: baseline;
@@ -349,6 +355,7 @@
     /* ── RIGHT OPERATOR DESK FOR SELECTED PORTHOLE #NN ── */
     .selection {
       padding: clamp(18px, 3vw, 32px) clamp(16px, 3.2vw, 40px) 80px;
+      scroll-margin-top: calc(var(--masthead-h, 58px) + 14px);
       min-width: 0;
       display: grid;
       gap: 24px;
@@ -2159,6 +2166,21 @@
         syncRigButtons();
       }
 
+      function syncMastheadHeight() {
+        var mh = document.querySelector(".masthead");
+        if (!mh) return;
+        var h = Math.ceil(mh.getBoundingClientRect().height);
+        if (h > 20) {
+          document.documentElement.style.setProperty("--masthead-h", h + "px");
+        }
+      }
+      syncMastheadHeight();
+      window.addEventListener("resize", syncMastheadHeight);
+      if (typeof ResizeObserver !== "undefined") {
+        var mhEl = document.querySelector(".masthead");
+        if (mhEl) new ResizeObserver(syncMastheadHeight).observe(mhEl);
+      }
+
       function selectPorthole(id, updateHash) {
         var clamped = Math.max(1, Math.min(55, parseInt(id, 10) || 1));
         selectedId = clamped;
@@ -2170,8 +2192,16 @@
         renderSelection();
 
         var curBtn = stationListEl.querySelector('[aria-current="true"]');
-        if (curBtn && typeof curBtn.scrollIntoView === "function") {
-          curBtn.scrollIntoView({ block: "nearest" });
+        if (curBtn && stationListEl) {
+          var btnTop = curBtn.offsetTop - stationListEl.offsetTop;
+          var btnBot = btnTop + curBtn.offsetHeight;
+          var viewTop = stationListEl.scrollTop;
+          var viewBot = viewTop + stationListEl.clientHeight;
+          if (btnTop < viewTop + 8) {
+            stationListEl.scrollTop = Math.max(0, btnTop - 12);
+          } else if (btnBot > viewBot - 8) {
+            stationListEl.scrollTop = Math.max(0, btnBot - stationListEl.clientHeight + 16);
+          }
         }
       }
 
