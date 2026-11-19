@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>55 Duck/Rabbit Porthole Seeds · Turkey Sub</title>
+  <meta name="description" content="55 cinematic duck/rabbit porthole seeds for Trout Town · Turkey Sub, drawn from film, archive, and fiction sources.">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <style>
+    :root {
+      --paper: #faf8f3;
+      --ink: #14181a;
+      --ink-2: #394246;
+      --mute: #6b767c;
+      --rule: #dfdad0;
+      --rule-dark: #14181a;
+      --turkey: #9e3d1c;
+      --trout: #1d596e;
+      --rule-col: #2d6846;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 14.5px;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button, input { font: inherit; color: inherit; }
+    button { cursor: pointer; background: none; border: 0; padding: 0; }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: clamp(18px, 3.5vw, 38px) clamp(14px, 3.5vw, 28px) 72px;
+    }
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 12.5px;
+    }
+    header {
+      padding: 18px 0 16px;
+      border-bottom: 2px solid var(--rule-dark);
+    }
+    h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(28px, 4.4vw, 40px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+    }
+    .sub {
+      margin: 0;
+      color: var(--ink-2);
+      max-width: 72ch;
+      font-size: 15.5px;
+    }
+
+    .bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--rule);
+      position: sticky;
+      top: 0;
+      background: var(--paper);
+      z-index: 10;
+    }
+    .tabs {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 13.5px;
+    }
+    .tab { color: var(--mute); padding: 3px 0; }
+    .tab.active {
+      color: var(--ink);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .right-tools {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .search {
+      border: 0;
+      border-bottom: 1px solid var(--rule);
+      background: transparent;
+      padding: 4px 2px;
+      font-size: 16px;
+      width: 210px;
+    }
+    .search:focus { outline: none; border-bottom-color: var(--ink); }
+    .btn {
+      border: 1px solid var(--rule-dark);
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+    }
+    th {
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--mute);
+      padding: 10px 8px;
+      border-bottom: 1.5px solid var(--rule-dark);
+    }
+    td {
+      padding: 11px 8px;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+    }
+    tr:hover td { background: #f2eee4; }
+    .col-port {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      white-space: nowrap;
+      width: 115px;
+    }
+    .src {
+      display: block;
+      margin-top: 3px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--mute);
+    }
+    .turkey-view { color: var(--turkey); }
+    .trout-view { color: var(--trout); }
+    .col-rule {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--rule-col);
+      width: 175px;
+    }
+
+    @media (max-width: 780px) {
+      thead { display: none; }
+      table, tbody, tr, td { display: block; width: 100%; }
+      tr {
+        padding: 12px 0;
+        border-bottom: 1.5px solid var(--rule);
+      }
+      td { border: 0; padding: 3px 0; }
+      .col-port { width: auto; font-size: 13px; }
+      .col-rule { width: auto; margin-top: 4px; }
+      .turkey-view::before { content: "Turkey out: "; font-weight: 700; }
+      .trout-view::before { content: "Trout in: "; font-weight: 700; }
+      .search { width: 100%; }
+    }
+
+    @media print {
+      @page { size: letter landscape; margin: 0.42in; }
+      body { background: #fff; font-size: 10.5px; line-height: 1.32; }
+      .wrap { max-width: none; padding: 0; }
+      .top-nav, .bar { display: none !important; }
+      header { padding: 0 0 8px; }
+      h1 { font-size: 20px; margin-bottom: 3px; }
+      .sub { font-size: 11px; }
+      th, td { padding: 5px 6px; }
+      tr { break-inside: avoid; page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="top-nav">
+      <a href="./index.html">← Turkey Sub</a>
+      <span>PAE-09 · 55-Porthole Duck/Rabbit Seed Deck</span>
+    </nav>
+
+    <header>
+      <h1>55 Portholes on One Submarine</h1>
+      <p class="sub">Every circular window frames one shared silhouette from film, archive, or fiction—read one way by a nervous Turkey looking out before Thanksgiving, and the opposite way by Trout Town citizens looking in.</p>
+    </header>
+
+    <div class="bar">
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab active" data-f="all">All (55)</button>
+        <button type="button" class="tab" data-f="orig">#01–#30 (Core Deck)</button>
+        <button type="button" class="tab" data-f="new">#31–#55 (Archive, Film &amp; Fiction)</button>
+        <button type="button" class="tab" data-f="film">Film &amp; Animation</button>
+        <button type="button" class="tab" data-f="archive">Archive &amp; Creek</button>
+        <button type="button" class="tab" data-f="fiction">Fiction &amp; Ouxpo</button>
+      </div>
+      <div class="right-tools">
+        <input type="search" class="search" id="q" placeholder="Filter portholes…" aria-label="Filter portholes">
+        <a class="btn" href="./kits/PAE-09_55_Porthole_Duck_Rabbit_Deck.pdf" target="_blank" rel="noopener">PDF</a>
+        <button type="button" class="btn" onclick="window.print()">Print</button>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Porthole</th>
+          <th>Outside Rim Clue &amp; Lineage Source</th>
+          <th>Turkey Sees Out (Duck)</th>
+          <th>Trout Sees In (Rabbit)</th>
+          <th>Ouxpo / SCION Rule</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <script>
+    var SEEDS = [
+      // #01 - #30 (Upgraded with Film/Archive/Fiction Lineage + Explicit Two-Way Duck/Rabbit Split)
+      ["#01 · Bow", "Giant Size-11 rubber wader boot blocking the headlamp beam", "Monty Python (Gilliam, 1969) · Worksheet V07", "A sunken shipwreck tunnel—or a giant farmer stepping on us!", "A noisy glowing toe-warmer wedged under Fisherman’s Lost Boot!", "Silhouette (SCION 02): backlit shadow", "orig film"],
+      ["#02 · Galley", "Riffle Diner window: Trout Cook waving a giant silver baster", "TROUTOWN Ep. 5 (Something in the Kitchen)", "Run! He’s basting me for Thanksgiving dinner!", "Friendly UFO mechanic here to pump fresh air into our fry tank!", "Double Take (Oubapo): dual prop", "orig film"],
+      ["#03 · Starbd", "Room 4 slate chalkboard listing WANTED: HOOK MONSTER", "TROUTOWN Ep. 2 (The School of Fish)", "Wait—did I commit a river crime before I bonked my head?!", "Look inside the glass—the feathered Hook Monster brought a metal shell!", "Lipogram (Outypopo): washed chalk", "orig film"],
+      ["#04 · Belly", "Old Bridge: mossy Snapping Turtle sitting on a brass key", "PAELEO Flood Pulse #11 · Verne I.14", "A rival armored submarine guarding the surface lock key!", "A shiny yellow boulder trying to steal my favorite brass back-scratcher!", "Threshold (SCION 48): shell retreat", "orig archive"],
+      ["#05 · Scope", "Half-submerged waterline: Raccoon hands washing a tin pie plate", "PAELEO Twelve Deeds #04 · Flood Pulse", "A masked bandit stripping hubcaps off our hull!", "A floating dish-dryer bubbling warm water right under my paws!", "Split Plane (SCION 44): air / creek", "orig archive"],
+      ["#06 · Stern", "Sheriff Carp holding a ruler against a striped turkey-feather lure", "PAELEO Flood Pulse #19 · Oulipopo", "He’s measuring me for a roasting pan—hide my tailfeathers!", "Aha! Identical tailfeathers inside the glass—book the suspect!", "Detective (Oulipopo): wrong suspect", "orig fiction"],
+      ["#07 · Hatch", "River Choir gathered around a sunken papier-mâché Birthday Piñata", "Walland Grade 4 Sheet · Lumineers (2013)", "A spiked naval contact mine—don’t bump the nose!", "Hooray, the birthday clown arrived inside a giant brass kazoo!", "Sound-Action (SCION 47): pitch shift", "orig film"],
+      ["#08 · Gauge", "Snail Mail in postal cap crawling across the Creek Map on the glass", "Porthole Post Call (2026)", "A giant sea-slug eating our only map home!", "Hey Pilot, I’m circling the shortcut—why are you tapping my belly?!", "Occlusion (SCION 45): giant snail", "orig film"],
+      ["#09 · Port", "Flooded Dollar General aisle: Trout pushing a squeaky wire cart", "PAE-09 v2 #09 · TVA Drawdown Archive", "An ironclad ramming cage charging our port side!", "Rude out-of-state shopper blocking Express Lane 3 without a basket!", "Inversion (SCION 19): creek drag", "orig archive"],
+      ["#10 · PA", "Elementary brick wall: flapping giant Clam-Shell PA speaker", "tUnE-yArDs: Water Fountain (2014)", "A snapping bone-crusher jaw barking orders!", "Why is the new substitute principal staring out of a brass lunchbox?", "Single Hinge (SCION 13): jaw pivot", "orig film"],
+      ["#11 · Tank", "Floating orange Igloo Water Cooler trailing clear vinyl tubing", "Apollo 13 Bricolage · Verne I.14", "Emergency oxygen scrubber—reel that hose in!", "Hey, that tin turkey is siphoning punch from the Little League cooler!", "Bricolage (SCION 29): hose splice", "orig archive"],
+      ["#12 · Keel", "Cardboard proscenium stage framing a glowing green Floor Porthole", "Yellow Submarine (1968 · Sea of Holes)", "A bottomless whirlpool drain—full reverse!", "Step right up—1 dollar to peek up at the real live Sky-Gobbler!", "Cutout Stage (SCION 31): rib zoom", "orig film"],
+      ["#13 · Arch", "Bell Boulder stone arch hung with a tarnished brass twig-bell", "TROUTOWN Ep. 3 (Trading on the Current)", "A booby-trapped alarm gate—don’t brush the wire!", "Ring once for ferry service! Why is that bird sweating?", "Clockwise Etiquette (SCION 48)", "orig film"],
+      ["#14 · Tower", "Single crimson November maple leaf sinking past the periscope", "Yuri Norstein · Autumn Timer", "Hull breach! Sparks or hot embers drifting underwater!", "Uh-oh, red leaf means Thanksgiving week—hide the bird from the surface!", "Seasonal Timer (SCION 11)", "orig film"],
+      ["#15 · Lens", "Wall of cyan glass bathroom blocks slicing the view into squares", "Yellow Submarine (1968 · 00:19 Grid)", "Our porthole lens is shattering into pixels!", "Whoa—a scrambled cubist rooster in nine separate aquarium tanks!", "Grid Phase Shift (SCION 22)", "orig film"],
+      ["#16 · Aft", "Identical brass Turkey Sub nose-to-nose waving back in the murk", "Yellow Submarine (1968 · Sea of Time)", "Just a pond mirror—phew, I’m handsome!", "Wait—that’s YESTERDAY’S Turkey Sub warning him not to press red!", "Temporal Double (SCION 36)", "orig film"],
+      ["#17 · Dorsal", "Seven Trout Council elders in spectacles arguing around a flat rock", "Queneau / Oulipo · Calvino", "A grim tribunal deciding whether to impound me!", "Quiet, everyone—the UFO budget consultant is about to blink once for Yes!", "Committee Clinamen (Oulipo)", "orig fiction"],
+      ["#18 · Vent", "Sunken steamer trunk with a glowing star-shaped cutout peephole", "The Shins: The Rifle’s Spiral (Caliri, 2012)", "Sunken pirate treasure chest—pry the latch!", "Backstage dressing-room trunk—the feathered magician missed his cue!", "Reverse Peephole (SCION 17)", "orig film"],
+      ["#19 · Bilge", "Raw Russet potato skewered with ten striped bendy straws", "PAE-09 Hydrostatic Lab · Cosmicomics", "A spiky venomous sea urchin—steer clear!", "Careful, one peck from that metal beak ruins our 4th-grade 14.7 PSI barometer!", "Hydrostatic Gauge (SCION 09)", "orig fiction"],
+      ["#20 · Dome", "Sunbeams slanting through a stained-glass pebble chapel window", "Cartoon Saloon: Song of the Sea (2014)", "We discovered sunken Atlantis!", "Shh—a glowing golden choir-organ pipe floated into rehearsal!", "Refracted Sunbeams (SCION 24)", "orig film"],
+      ["#21 · Fwd", "Five oversized Trout commuters tapping glowing bus tablets in a row", "TROUTOWN Ep. 6 (The Fish Don’t Negotiate)", "Giant cyber-trout locking torpedo sonar onto us!", "Look out the bus window, kids—a tiny wind-up bath toy!", "Collage Scale (SCION 33)", "orig film"],
+      ["#22 · Trim", "FinFlex Coach in sweatband leading 12 trout in synchronized squats", "Oumupo Loop · Busby Berkeley", "Hostile river guards charging a tail-slap attack!", "Nice form in the glass, Bird—now bob your head on beat four!", "Synchronized Loop (SCION 14)", "orig film"],
+      ["#23 · Scope B", "Pink sea-anemone wall clock ticking loudly toward 3:15", "Yellow Submarine (1968 · Stippled Clock)", "A carnivorous time-bomb flower counting down!", "Dismissal bell in two minutes—everybody line up behind the yellow school sub!", "Organic Dial (SCION 18)", "orig film"],
+      ["#24 · Rudder", "Tangle of chewed green twine net drifting from Trap Pond", "Verne II.18 (The Fouled Screw)", "A hunter’s turkey snare—keep the propeller clear!", "Quick, borrow that bird’s tin-opener beak to cut Uncle Brook loose!", "Severed Tether (SCION 41)", "orig fiction"],
+      ["#25 · Lock", "Diner Trout strolling along the gravel wearing an inverted fishbowl", "Oubapo Visual Inversion · Sandy Cheeks", "A fellow dry-air aquanaut—maybe he has spare oxygen!", "Check out the fancy giant wearing a whole submarine as a necktie!", "Inverted Helmet (Oubapo)", "orig fiction"],
+      ["#26 · Boiler", "Glowing orange coal seam bubbling warm plumes from the riverbed", "Verne II.10 (Submarine Coal Mine)", "Underwater volcano—we’re about to Poach at 212°F!", "Free geothermal hot-tub—come warm your brass rivets, stranger!", "Thermal Plume (SCION 51)", "orig fiction"],
+      ["#27 · Port M", "Sunken rabbit-ear CRT television looping an AlgaeWipe 3000 ad", "PAELEO Flood Pulse #17 · Nam June Paik", "An encrypted surface distress broadcast!", "Hey, the guy inside the round TV channel looks just like a wet chicken!", "Frame-in-Frame (SCION 27)", "orig archive"],
+      ["#28 · Stbd M", "Hundred silver minnows weaving a tight S-curve arrow in the murk", "Verne II.4 (Arabian Tunnel) · SCION 06", "A living silver lasso coiling to tie us down!", "Follow our tail-arrow, dummy—the bridge culvert is three bends left!", "Flock Ribbon (SCION 06)", "orig fiction"],
+      ["#29 · Deck", "Open family photo album shedding sepia snapshots in the current", "Perec & Bober: Récits d’Ellis Island (1980)", "Sunken mailbag spill—catch those addresses!", "Why is a metal tourist taking flash pictures of our grandparents?", "Drift Archive (SCION 39)", "orig archive"],
+      ["#30 · Top", "Six glowing vowel bubbles (A-E-I-O-U-Y) trapped under the bridge arch", "Juster: Phantom Tollbooth (1961) · Perec", "Floating plasma mines blocking the surface!", "Pop the E-bubble and nobody in Trout Town can say ‘TURKEY’ all day!", "Lipogram Password (Oulipo)", "orig fiction"],
+
+      // #31 - #55 (25 New Cinematic Portholes from Film, Archive & Fiction across turkey-sub)
+      ["#31 · Galley B", "Long dented bread-roll sandwich tin stamped WARM TO 375°F", "TROUTOWN Ep. 5 · Flood Pulse #21", "Abort! We swam straight into a giant Thanksgiving baking pan!", "Ooh, a cosy heated chrome ferry-cabin built just for chilly minnows!", "Thermal Inversion (SCION 51)", "new film"],
+      ["#32 · Beak Arm", "Extendable scissor-jack tongs pinching a rusted skeleton key", "Yellow Submarine (1968 · 02:22) · Tourkey #17", "Our mechanical claw recovered the Sunken Bridge key!", "Swim! The brass dentist is coming to pull Largemouth Bass’s gold tooth!", "Gadget Extension (SCION 13)", "new film"],
+      ["#33 · Salon", "Draped velvet iris window framing jagged culvert bar shadows", "Karel Zeman: Invention for Destruction (1958)", "A plush Victorian parlor view of a peaceful stone arch!", "Teeth shadows on the wall—that metal gourd has a mouth and wants lunch!", "Mystimation Silhouette (SCION 02)", "new film"],
+      ["#34 · Organ", "Cutaway brass boiler room where top-hatted figures pump bellows", "Georges Méliès: The Impossible Voyage (1904)", "A sister steam-sub crew offering us coal and pressure!", "Turn down that underwater polka organ—the baby trout just fell asleep!", "Cutaway Section (SCION 31)", "new film"],
+      ["#35 · Post #44", "1943 canvas parcel-post sack spilling tied letters beside Box #44", "Jack Delano LOC Archive (1943) · Old Loyston", "My lost mission orders from the surface—grab the string!", "Caught red-handed! The UFO is stuffing soggy bills into our P.O. boxes!", "Fixed-Shot Handoff (Oucipo)", "new archive"],
+      ["#36 · Bench", "Figure on a sunken park bench holding an unbroken wax-sealed letter", "Menu & Trondheim: One Plate, Two Strips", "An unopened Thanksgiving pardon—there’s still hope!", "Look at the unbroken seal—proof the bird never delivered our check!", "Iconic Iteration (Oubapo)", "new fiction"],
+      ["#37 · Bulkhead", "Creased paper silt-curtain where a claw and a fin meet across a fold", "Lécroart & Wilhelm Busch: Folded Dialogue", "A friendly handshake with Mayor Trout right at the glass!", "Unfold the middle crease—a Snapping Turtle is biting both of us!", "Folded Seam (Oubapo / V04)", "new fiction"],
+      ["#38 · Visor", "1978 posterboard UFO schematic covered in penciled fin prophecies", "Royal Robertson / Sufjan Stevens: Vesuvius", "Somebody drew blueprints of my homemade sub 48 years ago!", "According to the sacred chart, the Bird-In-A-Can grants three wishes!", "Annotated Schematic (SCION 25)", "new archive"],
+      ["#39 · Parlor", "Wallpapered submerged living room with armchair & tethered lamp", "Radiohead: Pyramid Song (Shynola, 2001)", "Dry air! Grandma’s living room! Open the hatch!", "Hey, who parked a giant yellow goldfish bowl on Aunt Brook’s rug?!", "Drowned Domesticity (SCION 20)", "new film"],
+      ["#40 · Reef", "Reef of spinning reel-to-reel tape decks & sugar-cube ziggurats", "Modest Mouse: Dashboard (Motion Theory, 2007)", "Giant white bouillon cubes and tangled cranberry ribbon!", "Every gobble you make is going straight onto FANTROL 88.7’s hit single!", "Reverse Tape Score (Outrapo)", "new film"],
+      ["#41 · Catwalk", "Photographic sea bream in sunglasses strolling past on stick legs", "Masaaki Yuasa: Mind Game (Studio 4°C, 2004)", "The fish have legs now—I’ll never make it back up the bank!", "Pity that poor feather-fish—he needs training wheels just to swim!", "Substrate Collision (SCION 22)", "new film"],
+      ["#42 · Ferry", "Two pin-jointed cutout elders standing between symmetrical trees", "Nina Paley: This Land Is Mine (2012)", "Polite tollbooth attendants waving us through the crossing!", "Don’t touch that ferry lantern—seven subs before you claimed this bend!", "Fixed Bank, New Mark (SCION 16)", "new film"],
+      ["#43 · Snout", "Crayon-spotted yellow shark pressing its nose flat against the port", "Wes Anderson: The Life Aquatic (2004)", "A 20-foot lemon-pepper monster tasting the glass!", "Do you think he remembers me? Tell the little bird his headlights are cute!", "Dollhouse Cutaway (SCION 31)", "new film"],
+      ["#44 · Rotor", "Hypnotic black-and-white spiral disc spinning punning words", "Marcel Duchamp: Anémic cinéma (1926)", "A whirlpool intake—we’re losing rudder control!", "Spin the Riffle Diner prize wheel—if the bird blinks, free algae pie!", "Rotating Type & Depth (Oucipo)", "new film"],
+      ["#45 · Extruder", "Pink plastic funnel sucking a kitchen baster backward into pellets", "Resnais & Queneau: Le Chant du styrène (1958)", "Miracle! All kitchen utensils are un-making themselves!", "Whoa—watch that tin bird blow glass bubbles out of raw gravel!", "Reverse Manufacture (Outrapo)", "new film"],
+      ["#46 · Steps", "Solid brass letters G-O-B-B-L-E tumbling down like stone steps", "Malle & Queneau: Zazie dans le métro (1960)", "My panicked squawk turned into heavy lead ballast!", "Thanks for dropping a brass staircase right up to the dry picnic bank!", "Verbal Slapstick (SCION 47)", "new film"],
+      ["#47 · Armada", "Raft of 100 upside-down canning jars lashed together with reed rope", "China Miéville: The Scar (2002) · Flood #13", "A floating Mason-jar cannery waiting to preserve me!", "Step aboard the 1948 Air-Pocket Bazaar—trade one feather per breath!", "Bricolage Armada (SCION 29)", "new fiction"],
+      ["#48 · Belfry", "Pointed tin church steeple poking above the winter drawdown line", "TVA Old Butler / Loyston Archive · Tourkey #20", "Dry land at last—perch on that roof peak!", "Quit clanging our underwater church roof, you’re scrambling choir practice!", "Waterline Acoustic Split (SCION 44)", "new archive"],
+      ["#49 · Corner", "Submerged 1940s traffic light blinking red beside a whistling Trout Cop", "TVA Old Butler Street Grid · Tourkey #11", "Red-and-green lights?! Did I black out until Christmas?!", "License and registration—your gourd ran a red eddy in a School Zone!", "Civic Law Clinamen (40 PSI)", "new archive"],
+      ["#50 · Riffle", "Three-inch Snail Darter perched in front of a sunken DAM sign", "1973 Tellico River Archive · Tourkey #05", "Tiny minnow—barely a speed bump!", "Back off, pal—I stopped a 200-foot concrete dam and I’ll boot your sub too!", "Scale Reversal (SCION 33)", "new archive"],
+      ["#51 · Grotto", "Basketball-sized glowing pearl wedged inside a giant stone clam", "Jules Verne: 20,000 Leagues (II.3 The Pearl)", "A peeled hard-boiled egg big enough for a giant’s salad!", "Don’t bump the town’s prize bowling ball—the clam snaps on odd rolls!", "Repeated Observation (SCION 41)", "new fiction"],
+      ["#52 · Bridge", "Taut red rope stretching from our nose crank into murky boulders", "PAELEO Film: The Other End of the Rope (2026)", "A kraken grabbed our anchor cable—cut the line!", "Hey! Un-jam your crank—you’re pulling the oak branch tighter across my door!", "Two Views Across Glass (SCION 17)", "new film"],
+      ["#53 · Flume", "Sunken iron gristmill wheel clicking open a stone cellar door", "Smokies Mingus Mill Archive · Tourkey #14", "A giant serrated pastry cutter rolling down the chute!", "Stick your key-nose in the gear—one click opens the root-beer vault!", "Reversible Gear Jam (SCION 43)", "new archive"],
+      ["#54 · Ledge", "Two-foot wrinkled Hellbender salamander swaying frilly skin folds", "Appalachian Creek Archive · Tourkey #08", "A wet ruffled gravy-boat monster staring into my soul!", "Cousin! With a wrinkly wattle like that, take off the tin suit and stay!", "Anatomical Double Take (Oubapo)", "new archive"],
+      ["#55 · Eddy", "Floating corked brass cylinder stuffed with 54 wet porthole postcards", "Jules Verne: 20,000 Leagues (II.19 Manuscript)", "Wait—that’s MY claw-writing! I sent myself to Trout Town!", "It’s Snail Mail’s dead-letter tube—let’s read what the alien wrote back!", "Recursive Worldtext (PAELEO ↻)", "new fiction"]
+    ];
+
+    var activeFilter = "all";
+    var qEl = document.getElementById("q");
+    var rowsEl = document.getElementById("rows");
+
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
+      });
+    }
+
+    function render() {
+      var q = (qEl.value || "").trim().toLowerCase();
+      var html = "";
+      SEEDS.forEach(function (r) {
+        var tags = r[6];
+        if (activeFilter !== "all" && tags.indexOf(activeFilter) === -1) return;
+        if (q && r.join(" ").toLowerCase().indexOf(q) === -1) return;
+        html += (
+          "<tr>" +
+            '<td class="col-port">' + esc(r[0]) + "</td>" +
+            "<td>" + esc(r[1]) + '<span class="src">' + esc(r[2]) + "</span></td>" +
+            '<td class="turkey-view">“' + esc(r[3]) + "”</td>" +
+            '<td class="trout-view">“' + esc(r[4]) + "”</td>" +
+            '<td class="col-rule">' + esc(r[5]) + "</td>" +
+          "</tr>"
+        );
+      });
+      rowsEl.innerHTML = html || '<tr><td colspan="5" style="padding:24px;color:var(--mute)">No matching portholes.</td></tr>';
+    }
+
+    document.querySelectorAll(".tab").forEach(function (btn) {
+      btn.onclick = function () {
+        activeFilter = btn.getAttribute("data-f");
+        document.querySelectorAll(".tab").forEach(function (b) { b.classList.toggle("active", b === btn); });
+        render();
+      };
+    });
+    qEl.oninput = render;
+    render();
+  </script>
+</body>
+</html>
