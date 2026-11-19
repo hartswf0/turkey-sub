@@ -1,0 +1,2268 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SCION / 55 Porthole Animation Swarms · Multi-SCION Operator Desk · Turkey Sub</title>
+  <meta name="description" content="BOLAS / PAELEO 55-Porthole Multi-SCION Workshop & Animation Operator Desk: 4 coordinated SCION swarms, foraged plate provenance, V2 vs. V1 side-by-side screening, 60fps playable rig, and copyable .md / .poml instructions.">
+  <meta name="theme-color" content="#fbfaf7">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=JetBrains+Mono:wght@400;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+  <style>
+    :root {
+      --paper: #fbfaf7;
+      --paper-2: #f3efe6;
+      --panel: #eef0f3;
+      --label: #fffdf8;
+      --ink: #14110d;
+      --ink-2: #5b5348;
+      --mute: #766e62;
+      --rule: #d6d3cc;
+      --rule-dark: #14110d;
+      --dusk: #2a3a63;
+      --dusk-2: #3c4f7c;
+      --lamp: #f2b85a;
+      --lamp-2: #9a6514;
+      --stamp: #d42a1e;
+      --teal: #0f8f80;
+      --kraft: #b98a52;
+
+      /* Canonical 4-Variation Rubric */
+      --beat-a: #14110d;   /* I · Real Creek */
+      --beat-b: #1d596e;   /* II · Probable · Turkey */
+      --beat-c: #0f8f80;   /* III · Plausible · Trout */
+      --beat-d: #d42a1e;   /* IV · Preposterous · Alien */
+
+      --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+      --body: "Literata", Georgia, "Iowan Old Style", serif;
+      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 16px/1.55 var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-color: var(--stamp);
+      text-underline-offset: 3px;
+    }
+    button, input, select { font: inherit; color: inherit; }
+    button { cursor: pointer; background: none; border: 0; padding: 0; }
+    :focus-visible { outline: 2px solid var(--stamp); outline-offset: 2px; }
+    img, video, canvas { max-width: 100%; display: block; }
+    code {
+      font-family: var(--mono);
+      font-size: 0.84em;
+      background: var(--panel);
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
+
+    .skip {
+      position: absolute;
+      left: 12px;
+      top: -60px;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 6px 12px;
+      z-index: 200;
+      text-decoration: none;
+    }
+    .skip:focus { top: 10px; }
+
+    .sr {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ── TOP BOLAS MASTHEAD ── */
+    .masthead {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(251, 250, 247, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--ink);
+      padding: 10px clamp(14px, 2.6vw, 28px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px 18px;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+    .masthead-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .back-link {
+      text-decoration: none;
+      color: var(--ink-2);
+      padding: 3px 8px;
+      border: 1px solid var(--rule);
+      background: var(--label);
+    }
+    .back-link:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+    .brand {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(20px, 2.3vw, 26px);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      text-decoration: none;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .brand span { color: var(--stamp); padding: 0 3px; }
+    .masthead-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .masthead-links a {
+      text-decoration: none;
+      color: var(--ink-2);
+      white-space: nowrap;
+    }
+    .masthead-links a:hover {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: var(--stamp);
+    }
+
+    /* ── TWO-COLUMN MONSIEUR RIPOIS OPERATOR DESK ── */
+    .desk {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(290px, 356px) minmax(0, 1fr);
+      align-items: start;
+      min-height: calc(100dvh - 52px);
+    }
+
+    /* ── LEFT CATALOGUE SIDEBAR (#01–#55) ── */
+    .catalogue {
+      position: sticky;
+      top: 50px;
+      height: calc(100dvh - 50px);
+      display: flex;
+      flex-direction: column;
+      border-right: 2px solid var(--ink);
+      background: var(--paper-2);
+      min-width: 0;
+    }
+    .catalogue-head {
+      padding: 14px 16px 10px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .catalogue-head h1 {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 24px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin: 0;
+      line-height: 1;
+    }
+    .catalogue-sub {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-2);
+    }
+    .browse-toggle {
+      display: none;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      padding: 4px 9px;
+      border: 1.5px solid var(--ink);
+      background: var(--label);
+    }
+    .catalogue-controls {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+    .search-box {
+      padding: 10px 14px 8px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 7px 10px;
+      border: 1.5px solid var(--ink);
+      background: var(--label);
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--ink);
+      border-radius: 2px;
+    }
+    .search-input::placeholder { color: var(--mute); }
+
+    .filter-pills {
+      padding: 0 14px 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .f-pill {
+      font-family: var(--mono);
+      font-size: 10.8px;
+      letter-spacing: 0.02em;
+      padding: 3px 7px;
+      border: 1px solid var(--ink-2);
+      background: var(--label);
+      color: var(--ink-2);
+      border-radius: 2px;
+    }
+    .f-pill:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+    .f-pill[aria-pressed="true"] {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--paper);
+      font-weight: 600;
+    }
+
+    .catalogue-count {
+      padding: 6px 14px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-2);
+      border-bottom: 1px solid var(--rule);
+      background: rgba(255, 253, 248, 0.55);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .station-list {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      padding: 6px 8px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .st-item {
+      display: grid;
+      gap: 3px;
+      width: 100%;
+      text-align: left;
+      padding: 8px 10px;
+      border: 1px solid transparent;
+      border-left: 3px solid transparent;
+      background: transparent;
+      border-radius: 2px;
+      transition: background-color 0.1s ease;
+    }
+    .st-item:hover {
+      background: var(--label);
+      border-color: var(--rule);
+      border-left-color: var(--ink-2);
+    }
+    .st-item[aria-current="true"] {
+      background: var(--label);
+      border-color: var(--ink);
+      border-left: 4px solid var(--stamp);
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+    .st-row1 {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .st-code {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1.05;
+      color: var(--ink);
+    }
+    .st-pass {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--teal);
+      font-weight: 600;
+    }
+    .st-clue {
+      font-size: 13px;
+      line-height: 1.3;
+      color: var(--ink-2);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .st-badge {
+      font-family: var(--mono);
+      font-size: 10.3px;
+      color: var(--dusk);
+      background: var(--panel);
+      padding: 1px 6px;
+      border-radius: 2px;
+      justify-self: start;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ── RIGHT OPERATOR DESK FOR SELECTED PORTHOLE #NN ── */
+    .selection {
+      padding: clamp(18px, 3vw, 32px) clamp(16px, 3.2vw, 40px) 80px;
+      min-width: 0;
+      display: grid;
+      gap: 24px;
+    }
+
+    /* 1. Header & Copy Actions */
+    .work-heading {
+      border: 2px solid var(--ink);
+      background: var(--label);
+      padding: 18px 22px;
+      display: grid;
+      gap: 10px;
+    }
+    .work-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .meta-pills {
+      display: flex;
+      align-items: center;
+      gap: 8px 10px;
+      flex-wrap: wrap;
+    }
+    .st-pill {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border: 1.5px solid var(--teal);
+      color: var(--teal);
+      font-weight: 600;
+      border-radius: 2px;
+    }
+    .style-pill {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      background: var(--panel);
+      border: 1px solid var(--rule);
+      color: var(--dusk);
+    }
+    .byline {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .step-btns {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+    .step-btn {
+      padding: 4px 9px;
+      border: 1.5px solid var(--ink);
+      background: var(--paper);
+    }
+    .step-btn:hover:not(:disabled) {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .step-btn:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .work-title {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(32px, 4.5vw, 54px);
+      line-height: 0.94;
+      text-transform: uppercase;
+      margin: 2px 0 0;
+      letter-spacing: 0.005em;
+    }
+    .work-title .station-prefix { color: var(--stamp); }
+    .work-thesis {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.48;
+      color: var(--ink-2);
+      max-width: 74ch;
+    }
+    .work-thesis strong { color: var(--ink); }
+
+    .actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      padding-top: 4px;
+    }
+    .btn {
+      border: 1.5px solid var(--ink);
+      background: var(--paper);
+      padding: 6px 12px;
+      border-radius: 2px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .btn.primary {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .btn.primary:hover {
+      background: var(--stamp);
+      border-color: var(--stamp);
+      color: #fff;
+    }
+    .btn.accent-teal {
+      border-color: var(--teal);
+      color: var(--teal);
+      background: var(--label);
+    }
+    .btn.accent-teal:hover {
+      background: var(--teal);
+      color: #fff;
+    }
+    .copy-status {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--teal);
+      font-weight: 600;
+    }
+
+    /* 2. Interactive Remake vs. V1 Stage */
+    .stage-shell {
+      border: 2px solid var(--ink);
+      background: var(--label);
+    }
+    .stage-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border-bottom: 2px solid var(--ink);
+      background: var(--paper-2);
+    }
+    .stage-tab {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 10px 14px;
+      border-right: 1px solid var(--rule);
+      color: var(--ink-2);
+      background: transparent;
+      position: relative;
+    }
+    .stage-tab:hover {
+      color: var(--ink);
+      background: rgba(255, 253, 248, 0.7);
+    }
+    .stage-tab[aria-selected="true"] {
+      background: var(--label);
+      color: var(--ink);
+      box-shadow: inset 0 -3px 0 var(--stamp);
+    }
+
+    .stage-body {
+      padding: 16px 18px 18px;
+      display: grid;
+      gap: 12px;
+    }
+    .screen-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #121519;
+      border: 1.5px solid var(--ink);
+      overflow: hidden;
+    }
+    .screen-frame video,
+    .screen-frame canvas {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .screen-frame canvas {
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .film-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .beat-jumps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .beat-chip {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 4px 9px;
+      border: 1.5px solid var(--ink);
+      background: var(--paper);
+      border-radius: 2px;
+    }
+    .beat-chip:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .beat-chip.b-a { border-left: 4px solid var(--beat-a); }
+    .beat-chip.b-b { border-left: 4px solid var(--beat-b); }
+    .beat-chip.b-c { border-left: 4px solid var(--beat-c); }
+    .beat-chip.b-d { border-left: 4px solid var(--beat-d); }
+
+    /* Compare V2 vs V1 Side-by-Side */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .compare-col {
+      display: grid;
+      gap: 6px;
+      min-width: 0;
+    }
+    .compare-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      border: 1.5px solid var(--ink);
+      background: var(--paper-2);
+    }
+    .compare-head.v2 {
+      border-left: 5px solid var(--stamp);
+      background: #fff9f5;
+    }
+    .compare-head.v1 {
+      border-left: 5px solid var(--ink-2);
+    }
+    .compare-note {
+      font-size: 13.5px;
+      line-height: 1.4;
+      color: var(--ink-2);
+      padding: 8px 10px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+    }
+
+    /* Live 60fps Rig Controls */
+    .snail-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 8px 10px;
+      background: var(--paper);
+      border: 1.5px solid var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+    }
+    .snail-stamp {
+      width: 11px;
+      height: 11px;
+      background: var(--stamp);
+      border: 1px solid var(--ink);
+      display: inline-block;
+      flex: 0 0 11px;
+    }
+    .snail-input {
+      flex: 1 1 240px;
+      min-width: 160px;
+      border: 0;
+      border-bottom: 1.5px solid var(--ink);
+      background: transparent;
+      padding: 3px 4px;
+      font-family: var(--body);
+      font-size: 14.5px;
+    }
+    .snail-input:focus { outline: none; border-bottom-color: var(--stamp); }
+
+    .rig-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 8px 10px;
+      background: var(--paper-2);
+      border: 1.5px solid var(--ink);
+      font-family: var(--mono);
+      font-size: 11.5px;
+    }
+    .rig-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .r-btn {
+      border: 1.5px solid var(--ink);
+      background: var(--label);
+      padding: 4px 8px;
+      font-family: var(--mono);
+      font-size: 11.2px;
+      font-weight: 600;
+    }
+    .r-btn.on { background: var(--ink); color: var(--paper); }
+    .r-btn.ed-v2 { border-color: var(--stamp); color: var(--stamp); }
+    .r-btn.ed-v2.on { background: var(--stamp); color: #fff; }
+    .r-btn.v-turkey { background: var(--beat-b); border-color: var(--beat-b); color: #fff; }
+    .r-btn.v-trout { background: var(--beat-c); border-color: var(--beat-c); color: #fff; }
+    .r-btn.v-alien { background: var(--beat-d); border-color: var(--beat-d); color: #fff; }
+
+    /* Reference Plates Tab */
+    .plates-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .plate-card {
+      border: 1.5px solid var(--ink);
+      background: var(--paper);
+      padding: 12px;
+      display: grid;
+      gap: 8px;
+    }
+    .plate-card img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      background: #14181c;
+      border: 1px solid var(--rule);
+    }
+    .plate-card.seed-plate img {
+      background: var(--label);
+      mix-blend-mode: multiply;
+    }
+    .plate-kicker {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--stamp);
+      font-weight: 600;
+    }
+
+    /* Blind Critic Strip Tab */
+    .critic-card {
+      border: 1.5px solid var(--ink);
+      background: var(--paper);
+      display: grid;
+      gap: 0;
+    }
+    .critic-head {
+      padding: 8px 12px;
+      background: var(--paper-2);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+    }
+    .critic-strip-img {
+      width: 100%;
+      height: auto;
+      background: #121519;
+      border-bottom: 1px solid var(--rule);
+    }
+    .critic-notes {
+      padding: 12px 14px;
+      display: grid;
+      gap: 8px;
+      font-size: 14.5px;
+      line-height: 1.5;
+    }
+    .critic-notes p { margin: 0; max-width: none; }
+
+    /* Provenance <details> matching BOLAS Screening Room */
+    .provenance-drawer {
+      border: 1.5px solid var(--ink);
+      background: var(--label);
+      padding: 10px 16px;
+    }
+    .provenance-drawer summary {
+      cursor: pointer;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--ink);
+      padding: 3px 0;
+    }
+    .provenance-body {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      gap: 12px;
+      font-size: 15px;
+    }
+    .provenance-body p { margin: 0; max-width: 82ch; }
+    .sources-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 6px;
+    }
+    .sources-list li {
+      padding: 6px 10px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--dusk);
+      font-size: 13.5px;
+      line-height: 1.42;
+    }
+    .src-kind {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 1px 5px;
+      background: var(--panel);
+      color: var(--dusk);
+      margin-right: 6px;
+      font-weight: 600;
+    }
+
+    /* Section Headings */
+    .sec-block {
+      display: grid;
+      gap: 14px;
+    }
+    .sec-head {
+      border-top: 5px solid var(--ink);
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .sec-head h3 {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(26px, 3.4vw, 36px);
+      text-transform: uppercase;
+      line-height: 0.96;
+      margin: 0;
+    }
+    .sec-head span {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-2);
+    }
+
+    /* 3. The 4 Coordinated SCION Swarms Grid */
+    .swarms-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .swarm-card {
+      border: 2px solid var(--ink);
+      background: var(--label);
+      padding: 14px 16px;
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      position: relative;
+    }
+    .swarm-card.sw-1 { border-top: 5px solid var(--stamp); }
+    .swarm-card.sw-2 { border-top: 5px solid var(--dusk); }
+    .swarm-card.sw-3 { border-top: 5px solid var(--teal); }
+    .swarm-card.sw-4 { border-top: 5px solid var(--lamp-2); }
+
+    .sw-kicker {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-2);
+    }
+    .sw-num {
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .swarm-card h4 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 25px;
+      line-height: 1.02;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .sw-byline {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--ink-2);
+      margin: 0;
+    }
+    .sw-quote {
+      margin: 0;
+      padding: 6px 10px;
+      border-left: 3px solid var(--kraft);
+      background: var(--paper);
+      font-style: italic;
+      font-size: 14.5px;
+      line-height: 1.42;
+    }
+    .sw-detail {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--ink-2);
+    }
+    .swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+    .swatch-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 2px 6px;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      font-family: var(--mono);
+      font-size: 10.5px;
+    }
+    .swatch-dot {
+      width: 12px;
+      height: 12px;
+      border: 1px solid var(--ink);
+      display: inline-block;
+    }
+    .tech-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 6px;
+    }
+    .tech-list li {
+      padding: 6px 8px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      font-size: 13.5px;
+      line-height: 1.35;
+    }
+    .tech-code {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--teal);
+      margin-right: 5px;
+    }
+    .sw-link {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* 4. 4-Beat Student Cutaway Ledger */
+    .beats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .beat-card {
+      border: 1.5px solid var(--ink);
+      border-left-width: 5px;
+      background: var(--label);
+      padding: 12px 14px;
+      display: grid;
+      gap: 5px;
+    }
+    .beat-card.bc-a { border-left-color: var(--beat-a); }
+    .beat-card.bc-b { border-left-color: var(--beat-b); }
+    .beat-card.bc-c { border-left-color: var(--beat-c); }
+    .beat-card.bc-d { border-left-color: var(--beat-d); }
+    .beat-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .beat-card.bc-a .beat-label { color: var(--beat-a); font-weight: 600; }
+    .beat-card.bc-b .beat-label { color: var(--beat-b); font-weight: 600; }
+    .beat-card.bc-c .beat-label { color: var(--beat-c); font-weight: 600; }
+    .beat-card.bc-d .beat-label { color: var(--beat-d); font-weight: 600; }
+    .beat-phrase {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 24px;
+      line-height: 1.05;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .beat-vo {
+      font-size: 13.5px;
+      font-style: italic;
+      color: var(--ink-2);
+    }
+
+    /* Full Copyable Multi-SCION Prompt Box */
+    .prompt-shell {
+      border: 2px solid var(--ink);
+      background: var(--label);
+    }
+    .prompt-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 8px 14px;
+      background: var(--paper-2);
+      border-bottom: 1.5px solid var(--ink);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+    .p-tabs {
+      display: flex;
+      gap: 6px;
+    }
+    .p-tab {
+      padding: 4px 10px;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      font-family: var(--mono);
+      font-size: 11.5px;
+    }
+    .p-tab.active {
+      background: var(--ink);
+      color: var(--paper);
+      font-weight: 600;
+    }
+    pre.prompt-pre {
+      margin: 0;
+      padding: 16px 18px;
+      max-height: 520px;
+      overflow: auto;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font: 12.5px/1.56 var(--mono);
+      background: var(--label);
+      color: var(--ink);
+      user-select: text;
+    }
+
+    @media (max-width: 980px) {
+      .desk {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .catalogue {
+        position: static;
+        height: auto;
+        border-right: 0;
+        border-bottom: 2px solid var(--ink);
+      }
+      .browse-toggle { display: inline-flex; }
+      .catalogue-controls[data-collapsed="true"] { display: none; }
+      .station-list { max-height: 42dvh; }
+      .swarms-grid, .beats-grid, .compare-grid, .plates-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="spk" viewBox="0 0 12 12">
+      <path d="M1 4 H3.5 L7 1 V11 L3.5 8 H1 Z" fill="currentColor"/>
+      <path d="M8.5 3.5 Q10.5 6 8.5 8.5" stroke="currentColor" fill="none" stroke-width="1.2"/>
+    </symbol>
+  </svg>
+
+  <a class="skip" href="#selection">Skip to selected porthole operator desk</a>
+
+  <!-- TOP BOLAS MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-left">
+      <a class="back-link" href="./55-portholes.html">← 55 Portholes Screening Room</a>
+      <a class="brand" href="#p01" id="brandHome">SCION <span>/</span> 55 PORTHOLE ANIMATION SWARMS</a>
+    </div>
+    <nav class="masthead-links" aria-label="Related SCION studios and decks">
+      <a href="./scion-interior-atlas.html">44 Interior Atlas SCIONs</a>
+      <a href="./porthole-cards.html">✂ Cut-Out Cards</a>
+      <a href="https://hartswf0.github.io/bolas/paeleo/scion/oulipo/screening/" target="_blank" rel="noopener">BOLAS Oulipo SCIONs ↗</a>
+      <a href="https://hartswf0.github.io/bolas/paeleo/scion/operator.html" target="_blank" rel="noopener">BOLAS 54 Animation Swarms ↗</a>
+    </nav>
+  </header>
+
+  <main class="desk">
+    <!-- LEFT CATALOGUE SIDEBAR (#01–#55) -->
+    <aside class="catalogue" aria-label="55 Porthole SCION Swarm Catalogue">
+      <div class="catalogue-head">
+        <div>
+          <h1>55 Porthole Swarms</h1>
+          <span class="catalogue-sub">Foraged or handmade · 4 Swarms / Station</span>
+        </div>
+        <button type="button" id="browseToggle" class="browse-toggle" aria-expanded="false" aria-controls="catalogueControls">Browse 55</button>
+      </div>
+
+      <div id="catalogueControls" class="catalogue-controls" data-collapsed="true">
+        <div class="search-box">
+          <label for="queryInput" class="sr">Search 55 portholes</label>
+          <input id="queryInput" class="search-input" type="search" placeholder="Search #01–#55, Ripois, Gilliam, boot…" autocomplete="off">
+        </div>
+
+        <div class="filter-pills" id="filterPills" role="group" aria-label="Filter by animation lineage">
+          <button type="button" class="f-pill" data-fg="all" aria-pressed="true">All 55</button>
+          <button type="button" class="f-pill" data-fg="gilliam" aria-pressed="false">Gilliam / Cutout</button>
+          <button type="button" class="f-pill" data-fg="reiniger" aria-pressed="false">Reiniger / Shadow</button>
+          <button type="button" class="f-pill" data-fg="norstein" aria-pressed="false">Norstein / Multiplane</button>
+          <button type="button" class="f-pill" data-fg="saloon" aria-pressed="false">Saloon / Zeman / Méliès</button>
+          <button type="button" class="f-pill" data-fg="archive" aria-pressed="false">Archive / Verne</button>
+        </div>
+
+        <div class="catalogue-count" id="catalogueCount" aria-live="polite"></div>
+
+        <nav class="station-list" id="stationList" aria-label="Porthole stations #01 to #55"></nav>
+      </div>
+    </aside>
+
+    <!-- RIGHT OPERATOR DESK FOR SELECTED PORTHOLE #NN -->
+    <article id="selection" class="selection" tabindex="-1" aria-live="polite"></article>
+  </main>
+
+  <!-- Data & Stage Toolkits -->
+  <script src="./porthole-scion-stacks.js"></script>
+  <script src="./verdicts-data.js"></script>
+  <script src="./alien-passes.js"></script>
+  <script src="./student-options.js"></script>
+  <script src="./portals/snail-mail.js"></script>
+  <script src="./portals/scion-stage.js"></script>
+  <script src="./portals/crew-01.js"></script>
+  <script src="./portals/crew-02.js"></script>
+  <script src="./portals/crew-03.js"></script>
+  <script src="./portals/crew-04.js"></script>
+  <script src="./portals/crew-05.js"></script>
+  <script src="./portals/crew-06.js"></script>
+  <script src="./portals/crew-07.js"></script>
+  <script src="./portals/crew-08.js"></script>
+  <script src="./portals/crew-09.js"></script>
+  <script src="./portals/crew-10.js"></script>
+  <script src="./portals/crew-11.js"></script>
+  <script>
+    if (window.SNAIL_MAIL && typeof window.SNAIL_MAIL.attachAll === "function") {
+      window.SNAIL_MAIL.attachAll();
+    }
+    window.PORTAL_V1_SCENES = Object.assign({}, window.PORTAL_SCENES || {});
+  </script>
+  <script src="./portals/remake-01.js"></script>
+  <script src="./portals/remake-02.js"></script>
+  <script src="./portals/remake-03.js"></script>
+  <script src="./portals/remake-04.js"></script>
+  <script src="./portals/remake-05.js"></script>
+  <script src="./portals/remake-06.js"></script>
+  <script src="./portals/remake-07.js"></script>
+  <script src="./portals/remake-08.js"></script>
+  <script src="./portals/remake-09.js"></script>
+  <script src="./portals/remake-10.js"></script>
+  <script src="./portals/remake-11.js"></script>
+  <script src="./portals/player.js"></script>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var STACKS = window.PORTHOLE_SCION_STACKS || {};
+      var VERDICTS = window.PORTAL_VERDICTS || {};
+      var STUDENT = window.STUDENT_OPTIONS || {};
+      var SNAIL_STORE_KEY = "turkey_sub_snail_mail_v1";
+
+      var selectedId = 1;
+      var activeFilter = "all";
+      var searchQuery = "";
+      var activeStageTab = "remake"; // "remake" | "compare" | "rig" | "plates" | "critic"
+      var activePromptFmt = "md";    // "md" | "poml"
+      var remakeWatchFullSound = false;
+      var compareAudioSource = "v2"; // "v2" | "v1" | "mute"
+      var stripEdition = "v2";       // "v2" | "v1"
+      var filteredIds = [];
+
+      // Self-contained + window.__game compatible 60fps Live Rig state
+      var rigRaf = 0;
+      var rigLastMs = 0;
+      var loadedRemakeBatches = {};
+      var rig = {
+        edition: "v2", // "v2" | "v1"
+        t: 0.4,
+        view: "auto",  // "auto" | "real" | "turkey" | "trout" | "alien"
+        lamp: true,
+        ballast: false,
+        roll: 0,
+        showCaptions: true,
+        muted: false,
+        snailActive: false,
+        snailT: 0,
+        snailDelivered: false,
+        snailNote: ""
+      };
+
+      var qInput = document.getElementById("queryInput");
+      var stationListEl = document.getElementById("stationList");
+      var countEl = document.getElementById("catalogueCount");
+      var selectionEl = document.getElementById("selection");
+      var browseBtn = document.getElementById("browseToggle");
+      var controlsWrap = document.getElementById("catalogueControls");
+
+      function pad2(n) { return n < 10 ? "0" + n : String(n); }
+      function esc(s) {
+        return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+      }
+
+      function parseHashId() {
+        var h = (location.hash || "").replace(/^#/, "").trim();
+        var m = /^(?:p|play-|scion-|portal-)?(\d{1,2})$/i.exec(h);
+        if (!m) return null;
+        var num = parseInt(m[1], 10);
+        return (num >= 1 && num <= 55) ? num : null;
+      }
+
+      function getSnailNote(id) {
+        try {
+          if (window.__game && typeof window.__game.getSnailNote === "function") {
+            return window.__game.getSnailNote(id);
+          }
+          var raw = localStorage.getItem(SNAIL_STORE_KEY);
+          if (!raw) return "";
+          var map = JSON.parse(raw);
+          return (map && typeof map[String(id)] === "string") ? map[String(id)] : "";
+        } catch (e) {
+          return "";
+        }
+      }
+
+      function saveSnailNote(id, txt) {
+        try {
+          if (window.__game && typeof window.__game.setSnailNote === "function") {
+            return window.__game.setSnailNote(txt, id);
+          }
+          var raw = localStorage.getItem(SNAIL_STORE_KEY);
+          var map = raw ? (JSON.parse(raw) || {}) : {};
+          var clean = String(txt || "").trim().slice(0, 180);
+          if (clean) map[String(id)] = clean;
+          else delete map[String(id)];
+          localStorage.setItem(SNAIL_STORE_KEY, JSON.stringify(map));
+          return clean;
+        } catch (e) {
+          return "";
+        }
+      }
+
+      function ensureRemakeBatchLoaded(id, cb) {
+        var batchNum = Math.ceil(id / 5);
+        var bPad = pad2(batchNum);
+        if (window.PORTAL_REMAKE_SCENES && window.PORTAL_REMAKE_SCENES[id]) {
+          if (cb) cb(true);
+          return;
+        }
+        if (loadedRemakeBatches[bPad] === "loading") {
+          setTimeout(function () { if (cb) cb(!!(window.PORTAL_REMAKE_SCENES && window.PORTAL_REMAKE_SCENES[id])); }, 180);
+          return;
+        }
+        if (loadedRemakeBatches[bPad] === "done") {
+          if (cb) cb(!!(window.PORTAL_REMAKE_SCENES && window.PORTAL_REMAKE_SCENES[id]));
+          return;
+        }
+        loadedRemakeBatches[bPad] = "loading";
+        var s = document.createElement("script");
+        s.src = "./portals/remake-" + bPad + ".js";
+        s.onload = function () {
+          loadedRemakeBatches[bPad] = "done";
+          if (cb) cb(!!(window.PORTAL_REMAKE_SCENES && window.PORTAL_REMAKE_SCENES[id]));
+        };
+        s.onerror = function () {
+          loadedRemakeBatches[bPad] = "missing";
+          if (cb) cb(false);
+        };
+        document.head.appendChild(s);
+      }
+
+      function stopLiveRig() {
+        if (rigRaf) {
+          cancelAnimationFrame(rigRaf);
+          rigRaf = 0;
+        }
+        if (window.__game && window.__game.active) {
+          window.__game.unmount();
+        }
+      }
+
+      function cleanupMedia() {
+        stopLiveRig();
+        selectionEl.querySelectorAll("video").forEach(function (v) {
+          try {
+            v.pause();
+            v.removeAttribute("src");
+            v.load();
+          } catch (e) {}
+        });
+      }
+
+      function downloadFile(filename, content, mime) {
+        var blob = new Blob([content], { type: mime || "text/plain;charset=utf-8" });
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function () {
+          URL.revokeObjectURL(a.href);
+          a.remove();
+        }, 250);
+      }
+
+      function flashStatus(msg) {
+        var el = document.getElementById("copyStatus");
+        if (!el) return;
+        el.textContent = msg;
+        clearTimeout(flashStatus._t);
+        flashStatus._t = setTimeout(function () {
+          if (el) el.textContent = "";
+        }, 2000);
+      }
+
+      function matchesStation(st) {
+        if (!st) return false;
+        if (activeFilter !== "all" && st.filterGroup !== activeFilter) return false;
+        if (searchQuery) {
+          var sOpt = STUDENT[st.id] || {};
+          var hay = [
+            st.code, st.station, st.clue, st.reference, st.recipeBadge,
+            st.bolasStyle, st.bolasStyleMeta && st.bolasStyleMeta.label,
+            st.workshopScion && st.workshopScion.work,
+            st.workshopScion && st.workshopScion.title,
+            st.directorSwarm && st.directorSwarm.title,
+            st.directorSwarm && st.directorSwarm.code,
+            st.atlasScion && st.atlasScion.title,
+            sOpt.a, sOpt.b, sOpt.c, sOpt.d
+          ].join(" ").toLowerCase();
+          if (hay.indexOf(searchQuery) === -1) return false;
+        }
+        return true;
+      }
+
+      function renderCatalogue() {
+        filteredIds = [];
+        var html = "";
+        for (var i = 1; i <= 55; i++) {
+          var st = STACKS[i];
+          if (!matchesStation(st)) continue;
+          filteredIds.push(i);
+          var isCur = (i === selectedId);
+          var verd = VERDICTS[String(i)];
+          var shortBadge = (st.workshopScion ? st.workshopScion.work : "") + " · " +
+            (st.directorSwarm ? st.directorSwarm.code + " " + st.directorSwarm.shortName : "");
+          html += (
+            '<button type="button" class="st-item" data-pick="' + i + '" aria-current="' + (isCur ? "true" : "false") + '">' +
+              '<div class="st-row1">' +
+                '<span class="st-code">' + esc(st.station) + '</span>' +
+                '<span class="st-pass">' + (verd && verd.status === "passed" ? "✓ Passed" : esc(st.bolasStyle)) + '</span>' +
+              '</div>' +
+              '<div class="st-clue">' + esc(st.clue) + '</div>' +
+              '<span class="st-badge">' + esc(shortBadge) + '</span>' +
+            '</button>'
+          );
+        }
+
+        countEl.innerHTML = '<span>Showing <strong>' + filteredIds.length + '</strong> of 55 portholes</span><span>#p01–#p55</span>';
+        stationListEl.innerHTML = html || '<p style="padding:14px 8px;font-size:13.5px;color:var(--ink-2)">No stations match that filter.</p>';
+
+        stationListEl.querySelectorAll("[data-pick]").forEach(function (btn) {
+          btn.onclick = function () {
+            var nextId = parseInt(btn.getAttribute("data-pick"), 10);
+            selectPorthole(nextId, true);
+            if (window.innerWidth <= 980) {
+              controlsWrap.setAttribute("data-collapsed", "true");
+              browseBtn.setAttribute("aria-expanded", "false");
+            }
+          };
+        });
+      }
+
+      function buildStageContentHtml(st, verdict) {
+        var id = st.id;
+        var pad = st.pad || pad2(id);
+        var v2Film = "./films/portholes/p" + pad + ".mp4";
+        var v1Film = "./films/portholes-v1/p" + pad + ".mp4";
+        var v2Poster = "./thumbs/p" + pad + "-remake.jpg";
+        var seedImg = st.portholePlate || ("./portholes/p" + pad + ".jpg");
+        var atlasImg = st.atlasPlate || "./assets/atlas-stills/atlas-01.webp";
+        var atlasMeta = st.atlasPlateMeta || {};
+        var bMeta = st.bolasStyleMeta || {};
+
+        if (activeStageTab === "remake") {
+          return (
+            '<div class="screen-frame">' +
+              (remakeWatchFullSound
+                ? '<video id="v2MainVideo" controls autoplay playsinline src="' + v2Film + '" poster="' + v2Poster + '"></video>'
+                : '<video id="v2ExcerptVideo" muted loop playsinline autoplay src="' + v2Film + '" poster="' + v2Poster + '" data-seg="1.5,14.5"></video>') +
+            '</div>' +
+            '<div class="film-bar">' +
+              '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">' +
+                (remakeWatchFullSound
+                  ? '<button type="button" class="btn" id="btnBackExcerpt">↺ Return to silent loop</button>'
+                  : '<button type="button" class="btn primary" id="btnWatchSound"><svg width="12" height="12"><use href="#spk"/></svg>Watch with sound · 0:16</button>') +
+                '<button type="button" class="btn accent-teal" id="btnSwitchCompare">⇄ Compare vs. V1 Cockpit</button>' +
+                '<button type="button" class="btn" id="btnSwitchLiveRig">🎮 Play 60fps Rig</button>' +
+              '</div>' +
+              '<div class="beat-jumps" aria-label="Jump to variation">' +
+                '<button type="button" class="beat-chip b-a" data-seek="0.2">I · 0:00 Real</button>' +
+                '<button type="button" class="beat-chip b-b" data-seek="4.1">II · 0:04 Turkey</button>' +
+                '<button type="button" class="beat-chip b-c" data-seek="8.1">III · 0:08 Trout</button>' +
+                '<button type="button" class="beat-chip b-d" data-seek="12.1">IV · 0:12 Alien</button>' +
+              '</div>' +
+            '</div>'
+          );
+        }
+
+        if (activeStageTab === "compare") {
+          return (
+            '<div class="compare-grid">' +
+              '<div class="compare-col">' +
+                '<div class="compare-head v2">' +
+                  '<strong>V2 · Multi-SCION BOLAS Remake (0:16)</strong>' +
+                  '<span style="color:var(--stamp)">' + esc(st.directorSwarm.code + " · " + st.bolasStyle) + '</span>' +
+                '</div>' +
+                '<div class="screen-frame">' +
+                  '<video id="cmpV2Video" controls autoplay loop playsinline src="' + v2Film + '" poster="' + v2Poster + '"></video>' +
+                '</div>' +
+                '<div class="compare-note">' +
+                  '<strong>Unleashed 4-SCION Rostrum:</strong> Full-bleed widescreen multiplane cutout collage from 2 real plates (<code>p' + pad + '.jpg</code> + <code>' + esc(atlasMeta.id || "atlas") + '.webp</code>), split-pin jointed puppets, 4 Oulipo variations, and dry spoken voiceover (<em>' + esc(st.voiceName || "Daniel") + '</em>).' +
+                '</div>' +
+              '</div>' +
+              '<div class="compare-col">' +
+                '<div class="compare-head v1">' +
+                  '<strong>V1 · Original Setup-A Cockpit (0:13)</strong>' +
+                  '<span>Single-Circle Bread-Tin View</span>' +
+                '</div>' +
+                '<div class="screen-frame">' +
+                  '<video id="cmpV1Video" controls autoplay loop muted playsinline src="' + v1Film + '" poster="' + seedImg + '"></video>' +
+                '</div>' +
+                '<div class="compare-note">' +
+                  '<strong>Baseline Setup-A Dashboard:</strong> Earlier single-crew 2D vector scene framed inside the fixed circular brass porthole aperture over the dark bread-tin bulkhead.' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="film-bar">' +
+              '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+                '<button type="button" class="btn primary" id="btnSyncBoth">⟳ Restart &amp; Sync Both (0.0s)</button>' +
+                '<button type="button" class="btn" id="btnPlayPauseBoth">⏯ Play / Pause Both</button>' +
+                '<button type="button" class="btn" id="btnToggleCmpAudio">🔊 Audio: ' + (compareAudioSource === "v2" ? "V2 Remake" : (compareAudioSource === "v1" ? "V1 Cockpit" : "Both Muted")) + '</button>' +
+              '</div>' +
+              '<div class="beat-jumps">' +
+                '<button type="button" class="beat-chip b-a" data-cmp-beat="0">Beat A (Real)</button>' +
+                '<button type="button" class="beat-chip b-b" data-cmp-beat="1">Beat B (Turkey)</button>' +
+                '<button type="button" class="beat-chip b-c" data-cmp-beat="2">Beat C (Trout)</button>' +
+                '<button type="button" class="beat-chip b-d" data-cmp-beat="3">Beat D (Alien)</button>' +
+              '</div>' +
+            '</div>'
+          );
+        }
+
+        if (activeStageTab === "rig") {
+          var savedNote = getSnailNote(id);
+          return (
+            '<div class="screen-frame">' +
+              '<canvas id="operatorLiveCanvas" width="1280" height="720" aria-label="60fps Interactive Multi-SCION Rig for ' + esc(st.station) + '"></canvas>' +
+            '</div>' +
+            '<form class="snail-bar" id="opSnailForm" autocomplete="off">' +
+              '<span class="snail-stamp" aria-hidden="true"></span>' +
+              '<strong>Snail Mail Postcard:</strong>' +
+              '<input type="text" id="opSnailInput" class="snail-input" maxlength="180" value="' + esc(savedNote) + '" placeholder="Write a 1-line clue from Turkey to Brook Trout (or Dear Alien)…">' +
+              '<button type="submit" class="r-btn">[S] Dispatch Snail</button>' +
+              '<span id="opSnailSaved" style="color:var(--teal);font-weight:600">' + (savedNote ? "✓ Saved" : "") + '</span>' +
+            '</form>' +
+            '<div class="rig-controls">' +
+              '<div class="rig-btns">' +
+                '<button type="button" class="r-btn ed-v2" id="rBtnEdition" title="Shortcut: V">[V] Edition: V2 SCION Remake ⇄ V1</button>' +
+                '<button type="button" class="r-btn" id="rBtnBeat" title="Shortcut: Space">[Space] Beat: Auto 16s</button>' +
+                '<button type="button" class="r-btn" id="rBtnLamp" title="Shortcut: L">[L] Lamp: ON</button>' +
+                '<button type="button" class="r-btn" id="rBtnBallast" title="Shortcut: B">[B] Ballast: OUT</button>' +
+                '<button type="button" class="r-btn" id="rBtnRoll" title="Shortcut: R">[R] Roll 1d6</button>' +
+                '<button type="button" class="r-btn" id="rBtnCap" title="Shortcut: C">[C] Captions: ON</button>' +
+              '</div>' +
+              '<span id="opRigReadout" style="color:var(--ink-2)">60fps Live Canvas</span>' +
+            '</div>'
+          );
+        }
+
+        if (activeStageTab === "plates") {
+          return (
+            '<div class="plates-grid">' +
+              '<div class="plate-card seed-plate">' +
+                '<span class="plate-kicker">Foraged Plate 1 · Porthole Illustration Seed</span>' +
+                '<img src="' + seedImg + '" alt="' + esc(st.station + " — " + st.clue) + '">' +
+                '<div style="font-size:14px"><strong><code>' + esc(seedImg) + '</code></strong> — ' + esc(st.clue) + '. Sliced via <code>SCION_STAGE.drawScissorCutout</code> into irregular 4.5px cream-halo paper cutouts (never shown as a static slide).</div>' +
+                '<div style="font-family:var(--mono);font-size:11.5px"><a href="' + seedImg + '" download>Download Seed JPG ↓</a> · <a href="./porthole-cards.html">✂ View on Student Cut-Out Card →</a></div>' +
+              '</div>' +
+              '<div class="plate-card">' +
+                '<span class="plate-kicker">Foraged Plate 2 · Matched Interior Atlas Frame (' + esc(atlasMeta.id || "atlas") + ')</span>' +
+                '<img src="' + atlasImg + '" alt="' + esc(atlasMeta.alt || st.atlasScion.title) + '">' +
+                '<div style="font-size:14px"><strong><code>' + esc(atlasImg) + '</code></strong> (' + (atlasMeta.width || 1280) + '×' + (atlasMeta.height || 720) + ') — ' + esc(atlasMeta.alt || "") + '</div>' +
+                '<div style="font-family:var(--mono);font-size:11.5px;display:flex;gap:12px;flex-wrap:wrap">' +
+                  '<a href="' + esc(st.atlasScion.url) + '">Open in 44 Interior Atlas SCIONs (#' + esc(st.atlasScion.id) + ') →</a>' +
+                  (atlasMeta.sourceUrl ? '<a href="' + esc(atlasMeta.sourceUrl) + '" target="_blank" rel="noopener">Original Reference Source ↗</a>' : '') +
+                '</div>' +
+                '<div style="margin-top:4px;padding:8px 10px;background:var(--paper-2);border-left:4px solid var(--stamp);font-size:13.5px">' +
+                  '<strong>BOLAS Rostrum Visual Family — ' + esc(bMeta.label || st.bolasStyle) + ':</strong> ' +
+                  esc(bMeta.description || "") + ' <em>(Ref: ' + esc(bMeta.referenceFilm || "") + ')</em>' +
+                '</div>' +
+              '</div>' +
+            '</div>'
+          );
+        }
+
+        // Tab 5: Blind Critic 4-Beat Strip
+        var v2Strip = "./checks/p" + pad + "-remake-strip.jpg";
+        var v1Strip = "./checks/p" + pad + "-strip.jpg";
+        var chosenStrip = stripEdition === "v1" ? v1Strip : ((verdict && verdict.strip) ? verdict.strip : v2Strip);
+        return (
+          '<div class="critic-card">' +
+            '<div class="critic-head">' +
+              '<span style="color:var(--teal);font-weight:600">✓ PAELEO BLIND CRITIC VERIFIED · ' + esc((verdict && verdict.critic) || "remake-critic + post-critic") + '</span>' +
+              '<div style="display:flex;gap:6px;align-items:center">' +
+                '<button type="button" class="r-btn' + (stripEdition === "v2" ? " on" : "") + '" id="btnStripV2">V2 4-Beat Remake Strip</button>' +
+                '<button type="button" class="r-btn' + (stripEdition === "v1" ? " on" : "") + '" id="btnStripV1">V1 6-Col Cockpit Strip</button>' +
+              '</div>' +
+            '</div>' +
+            '<img class="critic-strip-img" id="criticStripImg" src="' + esc(chosenStrip) + '" data-fallback="' + esc(v1Strip) + '" alt="Uncaptioned blind row (top) vs captioned row (bottom) contact strip for ' + esc(st.station) + '">' +
+            '<div class="critic-notes">' +
+              (verdict && verdict.measured ? '<p style="font-family:var(--mono);font-size:11.5px;color:var(--ink-2)"><strong>Measured Spec:</strong> ' + esc(verdict.measured) + '</p>' : '') +
+              '<p><strong>Blind Reading (Top Row · <code>showCaptions: false</code>, <code>0</code> text calls):</strong> ' +
+                esc((verdict && verdict.blind_reading) || "Top row renders 100% caption-free with zero fillText/strokeText leaks across all 4 variations (2.0s Real Creek, 6.0s Turkey Probable + Snail Mail, 10.0s Trout Plausible + Snail Mail, 14.0s Alien Listening Post).") +
+              '</p>' +
+              ((verdict && (verdict.four_beat_arc || verdict.three_pass_chain))
+                ? '<p><strong>4-Beat Variation Chain:</strong> ' + esc(verdict.four_beat_arc || verdict.three_pass_chain) + '</p>'
+                : '') +
+            '</div>' +
+          '</div>'
+        );
+      }
+
+      function renderSelection() {
+        cleanupMedia();
+        var st = STACKS[selectedId];
+        if (!st) return;
+
+        var id = st.id;
+        var pad = st.pad || pad2(id);
+        var verdict = VERDICTS[String(id)] || null;
+        var ws = st.workshopScion || {};
+        var ds = st.directorSwarm || {};
+        var pal = ds.palette || {};
+        var ts = st.techSwarms || [];
+        var as = st.atlasScion || {};
+        var shots = st.shots || {};
+        var bMeta = st.bolasStyleMeta || {};
+
+        var posInFiltered = filteredIds.indexOf(id);
+        var prevId = posInFiltered > 0 ? filteredIds[posInFiltered - 1] : (id > 1 ? id - 1 : null);
+        var nextId = (posInFiltered !== -1 && posInFiltered < filteredIds.length - 1)
+          ? filteredIds[posInFiltered + 1]
+          : (id < 55 ? id + 1 : null);
+
+        var paletteSwatchesHtml = Object.keys(pal).map(function (k) {
+          return (
+            '<span class="swatch-chip">' +
+              '<span class="swatch-dot" style="background:' + esc(pal[k]) + '"></span>' +
+              '<span>' + esc(k) + ' ' + esc(pal[k]) + '</span>' +
+            '</span>'
+          );
+        }).join("");
+
+        var techListHtml = ts.map(function (tItem) {
+          return (
+            '<li>' +
+              '<span class="tech-code">' + esc(tItem.code) + '</span>' +
+              '<strong>' + esc(tItem.title) + '</strong> — ' + esc(tItem.roleInRig) +
+              ' · <a href="' + esc(tItem.url) + '" target="_blank" rel="noopener">operator #' + esc(tItem.code.toLowerCase()) + ' ↗</a>' +
+            '</li>'
+          );
+        }).join("");
+
+        var sourcesHtml = (st.sources || []).map(function (src) {
+          return (
+            '<li>' +
+              '<span class="src-kind">' + esc(src.kind) + '</span>' +
+              '<strong>' + esc(src.title) + ':</strong> ' + esc(src.detail) +
+              (src.url ? ' <a href="' + esc(src.url) + '" target="_blank" rel="noopener">[source]</a>' : '') +
+            '</li>'
+          );
+        }).join("");
+
+        var promptText = activePromptFmt === "poml" ? st.compiledPromptPoml : st.compiledPromptMd;
+
+        selectionEl.innerHTML = (
+          /* 1. Header & Copy Actions */
+          '<header class="work-heading">' +
+            '<div class="work-top-bar">' +
+              '<div class="meta-pills">' +
+                '<span class="st-pill">✓ Passed review</span>' +
+                '<span class="style-pill">' + esc(bMeta.label || st.bolasStyle) + '</span>' +
+                '<span class="byline">' + esc(st.reference) + ' · 16.0s (384f) · Voice: ' + esc(st.voiceName || "Daniel") + '</span>' +
+              '</div>' +
+              '<div class="step-btns">' +
+                '<button type="button" class="step-btn" id="btnPrevStation"' + (!prevId ? " disabled" : "") + '>← Prev</button>' +
+                '<button type="button" class="step-btn" id="btnNextStation"' + (!nextId ? " disabled" : "") + '>Next →</button>' +
+              '</div>' +
+            '</div>' +
+            '<h2 class="work-title"><span class="station-prefix">' + esc(st.station) + '</span> — ' + esc(st.clue) + '</h2>' +
+            '<p class="work-thesis"><strong>' + esc(ws.work) + ' (' + esc(ws.title) + '):</strong> ' + esc(ws.line) + ' Coordinated with <strong>' + esc(ds.code + " " + ds.title) + '</strong>.</p>' +
+            '<div class="actions-row">' +
+              '<button type="button" class="btn primary" id="btnCopyCombined">Copy Combined Multi-SCION .md</button>' +
+              '<button type="button" class="btn" id="btnSavePoml">Save .poml</button>' +
+              '<button type="button" class="btn" id="btnSaveMd">Save .md</button>' +
+              '<button type="button" class="btn" id="btnCopyDeepLink">Copy Link #p' + pad + '</button>' +
+              '<a class="btn accent-teal" href="./55-portholes.html#play-' + pad + '">Open Playable Cockpit ↗</a>' +
+              '<span class="copy-status" id="copyStatus"></span>' +
+            '</div>' +
+          '</header>' +
+
+          /* 2. Interactive Remake vs. V1 Stage */
+          '<section class="stage-shell" aria-label="Interactive V2 Multi-SCION Remake vs V1 Cockpit Stage">' +
+            '<div class="stage-tabs" role="tablist" aria-label="Stage view mode">' +
+              '<button type="button" class="stage-tab" role="tab" data-stab="remake" aria-selected="' + (activeStageTab === "remake") + '">▶ V2 Multi-SCION Remake (0:16)</button>' +
+              '<button type="button" class="stage-tab" role="tab" data-stab="compare" aria-selected="' + (activeStageTab === "compare") + '">⇄ Compare V2 Remake vs. V1 Cockpit</button>' +
+              '<button type="button" class="stage-tab" role="tab" data-stab="rig" aria-selected="' + (activeStageTab === "rig") + '">🎮 Play 60fps Live Rig (V2 / V1 Toggle)</button>' +
+              '<button type="button" class="stage-tab" role="tab" data-stab="plates" aria-selected="' + (activeStageTab === "plates") + '">🖼 Reference Seed &amp; Atlas Anchor</button>' +
+              '<button type="button" class="stage-tab" role="tab" data-stab="critic" aria-selected="' + (activeStageTab === "critic") + '">✓ Blind Critic 4-Beat Strip</button>' +
+            '</div>' +
+            '<div class="stage-body" id="stageBody">' +
+              buildStageContentHtml(st, verdict) +
+            '</div>' +
+          '</section>' +
+
+          /* Expandable Provenance Drawer matching bolas/paeleo/scion/oulipo/screening/ */
+          '<details class="provenance-drawer" id="provDrawer">' +
+            '<summary>How it was made · ' + (st.sourceCount || (st.sources ? st.sources.length : 9)) + ' foraged &amp; handmade sources</summary>' +
+            '<div class="provenance-body">' +
+              '<p>' + esc(st.howItWasMade) + '</p>' +
+              (verdict && verdict.note ? '<p><strong>Independent Critic Review:</strong> ' + esc(verdict.note) + '</p>' : '') +
+              '<ul class="sources-list">' + sourcesHtml + '</ul>' +
+            '</div>' +
+          '</details>' +
+
+          /* 3. The 4 Coordinated SCION Swarms Powering This Porthole */
+          '<section class="sec-block" aria-label="The 4 Coordinated SCION Swarms">' +
+            '<div class="sec-head">' +
+              '<h3>The 4 Coordinated SCION Swarms Powering Porthole ' + esc(st.code) + '</h3>' +
+              '<span>Ouxpo Montage × Director Lineage × Kinematics/Sound × World Atlas</span>' +
+            '</div>' +
+            '<div class="swarms-grid">' +
+              /* Swarm 1: Ouxpo / Oulipo Workshop */
+              '<article class="swarm-card sw-1">' +
+                '<div class="sw-kicker"><span class="sw-num">1 · Ouxpo / Oulipo Workshop SCION</span><span>' + esc(ws.family || "Workshop") + '</span></div>' +
+                '<h4>' + esc(ws.work) + ' · ' + esc(ws.title) + '</h4>' +
+                '<p class="sw-byline">' + esc(ws.byline) + '</p>' +
+                '<blockquote class="sw-quote">“' + esc(ws.line) + '”</blockquote>' +
+                '<p class="sw-detail"><strong>How it cuts A → B → C → D:</strong> ' + esc(ws.cutRule) + '</p>' +
+                '<div class="sw-link"><a href="' + esc(ws.url) + '" target="_blank" rel="noopener">Open BOLAS Oulipo SCION (' + esc(ws.slug) + ') ↗</a></div>' +
+              '</article>' +
+
+              /* Swarm 2: Director / Artistic Lineage */
+              '<article class="swarm-card sw-2">' +
+                '<div class="sw-kicker"><span class="sw-num">2 · Director / Artistic Lineage Swarm</span><span>' + esc(ds.code) + ' · ' + esc(ds.family) + '</span></div>' +
+                '<h4>' + esc(ds.title) + '</h4>' +
+                '<p class="sw-byline">' + esc(ds.lineage) + '</p>' +
+                '<p class="sw-detail">' + esc(ds.visualStyle) + '</p>' +
+                '<div class="swatches" aria-label="Swarm color palette">' + paletteSwatchesHtml + '</div>' +
+                '<div class="sw-link"><a href="' + esc(ds.url) + '" target="_blank" rel="noopener">Open BOLAS Animation Operator #' + esc(ds.code) + ' ↗</a></div>' +
+              '</article>' +
+
+              /* Swarm 3: Kinematics, Parallax & Sound */
+              '<article class="swarm-card sw-3">' +
+                '<div class="sw-kicker"><span class="sw-num">3 · Kinematics, Parallax &amp; Sound Swarms</span><span>3 Technical Rigs</span></div>' +
+                '<h4>Multiplane, Split-Pin IK &amp; Foley Score</h4>' +
+                '<ul class="tech-list">' + techListHtml + '</ul>' +
+                '<p class="sw-detail"><strong>Spoken &amp; Foley Track:</strong> 16.0s 44.1kHz stereo mix with dry variation voiceover (<code>' + esc(st.voiceName || "Daniel") + '</code> @ -16 dBFS), paper slide, scissor snip, split-pin creak, postal chime, and Beat IV listening-post tone.</p>' +
+              '</article>' +
+
+              /* Swarm 4: Turkey Sub Atlas World SCION */
+              '<article class="swarm-card sw-4">' +
+                '<div class="sw-kicker"><span class="sw-num">4 · Turkey Sub Atlas World SCION</span><span>Atlas #' + esc(as.id) + '</span></div>' +
+                '<h4>' + esc(as.title) + '</h4>' +
+                '<p class="sw-byline">' + esc(as.byline) + ' · Group: ' + esc(as.group) + '</p>' +
+                '<blockquote class="sw-quote">World Claim: “' + esc(as.claim) + '”</blockquote>' +
+                '<p class="sw-detail">Anchored to extracted reference frame <code>' + esc(st.atlasPlate) + '</code> and painted porthole seed <code>' + esc(st.portholePlate) + '</code>.</p>' +
+                '<div class="sw-link"><a href="' + esc(as.url) + '">Open in Turkey Sub 44-Prompt Interior Atlas →</a></div>' +
+              '</article>' +
+            '</div>' +
+          '</section>' +
+
+          /* 4. 4-Beat Student Cutaway Ledger + Full Copyable Prompt */
+          '<section class="sec-block" aria-label="4-Beat Student Cutaway Ledger">' +
+            '<div class="sec-head">' +
+              '<h3>4-Beat Student Cutaway Ledger (A · B · C · D)</h3>' +
+              '<span><a href="./porthole-cards.html">✂ Print 4-Option Student Cut-Out Deck (14 Sheets) →</a></span>' +
+            '</div>' +
+            '<div class="beats-grid">' +
+              '<div class="beat-card bc-a">' +
+                '<div class="beat-top"><span class="beat-label">(A) Variation I · Real Creek · 0.0–4.0s</span><button type="button" class="r-btn" data-jump-beat="a">▶ Preview</button></div>' +
+                '<div class="beat-phrase">' + esc(shots.a && shots.a.text) + '</div>' +
+                '<div class="beat-vo">“' + esc(shots.a && shots.a.voiceLine) + '”</div>' +
+              '</div>' +
+              '<div class="beat-card bc-b">' +
+                '<div class="beat-top"><span class="beat-label">(B) Variation II · Probable · Turkey · 4.0–8.0s</span><button type="button" class="r-btn" data-jump-beat="b">▶ Preview</button></div>' +
+                '<div class="beat-phrase">' + esc(shots.b && shots.b.text) + '</div>' +
+                '<div class="beat-vo">“' + esc(shots.b && shots.b.voiceLine) + '” (+ Mail Snail Out)</div>' +
+              '</div>' +
+              '<div class="beat-card bc-c">' +
+                '<div class="beat-top"><span class="beat-label">(C) Variation III · Plausible · Trout · 8.0–12.0s</span><button type="button" class="r-btn" data-jump-beat="c">▶ Preview</button></div>' +
+                '<div class="beat-phrase">' + esc(shots.c && shots.c.text) + '</div>' +
+                '<div class="beat-vo">“' + esc(shots.c && shots.c.voiceLine) + '” (+ Brook Trout Stamp)</div>' +
+              '</div>' +
+              '<div class="beat-card bc-d">' +
+                '<div class="beat-top"><span class="beat-label">(D) Variation IV · Preposterous · Alien · 12.0–16.0s</span><button type="button" class="r-btn" data-jump-beat="d">▶ Preview</button></div>' +
+                '<div class="beat-phrase">' + esc(shots.d && shots.d.text) + '</div>' +
+                '<div class="beat-vo">“' + esc(shots.d && shots.d.voiceLine) + '” (+ Alien Saucer Scan)</div>' +
+              '</div>' +
+            '</div>' +
+          '</section>' +
+
+          /* Compiled 9-Section Multi-SCION System Instruction */
+          '<section class="sec-block" aria-label="Compiled Multi-SCION System Instruction">' +
+            '<div class="sec-head">' +
+              '<h3>Compiled Multi-SCION System Instruction (' + esc(st.code) + ')</h3>' +
+              '<span>9-Section BOLAS Autonomous Production Prompt</span>' +
+            '</div>' +
+            '<div class="prompt-shell">' +
+              '<div class="prompt-bar">' +
+                '<div class="p-tabs">' +
+                  '<button type="button" class="p-tab' + (activePromptFmt === "md" ? " active" : "") + '" data-pfmt="md">Markdown (.md)</button>' +
+                  '<button type="button" class="p-tab' + (activePromptFmt === "poml" ? " active" : "") + '" data-pfmt="poml">POML (&lt;poml&gt;)</button>' +
+                '</div>' +
+                '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+                  '<button type="button" class="btn" id="btnCopyPromptBox">Copy ' + (activePromptFmt === "poml" ? ".poml" : ".md") + '</button>' +
+                  '<button type="button" class="btn" id="btnDownloadPromptBox">Download ' + (activePromptFmt === "poml" ? ".poml" : ".md") + '</button>' +
+                '</div>' +
+              '</div>' +
+              '<pre class="prompt-pre" id="compiledPromptPre">' + esc(promptText) + '</pre>' +
+            '</div>' +
+          '</section>'
+        );
+
+        wireSelectionEvents(st, prevId, nextId);
+      }
+
+      function wireSelectionEvents(st, prevId, nextId) {
+        var id = st.id;
+        var pad = st.pad || pad2(id);
+
+        var pv = document.getElementById("btnPrevStation");
+        var nx = document.getElementById("btnNextStation");
+        if (pv && prevId) pv.onclick = function () { selectPorthole(prevId, true); };
+        if (nx && nextId) nx.onclick = function () { selectPorthole(nextId, true); };
+
+        document.getElementById("btnCopyCombined").onclick = function () {
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(st.compiledPromptMd).then(function () {
+              flashStatus("✓ Copied Multi-SCION .md");
+            });
+          }
+        };
+        document.getElementById("btnSavePoml").onclick = function () {
+          downloadFile("scion-porthole-p" + pad + ".poml", st.compiledPromptPoml, "application/xml;charset=utf-8");
+          flashStatus("✓ Saved scion-porthole-p" + pad + ".poml");
+        };
+        document.getElementById("btnSaveMd").onclick = function () {
+          downloadFile("scion-porthole-p" + pad + ".md", st.compiledPromptMd, "text/markdown;charset=utf-8");
+          flashStatus("✓ Saved scion-porthole-p" + pad + ".md");
+        };
+        document.getElementById("btnCopyDeepLink").onclick = function () {
+          var url = location.origin + location.pathname + "#p" + pad;
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(url).then(function () {
+              flashStatus("✓ Copied #p" + pad + " link");
+            });
+          }
+        };
+
+        // Stage tabs
+        selectionEl.querySelectorAll("[data-stab]").forEach(function (tabBtn) {
+          tabBtn.onclick = function () {
+            activeStageTab = tabBtn.getAttribute("data-stab");
+            if (activeStageTab !== "remake") remakeWatchFullSound = false;
+            renderSelection();
+          };
+        });
+
+        // Prompt format sub-tabs
+        selectionEl.querySelectorAll("[data-pfmt]").forEach(function (b) {
+          b.onclick = function () {
+            activePromptFmt = b.getAttribute("data-pfmt");
+            renderSelection();
+          };
+        });
+        document.getElementById("btnCopyPromptBox").onclick = function () {
+          var txt = activePromptFmt === "poml" ? st.compiledPromptPoml : st.compiledPromptMd;
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(txt).then(function () {
+              flashStatus("✓ Copied " + (activePromptFmt === "poml" ? ".poml" : ".md"));
+            });
+          }
+        };
+        document.getElementById("btnDownloadPromptBox").onclick = function () {
+          if (activePromptFmt === "poml") {
+            downloadFile("scion-porthole-p" + pad + ".poml", st.compiledPromptPoml, "application/xml;charset=utf-8");
+          } else {
+            downloadFile("scion-porthole-p" + pad + ".md", st.compiledPromptMd, "text/markdown;charset=utf-8");
+          }
+        };
+
+        // 4-Beat ledger jump buttons
+        selectionEl.querySelectorAll("[data-jump-beat]").forEach(function (b) {
+          b.onclick = function () {
+            var which = b.getAttribute("data-jump-beat");
+            var mapSec = { a: 0.2, b: 4.1, c: 8.1, d: 12.1 };
+            var mapView = { a: "real", b: "turkey", c: "trout", d: "alien" };
+            if (activeStageTab === "rig") {
+              rig.view = mapView[which] || "auto";
+              rig.t = mapSec[which] || 0.2;
+              if (window.__game && window.__game.active && typeof window.__game.setView === "function") {
+                window.__game.setView(rig.view);
+              }
+              syncRigButtons();
+            } else {
+              activeStageTab = "remake";
+              remakeWatchFullSound = true;
+              renderSelection();
+              var v = document.getElementById("v2MainVideo");
+              if (v) {
+                var seekTo = mapSec[which] || 0;
+                var doSeek = function () {
+                  try { v.currentTime = seekTo; v.play().catch(function () {}); } catch (e) {}
+                };
+                if (v.readyState >= 1) doSeek();
+                else v.addEventListener("loadedmetadata", doSeek, { once: true });
+              }
+            }
+            selectionEl.querySelector(".stage-shell").scrollIntoView({ behavior: "smooth", block: "nearest" });
+          };
+        });
+
+        // Tab-specific wiring
+        if (activeStageTab === "remake") {
+          var exVid = document.getElementById("v2ExcerptVideo");
+          if (exVid) {
+            var seg = (exVid.getAttribute("data-seg") || "1.5,14.5").split(",");
+            var sA = parseFloat(seg[0]) || 1.5;
+            var sB = parseFloat(seg[1]) || 14.5;
+            exVid.addEventListener("loadedmetadata", function () {
+              if (exVid.duration > sA + 0.5) {
+                try { exVid.currentTime = sA; } catch (e) {}
+              }
+            });
+            exVid.addEventListener("timeupdate", function () {
+              var capB = Math.min(sB, (exVid.duration || 16) - 0.25);
+              if (exVid.currentTime > capB || exVid.currentTime < sA - 0.35) {
+                try { exVid.currentTime = sA; } catch (e) {}
+              }
+            });
+          }
+          var wBtn = document.getElementById("btnWatchSound");
+          if (wBtn) {
+            wBtn.onclick = function () {
+              remakeWatchFullSound = true;
+              renderSelection();
+            };
+          }
+          var bEx = document.getElementById("btnBackExcerpt");
+          if (bEx) {
+            bEx.onclick = function () {
+              remakeWatchFullSound = false;
+              renderSelection();
+            };
+          }
+          var swCmp = document.getElementById("btnSwitchCompare");
+          if (swCmp) {
+            swCmp.onclick = function () {
+              activeStageTab = "compare";
+              renderSelection();
+            };
+          }
+          var swRig = document.getElementById("btnSwitchLiveRig");
+          if (swRig) {
+            swRig.onclick = function () {
+              activeStageTab = "rig";
+              renderSelection();
+            };
+          }
+          selectionEl.querySelectorAll("[data-seek]").forEach(function (sb) {
+            sb.onclick = function () {
+              var sec = parseFloat(sb.getAttribute("data-seek")) || 0;
+              if (!remakeWatchFullSound) {
+                remakeWatchFullSound = true;
+                renderSelection();
+              }
+              var mv = document.getElementById("v2MainVideo");
+              if (mv) {
+                var apply = function () {
+                  try { mv.currentTime = Math.min(sec, (mv.duration || 16) - 0.3); mv.play().catch(function () {}); } catch (e) {}
+                };
+                if (mv.readyState >= 1) apply();
+                else mv.addEventListener("loadedmetadata", apply, { once: true });
+              }
+            };
+          });
+        } else if (activeStageTab === "compare") {
+          var v2 = document.getElementById("cmpV2Video");
+          var v1 = document.getElementById("cmpV1Video");
+          var applyCmpMute = function () {
+            if (!v2 || !v1) return;
+            v2.muted = (compareAudioSource !== "v2");
+            v1.muted = (compareAudioSource !== "v1");
+          };
+          applyCmpMute();
+
+          document.getElementById("btnSyncBoth").onclick = function () {
+            [v2, v1].forEach(function (v) {
+              if (!v) return;
+              try { v.currentTime = 0; v.play().catch(function () {}); } catch (e) {}
+            });
+          };
+          document.getElementById("btnPlayPauseBoth").onclick = function () {
+            var shouldPlay = v2 && v2.paused;
+            [v2, v1].forEach(function (v) {
+              if (!v) return;
+              try {
+                if (shouldPlay) v.play().catch(function () {});
+                else v.pause();
+              } catch (e) {}
+            });
+          };
+          document.getElementById("btnToggleCmpAudio").onclick = function (ev) {
+            compareAudioSource = compareAudioSource === "v2" ? "v1" : (compareAudioSource === "v1" ? "mute" : "v2");
+            applyCmpMute();
+            ev.currentTarget.textContent = "🔊 Audio: " + (compareAudioSource === "v2" ? "V2 Remake" : (compareAudioSource === "v1" ? "V1 Cockpit" : "Both Muted"));
+          };
+          selectionEl.querySelectorAll("[data-cmp-beat]").forEach(function (cb) {
+            cb.onclick = function () {
+              var bIdx = parseInt(cb.getAttribute("data-cmp-beat"), 10) || 0;
+              var v2Times = [0.3, 4.2, 8.2, 12.2];
+              var v1Times = [0.8, 3.0, 6.6, 10.4];
+              if (v2) { try { v2.currentTime = Math.min(v2Times[bIdx], (v2.duration || 16) - 0.3); v2.play().catch(function () {}); } catch (e) {} }
+              if (v1) { try { v1.currentTime = Math.min(v1Times[bIdx], (v1.duration || 13) - 0.3); v1.play().catch(function () {}); } catch (e) {} }
+            };
+          });
+        } else if (activeStageTab === "rig") {
+          mountOperatorLiveRig(st);
+        } else if (activeStageTab === "critic") {
+          var stripImg = document.getElementById("criticStripImg");
+          if (stripImg) {
+            stripImg.onerror = function () {
+              var fb = stripImg.getAttribute("data-fallback");
+              if (fb && stripImg.src.indexOf(fb.replace("./", "")) === -1) {
+                stripImg.src = fb;
+              }
+            };
+          }
+          var bs2 = document.getElementById("btnStripV2");
+          var bs1 = document.getElementById("btnStripV1");
+          if (bs2) bs2.onclick = function () { stripEdition = "v2"; renderSelection(); };
+          if (bs1) bs1.onclick = function () { stripEdition = "v1"; renderSelection(); };
+        }
+      }
+
+      /* ── LIVE 60FPS RIG (SUPPORTS V2 MULTI-SCION REMAKE ⇄ V1 COCKPIT) ── */
+      function syncRigButtons() {
+        var bEd = document.getElementById("rBtnEdition");
+        var bBeat = document.getElementById("rBtnBeat");
+        var bLamp = document.getElementById("rBtnLamp");
+        var bBal = document.getElementById("rBtnBallast");
+        var bRoll = document.getElementById("rBtnRoll");
+        var bCap = document.getElementById("rBtnCap");
+        var ro = document.getElementById("opRigReadout");
+        if (!bEd) return;
+
+        bEd.classList.toggle("on", rig.edition === "v2");
+        bEd.textContent = rig.edition === "v2"
+          ? "[V] Edition: V2 SCION Remake ⇄ V1"
+          : "[V] Edition: V1 Cockpit ⇄ V2 Remake";
+
+        bBeat.className = "r-btn" + (
+          rig.view === "turkey" ? " v-turkey" :
+          rig.view === "trout" ? " v-trout" :
+          rig.view === "alien" ? " v-alien" :
+          rig.view === "real" ? " on" : ""
+        );
+        var beatLabels = {
+          auto: "[Space] Auto (" + (rig.edition === "v2" ? "16s" : "13s") + ")",
+          real: "[Space] A · Real Creek",
+          turkey: "[Space] B · Turkey Probable",
+          trout: "[Space] C · Trout Plausible",
+          alien: "[Space] D · Alien Preposterous"
+        };
+        bBeat.textContent = beatLabels[rig.view] || beatLabels.auto;
+
+        bLamp.classList.toggle("on", !!rig.lamp);
+        bLamp.textContent = "[L] Lamp: " + (rig.lamp ? "ON" : "OFF");
+
+        bBal.classList.toggle("on", !!rig.ballast);
+        bBal.textContent = "[B] Ballast: " + (rig.ballast ? "IN" : "OUT");
+
+        bRoll.classList.toggle("on", rig.roll > 0);
+        bRoll.textContent = rig.roll > 0 ? ("[R] 1d6: #" + rig.roll) : "[R] Roll 1d6";
+
+        bCap.classList.toggle("on", rig.showCaptions !== false);
+        bCap.textContent = "[C] Captions: " + (rig.showCaptions !== false ? "ON" : "BLIND (0 text)");
+
+        if (ro) {
+          var hasV2 = !!(window.PORTAL_REMAKE_SCENES && window.PORTAL_REMAKE_SCENES[selectedId]);
+          ro.textContent = (rig.edition === "v2"
+            ? (hasV2 ? "V2 Multi-SCION Rig · 60fps" : "V2 Loading / Fallback · 60fps")
+            : "V1 Cockpit Rig · 60fps") + " · t=" + rig.t.toFixed(1) + "s";
+        }
+      }
+
+      function mountOperatorLiveRig(st) {
+        stopLiveRig();
+        var cv = document.getElementById("operatorLiveCanvas");
+        if (!cv) return;
+        var ctx = cv.getContext("2d");
+        var id = st.id;
+
+        rig.t = 0.35;
+        rig.view = "auto";
+        rig.lamp = true;
+        rig.ballast = false;
+        rig.roll = 0;
+        rig.snailActive = false;
+        rig.snailT = 0;
+        rig.snailNote = getSnailNote(id);
+        rig.snailDelivered = !!rig.snailNote;
+
+        if (window.SCION_STAGE && typeof window.SCION_STAGE.preloadPortalPlates === "function") {
+          window.SCION_STAGE.preloadPortalPlates(id);
+        }
+        ensureRemakeBatchLoaded(id, function (hasRemake) {
+          if (!hasRemake && rig.edition === "v2") {
+            // Keep edition v2 if scion-stage preview can render, or fallback gracefully
+          }
+          syncRigButtons();
+        });
+
+        syncRigButtons();
+
+        document.getElementById("rBtnEdition").onclick = function () {
+          rig.edition = rig.edition === "v2" ? "v1" : "v2";
+          rig.t = 0.35;
+          syncRigButtons();
+        };
+        document.getElementById("rBtnBeat").onclick = cycleRigBeat;
+        document.getElementById("rBtnLamp").onclick = function () { rig.lamp = !rig.lamp; syncRigButtons(); };
+        document.getElementById("rBtnBallast").onclick = function () { rig.ballast = !rig.ballast; syncRigButtons(); };
+        document.getElementById("rBtnRoll").onclick = function () { rig.roll = 1 + Math.floor(Math.random() * 6); syncRigButtons(); };
+        document.getElementById("rBtnCap").onclick = function () { rig.showCaptions = !rig.showCaptions; syncRigButtons(); };
+
+        var sInput = document.getElementById("opSnailInput");
+        var sForm = document.getElementById("opSnailForm");
+        var sSaved = document.getElementById("opSnailSaved");
+        if (sInput) {
+          sInput.oninput = function () {
+            rig.snailNote = saveSnailNote(id, sInput.value);
+            if (sSaved) sSaved.textContent = rig.snailNote ? "✓ Saved" : "";
+          };
+        }
+        if (sForm) {
+          sForm.onsubmit = function (ev) {
+            ev.preventDefault();
+            if (sInput && sInput.value.trim()) {
+              rig.snailNote = saveSnailNote(id, sInput.value);
+              if (sSaved) sSaved.textContent = "✓ Dispatched";
+            }
+            rig.snailActive = true;
+            rig.snailT = 0;
+            rig.view = "turkey";
+            rig.t = rig.edition === "v2" ? 4.4 : 3.85;
+            syncRigButtons();
+          };
+        }
+
+        cv.onclick = function () {
+          cycleRigBeat();
+        };
+
+        rigLastMs = performance.now();
+        function frame(nowMs) {
+          rigRaf = requestAnimationFrame(frame);
+          var dt = Math.min(0.1, Math.max(0, (nowMs - rigLastMs) / 1000));
+          rigLastMs = nowMs;
+
+          var isV2 = (rig.edition === "v2") && !!(window.PORTAL_REMAKE_SCENES && window.PORTAL_REMAKE_SCENES[id]);
+          var dur = isV2 ? 16.0 : 13.0;
+
+          if (rig.snailActive) {
+            rig.snailT += dt / 2.6;
+            if (rig.snailT >= 0.45 && rig.snailT < 0.75 && rig.view !== "trout") {
+              rig.view = "trout";
+              rig.t = isV2 ? 8.4 : 6.4;
+              syncRigButtons();
+            } else if (rig.snailT >= 0.75 && rig.view !== "alien") {
+              rig.view = "alien";
+              rig.t = isV2 ? 12.4 : 10.4;
+              syncRigButtons();
+            }
+            if (rig.snailT >= 1.0) {
+              rig.snailT = 1.0;
+              rig.snailActive = false;
+              rig.snailDelivered = true;
+              syncRigButtons();
+            }
+          }
+
+          if (isV2) {
+            if (rig.view === "real") rig.t = 0.4 + ((rig.t - 0.4 + dt) % 3.4 + 3.4) % 3.4;
+            else if (rig.view === "turkey") rig.t = 4.2 + ((rig.t - 4.2 + dt) % 3.6 + 3.6) % 3.6;
+            else if (rig.view === "trout") rig.t = 8.2 + ((rig.t - 8.2 + dt) % 3.6 + 3.6) % 3.6;
+            else if (rig.view === "alien") rig.t = 12.2 + ((rig.t - 12.2 + dt) % 3.6 + 3.6) % 3.6;
+            else rig.t = (rig.t + dt) % dur;
+          } else {
+            if (rig.view === "real") rig.t = 0.5 + ((rig.t - 0.5 + dt) % 1.4 + 1.4) % 1.4;
+            else if (rig.view === "turkey") rig.t = 1.8 + ((rig.t - 1.8 + dt) % 3.0 + 3.0) % 3.0;
+            else if (rig.view === "trout") rig.t = 5.2 + ((rig.t - 5.2 + dt) % 2.8 + 2.8) % 2.8;
+            else if (rig.view === "alien") rig.t = 9.1 + ((rig.t - 9.1 + dt) % 3.7 + 3.7) % 3.7;
+            else rig.t = (rig.t + dt) % dur;
+          }
+
+          var scene = isV2
+            ? window.PORTAL_REMAKE_SCENES[id]
+            : ((window.PORTAL_V1_SCENES && window.PORTAL_V1_SCENES[id]) || (window.PORTAL_SCENES && window.PORTAL_SCENES[id]));
+
+          var rState = {
+            lamp: rig.lamp,
+            ballast: rig.ballast,
+            view: ( !isV2 && rig.view === "real" ) ? "auto" : rig.view,
+            roll: rig.roll,
+            showCaptions: rig.showCaptions,
+            snailActive: rig.snailActive,
+            snailT: rig.snailT,
+            snailNote: rig.snailNote,
+            snailMail: rig.snailActive ? rig.snailT : rig.snailDelivered
+          };
+
+          ctx.save();
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+          ctx.clearRect(0, 0, 1280, 720);
+          if (scene && typeof scene.render === "function") {
+            try {
+              scene.render(ctx, 1280, 720, rig.t, rState);
+            } catch (e) {}
+          }
+          ctx.restore();
+        }
+        rigRaf = requestAnimationFrame(frame);
+      }
+
+      function cycleRigBeat() {
+        var order = ["real", "turkey", "trout", "alien", "auto"];
+        var idx = order.indexOf(rig.view);
+        rig.view = order[(idx + 1) % order.length];
+        var isV2 = (rig.edition === "v2") && !!(window.PORTAL_REMAKE_SCENES && window.PORTAL_REMAKE_SCENES[selectedId]);
+        if (rig.view === "real") rig.t = 0.5;
+        else if (rig.view === "turkey") rig.t = isV2 ? 4.3 : 2.6;
+        else if (rig.view === "trout") rig.t = isV2 ? 8.3 : 6.2;
+        else if (rig.view === "alien") rig.t = isV2 ? 12.3 : 10.2;
+        syncRigButtons();
+      }
+
+      function selectPorthole(id, updateHash) {
+        var clamped = Math.max(1, Math.min(55, parseInt(id, 10) || 1));
+        selectedId = clamped;
+        remakeWatchFullSound = false;
+        if (updateHash) {
+          history.replaceState(null, "", "#p" + pad2(clamped));
+        }
+        renderCatalogue();
+        renderSelection();
+
+        var curBtn = stationListEl.querySelector('[aria-current="true"]');
+        if (curBtn && typeof curBtn.scrollIntoView === "function") {
+          curBtn.scrollIntoView({ block: "nearest" });
+        }
+      }
+
+      // Global keyboard shortcuts when Live Rig is mounted (or [ / ] station step)
+      window.addEventListener("keydown", function (ev) {
+        var tag = ev.target && ev.target.tagName ? ev.target.tagName.toUpperCase() : "";
+        if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+        if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+
+        if (ev.key === "[") {
+          if (selectedId > 1) { ev.preventDefault(); selectPorthole(selectedId - 1, true); }
+          return;
+        }
+        if (ev.key === "]") {
+          if (selectedId < 55) { ev.preventDefault(); selectPorthole(selectedId + 1, true); }
+          return;
+        }
+
+        if (activeStageTab !== "rig") return;
+        var k = ev.key;
+        if (k === "v" || k === "V") {
+          ev.preventDefault();
+          rig.edition = rig.edition === "v2" ? "v1" : "v2";
+          syncRigButtons();
+        } else if (k === " " || ev.code === "Space") {
+          ev.preventDefault();
+          cycleRigBeat();
+        } else if (k === "l" || k === "L") {
+          ev.preventDefault();
+          rig.lamp = !rig.lamp;
+          syncRigButtons();
+        } else if (k === "b" || k === "B") {
+          ev.preventDefault();
+          rig.ballast = !rig.ballast;
+          syncRigButtons();
+        } else if (k === "r" || k === "R") {
+          ev.preventDefault();
+          rig.roll = 1 + Math.floor(Math.random() * 6);
+          syncRigButtons();
+        } else if (k === "c" || k === "C") {
+          ev.preventDefault();
+          rig.showCaptions = !rig.showCaptions;
+          syncRigButtons();
+        } else if (k === "s" || k === "S") {
+          ev.preventDefault();
+          rig.snailActive = true;
+          rig.snailT = 0;
+          rig.view = "turkey";
+          syncRigButtons();
+        }
+      });
+
+      // Filter pills & search input
+      document.querySelectorAll("[data-fg]").forEach(function (pill) {
+        pill.onclick = function () {
+          activeFilter = pill.getAttribute("data-fg");
+          document.querySelectorAll("[data-fg]").forEach(function (p) {
+            p.setAttribute("aria-pressed", p === pill ? "true" : "false");
+          });
+          renderCatalogue();
+          if (filteredIds.length && filteredIds.indexOf(selectedId) === -1) {
+            selectPorthole(filteredIds[0], true);
+          }
+        };
+      });
+
+      qInput.oninput = function () {
+        searchQuery = (qInput.value || "").trim().toLowerCase();
+        renderCatalogue();
+      };
+
+      browseBtn.onclick = function () {
+        var isCol = controlsWrap.getAttribute("data-collapsed") === "true";
+        controlsWrap.setAttribute("data-collapsed", isCol ? "false" : "true");
+        browseBtn.setAttribute("aria-expanded", isCol ? "true" : "false");
+      };
+
+      document.getElementById("brandHome").onclick = function (ev) {
+        ev.preventDefault();
+        selectPorthole(1, true);
+      };
+
+      window.addEventListener("hashchange", function () {
+        var hId = parseHashId();
+        if (hId && hId !== selectedId) selectPorthole(hId, false);
+      });
+
+      // Initial boot
+      var startId = parseHashId() || 1;
+      selectPorthole(startId, !location.hash);
+    })();
+  </script>
+</body>
+</html>

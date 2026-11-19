@@ -97,11 +97,12 @@ def normalize_one(job: tuple) -> dict:
             "-vf", vf,
             "-af", af,
             "-t", f"{dur:.6f}",
-            "-c:v", "libx264", "-preset", "fast", "-crf", "24",
+            "-c:v", "libx264", "-preset", "fast", "-crf", "26",
+            "-maxrate", "600k", "-bufsize", "1200k",
             "-profile:v", "high", "-level", "4.0",
             "-pix_fmt", "yuv420p",
             "-video_track_timescale", "12288",
-            "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2",
+            "-c:a", "aac", "-b:a", "128k", "-ar", "44100", "-ac", "2",
             str(dst_path)
         ]
     else:
@@ -112,11 +113,12 @@ def normalize_one(job: tuple) -> dict:
             "-vf", vf,
             "-t", f"{dur:.6f}",
             "-map", "0:v:0", "-map", "1:a:0",
-            "-c:v", "libx264", "-preset", "fast", "-crf", "24",
+            "-c:v", "libx264", "-preset", "fast", "-crf", "26",
+            "-maxrate", "600k", "-bufsize", "1200k",
             "-profile:v", "high", "-level", "4.0",
             "-pix_fmt", "yuv420p",
             "-video_track_timescale", "12288",
-            "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2",
+            "-c:a", "aac", "-b:a", "128k", "-ar", "44100", "-ac", "2",
             str(dst_path)
         ]
 

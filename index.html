@@ -445,9 +445,17 @@
   <div class="shell">
     <!-- HEADER -->
     <header class="head">
+      <nav style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding-bottom:10px;margin-bottom:12px;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:12.5px" aria-label="Quick Studio Navigation">
+        <a href="./scion-porthole-operator.html" style="font-weight:700;color:var(--c-sheet);text-decoration:underline;text-underline-offset:3px">🧬 55 Multi-SCION Operator Desk</a>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <a href="./55-portholes.html" style="text-decoration:underline;text-underline-offset:3px;font-weight:600">55 Portholes Screening Room</a>
+          <a href="./porthole-cards.html" style="text-decoration:underline;text-underline-offset:3px">✂ Cut-Out Cards (14p)</a>
+          <a href="./scion-interior-atlas.html" style="text-decoration:underline;text-underline-offset:3px">44 SCION Atlas</a>
+        </div>
+      </nav>
       <div class="head-top">
         <h1><a href="#" id="homeTitle" style="text-decoration:none">Turkey Sub</a></h1>
-        <span style="font-family:var(--mono);font-size:12px;color:var(--mute)">33 items · K-00 to K-32</span>
+        <span style="font-family:var(--mono);font-size:12px;color:var(--mute)">34 items · K-00 to K-33</span>
       </div>
 
       <!-- 1-LINE CLICKABLE COLOR LEGEND -->
@@ -516,7 +524,7 @@
       <div id="listContent"></div>
 
       <p id="emptyState" hidden style="padding:32px 0;color:var(--mute)">
-        Nothing matches. <button type="button" class="text-btn" id="resetSearchBtn">Show all 33 items</button>
+        Nothing matches. <button type="button" class="text-btn" id="resetSearchBtn">Show all 34 items</button>
       </p>
     </div>
 
@@ -593,7 +601,8 @@
         'K-29': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="16"/><path d="M8 8h8M8 12h6"/></svg>',
         'K-30': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="5" width="16" height="14"/><line x1="12" y1="5" x2="12" y2="19"/></svg>',
         'K-31': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 20V9a7 7 0 0 1 14 0v11H5Z"/><circle cx="12" cy="11" r="3"/><path d="M9 17h6"/></svg>',
-        'K-32': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="6" y1="5" x2="6" y2="19"/><line x1="18" y1="5" x2="18" y2="19"/><polygon points="10,9.5 15,12 10,14.5" fill="currentColor"/></svg>'
+        'K-32': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="6" y1="5" x2="6" y2="19"/><line x1="18" y1="5" x2="18" y2="19"/><polygon points="10,9.5 15,12 10,14.5" fill="currentColor"/></svg>',
+        'K-33': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="7" cy="17" r="3"/><circle cx="17" cy="17" r="3"/><path d="M10 7h4M7 10v4M17 10v4M10 17h4"/></svg>'
       };
 
       var PACKS = [
@@ -607,8 +616,9 @@
       ];
 
       var KEYS = [
-        { id:'K-00', num:'00', pack:'P2', track:'app', added:'23:45', meta:'57 Films + 14p Deck', name:'55 Portholes · Screening Room, Playable Cockpit & 4-Option Cut-Out Deck (#01–#55)', desc:'52s Setup-A Intro + 12m48s Feature Reel + 55 handmade films, 60fps playable cockpits & 14-sheet (4-per-page) 4-Option Student Cut-Out Deck (Real Creek, Probable · Turkey, Plausible · Trout, Preposterous · Alien).', file:'55-portholes.html', thumb:'portholes/p01.jpg', stem:'PAE-09_55_Porthole_Duck_Rabbit_Deck', pages:4, extras:[{l:'✂ Cut-Out Cards (14p)',u:'porthole-cards.html'},{l:'14p Cut-Out Deck PDF',u:'kits/PAE-09_55_Porthole_Duck_Rabbit_Deck.pdf'},{l:'Master Film (12:48)',u:'films/trout-sub-55-portals.mp4'},{l:'Intro Film (0:52)',u:'films/portholes-scion-intro.mp4'},{l:'18-Song Lenses',u:'lineage-jukebox.html'}] },
-        { id:'K-32', num:'00A', pack:'P1', track:'film', added:'23:44', meta:'12:48 MP4 + 14p Deck', name:'Trout Sub Master Film · 55 Portals Anthology & 4-Option Cut-Out Deck', desc:'Continuous 12m48s screening-room feature uniting the 52s 3-Pass Snail Mail Intro + all 55 handmade 13s porthole films, paired with the 14-sheet (4-per-page) 4-Option Student Cut-Out Deck.', file:'films/trout-sub-55-portals.mp4', thumb:'thumbs/portholes-scion-intro.jpg', pages:0, extras:[{l:'Playable Screening Room',u:'55-portholes.html'},{l:'✂ Cut-Out Cards (14p)',u:'porthole-cards.html'},{l:'14p Cut-Out Deck PDF',u:'kits/PAE-09_55_Porthole_Duck_Rabbit_Deck.pdf'},{l:'Intro Film (0:52)',u:'films/portholes-scion-intro.mp4'},{l:'44 SCION Prompts',u:'scion-interior-atlas.html'}] },
+        { id:'K-33', num:'00S', pack:'P1', track:'app', added:'23:55', meta:'55 × 4 SCION Swarms', name:'55-Porthole Multi-SCION Workshop & Animation Operator Desk', desc:'BOLAS operator desk coordinating 4 SCION swarms per porthole (Oulipo/Ouxpo rule, Animation Lineage S01–S54, 3 kinematic/sound rigs & Turkey Sub Atlas), V2 vs. V1 side-by-side comparison, 60fps playable rig & copyable .md/.poml instructions.', file:'scion-porthole-operator.html', thumb:'thumbs/p01-remake.jpg', pages:0, extras:[{l:'55 Portholes Screening Room',u:'55-portholes.html'},{l:'✂ Cut-Out Cards (14p)',u:'porthole-cards.html'},{l:'44 Interior Atlas SCIONs',u:'scion-interior-atlas.html'},{l:'V2 Master Film (15:33)',u:'films/trout-sub-55-portals.mp4'}] },
+        { id:'K-00', num:'00', pack:'P2', track:'app', added:'23:50', meta:'57 Films + V2/V1 + 14p Deck', name:'55 Portholes · Multi-SCION Screening Room, V2/V1 Cockpit & Cut-Out Deck (#01–#55)', desc:'52s Intro + 15m33s V2 Multi-SCION Feature Reel + 55 four-variation BOLAS cutout films (16s), preserved V1 Cockpit archive (13s), 60fps playable rigs & 14-sheet 4-Option Student Cut-Out Deck.', file:'55-portholes.html', thumb:'thumbs/p01-remake.jpg', stem:'PAE-09_55_Porthole_Duck_Rabbit_Deck', pages:4, extras:[{l:'🧬 55 Multi-SCION Operator Desk',u:'scion-porthole-operator.html'},{l:'✂ Cut-Out Cards (14p)',u:'porthole-cards.html'},{l:'14p Cut-Out Deck PDF',u:'kits/PAE-09_55_Porthole_Duck_Rabbit_Deck.pdf'},{l:'V2 Master Film (15:33)',u:'films/trout-sub-55-portals.mp4'},{l:'Intro Film (0:52)',u:'films/portholes-scion-intro.mp4'}] },
+        { id:'K-32', num:'00A', pack:'P1', track:'film', added:'23:48', meta:'15:33 MP4 + 14p Deck', name:'Trout Sub Master Film · 55 V2 Multi-SCION Portals Anthology & Cut-Out Deck', desc:'Continuous 15m33s screening-room feature uniting the 52s Setup-A Intro + all 55 four-variation 16s BOLAS Multi-SCION porthole remakes, paired with the 55-Porthole Operator Desk and 14-sheet Student Cut-Out Deck.', file:'films/trout-sub-55-portals.mp4', thumb:'thumbs/portholes-scion-intro.jpg', pages:0, extras:[{l:'🧬 55 Multi-SCION Operator Desk',u:'scion-porthole-operator.html'},{l:'Playable Screening Room',u:'55-portholes.html'},{l:'✂ Cut-Out Cards (14p)',u:'porthole-cards.html'},{l:'14p Cut-Out Deck PDF',u:'kits/PAE-09_55_Porthole_Duck_Rabbit_Deck.pdf'},{l:'44 SCION Prompts',u:'scion-interior-atlas.html'}] },
         { id:'K-31', num:'00B', pack:'P7', track:'essay', added:'20:48', meta:'18 Songs · 4 Engines', name:'18-Song Lineage Jukebox, Eye/Light & Patchworld Lenses', desc:'All 18 playlist tracks encoded as Sonic Lineage, Cineprompt Eye/Light, 8–10s Patches & GOLDING Riverbed lenses across the 55 portholes.', file:'lineage-jukebox.html', thumb:'portholes/p21.jpg', pages:0, extras:[{l:'Full Markdown',u:'lineage-jukebox-18-tracks.md'},{l:'GOLDING JSON',u:'golding-riverbed-18-tracks.json'}] },
         { id:'K-01', num:'01', pack:'P1', track:'kit', added:'18:14', meta:'6p PDF · 6:14 PM', name:'Direct the Turkey Sub', desc:'6-page trio packet with AI helper job card and 3-beat editor sheet.', file:'kits/Turkey_Sub_Student_Director_Worksheet.pdf', stem:'Turkey_Sub_Student_Director_Worksheet', pages:6 },
         { id:'K-02', num:'02', pack:'P2', track:'sheet', added:'18:12', meta:'2p PDF · 6:12 PM', name:'Brass 6-Bolt Porthole Log', desc:'Cleanest 2-page front/back porthole worksheet (die-pip bolts, no PSI math).', file:'sheets/tour_key_porthole_worksheet.pdf', stem:'tour_key_porthole_worksheet', pages:2 },
