@@ -240,6 +240,120 @@
       width: 170px;
     }
 
+    /* ── ACTIVITY INTRO FILM + TURKEY SUB SCION PROMPTS ── */
+    .intro-box {
+      padding: 16px 0 18px;
+      border-bottom: 1.5px solid var(--rule-dark);
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+    .intro-vid {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: block;
+      background: #132427;
+      border: 1px solid var(--rule-dark);
+    }
+    .intro-steps {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 14px;
+      line-height: 1.48;
+      color: var(--ink-2);
+    }
+    .intro-steps li { margin-bottom: 6px; }
+    .intro-steps strong { color: var(--ink); }
+    .scion-drawer {
+      margin-top: 12px;
+      border-top: 1px solid var(--rule);
+      padding-top: 10px;
+    }
+    .scion-drawer summary {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--rule-col);
+      cursor: pointer;
+    }
+    .scion-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 10px 0 8px;
+    }
+    .s-tab {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--mute);
+      border-bottom: 1.5px solid transparent;
+      padding: 2px 0;
+    }
+    .s-tab.active {
+      color: var(--ink);
+      font-weight: 700;
+      border-bottom-color: var(--ink);
+    }
+    .scion-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 6px 10px;
+      background: #f2eee4;
+      border: 1px solid var(--rule);
+      border-bottom: 0;
+      font-family: var(--mono);
+      font-size: 11.5px;
+    }
+    .scion-pre {
+      margin: 0;
+      padding: 10px 12px;
+      background: #fff;
+      border: 1px solid var(--rule);
+      max-height: 260px;
+      overflow-y: auto;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      line-height: 1.45;
+      white-space: pre-wrap;
+    }
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 6px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+    }
+    .act-link {
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .act-link.stop { color: var(--turkey); }
+    .inline-vid {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      display: block;
+      background: #132427;
+      border: 1px solid var(--rule-dark);
+      margin-bottom: 8px;
+    }
+    .lb-vid {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      display: block;
+      background: #132427;
+      border: 1px solid var(--rule-dark);
+      margin: 10px 0;
+    }
+
     /* ── SINGLE PORTHOLE ZOOM MODAL ── */
     .lightbox[hidden] { display: none !important; }
     .lightbox {
@@ -254,7 +368,7 @@
     .lb-card {
       background: var(--paper);
       border: 1.5px solid var(--rule-dark);
-      max-width: 560px;
+      max-width: 680px;
       width: 100%;
       max-height: 92vh;
       overflow-y: auto;
@@ -317,13 +431,14 @@
       .trout-view::before { content: "Trout in: "; font-weight: 700; }
       .search { width: 100%; }
       .lb-forks { grid-template-columns: 1fr; }
+      .intro-grid { grid-template-columns: 1fr; }
     }
 
     @media print {
       @page { size: letter landscape; margin: 0.34in; }
       body { background: #fff; font-size: 9.5px; line-height: 1.25; }
       .wrap { max-width: none; padding: 0; }
-      .top-nav, .bar, #galleryWrap, .lightbox { display: none !important; }
+      .top-nav, .bar, #introSection, #galleryWrap, .lightbox, .no-print { display: none !important; }
       #tableWrap { display: block !important; }
       header { padding: 0 0 6px; }
       h1 { font-size: 17px; margin-bottom: 2px; }
@@ -345,8 +460,31 @@
 
     <header>
       <h1>55 Portholes · Double Duck/Rabbit Deck</h1>
-      <p class="sub">One shared silhouette at the glass, two crisp <em>this-or-that?</em> forks: what the Turkey suspects looking out, and what the Trout suspect looking in.</p>
+      <p class="sub">One shared silhouette at the glass, 55 animated bread-tin cockpit films, and two crisp <em>this-or-that?</em> forks: what the Turkey suspects looking out, and what the Trout suspect looking in.</p>
     </header>
+
+    <section class="intro-box" id="introSection" aria-label="Activity introduction and Turkey Sub SCION prompts">
+      <div class="intro-grid">
+        <div>
+          <video class="intro-vid" controls preload="metadata" playsinline poster="./thumbs/portholes-scion-intro.jpg" src="./films/portholes-scion-intro.mp4"></video>
+        </div>
+        <div>
+          <div style="font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:0.05em;color:var(--rule-col);margin-bottom:6px">Activity Introduction · Turkey Sub SCION Setup A (0:37)</div>
+          <ol class="intro-steps">
+            <li><strong>Take Turkey’s seat (Setup A):</strong> Oval bread-roll tin, 2-o’clock chipped porthole, ballast slot left, chalk chart center, lamp toggle right.</li>
+            <li><strong>Operate one part &amp; watch the port:</strong> Play any porthole’s 8s film below—flip the lamp toggle or fit ballast to test what changes outside the glass.</li>
+            <li><strong>Read both sides of the cut:</strong> Turkey writes odd faces (<code>1·3·5</code> looking out); Trout writes even faces (<code>2·4·6</code> looking in) across <b style="color:var(--trout)">Probable</b>, <b style="color:var(--rule-col)">Plausible</b>, and <b style="color:var(--turkey)">Preposterous</b>.</li>
+            <li><strong>Roll 1d6 &amp; pass the record:</strong> Circle the rolled outcome, mark the chart under glass, and hand the clue to the next pilot.</li>
+          </ol>
+        </div>
+      </div>
+
+      <details class="scion-drawer" id="scionDrawer">
+        <summary>Turkey Sub SCION Animation Prompts (6 Core Episode Instructions — Copy .md or .poml)</summary>
+        <div class="scion-tabs" id="coreScionTabs"></div>
+        <div id="coreScionBody"></div>
+      </details>
+    </section>
 
     <div class="bar">
       <div class="tabs" role="tablist">
@@ -388,6 +526,7 @@
     <div class="lb-card" id="lbCard"></div>
   </div>
 
+  <script src="./portholes-scion-data.js"></script>
   <script>
     var SEEDS = [
       // #01–#30
@@ -450,10 +589,14 @@
       ["#55 · Eddy", "Corked brass tube stuffed with 54 postcards", "Verne: 20,000 Leagues (II.19 Manuscript)", "My own handwriting or eviction notice?", "Dead-letter dropbox or alien bottle?", "Recursive Worldtext (PAELEO ↻)", "new fiction"]
     ];
 
+    var CORE_SCIONS = window.TURKEY_SUB_SCIONS || [];
+    var activeScionIdx = 0;
     var activeFilter = "all";
     var viewMode = "gallery";
     var visibleIdx = [];
+    var playingInlineIdx = -1;
     var lbPos = -1;
+    var lbTab = "film"; // "film" | "still" | "scion"
 
     var qEl = document.getElementById("q");
     var rowsEl = document.getElementById("rows");
@@ -466,11 +609,87 @@
 
     function pad2(n) { return n < 10 ? "0" + n : String(n); }
     function imgFor(idx) { return "./portholes/p" + pad2(idx + 1) + ".jpg"; }
+    function filmFor(idx) { return "./films/portholes/p" + pad2(idx + 1) + ".mp4"; }
 
     function esc(s) {
-      return String(s).replace(/[&<>"']/g, function (c) {
+      return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
         return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
       });
+    }
+
+    function copyTxt(txt, btn) {
+      if (!navigator.clipboard) return;
+      navigator.clipboard.writeText(txt).then(function () {
+        var old = btn.textContent;
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = old; }, 1200);
+      });
+    }
+
+    function buildPortScionMd(idx) {
+      var r = SEEDS[idx];
+      var num = pad2(idx + 1);
+      return (
+        "# SCION · Porthole " + r[0] + " (" + r[1] + ")\n\n" +
+        "## 1. Assignment and inputs\n" +
+        "You are the SCION animation operator for Turkey Sub Porthole " + r[0] + " (“" + r[1] + "”, lineage: " + r[2] + "). " +
+        "Deliver a 7–8 second multiplane bread-tin cockpit animatic or paper performance using Turkey Sub Setup A.\n\n" +
+        "## 2. Creative thesis\n" +
+        "Hold one shared silhouette at the chipped brass porthole long enough to support two opposite readings across the glass:\n" +
+        "- First Pass · Turkey Looking Out (Odd faces 1·3·5): “" + r[3] + "”\n" +
+        "- Second Pass · Trout Looking In (Even faces 2·4·6): “" + r[4] + "”\n\n" +
+        "## 3. Setup A invariants\n" +
+        "Lock Setup A inside the oval bread-roll tin: right-side dent, centered 6-bolt brass porthole with offset latch and 2-o’clock rim chip, " +
+        "ballast/single attachment slot bottom-left, chalk route chart under glass bottom-center, and brass lamp toggle bottom-right. " +
+        "Keep warm 2900K task light inside and cool river current outside.\n\n" +
+        "## 4. Governing rule and transition\n" +
+        "Apply " + r[5] + ". <clear hardware + murky port> [operate lamp toggle or ballast slot while looking] -> <" + r[1] + " revealed across the cut>. " +
+        "At midpoint, shift across the glass to Trout’s river witness view, log the rolled 1d6 consequence (1–2 Probable, 3–4 Plausible, 5–6 Preposterous), " +
+        "and mark the verified route on the chalk chart under glass for Brook and the next pilot."
+      );
+    }
+
+    function buildPortScionPoml(idx) {
+      var r = SEEDS[idx];
+      var md = buildPortScionMd(idx).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      return (
+        "<poml>\n" +
+        "  <role>SCION Animation Operator · Turkey Sub " + r[0] + "</role>\n" +
+        "  <task>Animate Setup A two-way porthole proof for “" + r[1] + "” (" + r[5] + ")</task>\n" +
+        "  <instructions>\n" + md + "\n  </instructions>\n" +
+        "</poml>"
+      );
+    }
+
+    function renderCoreScions() {
+      var tabsEl = document.getElementById("coreScionTabs");
+      var bodyEl = document.getElementById("coreScionBody");
+      if (!tabsEl || !bodyEl || !CORE_SCIONS.length) return;
+
+      tabsEl.innerHTML = CORE_SCIONS.map(function (c, i) {
+        return '<button type="button" class="s-tab' + (i === activeScionIdx ? " active" : "") + '" data-sc="' + i + '">' + (i + 1) + ". " + esc(c.title) + '</button>';
+      }).join("");
+
+      var cur = CORE_SCIONS[activeScionIdx];
+      bodyEl.innerHTML = (
+        '<div class="scion-bar">' +
+          '<span><strong>' + esc(cur.title) + '</strong> — ' + esc(cur.claim) + '</span>' +
+          '<div style="display:flex;gap:8px">' +
+            '<button type="button" class="btn" id="copyCoreMd">Copy SCION .md</button>' +
+            '<button type="button" class="btn" id="copyCorePoml">Copy .poml</button>' +
+          '</div>' +
+        '</div>' +
+        '<pre class="scion-pre">' + esc(cur.prompt) + '</pre>'
+      );
+
+      tabsEl.querySelectorAll("[data-sc]").forEach(function (b) {
+        b.onclick = function () {
+          activeScionIdx = parseInt(b.getAttribute("data-sc"), 10);
+          renderCoreScions();
+        };
+      });
+      document.getElementById("copyCoreMd").onclick = function () { copyTxt(cur.prompt, this); };
+      document.getElementById("copyCorePoml").onclick = function () { copyTxt(cur.poml, this); };
     }
 
     function render() {
@@ -486,12 +705,25 @@
         var pos = visibleIdx.length;
         visibleIdx.push(idx);
         var src = imgFor(idx);
+        var fsrc = filmFor(idx);
+        var isPlaying = (playingInlineIdx === idx);
+
+        var mediaBlock = isPlaying
+          ? '<video class="inline-vid" controls autoplay playsinline src="' + fsrc + '" poster="' + src + '"></video>'
+          : '<button type="button" class="g-img-btn" data-pos="' + pos + '" data-ltab="film" aria-label="Play film for ' + esc(r[0]) + '">' +
+              '<img src="' + src + '" alt="' + esc(r[0] + " — " + r[1]) + '" loading="lazy">' +
+            '</button>';
 
         ghtml += (
           '<article class="g-item">' +
-            '<button type="button" class="g-img-btn" data-pos="' + pos + '" aria-label="Open ' + esc(r[0]) + '">' +
-              '<img src="' + src + '" alt="' + esc(r[0] + " — " + r[1]) + '" loading="lazy">' +
-            '</button>' +
+            mediaBlock +
+            '<div class="card-actions">' +
+              (isPlaying
+                ? '<button type="button" class="act-link stop" data-inline="-1">■ Stop Film</button>'
+                : '<button type="button" class="act-link" data-inline="' + idx + '">▶ Play Film</button>') +
+              '<button type="button" class="act-link" data-pos="' + pos + '" data-ltab="scion">SCION Prompt</button>' +
+              '<a class="act-link" href="' + fsrc + '" download="porthole-' + pad2(idx + 1) + '.mp4">MP4</a>' +
+            '</div>' +
             '<div class="g-head">' + esc(r[0]) + '</div>' +
             '<div class="g-clue">' + esc(r[1]) + '<span class="src">' + esc(r[2]) + '</span></div>' +
             '<div class="g-fork turkey-view"><strong>Turkey:</strong> ' + esc(r[3]) + '</div>' +
@@ -503,10 +735,16 @@
           "<tr>" +
             '<td class="col-port">' +
               '<div class="port-cell">' +
-                '<button type="button" class="port-thumb" data-pos="' + pos + '" aria-label="Open ' + esc(r[0]) + '">' +
+                '<button type="button" class="port-thumb" data-pos="' + pos + '" data-ltab="film" aria-label="Open ' + esc(r[0]) + '">' +
                   '<img src="' + src + '" alt="' + esc(r[0]) + '">' +
                 '</button>' +
-                '<span class="port-id">' + esc(r[0]) + '</span>' +
+                '<div>' +
+                  '<span class="port-id">' + esc(r[0]) + '</span>' +
+                  '<div class="no-print" style="margin-top:3px;font-family:var(--mono);font-size:11px;display:flex;gap:7px">' +
+                    '<button type="button" class="act-link" data-pos="' + pos + '" data-ltab="film">▶ Film</button>' +
+                    '<button type="button" class="act-link" data-pos="' + pos + '" data-ltab="scion">SCION</button>' +
+                  '</div>' +
+                '</div>' +
               '</div>' +
             "</td>" +
             "<td>" + esc(r[1]) + '<span class="src">' + esc(r[2]) + "</span></td>" +
@@ -520,25 +758,62 @@
       galEl.innerHTML = ghtml || '<p style="color:var(--mute);padding:16px 0">No matching portholes.</p>';
       rowsEl.innerHTML = thtml || '<tr><td colspan="5" style="padding:24px;color:var(--mute)">No matching portholes.</td></tr>';
 
+      document.querySelectorAll("[data-inline]").forEach(function (b) {
+        b.onclick = function () {
+          playingInlineIdx = parseInt(b.getAttribute("data-inline"), 10);
+          render();
+        };
+      });
+
       document.querySelectorAll("[data-pos]").forEach(function (b) {
-        b.onclick = function () { openLb(parseInt(b.getAttribute("data-pos"), 10)); };
+        b.onclick = function () {
+          lbTab = b.getAttribute("data-ltab") || "film";
+          openLb(parseInt(b.getAttribute("data-pos"), 10));
+        };
       });
     }
 
     function setMode(m) {
       viewMode = m;
+      playingInlineIdx = -1;
       galEl.hidden = (m !== "gallery");
       tblWrap.hidden = (m !== "table");
       btnGal.classList.toggle("active", m === "gallery");
       btnTbl.classList.toggle("active", m === "table");
+      render();
     }
 
     function openLb(pos) {
       if (pos < 0 || pos >= visibleIdx.length) return;
+      playingInlineIdx = -1;
       lbPos = pos;
       var idx = visibleIdx[pos];
       var r = SEEDS[idx];
       var src = imgFor(idx);
+      var fsrc = filmFor(idx);
+      var scMd = buildPortScionMd(idx);
+      var scPoml = buildPortScionPoml(idx);
+
+      var stageHtml = "";
+      if (lbTab === "film") {
+        stageHtml = '<video class="lb-vid" controls autoplay playsinline src="' + fsrc + '" poster="' + src + '"></video>';
+      } else if (lbTab === "still") {
+        stageHtml = '<img class="lb-img" src="' + src + '" alt="' + esc(r[0] + " — " + r[1]) + '">';
+      } else {
+        stageHtml = (
+          '<div style="margin:10px 0">' +
+            '<div class="scion-bar">' +
+              '<span>SCION Setup-A Prompt · ' + esc(r[0]) + '</span>' +
+              '<div style="display:flex;gap:8px">' +
+                '<button type="button" class="btn" id="lbCopyMd">Copy .md</button>' +
+                '<button type="button" class="btn" id="lbCopyPoml">Copy .poml</button>' +
+              '</div>' +
+            '</div>' +
+            '<pre class="scion-pre">' + esc(scMd) + '</pre>' +
+          '</div>'
+        );
+      }
+
       lbCard.innerHTML = (
         '<div class="lb-top">' +
           '<strong>' + esc(r[0]) + ' (' + (pos + 1) + '/' + visibleIdx.length + ')</strong>' +
@@ -548,7 +823,12 @@
             '<button type="button" id="lbClose" style="font-weight:700">Close ✕</button>' +
           '</div>' +
         '</div>' +
-        '<img class="lb-img" src="' + src + '" alt="' + esc(r[0] + " — " + r[1]) + '">' +
+        '<div class="scion-tabs" style="margin:8px 0 4px">' +
+          '<button type="button" class="s-tab' + (lbTab === "film" ? " active" : "") + '" data-lt="film">▶ Film Animation (0:08)</button>' +
+          '<button type="button" class="s-tab' + (lbTab === "still" ? " active" : "") + '" data-lt="still">Still Illustration</button>' +
+          '<button type="button" class="s-tab' + (lbTab === "scion" ? " active" : "") + '" data-lt="scion">SCION Animation Prompt</button>' +
+        '</div>' +
+        stageHtml +
         '<div class="lb-clue">' + esc(r[1]) + '</div>' +
         '<span class="src">' + esc(r[2]) + '</span>' +
         '<div class="lb-forks">' +
@@ -557,7 +837,10 @@
         '</div>' +
         '<div class="lb-foot">' +
           '<span>' + esc(r[5]) + '</span>' +
-          '<a href="' + src + '" download="porthole-' + pad2(idx + 1) + '.jpg" style="text-decoration:underline">Download JPG</a>' +
+          '<div style="display:flex;gap:12px">' +
+            '<a href="' + fsrc + '" download="porthole-' + pad2(idx + 1) + '.mp4" style="text-decoration:underline">Download MP4</a>' +
+            '<a href="' + src + '" download="porthole-' + pad2(idx + 1) + '.jpg" style="text-decoration:underline">Download JPG</a>' +
+          '</div>' +
         '</div>'
       );
       lbEl.hidden = false;
@@ -566,9 +849,21 @@
       var nx = document.getElementById("lbNext");
       if (pv) pv.onclick = function () { openLb(pos - 1); };
       if (nx) nx.onclick = function () { openLb(pos + 1); };
+
+      lbCard.querySelectorAll("[data-lt]").forEach(function (b) {
+        b.onclick = function () {
+          lbTab = b.getAttribute("data-lt");
+          openLb(pos);
+        };
+      });
+      var cmd = document.getElementById("lbCopyMd");
+      var cpm = document.getElementById("lbCopyPoml");
+      if (cmd) cmd.onclick = function () { copyTxt(scMd, cmd); };
+      if (cpm) cpm.onclick = function () { copyTxt(scPoml, cpm); };
     }
 
     function closeLb() {
+      lbCard.innerHTML = "";
       lbEl.hidden = true;
       lbPos = -1;
     }
@@ -587,13 +882,14 @@
     document.querySelectorAll(".tab").forEach(function (btn) {
       btn.onclick = function () {
         activeFilter = btn.getAttribute("data-f");
+        playingInlineIdx = -1;
         document.querySelectorAll(".tab").forEach(function (b) { b.classList.toggle("active", b === btn); });
         render();
       };
     });
-    qEl.oninput = render;
+    qEl.oninput = function () { playingInlineIdx = -1; render(); };
+    renderCoreScions();
     setMode("gallery");
-    render();
   </script>
 </body>
 </html>
