@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>55 Porthole Cut-Out Cards · 4-Option Student Deck (14 Sheets) · Turkey Sub</title>
+  <meta name="description" content="Printable 14-sheet (4-per-page) 4-Option Student Cut-Out Porthole Deck (#01–#55 + #56 Your Own Porthole): Real Creek, Probable (Turkey), Plausible (Trout), and Preposterous (Alien).">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <style>
+    :root {
+      --screen-bg: #f3efe6;
+      --ink: #111111;
+      --ink-soft: #333333;
+      --real: #14181a;
+      --probable: #1d596e;
+      --plausible: #2d6846;
+      --preposterous: #9e3d1c;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, "Helvetica Neue", Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    [hidden] { display: none !important; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--screen-bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── SCREEN TOOLBAR (HIDDEN IN PRINT) ── */
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #faf8f3;
+      border-bottom: 2px solid #14181a;
+      padding: 10px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .tb-left, .tb-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .tb-back {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: #14181a;
+      text-decoration: none;
+      padding: 6px 10px;
+      border: 1.5px solid #14181a;
+      background: #fff;
+    }
+    .tb-back:hover { background: #14181a; color: #fff; }
+    .tb-title {
+      font-weight: 800;
+      font-size: 14.5px;
+      margin: 0 6px 0 2px;
+      letter-spacing: -0.01em;
+    }
+    .tb-group {
+      display: inline-flex;
+      border: 1.5px solid #14181a;
+      background: #fff;
+    }
+    .tb-btn {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: #14181a;
+      background: transparent;
+      border: 0;
+      border-right: 1px solid #14181a;
+      padding: 6px 10px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .tb-btn:last-child { border-right: 0; }
+    .tb-btn:hover { background: #efebe0; }
+    .tb-btn.active {
+      background: #14181a;
+      color: #fff;
+    }
+    .tb-action {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #14181a;
+      background: #fff;
+      border: 1.5px solid #14181a;
+      padding: 6px 12px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tb-action:hover { background: #efebe0; }
+    .tb-action.primary {
+      background: #14181a;
+      color: #fff;
+    }
+    .tb-action.primary:hover { background: #2b3337; }
+    .tb-action.quiz-on {
+      background: var(--probable);
+      border-color: var(--probable);
+      color: #fff;
+    }
+
+    .screen-note {
+      max-width: 10.56in;
+      margin: 14px auto 0;
+      padding: 8px 14px;
+      background: #fff;
+      border: 1.5px solid #14181a;
+      font-family: var(--mono);
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* ── DECK & SHEET GEOMETRY (10.56in × 8.06in PRINT BOX) ── */
+    .deck {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      padding: 16px 12px 56px;
+    }
+
+    .sheet {
+      position: relative;
+      width: 10.56in;
+      height: 8.04in;
+      background: #ffffff;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      column-gap: 0.24in;
+      row-gap: 0.20in;
+      padding: 0.01in;
+      overflow: hidden;
+      box-shadow: 0 3px 16px rgba(0, 0, 0, 0.10);
+    }
+
+    /* ── TWO STRAIGHT SCISSOR CUT-LINES (+) ── */
+    .cut-v {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      border-left: 1.5px dashed #444444;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .cut-h {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 0;
+      border-top: 1.5px dashed #444444;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .scissor {
+      position: absolute;
+      font-size: 12px;
+      line-height: 1;
+      color: #222222;
+      background: #ffffff;
+      padding: 1px 3px;
+      font-family: var(--sans);
+      pointer-events: none;
+      z-index: 6;
+    }
+    .scissor.top {
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%) rotate(90deg);
+    }
+    .scissor.bottom {
+      bottom: 2px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-90deg);
+    }
+    .scissor.left {
+      left: 3px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .scissor.right {
+      right: 3px;
+      top: 50%;
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    /* ── INDIVIDUAL STUDENT CUT-OUT CARD (~5.15in × 3.92in) ── */
+    .p-card {
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      border: 2px solid #111111;
+      border-radius: 8px;
+      padding: 8px 11px 7px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    /* Top Bar */
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid #111111;
+      flex: 0 0 auto;
+    }
+    .card-station {
+      font-family: var(--mono);
+      font-size: 15.5px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .card-prompt {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 700;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    /* Main 2-Column Body */
+    .card-body {
+      flex: 1 1 auto;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 1.58in 1fr;
+      gap: 10px;
+      align-items: center;
+      padding: 6px 0;
+    }
+
+    /* Left Porthole Column (1.58in wide) */
+    .card-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .port-frame {
+      width: 1.52in;
+      height: 1.52in;
+      border: 1.75px solid #111111;
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .port-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .port-frame.blank-frame {
+      border-style: solid;
+      padding: 3px;
+    }
+    .roll-hint {
+      font-family: var(--mono);
+      font-size: 9.6px;
+      font-weight: 700;
+      color: #111111;
+      text-align: center;
+      line-height: 1.22;
+      padding: 3px 5px;
+      border: 1px solid #111111;
+      border-radius: 4px;
+      background: #ffffff;
+      width: 1.52in;
+    }
+
+    /* Right 4-Option Stack */
+    .card-options {
+      height: 100%;
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+      gap: 5.5px;
+      min-width: 0;
+    }
+    .opt-box {
+      border: 1.5px solid #111111;
+      border-left-width: 4.5px;
+      border-radius: 6px;
+      background: #ffffff;
+      padding: 4px 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .opt-box[data-role="real"]         { border-left-color: var(--real); }
+    .opt-box[data-role="probable"]     { border-left-color: var(--probable); }
+    .opt-box[data-role="plausible"]    { border-left-color: var(--plausible); }
+    .opt-box[data-role="preposterous"] { border-left-color: var(--preposterous); }
+    .quiz-mode .opt-box {
+      border-left-width: 1.5px;
+      border-left-color: #111111;
+    }
+
+    .opt-pill {
+      flex: 0 0 auto;
+      min-width: 34px;
+      height: 26px;
+      padding: 0 5px;
+      border: 1.75px solid #111111;
+      border-radius: 999px;
+      background: #ffffff;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #111111;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .opt-content {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1px;
+    }
+    .opt-role {
+      font-family: var(--mono);
+      font-size: 9.2px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .opt-role.real         { color: var(--real); }
+    .opt-role.probable     { color: var(--probable); }
+    .opt-role.plausible    { color: var(--plausible); }
+    .opt-role.preposterous { color: var(--preposterous); }
+    .quiz-mode .card-seeded .opt-role {
+      display: none !important;
+    }
+
+    .opt-text {
+      font-family: var(--sans);
+      font-size: 13.8px;
+      font-weight: 700;
+      line-height: 1.16;
+      color: #111111;
+      word-wrap: break-word;
+    }
+
+    /* Blank Write-In Line for Card #56 */
+    .opt-write-line {
+      width: 100%;
+      height: 17px;
+      border-bottom: 1.4px solid #111111;
+    }
+
+    /* Bottom 1-Line Snail Mail Footer */
+    .card-foot {
+      flex: 0 0 auto;
+      padding-top: 5px;
+      border-top: 1.5px solid #111111;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .foot-label {
+      font-family: var(--sans);
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .foot-line {
+      flex: 1 1 auto;
+      border-bottom: 1.4px solid #111111;
+      height: 12px;
+    }
+
+    /* Empty slot placeholder when filtered to non-multiple of 4 */
+    .p-card-empty {
+      border: 1.5px dashed #cccccc;
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    /* ── EXACT PRINT STYLES ── */
+    @page {
+      size: letter landscape;
+      margin: 0.22in;
+    }
+    @media print {
+      html, body {
+        background: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .toolbar, .screen-note {
+        display: none !important;
+      }
+      .deck {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .sheet {
+        width: 10.56in !important;
+        height: 8.04in !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .sheet:not(:last-child) {
+        break-after: page;
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="toolbar" aria-label="Cut-out deck controls">
+    <div class="tb-left">
+      <a class="tb-back" href="./55-portholes.html">← 55 Portholes</a>
+      <span class="tb-title">✂ 4-Option Student Cut-Out Porthole Deck</span>
+      <div class="tb-group" role="tablist" aria-label="Filter cards">
+        <button type="button" class="tb-btn active" data-filter="all">All 56 Cards / 14 Sheets</button>
+        <button type="button" class="tb-btn" data-filter="core">#01–#30</button>
+        <button type="button" class="tb-btn" data-filter="expanded">#31–#55</button>
+      </div>
+    </div>
+    <div class="tb-right">
+      <button type="button" class="tb-action" id="btnToggleQuiz" aria-pressed="false">Role Hints: Shown</button>
+      <button type="button" class="tb-action" id="btnReshuffle" hidden title="Shuffle A·B·C·D order again">↻ Shuffle Again</button>
+      <a class="tb-action" href="./kits/PAE-09_55_Porthole_Duck_Rabbit_Deck.pdf" download="PAE-09_55_Porthole_Duck_Rabbit_Deck.pdf">⬇ Download PDF</a>
+      <button type="button" class="tb-action primary" id="btnPrint">🖨 Print Cut-Out Cards</button>
+    </div>
+  </nav>
+
+  <div class="screen-note" id="screenSummary">
+    <span id="summaryLeft">Showing <strong>56 Cut-Out Cards</strong> on <strong>14 Letter Landscape Sheets</strong> (4 cards per sheet · 2 straight scissor cuts <code>+</code> per page).</span>
+    <span id="summaryRight">Canonical order: <strong>(A) Real Creek</strong> · <strong style="color:#1d596e">(B) Probable · Turkey</strong> · <strong style="color:#2d6846">(C) Plausible · Trout</strong> · <strong style="color:#9e3d1c">(D) Preposterous · Alien</strong></span>
+  </div>
+
+  <main class="deck" id="deckRoot" aria-label="Printable 4-per-sheet porthole cards"></main>
+
+  <script src="./student-options.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      var OPTIONS = window.STUDENT_OPTIONS || {};
+      var LETTERS = ["A", "B", "C", "D"];
+      var ROLES = [
+        { key: "a", role: "real",         label: "REAL CREEK" },
+        { key: "b", role: "probable",     label: "PROBABLE · TURKEY" },
+        { key: "c", role: "plausible",    label: "PLAUSIBLE · TROUT" },
+        { key: "d", role: "preposterous", label: "PREPOSTEROUS · ALIEN" }
+      ];
+
+      var activeFilter = "all"; // "all" | "core" | "expanded"
+      var quizMode = false;
+      var shuffleSeed = 1;
+
+      var deckRoot = document.getElementById("deckRoot");
+      var btnToggleQuiz = document.getElementById("btnToggleQuiz");
+      var btnReshuffle = document.getElementById("btnReshuffle");
+      var btnPrint = document.getElementById("btnPrint");
+      var summaryLeft = document.getElementById("summaryLeft");
+      var summaryRight = document.getElementById("summaryRight");
+
+      function pad2(n) {
+        return n < 10 ? "0" + n : String(n);
+      }
+
+      function esc(s) {
+        return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+      }
+
+      // Deterministic Fisher-Yates per card id + shuffleSeed so every card gets a balanced, repeatable A/B/C/D mix
+      function shuffledRolesForCard(id) {
+        var arr = ROLES.slice();
+        var s = (id * 2654435761 + shuffleSeed * 1013904223) >>> 0;
+        for (var i = arr.length - 1; i > 0; i--) {
+          s = (s * 1664525 + 1013904223) >>> 0;
+          var j = s % (i + 1);
+          var tmp = arr[i];
+          arr[i] = arr[j];
+          arr[j] = tmp;
+        }
+        return arr;
+      }
+
+      function buildBlankPortholeSvg() {
+        var bolts = [0, 60, 120, 180, 240, 300].map(function (deg) {
+          var rad = (deg - 90) * Math.PI / 180;
+          var cx = (100 + 82 * Math.cos(rad)).toFixed(1);
+          var cy = (100 + 82 * Math.sin(rad)).toFixed(1);
+          return '<circle cx="' + cx + '" cy="' + cy + '" r="5.5" fill="#fff" stroke="#111" stroke-width="2.2"/>';
+        }).join("");
+
+        return (
+          '<svg viewBox="0 0 200 200" width="100%" height="100%" aria-label="Blank double-ring porthole to draw inside">' +
+            '<circle cx="100" cy="100" r="94" fill="#fff" stroke="#111" stroke-width="3.5"/>' +
+            '<circle cx="100" cy="100" r="70" fill="#fff" stroke="#111" stroke-width="2.8"/>' +
+            bolts +
+            '<text x="100" y="95" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#444">Draw what’s</text>' +
+            '<text x="100" y="113" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#444">outside</text>' +
+          '</svg>'
+        );
+      }
+
+      function buildSeededCardHtml(id) {
+        var entry = OPTIONS[id];
+        if (!entry) return '<div class="p-card-empty"></div>';
+
+        var stationTitle = String(entry.station || ("#" + pad2(id))).toUpperCase();
+        var imgSrc = "./portholes/p" + pad2(id) + ".jpg";
+        var ordered = quizMode ? shuffledRolesForCard(id) : ROLES;
+
+        var optsHtml = ordered.map(function (r, idx) {
+          var letter = LETTERS[idx];
+          var phrase = entry[r.key] || "";
+          return (
+            '<div class="opt-box" data-role="' + r.role + '">' +
+              '<span class="opt-pill">(' + letter + ')</span>' +
+              '<div class="opt-content">' +
+                '<span class="opt-role ' + r.role + '">' + esc(r.label) + '</span>' +
+                '<span class="opt-text">' + esc(phrase) + '</span>' +
+              '</div>' +
+            '</div>'
+          );
+        }).join("");
+
+        return (
+          '<article class="p-card card-seeded" data-card-id="' + id + '">' +
+            '<header class="card-top">' +
+              '<span class="card-station">' + esc(stationTitle) + '</span>' +
+              '<span class="card-prompt">What is outside the porthole? Circle one:</span>' +
+            '</header>' +
+            '<div class="card-body">' +
+              '<div class="card-left">' +
+                '<div class="port-frame">' +
+                  '<img src="' + imgSrc + '" alt="Porthole ' + esc(stationTitle) + '">' +
+                '</div>' +
+                '<div class="roll-hint">Roll 1d4 or circle A·B·C·D</div>' +
+              '</div>' +
+              '<div class="card-options">' +
+                optsHtml +
+              '</div>' +
+            '</div>' +
+            '<footer class="card-foot">' +
+              '<span class="foot-label">✉ Snail Mail clue:</span>' +
+              '<span class="foot-line" aria-hidden="true"></span>' +
+            '</footer>' +
+          '</article>'
+        );
+      }
+
+      function buildBlankCard56Html() {
+        var optsHtml = ROLES.map(function (r, idx) {
+          var letter = LETTERS[idx];
+          return (
+            '<div class="opt-box" data-role="' + r.role + '">' +
+              '<span class="opt-pill">(' + letter + ')</span>' +
+              '<div class="opt-content">' +
+                '<span class="opt-role ' + r.role + '">' + esc(r.label) + '</span>' +
+                '<div class="opt-write-line" aria-hidden="true"></div>' +
+              '</div>' +
+            '</div>'
+          );
+        }).join("");
+
+        return (
+          '<article class="p-card card-blank" data-card-id="56">' +
+            '<header class="card-top">' +
+              '<span class="card-station">#56 · YOUR OWN PORTHOLE</span>' +
+              '<span class="card-prompt">What is outside the porthole? Circle one:</span>' +
+            '</header>' +
+            '<div class="card-body">' +
+              '<div class="card-left">' +
+                '<div class="port-frame blank-frame">' +
+                  buildBlankPortholeSvg() +
+                '</div>' +
+                '<div class="roll-hint">Roll 1d4 or circle A·B·C·D</div>' +
+              '</div>' +
+              '<div class="card-options">' +
+                optsHtml +
+              '</div>' +
+            '</div>' +
+            '<footer class="card-foot">' +
+              '<span class="foot-label">✉ Snail Mail clue:</span>' +
+              '<span class="foot-line" aria-hidden="true"></span>' +
+            '</footer>' +
+          '</article>'
+        );
+      }
+
+      function getFilteredIds() {
+        var ids = [];
+        var i;
+        if (activeFilter === "core") {
+          for (i = 1; i <= 30; i++) ids.push(i);
+        } else if (activeFilter === "expanded") {
+          for (i = 31; i <= 55; i++) ids.push(i);
+        } else {
+          for (i = 1; i <= 55; i++) ids.push(i);
+          ids.push(56);
+        }
+        return ids;
+      }
+
+      function renderDeck() {
+        document.body.classList.toggle("quiz-mode", quizMode);
+        btnToggleQuiz.setAttribute("aria-pressed", String(quizMode));
+        btnToggleQuiz.classList.toggle("quiz-on", quizMode);
+        btnToggleQuiz.textContent = quizMode
+          ? "Quiz Mode (Shuffle A·B·C·D, Hide Hints)"
+          : "Role Hints: Shown";
+        btnReshuffle.hidden = !quizMode;
+
+        var ids = getFilteredIds();
+        var sheetCount = Math.ceil(ids.length / 4);
+        var sheetsHtml = "";
+
+        for (var s = 0; s < sheetCount; s++) {
+          var cardsHtml = "";
+          for (var c = 0; c < 4; c++) {
+            var idx = s * 4 + c;
+            if (idx < ids.length) {
+              var id = ids[idx];
+              cardsHtml += (id === 56) ? buildBlankCard56Html() : buildSeededCardHtml(id);
+            } else {
+              cardsHtml += '<div class="p-card-empty" aria-hidden="true"></div>';
+            }
+          }
+
+          sheetsHtml += (
+            '<section class="sheet" data-sheet="' + (s + 1) + '" aria-label="Cut-out sheet ' + (s + 1) + ' of ' + sheetCount + '">' +
+              '<div class="cut-v" aria-hidden="true"></div>' +
+              '<div class="cut-h" aria-hidden="true"></div>' +
+              '<span class="scissor top" aria-hidden="true">✂</span>' +
+              '<span class="scissor bottom" aria-hidden="true">✂</span>' +
+              '<span class="scissor left" aria-hidden="true">✂</span>' +
+              '<span class="scissor right" aria-hidden="true">✂</span>' +
+              cardsHtml +
+            '</section>'
+          );
+        }
+
+        deckRoot.innerHTML = sheetsHtml;
+
+        summaryLeft.innerHTML =
+          "Showing <strong>" + ids.length + " Cut-Out Cards</strong> on <strong>" +
+          sheetCount + " Letter Landscape Sheet" + (sheetCount === 1 ? "" : "s") +
+          "</strong> (4 cards per sheet · 2 straight scissor cuts <code>+</code> per page).";
+
+        summaryRight.innerHTML = quizMode
+          ? "<strong>Quiz Mode Active:</strong> Choices <strong>(A)·(B)·(C)·(D)</strong> are shuffled on every card and role hints are hidden!"
+          : 'Canonical order: <strong>(A) Real Creek</strong> · <strong style="color:#1d596e">(B) Probable · Turkey</strong> · <strong style="color:#2d6846">(C) Plausible · Trout</strong> · <strong style="color:#9e3d1c">(D) Preposterous · Alien</strong>';
+      }
+
+      document.querySelectorAll("[data-filter]").forEach(function (btn) {
+        btn.onclick = function () {
+          activeFilter = btn.getAttribute("data-filter") || "all";
+          document.querySelectorAll("[data-filter]").forEach(function (b) {
+            b.classList.toggle("active", b === btn);
+          });
+          renderDeck();
+        };
+      });
+
+      btnToggleQuiz.onclick = function () {
+        quizMode = !quizMode;
+        renderDeck();
+      };
+
+      btnReshuffle.onclick = function () {
+        shuffleSeed += 1;
+        renderDeck();
+      };
+
+      btnPrint.onclick = function () {
+        window.print();
+      };
+
+      // Support ?mode=quiz URL query parameter if desired
+      if (/[?&]mode=quiz\b/i.test(location.search || "")) {
+        quizMode = true;
+      }
+
+      renderDeck();
+    })();
+  </script>
+</body>
+</html>
